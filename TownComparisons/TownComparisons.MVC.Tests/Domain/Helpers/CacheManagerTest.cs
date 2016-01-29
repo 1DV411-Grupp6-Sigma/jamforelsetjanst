@@ -86,6 +86,23 @@ namespace TownComparisons.MVC.Tests.Domain.Helpers
         }
 
         /// <summary>
+        /// Try to get a value with a key that does not exist
+        /// </summary>
+        [TestMethod]
+        public void Test_GetCache_KeyDoesNotExist()
+        {
+            string key = "valueThatDoesNotExistInCache";
+
+            //Does not exist
+            Assert.IsFalse(_cacheManager.HasValue(key));
+
+            //Shold not throw exception
+            string value = _cacheManager.GetCache(key) as string;
+
+            Assert.IsNull(value);
+        }
+
+        /// <summary>
         /// Deletes key/value from Cache
         /// </summary>
         [TestMethod]
