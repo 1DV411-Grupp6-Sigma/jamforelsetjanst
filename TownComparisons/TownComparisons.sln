@@ -12,6 +12,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TownComparisons.MVC.Tests",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TownComparisons.Domain", "TownComparisons.Domain\TownComparisons.Domain.csproj", "{0330CE7D-8AB1-4495-9BCF-1F249E8E72CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TownComparisons.API", "TownComparisons.API\TownComparisons.API.csproj", "{50D58A56-3005-4B4E-B21B-E1C569E2D016}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0330CE7D-8AB1-4495-9BCF-1F249E8E72CC} = {0330CE7D-8AB1-4495-9BCF-1F249E8E72CC}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TownComparisons.API.Tests", "TownComparisons.API.Tests\TownComparisons.API.Tests.csproj", "{B6B1563B-62EF-4F99-9440-E511127BB47A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +37,14 @@ Global
 		{0330CE7D-8AB1-4495-9BCF-1F249E8E72CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0330CE7D-8AB1-4495-9BCF-1F249E8E72CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0330CE7D-8AB1-4495-9BCF-1F249E8E72CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50D58A56-3005-4B4E-B21B-E1C569E2D016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50D58A56-3005-4B4E-B21B-E1C569E2D016}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50D58A56-3005-4B4E-B21B-E1C569E2D016}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50D58A56-3005-4B4E-B21B-E1C569E2D016}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6B1563B-62EF-4F99-9440-E511127BB47A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6B1563B-62EF-4F99-9440-E511127BB47A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6B1563B-62EF-4F99-9440-E511127BB47A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6B1563B-62EF-4F99-9440-E511127BB47A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
