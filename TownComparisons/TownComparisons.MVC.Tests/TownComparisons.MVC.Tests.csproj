@@ -34,7 +34,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -82,6 +84,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Helpers\CacheManagerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
@@ -92,8 +95,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TownComparisons.Domain\TownComparisons.Domain.csproj">
+      <Project>{0330ce7d-8ab1-4495-9bcf-1f249e8e72cc}</Project>
+      <Name>TownComparisons.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TownComparisons.MVC\TownComparisons.MVC.csproj">
-      <Project>{2E91571A-4B5C-4596-A7CD-AB5039FB1FE9}</Project>
+      <Project>{2e91571a-4b5c-4596-a7cd-ab5039fb1fe9}</Project>
       <Name>TownComparisons.MVC</Name>
     </ProjectReference>
   </ItemGroup>
