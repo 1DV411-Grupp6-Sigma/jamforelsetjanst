@@ -2138,7 +2138,7 @@ Expr = Sizzle.selectors = {
 								(diff = nodeIndex = 0) || start.pop()) ) {
 
 								if ( ( ofType ? node.nodeName.toLowerCase() === name : node.nodeType === 1 ) && ++diff ) {
-									// Cache the index of each encountered element
+									// CacheManager the index of each encountered element
 									if ( useCache ) {
 										(node[ expando ] || (node[ expando ] = {}))[ type ] = [ dirruns, diff ];
 									}
@@ -2472,7 +2472,7 @@ function tokenize( selector, parseOnly ) {
 		soFar.length :
 		soFar ?
 			Sizzle.error( selector ) :
-			// Cache the tokens
+			// CacheManager the tokens
 			tokenCache( selector, groups ).slice( 0 );
 }
 
@@ -2841,7 +2841,7 @@ compile = Sizzle.compile = function( selector, group /* Internal Use Only */ ) {
 			}
 		}
 
-		// Cache the compiled function
+		// CacheManager the compiled function
 		cached = compilerCache( selector, matcherFromGroupMatchers( elementMatchers, setMatchers ) );
 	}
 	return cached;
@@ -8181,7 +8181,7 @@ jQuery.extend({
 			// (no matter how long the jqXHR object will be used)
 			transport = undefined;
 
-			// Cache response headers
+			// CacheManager response headers
 			responseHeadersString = headers || "";
 
 			// Set readyState
