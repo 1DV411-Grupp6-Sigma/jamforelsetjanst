@@ -56,7 +56,10 @@ namespace TownComparisons.MVC.Tests.Domain.Helpers
             Assert.IsFalse(_cacheManager.HasValue(key));
         }
 
-
+        /// <summary>
+        /// Sets a value to cache with method SetCache(key, value)
+        /// Asserts cache contains this key/value
+        /// </summary>
         [TestMethod]
         public void Test_SetCache_CachePolicyDateTime()
         {
