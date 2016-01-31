@@ -26,11 +26,11 @@ namespace TownComparisons.API.Controllers
             {
                 Municipality municipality = null; // = _service.Nånting
                 Category category = null; // = _service.Nånting
-                List<Operator> operators = _service.GetTownOperators(municipality, category);
+                List<OperationalUnit> operators = _service.GetTownOperators(municipality, category);
 
                 //create response
                 // Kanske en view model istället för modellklassen Operator här:
-                var response = Request.CreateResponse<IEnumerable<Operator>>(HttpStatusCode.OK, operators);
+                var response = Request.CreateResponse<IEnumerable<OperationalUnit>>(HttpStatusCode.OK, operators);
                 return response;
             }
             return new HttpResponseMessage(HttpStatusCode.BadRequest);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TownComparisons.Domain.Entities
 {
-    public class Operator
+    public class OperationalUnit
     {
         public string Name { get; set; }
 
