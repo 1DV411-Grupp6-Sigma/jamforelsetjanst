@@ -28,7 +28,7 @@ namespace TownComparisons.Domain
 
 
         //Methods
-        public List<Operator> GetTownOperators(Municipality municipality, Category category)
+        public List<OperationalUnit> GetTownOperators(Municipality municipality, Category category)
         {
             return _townWebService.GetTownOperators(municipality, category);
         }

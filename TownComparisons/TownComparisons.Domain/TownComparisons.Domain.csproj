@@ -30,9 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,6 +53,7 @@
     <Compile Include="Entities\Location.cs" />
     <Compile Include="Entities\Municipality.cs" />
     <Compile Include="Entities\Operator.cs" />
+    <Compile Include="Entities\OrganisationalUnit.cs" />
     <Compile Include="Entities\Property.cs" />
     <Compile Include="Helpers\CacheManager.cs" />
     <Compile Include="Helpers\ICache.cs" />
@@ -57,6 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DAL\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

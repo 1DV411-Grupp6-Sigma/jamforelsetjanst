@@ -9,7 +9,7 @@ namespace TownComparisons.Domain.Abstract
 {
     public interface IService
     {
-        List<Operator> GetTownOperators(Municipality municipality, Category category);
+        List<OperationalUnit> GetTownOperators(Municipality municipality, Category category);
 
     }
 }
