@@ -79,6 +79,9 @@ namespace TownComparisons.Domain
                 {
                     _settings.WriteTo(writer);
                 }
+
+                //Refresh _settings variable 
+                LoadSettings();
             }
             catch (Exception ex)
             {
