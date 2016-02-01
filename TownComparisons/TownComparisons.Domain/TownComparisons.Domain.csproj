@@ -46,6 +46,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -58,6 +59,7 @@
     <Compile Include="Abstract\IService.cs" />
     <Compile Include="Abstract\ITownWebService.cs" />
     <Compile Include="Abstract\TownWebServiceBase.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Location.cs" />
     <Compile Include="Entities\Municipality.cs" />

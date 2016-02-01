@@ -26,6 +26,7 @@ namespace TownComparisons.Domain
             _townWebService = townWebService;
         }
 
+        
 
         //Methods
         public List<OperationalUnit> GetTownOperators(Municipality municipality, Category category)
