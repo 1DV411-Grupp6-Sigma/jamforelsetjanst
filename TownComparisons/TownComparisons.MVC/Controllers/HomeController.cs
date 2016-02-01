@@ -24,6 +24,12 @@ namespace TownComparisons.MVC.Controllers
         
         public ActionResult Index()
         {
+            var s = new Settings();
+            s.MunicipalityId = "1290";
+
+            var id = s.MunicipalityId;
+            var city = s.Municipality;
+
             return View();
         }
 

@@ -20,12 +20,19 @@ namespace TownComparisons.Domain
         private static string _settingsConfig;
         private JObject _settings;
         private string _municipality = "municipality";
+        private string _municipalityId = "municipalityId";
         private string _location = "location";
 
         public string Municipality
         {
             get { return _settings[_location].Value<string>(_municipality); }
             set { SaveSettings(_location, _municipality, value); }
+        }
+
+        public string MunicipalityId
+        {
+            get { return _settings[_location].Value<string>(_municipalityId); }
+            set { SaveSettings(_location, _municipalityId, value); }
         }
 
         /// <summary>
@@ -35,7 +42,7 @@ namespace TownComparisons.Domain
         {
             _pathAppData = HttpContext.Current.ApplicationInstance.Server.MapPath("~/App_Data/");
             string configFile = "settingsConfig.json";
-             _settingsConfig = Path.Combine(_pathAppData, configFile);
+            _settingsConfig = Path.Combine(_pathAppData, configFile);
 
             //Load settingsConfig.json to _settings variable
             LoadSettings();
