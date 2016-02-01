@@ -16,8 +16,13 @@ namespace TownComparisons.Domain.WebServices
     public class KoladaTownWebService : TownWebServiceBase
     {
         //(kod för att anropa Kolada API här i olika funktioner)
-        
 
+
+        public IEnumerable<OperationalUnit> GetTownOperators(Municipality municipality, Category category)
+        {
+            //Method added becouse project would not compile without it!!
+            throw new NotImplementedException();
+        }
         public override OperationalUnit GetTownOperatorData(OperationalUnit operator_)
         {
 

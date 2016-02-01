@@ -30,7 +30,8 @@ namespace TownComparisons.Domain
         //Methods
         public List<OperationalUnit> GetTownOperators(Municipality municipality, Category category)
         {
-            return _townWebService.GetTownOperators(municipality, category);
+            throw new NotImplementedException();
+            //return _townWebService.GetTownOperators(municipality, category);
         }
 
     }

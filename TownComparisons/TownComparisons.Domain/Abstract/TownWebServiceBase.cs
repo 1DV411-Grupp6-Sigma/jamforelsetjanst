@@ -31,7 +31,12 @@ namespace TownComparisons.Domain.Abstract
             Dispose(true /* disposing */);
             GC.SuppressFinalize(this);
         }
-        
+
+        public List<OperationalUnit> GetTownOperators(Municipality municipality, Category category)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }
