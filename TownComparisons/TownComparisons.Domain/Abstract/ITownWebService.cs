@@ -15,5 +15,6 @@ namespace TownComparisons.Domain.Abstract
 
         OperationalUnit GetTownOperatorData(OperationalUnit operator_); //"operator" är tydligen ett reserverat ord i .Net
 
+        List<OperationalUnit> GetTownOperators(Municipality municipality, Category category);
     }
 }
