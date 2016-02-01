@@ -14,6 +14,7 @@ namespace TownComparisons.Domain
         //(detta är huvud-klassen som används från controllers i MVC-projektet)
 
         ITownWebService _townWebService;
+       
 
         //Constructors
         public Service()
@@ -33,6 +34,10 @@ namespace TownComparisons.Domain
         {
             throw new NotImplementedException();
             //return _townWebService.GetTownOperators(municipality, category);
+        }
+        public List<OrganisationalUnits> GetOrganisationalUnits()
+        {
+            return this.GetOrganisationalUnits();
         }
 
     }

@@ -59,6 +59,7 @@
     <Compile Include="Abstract\IService.cs" />
     <Compile Include="Abstract\ITownWebService.cs" />
     <Compile Include="Abstract\TownWebServiceBase.cs" />
+    <Compile Include="Entities\OrganisationalUnits.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Location.cs" />
@@ -77,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="App_Data\settingsConfig.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
