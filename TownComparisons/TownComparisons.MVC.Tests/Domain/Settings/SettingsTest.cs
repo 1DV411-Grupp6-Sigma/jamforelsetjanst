@@ -46,5 +46,17 @@ namespace TownComparisons.MVC.Tests.Domain.Settings
             Assert.AreEqual(actual, expected);
         }
 
+        [TestMethod]
+        public void Test_Settings_GetIdForName()
+        {
+            string city = "Växsjö";
+            string cityId = "1290";
+            _settings.Municipality = city;
+            _settings.MunicipalityId = cityId;
+
+            var id = _settings.MunicipalityId;
+
+        }
+
     }
 }
