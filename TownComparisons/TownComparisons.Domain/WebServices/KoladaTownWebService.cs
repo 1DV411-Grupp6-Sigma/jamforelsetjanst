@@ -13,10 +13,20 @@ using System.Web.Script.Serialization;
 
 namespace TownComparisons.Domain.WebServices
 {
+    /// <summary>
+    /// Set of functions that calls KoladaAPI and returns different type of data
+    /// </summary>
     public class KoladaTownWebService : TownWebServiceBase
     {
-        //(kod för att anropa Kolada API här i olika funktioner)
+      
 
+        // Reads MunicipalityId from Settings
+        override public string GetMunicipalityId()
+        {
+            var _settings = new Settings();
+            var municipalityId = _settings.MunicipalityId;
+            return municipalityId;
+        }
 
         public IEnumerable<OperationalUnit> GetTownOperators(Municipality municipality, Category category)
         {
@@ -29,7 +39,13 @@ namespace TownComparisons.Domain.WebServices
             throw new NotImplementedException();
         }
 
-        public override List<OrganisationalUnit> GetOrganisationalUnits(Municipality municipality)
+        /// <summary>
+        /// Function returns OrganisationalUnits for one municipality.
+        /// Id, Municipality and Title are given.
+        /// </summary>
+        /// <param></param>
+        /// <returns>List of OUs in one municipality</returns>
+        public override List<OrganisationalUnit> GetOrganisationalUnits()
         {
             var rawJson = string.Empty;
 
@@ -38,7 +54,8 @@ namespace TownComparisons.Domain.WebServices
              * This is the URL that returns organisational units based on monicipality Id.
              * This is exactly what we need.
              */
-            var BaseUrlGetOperators = BaseUrl + "ou?" + "municipality=" + municipality.Id;
+            var municiplaity = GetMunicipalityId();
+            var BaseUrlGetOperators = BaseUrl + "ou?" + "municipality=" + municiplaity;
 
             var request = (HttpWebRequest)WebRequest.Create(BaseUrlGetOperators);
 

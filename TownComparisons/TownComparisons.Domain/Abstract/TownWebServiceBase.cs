@@ -12,13 +12,13 @@ namespace TownComparisons.Domain.Abstract
         //(denna klass kan användas för att lägga till ev. funktioner som kan behövas oavsett vilken datakälla som används)
 
         /*
-         *  Base of every URL, taken from Andreas Test project
+         *  Base of every URL, taken from Andreas's Test project
          */
         internal static readonly string BaseUrl = "http://api.kolada.se/v2/";
 
-        public abstract List<OrganisationalUnit> GetOrganisationalUnits(Municipality municipiality);
+        public abstract List<OrganisationalUnit> GetOrganisationalUnits();
         public abstract OperationalUnit GetTownOperatorData(OperationalUnit operator_);
-
+        public abstract string GetMunicipalityId();
 
         #region IDisposable Members
 
