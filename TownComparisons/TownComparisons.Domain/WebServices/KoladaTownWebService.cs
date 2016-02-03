@@ -63,22 +63,16 @@ namespace TownComparisons.Domain.WebServices
             return OU;
         }
 
-        //public override List<KpiGroups> GetKpiGroups()
-        //{
-        //    var rawJson = string.Empty;
-        //    var BaseUrlGetKpiGroups = BaseUrl + "KpiGroups";
+        public override List<KpiGroups> GetKpiGroups()
+        {
+            var rawJson = string.Empty;
+            var apiRequest = "KpiGroups";
 
-        //    var request = (HttpWebRequest)WebRequest.Create(BaseUrlGetKpiGroups);
+            rawJson = RawJson(apiRequest);
 
-        //    using (var response = request.GetResponse())
-        //    using (var reader = new StreamReader(response.GetResponseStream()))
-        //    {
-        //        rawJson = reader.ReadToEnd();
-        //    }
-
-        //    var kpiGroups = JsonConvert.DeserializeObject<KpiGroups>(rawJson).Values;
-        //    return kpiGroups;
-        //}
-
+            // Additional help http://stackoverflow.com/questions/11220776/deserialize-list-of-objects-using-json-net
+            var kpiGroups = JsonConvert.DeserializeObject<List<KpiGroups>>(rawJson);
+            return kpiGroups;
+        }
     }
 }
