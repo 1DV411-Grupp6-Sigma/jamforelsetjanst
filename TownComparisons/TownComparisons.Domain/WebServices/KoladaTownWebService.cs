@@ -55,20 +55,30 @@ namespace TownComparisons.Domain.WebServices
              * This is exactly what we need.
              */
             var municiplaity = GetMunicipalityId();
-            var BaseUrlGetOperators = BaseUrl + "ou?" + "municipality=" + municiplaity;
+            var apiRequest= "ou?municipality=" + municiplaity;
 
-            var request = (HttpWebRequest)WebRequest.Create(BaseUrlGetOperators);
-
-            using (var response = request.GetResponse())
-            using (var reader = new StreamReader(response.GetResponseStream()))
-            {
-                rawJson = reader.ReadToEnd();
-            }
-
+            rawJson = RawJson(apiRequest);
+           
             var OU = JsonConvert.DeserializeObject<OrganisationalUnits>(rawJson).Values;
-
             return OU;
         }
+
+        //public override List<KpiGroups> GetKpiGroups()
+        //{
+        //    var rawJson = string.Empty;
+        //    var BaseUrlGetKpiGroups = BaseUrl + "KpiGroups";
+
+        //    var request = (HttpWebRequest)WebRequest.Create(BaseUrlGetKpiGroups);
+
+        //    using (var response = request.GetResponse())
+        //    using (var reader = new StreamReader(response.GetResponseStream()))
+        //    {
+        //        rawJson = reader.ReadToEnd();
+        //    }
+
+        //    var kpiGroups = JsonConvert.DeserializeObject<KpiGroups>(rawJson).Values;
+        //    return kpiGroups;
+        //}
 
     }
 }
