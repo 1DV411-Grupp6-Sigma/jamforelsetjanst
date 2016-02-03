@@ -22,6 +22,7 @@ namespace TownComparisons.Domain.Abstract
         public abstract List<KpiGroups> GetKpiGroups();
         public abstract OperationalUnit GetTownOperatorData(OperationalUnit operator_);
         public abstract string GetMunicipalityId();
+        
 
         /// <summary>
         /// Function:

@@ -19,5 +19,6 @@ namespace TownComparisons.Domain.Abstract
         List<OperationalUnit> GetTownOperators(Municipality municipality, Category category);
 
         string GetMunicipalityId();
+        
     }
 }

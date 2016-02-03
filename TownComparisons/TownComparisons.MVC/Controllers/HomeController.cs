@@ -11,7 +11,7 @@ namespace TownComparisons.MVC.Controllers
     public class HomeController : Controller
     {
         private IService _service;
-        
+
         public HomeController()
             : this(new Service())
         {
@@ -21,14 +21,9 @@ namespace TownComparisons.MVC.Controllers
         {
             _service = service;
         }
-        
+
         public ActionResult Index()
         {
-            var s = new Settings();
-            s.MunicipalityId = "1290";
-
-            var id = s.MunicipalityId;
-            var city = s.Municipality;
 
             return View();
         }

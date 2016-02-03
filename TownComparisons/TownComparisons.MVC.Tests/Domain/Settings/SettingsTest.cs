@@ -49,13 +49,16 @@ namespace TownComparisons.MVC.Tests.Domain.Settings
         [TestMethod]
         public void Test_Settings_GetIdForName()
         {
-            string city = "Växsjö";
+            string city = "Växjö";
             string cityId = "1290";
             _settings.Municipality = city;
             _settings.MunicipalityId = cityId;
 
-            var id = _settings.MunicipalityId;
+            var getCity = _settings.Municipality;
+            var getId = _settings.MunicipalityId;
 
+            Assert.AreEqual(getCity, getCity);
+            Assert.AreEqual(getId, "1290");
         }
 
     }
