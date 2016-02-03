@@ -12,6 +12,7 @@ namespace TownComparisons.Domain.Abstract
         //(några exempel-funktioner):
 
         List<OrganisationalUnit> GetOrganisationalUnits();
+        List<KpiGroups> GetKpiGroups();
 
         OperationalUnit GetTownOperatorData(OperationalUnit operator_); //"operator" är tydligen ett reserverat ord i .Net
 
