@@ -1,1 +1,7 @@
-﻿{"location":{"municipality":"kungsbacka","municipalityId":"1290"}}
+﻿{
+  
+  "location": {
+    "municipality": "kungsbacka",
+    "municipalityId": "1290"
+  }
+}

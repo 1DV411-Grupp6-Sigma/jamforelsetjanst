@@ -18,15 +18,54 @@ namespace TownComparisons.Domain.WebServices
     /// </summary>
     public class KoladaTownWebService : TownWebServiceBase
     {
-      
+        private readonly Settings _settings;
+        private string _municipalityId;
 
-        // Reads MunicipalityId from Settings
-        override public string GetMunicipalityId()
+        public KoladaTownWebService()
+            :this(new Settings())
         {
-            var _settings = new Settings();
-            var municipalityId = _settings.MunicipalityId;
-            return municipalityId;
+            _settings = new Settings();
+            FetchMunicipalityId();
         }
+
+        /// <summary>
+        /// Mainly used for unit tests
+        /// </summary>
+        /// <param name="settings"></param>
+        public KoladaTownWebService(Settings settings)
+        {
+            _settings = settings;
+            FetchMunicipalityId();
+        }
+
+        /// <summary>
+        /// looks up municipality Name from settingsConfig.json and fetches its Id from Kolada.se 
+        /// </summary>
+        private void FetchMunicipalityId()
+        {
+            //url example:
+            //http://api.kolada.se/v2/municipality?title=lund
+
+            var nameOfMunicipality = _settings.Municipality;
+            var apiRequest = "municipality?title=" + nameOfMunicipality;
+
+            string rawJson = RawJson(apiRequest);
+            JObject json = JObject.Parse(rawJson);
+
+            //This implementation includes only "Kommuner" and excludes "Landsting"
+            _municipalityId = (from m in json["values"]
+                                         where m["type"].ToString() == "K"
+                                         select new Municipality(m)).ToString();   
+        }
+
+        //Replaced by FetchMunicipalityId() //andreas
+        // Reads MunicipalityId from Settings
+        //public override string GetMunicipalityId()
+        //{
+        //    //var _settings = new Settings();
+        //    var municipalityId = _settings.MunicipalityId;
+        //    return municipalityId;
+        //}
 
         public IEnumerable<OperationalUnit> GetTownOperators(Municipality municipality, Category category)
         {
@@ -54,8 +93,8 @@ namespace TownComparisons.Domain.WebServices
              * This is the URL that returns organisational units based on monicipality Id.
              * This is exactly what we need.
              */
-            var municiplaity = GetMunicipalityId();
-            var apiRequest= "ou?municipality=" + municiplaity;
+            var municipality = _municipalityId; //GetMunicipalityId();
+            var apiRequest= "ou?municipality=" + municipality;
 
             rawJson = RawJson(apiRequest);
            
