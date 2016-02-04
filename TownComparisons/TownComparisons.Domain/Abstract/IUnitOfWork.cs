@@ -7,10 +7,10 @@ using TownComparisons.Domain.Entities;
 
 namespace TownComparisons.Domain.Abstract
 {
-    public interface IService
+    public interface IUnitOfWork : IDisposable
     {
-        List<OperationalUnit> GetTownOperators(Municipality municipality, Category category);
+        IRepository<OrganisationalUnitInfo> OrganisationalUnitInfoRepository { get; }
 
-        List<OrganisationalUnitInfo> GetOrganisationalUnitInfos();
+        void Save();
     }
 }

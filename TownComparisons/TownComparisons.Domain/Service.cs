@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TownComparisons.Domain.Abstract;
+using TownComparisons.Domain.DAL;
 using TownComparisons.Domain.Entities;
 using TownComparisons.Domain.WebServices;
 
@@ -13,17 +14,19 @@ namespace TownComparisons.Domain
     {
         //(detta är huvud-klassen som används från controllers i MVC-projektet)
 
-        ITownWebService _townWebService;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly ITownWebService _townWebService;
        
 
         //Constructors
         public Service()
-            : this (new KoladaTownWebService())
+            : this (new UnitOfWork(), new KoladaTownWebService())
         {
             // Empty
         }
-        public Service(ITownWebService townWebService)
+        public Service(IUnitOfWork unitOfWork, ITownWebService townWebService)
         {
+            _unitOfWork = unitOfWork;
             _townWebService = townWebService;
         }
 
@@ -38,6 +41,13 @@ namespace TownComparisons.Domain
         public List<OrganisationalUnits> GetOrganisationalUnits()
         {
             return this.GetOrganisationalUnits();
+        }
+
+
+        //just a temp method to use to access some database entitites
+        public List<OrganisationalUnitInfo> GetOrganisationalUnitInfos()
+        {
+            return _unitOfWork.OrganisationalUnitInfoRepository.Get().ToList();
         }
 
     }

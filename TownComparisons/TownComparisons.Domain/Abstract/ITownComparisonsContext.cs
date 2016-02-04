@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,10 +8,8 @@ using TownComparisons.Domain.Entities;
 
 namespace TownComparisons.Domain.Abstract
 {
-    public interface IService
+    public interface ITownComparisonsContext
     {
-        List<OperationalUnit> GetTownOperators(Municipality municipality, Category category);
-
-        List<OrganisationalUnitInfo> GetOrganisationalUnitInfos();
+        IDbSet<OrganisationalUnitInfo> OrganisationalUnitInfos { get; set; }
     }
 }

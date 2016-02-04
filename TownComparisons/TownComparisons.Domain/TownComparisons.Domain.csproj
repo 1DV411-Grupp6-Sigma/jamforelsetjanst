@@ -56,11 +56,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IRepository.cs" />
     <Compile Include="Abstract\IService.cs" />
+    <Compile Include="Abstract\ITownComparisonsContext.cs" />
     <Compile Include="Abstract\ITownWebService.cs" />
+    <Compile Include="Abstract\IUnitOfWork.cs" />
     <Compile Include="Abstract\TownWebServiceBase.cs" />
+    <Compile Include="DAL\Repository.cs" />
+    <Compile Include="DAL\TownComparisonsContext.cs" />
+    <Compile Include="DAL\TownComparisonsInitializer.cs" />
+    <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="Entities\Kpi.cs" />
     <Compile Include="Entities\KpiGroups.cs" />
+    <Compile Include="Entities\OrganisationalUnitInfo.cs" />
     <Compile Include="Entities\OrganisationalUnits.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Entities\Category.cs" />
@@ -75,9 +83,7 @@
     <Compile Include="Service.cs" />
     <Compile Include="WebServices\KoladaTownWebService.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DAL\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="App_Data\settingsConfig.json" />

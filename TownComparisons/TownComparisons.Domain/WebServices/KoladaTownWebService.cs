@@ -38,6 +38,11 @@ namespace TownComparisons.Domain.WebServices
             FetchMunicipalityId();
         }
 
+        public override string GetMunicipalityId()
+        {
+            return _municipalityId;
+        }
+
         /// <summary>
         /// looks up municipality Name from settingsConfig.json and fetches its Id from Kolada.se 
         /// </summary>

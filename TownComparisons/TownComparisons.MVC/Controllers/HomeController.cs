@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using TownComparisons.Domain;
 using TownComparisons.Domain.Abstract;
+using TownComparisons.Domain.Entities;
 
 namespace TownComparisons.MVC.Controllers
 {
@@ -24,6 +25,9 @@ namespace TownComparisons.MVC.Controllers
 
         public ActionResult Index()
         {
+            //just to get the database initializer runned
+            List<OrganisationalUnitInfo> ouInfos = _service.GetOrganisationalUnitInfos();
+            ouInfos = ouInfos;
 
             return View();
         }
