@@ -19,10 +19,21 @@ namespace TownComparisons.Domain.Abstract
         internal static readonly string BaseUrl = "http://api.kolada.se/v2/";
 
         public abstract List<OrganisationalUnit> GetOrganisationalUnits();
-        public abstract List<KpiGroups> GetKpiGroups();
-        public abstract OperationalUnit GetTownOperatorData(OperationalUnit operator_);
+        //public abstract List<KpiGroups> GetKpiGroups();
+        //public abstract OperationalUnit GetTownOperatorData(OperationalUnit operator_);
+        //public abstract List<OperationalUnit> GetTownOperators(Municipality municipality, Category category);
         public abstract string GetMunicipalityId();
-        
+
+        public abstract List<OrganisationalUnit> GetOrganisationalUnitByMunicipalityAndCategory(Municipality municipality, Category category);
+
+        public abstract OrganisationalUnit GetOrganisationalUnitByID(string id);
+
+        public abstract List<KpiGroup> GetKpiGroupByCategory(Category category);
+
+        public abstract List<KpiAnswer> GetKpiAnswersByKpiQuestionAndOrganisationalUnit(List<KpiQuestion> kpiQuestion, List<OrganisationalUnit> ou);
+
+        public abstract List<KpiGroup> GetAllKpiGroups();
+
 
         /// <summary>
         /// Function:
@@ -58,11 +69,6 @@ namespace TownComparisons.Domain.Abstract
         {
             Dispose(true /* disposing */);
             GC.SuppressFinalize(this);
-        }
-
-        public List<OperationalUnit> GetTownOperators(Municipality municipality, Category category)
-        {
-            throw new NotImplementedException();
         }
 
         #endregion

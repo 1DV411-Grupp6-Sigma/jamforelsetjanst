@@ -14,41 +14,71 @@ namespace TownComparisons.Domain
     {
         //(detta är huvud-klassen som används från controllers i MVC-projektet)
 
-        private readonly IUnitOfWork _unitOfWork;
+        // DAL-properties. Commented them because I've got a error when compiled.
+        ////private readonly IUnitOfWork _unitOfWork;
         private readonly ITownWebService _townWebService;
-       
+
 
         //Constructors
+        // Commented: "new UnitOfWork(), "
         public Service()
-            : this (new UnitOfWork(), new KoladaTownWebService())
+            : this (new KoladaTownWebService())
         {
             // Empty
         }
-        public Service(IUnitOfWork unitOfWork, ITownWebService townWebService)
+
+        // Commented: "IUnitOfWork unitOfWork, ".
+        public Service(ITownWebService townWebService)
         {
-            _unitOfWork = unitOfWork;
+            //_unitOfWork = unitOfWork;
             _townWebService = townWebService;
         }
 
-        
-
-        //Methods
-        public List<OperationalUnit> GetTownOperators(Municipality municipality, Category category)
+        public List<KpiGroup> GetAllKpiGroups()
         {
-            throw new NotImplementedException();
-            //return _townWebService.GetTownOperators(municipality, category);
-        }
-        public List<OrganisationalUnits> GetOrganisationalUnits()
-        {
-            return this.GetOrganisationalUnits();
+            return _townWebService.GetAllKpiGroups();
         }
 
-
-        //just a temp method to use to access some database entitites
-        public List<OrganisationalUnitInfo> GetOrganisationalUnitInfos()
+        public List<KpiAnswer> GetKpiAnswersByKpiQuestionAndOrganisationalUnit(List<KpiQuestion> kpiQuestion, List<OrganisationalUnit> organisationalUnit)
         {
-            return _unitOfWork.OrganisationalUnitInfoRepository.Get().ToList();
+            return _townWebService.GetKpiAnswersByKpiQuestionAndOrganisationalUnit(kpiQuestion, organisationalUnit);
         }
+
+        public List<KpiGroup> GetKpiGroupByCategory(Category category)
+        {
+            return _townWebService.GetKpiGroupByCategory(category);
+        }
+
+        public OrganisationalUnit GetOrganisationalUnitByID(string id)
+        {
+            return _townWebService.GetOrganisationalUnitByID(id);
+        }
+
+        public List<OrganisationalUnit> GetOrganisationalUnitByMunicipalityAndCategory(Municipality municipality, Category category)
+        {
+            return _townWebService.GetOrganisationalUnitByMunicipalityAndCategory(municipality, category);
+        }
+
+
+        // Commented this method.
+
+        ////Methods
+        //public List<OperationalUnit> GetTownOperators(Municipality municipality, Category category)
+        //{
+        //    throw new NotImplementedException();
+        //    //return _townWebService.GetTownOperators(municipality, category);
+        //}
+        //public List<OrganisationalUnits> GetOrganisationalUnits()
+        //{
+        //    return this.GetOrganisationalUnits();
+        //}
+
+
+        ////just a temp method to use to access some database entitites
+        //public List<OrganisationalUnitInfo> GetOrganisationalUnitInfos()
+        //{
+        //    return _unitOfWork.OrganisationalUnitInfoRepository.Get().ToList();
+        //}
 
     }
 }

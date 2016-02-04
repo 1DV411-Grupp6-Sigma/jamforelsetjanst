@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace TownComparisons.Domain.Entities
 {
-    public class KpiGroups
+    public class KpiAnswers
     {
         public int Count { get; set; }
 
         [JsonProperty("values")]
-        public List<KpiGroup> Values { get; set; }
+        public List<KpiAnswer> Values { get; set; }
     }
 }

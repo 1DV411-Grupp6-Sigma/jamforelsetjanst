@@ -202,6 +202,14 @@
       <Project>{0330ce7d-8ab1-4495-9bcf-1f249e8e72cc}</Project>
       <Name>TownComparisons.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TownComparisons.MVC.Tests\TownComparisons.MVC.Tests.csproj">
+      <Project>{aefeec76-11f1-4458-ba4e-ca551420253d}</Project>
+      <Name>TownComparisons.MVC.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TownComparisons.MVC\TownComparisons.MVC.csproj">
+      <Project>{2e91571a-4b5c-4596-a7cd-ab5039fb1fe9}</Project>
+      <Name>TownComparisons.MVC</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

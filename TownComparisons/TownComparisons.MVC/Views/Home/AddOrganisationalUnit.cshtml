@@ -1,0 +1,22 @@
+﻿@using TownComparisons.Domain.Entities;
+@{
+    ViewBag.Title = "Organisational Unit";
+}
+
+<h3>Organisational Unit</h3>
+<div id="Categories">
+    <a href="~/Home/Index">Tillbaka till start</a> - <a href="~/Home/Compare/1">Jämför Grundskola</a> - <a href="~/Home/Compare/2">Jämför Gymnasieskola</a>
+    <p>Du lade till skola: @ViewBag.AddedOU.Title</p>
+
+    <h4>Dina jämförelseobjekt Grundskola:</h4>
+    @foreach (OrganisationalUnit ou in @ViewBag.ComparisionV15)
+    {
+        <p>@ou.Title</p>
+    }
+
+    <h4>Dina jämförelseobjekt Gymnasieskola:</h4>
+    @foreach (OrganisationalUnit ou in @ViewBag.ComparisionV17)
+    {
+        <p>@ou.Title</p>
+    }
+</div>

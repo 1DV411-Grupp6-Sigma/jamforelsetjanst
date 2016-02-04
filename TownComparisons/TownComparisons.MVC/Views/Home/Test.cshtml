@@ -1,0 +1,14 @@
+﻿@using TownComparisons.Domain.Entities;
+
+
+<h3>Välj en kategori</h3>
+<div id="Categories">
+    @foreach (KpiGroup kg in ViewBag.allKpiGroups)
+    {
+        <br /><p class="bold">@kg.Title</p>
+        foreach (KpiQuestion kq in kg.Members)
+        {
+            <p>@kq.Member_title</p>
+        }
+    }
+</div>
