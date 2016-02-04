@@ -1,6 +1,7 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    padding: 20px;
+    width: 100%;
+    font-size: 100%;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +22,36 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+p {
+    margin: 0px;
+    padding: 0px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.compareRow {
+    display: inline-flex;
+}
+
+.compareBox {
+    width: 140px;
+    display: inline-block;
+}
+
+.compareBoxQuestion {
+    width: 800px;
+    display: inline-block;
+}
+
+#Compare {
+    overflow-x:scroll;
+    height: 500px;
+}
+
+.bgSilver {
+    background-color: #d0d0d0;
 }

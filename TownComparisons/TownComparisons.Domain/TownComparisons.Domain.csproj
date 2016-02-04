@@ -67,9 +67,15 @@
     <Compile Include="DAL\TownComparisonsInitializer.cs" />
     <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="Entities\Kpi.cs" />
+    <Compile Include="Entities\KpiAnswer.cs" />
+    <Compile Include="Entities\KpiAnswers.cs" />
+    <Compile Include="Entities\KpiAnswerValues.cs" />
+    <Compile Include="Entities\KpiGroup.cs" />
     <Compile Include="Entities\KpiGroups.cs" />
+    <Compile Include="Entities\KpiQuestion.cs" />
     <Compile Include="Entities\OrganisationalUnitInfo.cs" />
     <Compile Include="Entities\OrganisationalUnits.cs" />
+    <Compile Include="SessionHandler.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Location.cs" />

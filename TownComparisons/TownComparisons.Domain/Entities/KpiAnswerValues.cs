@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace TownComparisons.Domain.Entities
 {
-    public class KpiGroups
+    public class KpiAnswerValues
     {
         public int Count { get; set; }
-
-        [JsonProperty("values")]
-        public List<KpiGroup> Values { get; set; }
+        public string Gender { get; set; }
+        public string Status { get; set; }
+        public float? Value { get; set; }
     }
 }

@@ -1,0 +1,14 @@
+﻿@using TownComparisons.Domain.Entities;
+@{
+    ViewBag.Title = "Kategori";
+}
+
+<h3>Kategori</h3>
+<div id="Categories">
+    @{
+        foreach (OrganisationalUnit ou in ViewBag.OUnits)
+        {
+            <a href="~/Home/AddOrganisationalUnit/@ou.Id">@ou.Title</a><br />
+        }
+    }
+</div>

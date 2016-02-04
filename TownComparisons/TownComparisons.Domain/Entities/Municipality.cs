@@ -11,13 +11,16 @@ namespace TownComparisons.Domain.Entities
 {
     public class Municipality
     {
-
-        [JsonProperty("id")]
         public string Id { get; set; }
-        [JsonProperty("title")]
         public string Title { get; set; }
-        [JsonProperty("type")]
         public string Type { get; set; }
+
+        public Municipality(string id, string title, string type)
+        {
+            Id = id;
+            Title = title;
+            Type = type;
+        }
 
         public Municipality(JToken item)
         {
@@ -25,6 +28,5 @@ namespace TownComparisons.Domain.Entities
             Title = item.Value<string>("title");
             Type = item.Value<string>("type");
         }
-
     }
 }

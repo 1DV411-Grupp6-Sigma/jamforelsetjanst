@@ -38,6 +38,163 @@ namespace TownComparisons.Domain.WebServices
             FetchMunicipalityId();
         }
 
+        public override List<OrganisationalUnit> GetOrganisationalUnitByMunicipalityAndCategory(Municipality municipality, Category category)
+        {
+            List<OrganisationalUnit> allOUnits = GetOrganisationalUnits();
+            List<OrganisationalUnit> tempAllOUnits = new List<OrganisationalUnit>();
+
+            // Adds OrganisationalUnits by Category.
+            string categoryValue = String.Empty;
+            if (category.ID == 1)
+            {
+                categoryValue = "V15";
+            }
+            else if (category.ID == 2)
+            {
+                categoryValue = "V17";
+            }
+            else if (category.ID == 3)
+            {
+                categoryValue = "V23";
+            }
+
+            foreach (OrganisationalUnit ou in allOUnits)
+            {
+                if (ou.Id.Substring(0, 3) == categoryValue)
+                {
+                    tempAllOUnits.Add(ou);
+                }
+            }
+
+            return tempAllOUnits;
+        }
+
+        public override OrganisationalUnit GetOrganisationalUnitByID(string id)
+        {
+            var rawJson = string.Empty;
+
+            /*
+             * http://api.kolada.se/v2/kpi_groups?title=Grundskola
+             * This is the URL that returns organisational units based on monicipality Id.
+             * This is exactly what we need.
+             */
+            var BaseUrlGetOperators = BaseUrl + "ou/" + id;
+
+            var request = (HttpWebRequest)WebRequest.Create(BaseUrlGetOperators);
+
+            using (var response = request.GetResponse())
+            using (var reader = new StreamReader(response.GetResponseStream()))
+            {
+                rawJson = reader.ReadToEnd();
+            }
+
+            var ou = JsonConvert.DeserializeObject<OrganisationalUnits>(rawJson).Values;
+
+            return ou.First();
+        }
+
+        public override List<KpiGroup> GetKpiGroupByCategory(Category category)
+        {
+            var rawJson = string.Empty;
+
+            /*
+             * http://api.kolada.se/v2/kpi_groups?title=Grundskola
+             * This is the URL that returns organisational units based on monicipality Id.
+             * This is exactly what we need.
+             */
+            var BaseUrlGetOperators = BaseUrl + "kpi_groups?title=" + category.Name;
+
+            var request = (HttpWebRequest)WebRequest.Create(BaseUrlGetOperators);
+
+            using (var response = request.GetResponse())
+            using (var reader = new StreamReader(response.GetResponseStream()))
+            {
+                rawJson = reader.ReadToEnd();
+            }
+
+            var kpi = JsonConvert.DeserializeObject<KpiGroups>(rawJson).Values;
+
+            return kpi;
+        }
+
+        public override List<KpiAnswer> GetKpiAnswersByKpiQuestionAndOrganisationalUnit(List<KpiQuestion> kpiQuestion, List<OrganisationalUnit> organisationalUnit)
+        {
+            var rawJson = string.Empty;
+
+            /*
+             * http://api.kolada.se/v2/oudata/kpi/N15033/ou/V15E129002901
+             * This is the URL that returns organisational units based on monicipality Id.
+             * This is exactly what we need.
+             */
+            var BaseUrlGetOperators = BaseUrl + "oudata/kpi/";
+
+            foreach (KpiQuestion kq in kpiQuestion)
+            {
+                BaseUrlGetOperators += kq.Member_id + ",";
+            }
+
+            BaseUrlGetOperators += "/ou/";
+
+            foreach (OrganisationalUnit ou in organisationalUnit)
+            {
+                BaseUrlGetOperators += ou.Id + ",";
+            }
+
+            var request = (HttpWebRequest)WebRequest.Create(BaseUrlGetOperators);
+
+            using (var response = request.GetResponse())
+            using (var reader = new StreamReader(response.GetResponseStream()))
+            {
+                rawJson = reader.ReadToEnd();
+            }
+
+            var kpiAnswers = JsonConvert.DeserializeObject<KpiAnswers>(rawJson).Values;
+
+            return kpiAnswers;
+        }
+
+        public override List<KpiGroup> GetAllKpiGroups()
+        {
+            var rawJson = string.Empty;
+
+            /*
+             * http://api.kolada.se/v2/kpi_groups?title=Grundskola
+             * This is the URL that returns organisational units based on monicipality Id.
+             * This is exactly what we need.
+             */
+            var BaseUrlGetOperators = BaseUrl + "kpi_groups";
+
+            var request = (HttpWebRequest)WebRequest.Create(BaseUrlGetOperators);
+
+            using (var response = request.GetResponse())
+            using (var reader = new StreamReader(response.GetResponseStream()))
+            {
+                rawJson = reader.ReadToEnd();
+            }
+
+            var kpi = JsonConvert.DeserializeObject<KpiGroups>(rawJson).Values;
+
+            return kpi;
+        }
+
+        public override List<OrganisationalUnit> GetOrganisationalUnits()
+        {
+            var rawJson = string.Empty;
+
+            /*
+             * http://api.kolada.se/v2/ou?municipality=1290
+             * This is the URL that returns organisational units based on monicipality Id.
+             * This is exactly what we need.
+             */
+            var municipality = _municipalityId; //GetMunicipalityId();
+            var apiRequest = "ou?municipality=1290";
+
+            rawJson = RawJson(apiRequest);
+
+            var OU = JsonConvert.DeserializeObject<OrganisationalUnits>(rawJson).Values;
+            return OU;
+        }
+
         public override string GetMunicipalityId()
         {
             return _municipalityId;
@@ -59,8 +216,8 @@ namespace TownComparisons.Domain.WebServices
 
             //This implementation includes only "Kommuner" and excludes "Landsting"
             _municipalityId = (from m in json["values"]
-                                         where m["type"].ToString() == "K"
-                                         select new Municipality(m)).ToString();   
+                               where m["type"].ToString() == "K"
+                               select new Municipality(m)).ToString();
         }
 
         //Replaced by FetchMunicipalityId() //andreas
@@ -72,51 +229,24 @@ namespace TownComparisons.Domain.WebServices
         //    return municipalityId;
         //}
 
-        public IEnumerable<OperationalUnit> GetTownOperators(Municipality municipality, Category category)
-        {
-            //Method added becouse project would not compile without it!!
-            throw new NotImplementedException();
-        }
-        public override OperationalUnit GetTownOperatorData(OperationalUnit operator_)
-        {
-
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// Function returns OrganisationalUnits for one municipality.
         /// Id, Municipality and Title are given.
         /// </summary>
         /// <param></param>
         /// <returns>List of OUs in one municipality</returns>
-        public override List<OrganisationalUnit> GetOrganisationalUnits()
-        {
-            var rawJson = string.Empty;
 
-            /*
-             * http://api.kolada.se/v2/ou?municipality=1290
-             * This is the URL that returns organisational units based on monicipality Id.
-             * This is exactly what we need.
-             */
-            var municipality = _municipalityId; //GetMunicipalityId();
-            var apiRequest= "ou?municipality=" + municipality;
 
-            rawJson = RawJson(apiRequest);
-           
-            var OU = JsonConvert.DeserializeObject<OrganisationalUnits>(rawJson).Values;
-            return OU;
-        }
+        //public override List<KpiGroups> GetKpiGroups()
+        //{
+        //    var rawJson = string.Empty;
+        //    var apiRequest = "KpiGroups";
 
-        public override List<KpiGroups> GetKpiGroups()
-        {
-            var rawJson = string.Empty;
-            var apiRequest = "KpiGroups";
+        //    rawJson = RawJson(apiRequest);
 
-            rawJson = RawJson(apiRequest);
-
-            // Additional help http://stackoverflow.com/questions/11220776/deserialize-list-of-objects-using-json-net
-            var kpiGroups = JsonConvert.DeserializeObject<List<KpiGroups>>(rawJson);
-            return kpiGroups;
-        }
+        //    // Additional help http://stackoverflow.com/questions/11220776/deserialize-list-of-objects-using-json-net
+        //    var kpiGroups = JsonConvert.DeserializeObject<List<KpiGroups>>(rawJson);
+        //    return kpiGroups;
+        //}
     }
 }
