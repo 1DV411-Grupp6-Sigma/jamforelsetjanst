@@ -58,14 +58,13 @@ namespace TownComparisons.Domain
         }
 
 
-        // Commented this method.
-
+     
         ////Methods
-        //public List<OperationalUnit> GetTownOperators(Municipality municipality, Category category)
-        //{
-        //    throw new NotImplementedException();
-        //    //return _townWebService.GetTownOperators(municipality, category);
-        //}
+        public List<OperationalUnit> GetTownOperators(Municipality municipality, Category category)
+        {
+            throw new NotImplementedException();
+            //return _townWebService.GetTownOperators(municipality, category);
+        }
         //public List<OrganisationalUnits> GetOrganisationalUnits()
         //{
         //    return this.GetOrganisationalUnits();
