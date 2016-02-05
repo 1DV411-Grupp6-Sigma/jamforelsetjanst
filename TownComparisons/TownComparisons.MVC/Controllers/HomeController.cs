@@ -25,8 +25,8 @@ namespace TownComparisons.MVC.Controllers
 
         public ActionResult Index()
         {
-            //just to get the database initializer runned
-            //List<OrganisationalUnitInfo> ouInfos = _service.GetOrganisationalUnitInfos();
+            // Just to get the database initializer runned
+            List<OrganisationalUnitInfo> ouInfos = _service.GetOrganisationalUnitInfos();
 
             return View();
         }
