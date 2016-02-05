@@ -24,8 +24,6 @@ namespace TownComparisons.Domain.Abstract
         // Gets a Organisational Unit by ID.
         OrganisationalUnit GetOrganisationalUnitByID(string id);
 
-        // [Tidigare metoder]
-        ////List<OperationalUnit> GetTownOperators(Municipality municipality, Category category);
-        ////List<OrganisationalUnitInfo> GetOrganisationalUnitInfos();
+        List<OrganisationalUnitInfo> GetOrganisationalUnitInfos();
     }
 }

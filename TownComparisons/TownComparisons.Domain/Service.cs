@@ -12,12 +12,9 @@ namespace TownComparisons.Domain
 {
     public class Service : IService
     {
-        //(detta är huvud-klassen som används från controllers i MVC-projektet)
-
-        // DAL-properties. Commented them because I've got a error when compiled.
+        // DAL-properties.
         private readonly IUnitOfWork _unitOfWork;
         private readonly ITownWebService _townWebService;
-
 
         //Constructors
         public Service()
@@ -57,25 +54,10 @@ namespace TownComparisons.Domain
             return _townWebService.GetOrganisationalUnitByMunicipalityAndCategory(municipality, category);
         }
 
-
-     
-        ////Methods
-        public List<OperationalUnit> GetTownOperators(Municipality municipality, Category category)
+        // Just a temp method to use to access some database entitites
+        public List<OrganisationalUnitInfo> GetOrganisationalUnitInfos()
         {
-            throw new NotImplementedException();
-            //return _townWebService.GetTownOperators(municipality, category);
+            return _unitOfWork.OrganisationalUnitInfoRepository.Get().ToList();
         }
-        //public List<OrganisationalUnits> GetOrganisationalUnits()
-        //{
-        //    return this.GetOrganisationalUnits();
-        //}
-
-
-        ////just a temp method to use to access some database entitites
-        //public List<OrganisationalUnitInfo> GetOrganisationalUnitInfos()
-        //{
-        //    return _unitOfWork.OrganisationalUnitInfoRepository.Get().ToList();
-        //}
-
     }
 }
