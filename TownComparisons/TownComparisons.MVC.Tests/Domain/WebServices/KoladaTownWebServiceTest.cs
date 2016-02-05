@@ -16,7 +16,7 @@ namespace TownComparisons.MVC.Tests.Domain.WebServices
             string path = Directory.GetCurrentDirectory();
             string addDirToPath = Path.Combine(path, "App_Data");
             string fullpath = Path.Combine(addDirToPath, "settingsConfig.json");
-            var settings = new TownComparisons.Domain.Settings(fullpath);
+            var settings = new TownComparisons.Domain.SettingsForFile(fullpath);
 
             _webService = new KoladaTownWebService(settings);
             

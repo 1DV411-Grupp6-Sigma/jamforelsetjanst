@@ -8,7 +8,7 @@ namespace TownComparisons.MVC.Views.Admin
 {
     public class AdminIndexViewModel
     {
-        private readonly Settings _settings;
+        private readonly SettingsForFile _settings;
 
         public string Municipality
         {
@@ -18,7 +18,7 @@ namespace TownComparisons.MVC.Views.Admin
 
         public AdminIndexViewModel()
         {
-            _settings = new Settings();
+            _settings = new SettingsForFile();
         }
 
         

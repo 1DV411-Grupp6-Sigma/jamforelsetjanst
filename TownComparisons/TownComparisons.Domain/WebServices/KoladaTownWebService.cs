@@ -18,13 +18,13 @@ namespace TownComparisons.Domain.WebServices
     /// </summary>
     public class KoladaTownWebService : TownWebServiceBase
     {
-        private readonly Settings _settings;
+        private readonly SettingsForFile _settings;
         private string _municipalityId;
 
         public KoladaTownWebService()
-            :this(new Settings())
+            :this(new SettingsForFile())
         {
-            _settings = new Settings();
+            _settings = new SettingsForFile();
             FetchMunicipalityId();
         }
 
@@ -32,7 +32,7 @@ namespace TownComparisons.Domain.WebServices
         /// Mainly used for unit tests
         /// </summary>
         /// <param name="settings"></param>
-        public KoladaTownWebService(Settings settings)
+        public KoladaTownWebService(SettingsForFile settings)
         {
             _settings = settings;
             FetchMunicipalityId();
@@ -45,15 +45,15 @@ namespace TownComparisons.Domain.WebServices
 
             // Adds OrganisationalUnits by Category.
             string categoryValue = String.Empty;
-            if (category.ID == 1)
+            if (category.Id == 1)
             {
                 categoryValue = "V15";
             }
-            else if (category.ID == 2)
+            else if (category.Id == 2)
             {
                 categoryValue = "V17";
             }
-            else if (category.ID == 3)
+            else if (category.Id == 3)
             {
                 categoryValue = "V23";
             }

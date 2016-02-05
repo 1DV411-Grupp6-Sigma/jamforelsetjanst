@@ -6,18 +6,12 @@ using System.Threading.Tasks;
 
 namespace TownComparisons.Domain.Entities
 {
-    public class Category
+    public class GroupCategory
     {
         public int Id { get; set; }
 
         public string Name { get; set; }
 
-        public string Description { get; set; }
-
-        // Implementera.
-        //public List<KpiQuestion> Questions { get; set; }
-
-
-        public virtual GroupCategory GroupCategory { get; set; }
+        public virtual ICollection<Category> Categories { get; set; }
     }
 }
