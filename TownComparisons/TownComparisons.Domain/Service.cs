@@ -15,22 +15,20 @@ namespace TownComparisons.Domain
         //(detta är huvud-klassen som används från controllers i MVC-projektet)
 
         // DAL-properties. Commented them because I've got a error when compiled.
-        ////private readonly IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly ITownWebService _townWebService;
 
 
         //Constructors
-        // Commented: "new UnitOfWork(), "
         public Service()
-            : this (new KoladaTownWebService())
+            : this (new UnitOfWork(), new KoladaTownWebService())
         {
             // Empty
         }
-
-        // Commented: "IUnitOfWork unitOfWork, ".
-        public Service(ITownWebService townWebService)
+        
+        public Service(IUnitOfWork unitOfWork, ITownWebService townWebService)
         {
-            //_unitOfWork = unitOfWork;
+            _unitOfWork = unitOfWork;
             _townWebService = townWebService;
         }
 
