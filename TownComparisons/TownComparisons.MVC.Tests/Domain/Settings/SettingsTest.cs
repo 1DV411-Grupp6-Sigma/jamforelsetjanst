@@ -8,7 +8,7 @@ namespace TownComparisons.MVC.Tests.Domain.Settings
     [TestClass]
     public class SettingsTest
     {
-        private TownComparisons.Domain.Settings _settings;
+        private TownComparisons.Domain.SettingsForFile _settings;
 
         [TestInitialize]
         public void SetUp()
@@ -16,7 +16,7 @@ namespace TownComparisons.MVC.Tests.Domain.Settings
             string path = Directory.GetCurrentDirectory();
             string addDirToPath = Path.Combine(path, "App_Data");
             string fullpath = Path.Combine(addDirToPath, "settingsConfig.json");
-            _settings = new TownComparisons.Domain.Settings(fullpath);
+            _settings = new TownComparisons.Domain.SettingsForFile(fullpath);
         }
 
         /// <summary>

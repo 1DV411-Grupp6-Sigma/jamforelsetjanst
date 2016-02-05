@@ -21,7 +21,29 @@ namespace TownComparisons.Domain.DAL
                 OrganisationalUnitId = "NÅT_OUID_FRÅN_KOLADA"
             };
             context.OrganisationalUnitInfos.Add(ouInfo1);
+
+
+
+            Category c1 = new Category()
+            {
+                Name = "Grundskola"
+            };
+            context.Categories.Add(c1);
+            Category c2 = new Category()
+            {
+                Name = "Förskola"
+            };
+            context.Categories.Add(c2);
             
+            GroupCategory gc1 = new GroupCategory()
+            {
+                Name = "Skola"
+            };
+            gc1.Categories.Add(c1);
+            gc1.Categories.Add(c2);
+            context.GroupCategories.Add(gc1);
+
+
         }
 
         /// <summary>

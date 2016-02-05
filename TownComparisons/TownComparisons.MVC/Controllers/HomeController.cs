@@ -36,7 +36,7 @@ namespace TownComparisons.MVC.Controllers
             // [Temporary]
             // Adds a temporary Category and Municipality. (The municipality should be fetched from "Settings.cs".)
             Category activeCategory = new Category();
-            activeCategory.ID = id;
+            activeCategory.Id = id;
             activeCategory.Name = "Grundskola";
             Municipality activeMunicipality = new Municipality("1290", String.Empty, String.Empty);
 
@@ -138,7 +138,7 @@ namespace TownComparisons.MVC.Controllers
 
             // Creates a Category by ID. (Should be in Settings-file.)
             Category tempCategory = new Category();
-            tempCategory.ID = id;
+            tempCategory.Id = id;
             if (id == 1)
             {
                 tempCategory.Name = "Grundskola";

@@ -10,6 +10,9 @@ namespace TownComparisons.Domain.Abstract
     public interface IUnitOfWork : IDisposable
     {
         IRepository<OrganisationalUnitInfo> OrganisationalUnitInfoRepository { get; }
+        //IRepository<Settings> SettingsRepository { get; }
+        IRepository<GroupCategory> GroupCategoriesRepository { get; }
+        IRepository<Category> CategoriesRepository { get; }
 
         void Save();
     }

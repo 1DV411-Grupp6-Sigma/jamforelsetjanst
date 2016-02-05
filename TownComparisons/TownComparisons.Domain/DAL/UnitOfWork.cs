@@ -15,6 +15,10 @@ namespace TownComparisons.Domain.DAL
         private TownComparisonsContext _context = new TownComparisonsContext();
         
         private IRepository<OrganisationalUnitInfo> _organisationalUnitInfoRepository;
+        //private IRepository<Settings> _settingsRepository;
+
+        private IRepository<GroupCategory> _groupCategoriesRepository;
+        private IRepository<Category> _categoriesRepository;
 
         //Properties
         public IRepository<OrganisationalUnitInfo> OrganisationalUnitInfoRepository
@@ -24,6 +28,29 @@ namespace TownComparisons.Domain.DAL
                 return _organisationalUnitInfoRepository ?? (_organisationalUnitInfoRepository = new Repository<OrganisationalUnitInfo>(_context));
             }
         }
+        /*public IRepository<Settings> SettingsRepository
+        {
+            get
+            {
+                return _settingsRepository ?? (_settingsRepository = new Repository<Settings>(_context));
+            }
+        }*/
+        public IRepository<GroupCategory> GroupCategoriesRepository
+        {
+            get
+            {
+                return _groupCategoriesRepository ?? (_groupCategoriesRepository = new Repository<GroupCategory>(_context));
+            }
+        }
+        public IRepository<Category> CategoriesRepository
+        {
+            get
+            {
+                return _categoriesRepository ?? (_categoriesRepository = new Repository<Category>(_context));
+            }
+        }
+
+
 
         /// <summary>
         /// Saves all changes made in the unit of work to the underlying database.
