@@ -1,6 +1,6 @@
 using System.Web.Optimization;
 
-namespace TownComparisons.API
+namespace TownComparisons.MVC
 {
     public static class Foundation
     {
