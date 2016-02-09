@@ -7,6 +7,7 @@ using TownComparisons.Domain.Abstract;
 using TownComparisons.Domain.DAL;
 using TownComparisons.Domain.Entities;
 using TownComparisons.Domain.WebServices;
+using TownComparisons.Domain.WebServices.Models;
 
 namespace TownComparisons.Domain
 {

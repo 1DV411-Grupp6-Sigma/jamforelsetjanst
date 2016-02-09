@@ -11,7 +11,7 @@ namespace TownComparisons.MVC.Views.AdminCategories
 	{
         public CategoryViewModel Category { get; set; }
 
-        public List<KpiGroup> KpiGroups { get; set; }
+        //public List<KpiGroup> KpiGroups { get; set; }
 
 
         public EditViewModel(Category category)

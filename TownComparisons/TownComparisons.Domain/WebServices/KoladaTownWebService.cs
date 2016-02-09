@@ -10,6 +10,7 @@ using System.IO;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Web.Script.Serialization;
+using TownComparisons.Domain.WebServices.Models;
 
 namespace TownComparisons.Domain.WebServices
 {
