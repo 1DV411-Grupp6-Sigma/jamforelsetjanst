@@ -1064,6 +1064,7 @@
     <Content Include="Views\Home\Compare.cshtml" />
     <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\Shared\_NavBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
