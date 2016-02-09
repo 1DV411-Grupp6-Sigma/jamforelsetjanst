@@ -1,4 +1,4 @@
-﻿@model TownComparisons.MVC.Views.Admin.Categories.IndexViewModel
+﻿@model TownComparisons.MVC.Views.AdminCategories.IndexViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -10,7 +10,7 @@
     @for (int i = 0; i < Model.GroupCategories.Count; i++)
     {
         <li>
-            <a href="@Url.Action("Details", "AdminCategories", new { id = Model.GroupCategories[i].Id })">@Model.GroupCategories[i].Name</a>
+            <a href="@Url.Action("Edit", "AdminCategories", new { id = Model.GroupCategories[i].Id })">@Model.GroupCategories[i].Name</a>
         </li>
     }
 </ul>

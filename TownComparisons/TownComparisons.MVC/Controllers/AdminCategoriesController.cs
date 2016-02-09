@@ -6,7 +6,8 @@ using System.Web.Mvc;
 using TownComparisons.Domain;
 using TownComparisons.Domain.Abstract;
 using TownComparisons.Domain.Entities;
-using TownComparisons.MVC.Views.Admin.Categories;
+using TownComparisons.Domain.Models;
+using TownComparisons.MVC.Views.AdminCategories;
 
 namespace TownComparisons.MVC.Controllers
 {
@@ -65,7 +66,16 @@ namespace TownComparisons.MVC.Controllers
         // GET: AdminCategories/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            Category category = _service.GetCategory(id);
+            if (category != null)
+            {
+                List<OrganisationalUnit> allOrganisationalUnits = _service.GetAllOrganisationalUnits();
+                List<PropertyQueryGroup> allPropertyQueryGroups = _service.GetAllPropertyQueries();
+                EditViewModel model = new EditViewModel(category, allOrganisationalUnits, allPropertyQueryGroups);
+                return View(model);
+            }
+
+            return RedirectToAction("Index");
         }
 
         // POST: AdminCategories/Edit/5

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TownComparisons.Domain.Abstract;
 using TownComparisons.Domain.DAL;
 using TownComparisons.Domain.Entities;
+using TownComparisons.Domain.Models;
 using TownComparisons.Domain.WebServices;
 using TownComparisons.Domain.WebServices.Models;
 
@@ -13,46 +14,51 @@ namespace TownComparisons.Domain
 {
     public class Service : IService
     {
-        // DAL-properties.
+        private readonly SettingsForFile _settings;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ITownWebService _townWebService;
 
         //Constructors
         public Service()
-            : this (new UnitOfWork(), new KoladaTownWebService())
+            : this (new SettingsForFile(), new UnitOfWork(), new KoladaTownWebService())
         {
             // Empty
         }
         
-        public Service(IUnitOfWork unitOfWork, ITownWebService townWebService)
+        public Service(SettingsForFile settings, IUnitOfWork unitOfWork, ITownWebService townWebService)
         {
+            _settings = settings;
             _unitOfWork = unitOfWork;
             _townWebService = townWebService;
         }
 
-        public List<KpiGroup> GetAllKpiGroups()
+        public List<PropertyQueryGroup> GetAllPropertyQueries()
         {
-            return _townWebService.GetAllKpiGroups();
+            return _townWebService.GetAllPropertyQueries();
         }
 
-        public List<KpiAnswer> GetKpiAnswersByKpiQuestionAndOrganisationalUnit(List<KpiQuestion> kpiQuestion, List<OU> organisationalUnit)
+        public List<KpiAnswer> GetKpiAnswersByKpiQuestionAndOrganisationalUnit(List<KpiQuestion> kpiQuestion, List<OrganisationalUnit> organisationalUnit)
         {
-            return _townWebService.GetKpiAnswersByKpiQuestionAndOrganisationalUnit(kpiQuestion, organisationalUnit);
+            return _townWebService.GetKpiAnswersByKpiQuestionAndOrganisationalUnits(kpiQuestion, organisationalUnit);
         }
 
-        public List<KpiGroup> GetKpiGroupByCategory(Category category)
+        public List<KpiGroup> TempGetKpiGroupByCategory(Category category)
         {
-            return _townWebService.GetKpiGroupByCategory(category);
+            return _townWebService.TempGetKpiGroupByCategory(category);
         }
 
-        public OU GetOrganisationalUnitByID(string id)
+        public OrganisationalUnit GetOrganisationalUnitByID(string id)
         {
             return _townWebService.GetOrganisationalUnitByID(id);
         }
 
-        public List<OU> GetOrganisationalUnitByMunicipalityAndCategory(Municipality municipality, Category category)
+        public List<OrganisationalUnit> GetAllOrganisationalUnits()
         {
-            return _townWebService.GetOrganisationalUnitByMunicipalityAndCategory(municipality, category);
+            return _townWebService.GetAllOrganisationalUnits(_settings.MunicipalityId);
+        }
+        public List<OrganisationalUnit> GetOrganisationalUnitsByCategory(Category category)
+        {
+            return _townWebService.GetOrganisationalUnitByMunicipalityAndCategory(_settings.MunicipalityId, category);
         }
 
         // Just a temp method to use to access some database entitites
@@ -64,6 +70,11 @@ namespace TownComparisons.Domain
         public List<GroupCategory> GetAllCategories()
         {
             return _unitOfWork.GroupCategoriesRepository.Get(null, null, "Categories").ToList();
+        }
+        
+        public Category GetCategory(int id)
+        {
+            return _unitOfWork.CategoriesRepository.Get(c => c.Id == id).FirstOrDefault();
         }
     }
 }

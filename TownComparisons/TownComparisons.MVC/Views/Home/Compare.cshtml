@@ -1,5 +1,6 @@
 ﻿@using TownComparisons.Domain.Entities;
-@using TownComparisons.Domain.WebServices.Models
+@using TownComparisons.Domain.WebServices.Models;
+@using TownComparisons.Domain.Models;
 @{
 
     ViewBag.Title = "Jämför";
@@ -36,7 +37,7 @@
             <div class="compareBoxQuestion">Frågor</div>
             @foreach (OrganisationalUnit ou in ViewBag.Comparision)
             {
-                <div class="compareBox">@ou.Title</div>
+                <div class="compareBox">@ou.Name</div>
             }
         </div>
         @foreach (KpiGroup kg in @ViewBag.KpiList)
@@ -52,7 +53,7 @@
                         <div class="compareBox">
                             @foreach (KpiAnswer ka in ViewBag.KpiAnswerList)
                             {
-                                if (ka.Kpi == kq.Member_id && ou2.Id == ka.Ou)
+                                if (ka.Kpi == kq.Member_id && ou2.OrganisationalUnitId == ka.Ou)
                                 {
                                     if (@ka.Values.Last().Value != null)
                                     {
