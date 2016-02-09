@@ -1,0 +1,16 @@
+﻿@model TownComparisons.MVC.Views.Admin.Categories.IndexViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Kategorier</h2>
+
+<ul>
+    @for (int i = 0; i < Model.GroupCategories.Count; i++)
+    {
+        <li>
+            <a href="@Url.Action("Details", "AdminCategories", new { id = Model.GroupCategories[i].Id })">@Model.GroupCategories[i].Name</a>
+        </li>
+    }
+</ul>

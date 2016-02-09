@@ -24,6 +24,11 @@ namespace TownComparisons.Domain.Abstract
         // Gets a Organisational Unit by ID.
         OrganisationalUnit GetOrganisationalUnitByID(string id);
 
+
+
         List<OrganisationalUnitInfo> GetOrganisationalUnitInfos();
+        
+        // Gets a list of all Group categories (including it's categories)
+        List<GroupCategory> GetAllCategories();
     }
 }

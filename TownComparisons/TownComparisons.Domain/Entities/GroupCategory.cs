@@ -15,6 +15,9 @@ namespace TownComparisons.Domain.Entities
         public virtual ICollection<Category> Categories { get; set; }
 
 
+        public bool TempJustToChangeDatabase { get; set; }
+
+
         //Constructors
         public GroupCategory()
         {

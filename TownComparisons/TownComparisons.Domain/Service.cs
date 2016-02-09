@@ -59,5 +59,10 @@ namespace TownComparisons.Domain
         {
             return _unitOfWork.OrganisationalUnitInfoRepository.Get().ToList();
         }
+
+        public List<GroupCategory> GetAllCategories()
+        {
+            return _unitOfWork.GroupCategoriesRepository.Get(null, null, "Categories").ToList();
+        }
     }
 }

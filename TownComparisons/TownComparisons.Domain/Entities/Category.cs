@@ -13,11 +13,9 @@ namespace TownComparisons.Domain.Entities
         public string Name { get; set; }
 
         public string Description { get; set; }
-
-        // Implementera.
-        //public List<KpiQuestion> Questions { get; set; }
-
-
+        
         public virtual GroupCategory GroupCategory { get; set; }
+
+        public virtual ICollection<WebServiceQuery> Queries { get; set; }
     }
 }

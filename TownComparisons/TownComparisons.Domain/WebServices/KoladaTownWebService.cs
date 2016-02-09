@@ -28,6 +28,11 @@ namespace TownComparisons.Domain.WebServices
             FetchMunicipalityId();
         }
 
+        public override string GetName()
+        {
+            return "Kolada";
+        }
+
         /// <summary>
         /// Mainly used for unit tests
         /// </summary>

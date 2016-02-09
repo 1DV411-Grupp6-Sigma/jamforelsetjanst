@@ -9,6 +9,7 @@ namespace TownComparisons.Domain.Abstract
 {
     public interface ITownWebService : IDisposable
     {
+        string GetName();
         List<OrganisationalUnit> GetOrganisationalUnits();
         List<OrganisationalUnit> GetOrganisationalUnitByMunicipalityAndCategory(Municipality municipality, Category category);
         OrganisationalUnit GetOrganisationalUnitByID(string id);
