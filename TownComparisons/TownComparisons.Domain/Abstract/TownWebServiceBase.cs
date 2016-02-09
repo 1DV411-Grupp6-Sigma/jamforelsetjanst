@@ -18,6 +18,7 @@ namespace TownComparisons.Domain.Abstract
          */
         internal static readonly string BaseUrl = "http://api.kolada.se/v2/";
 
+        public abstract string GetName();
         public abstract List<OrganisationalUnit> GetOrganisationalUnits();
         public abstract List<OrganisationalUnit> GetOrganisationalUnitByMunicipalityAndCategory(Municipality municipality, Category category);
         public abstract OrganisationalUnit GetOrganisationalUnitByID(string id);

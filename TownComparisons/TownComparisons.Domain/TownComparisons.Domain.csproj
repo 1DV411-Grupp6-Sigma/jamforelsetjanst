@@ -76,6 +76,7 @@
     <Compile Include="Entities\KpiQuestion.cs" />
     <Compile Include="Entities\OrganisationalUnitInfo.cs" />
     <Compile Include="Entities\OrganisationalUnits.cs" />
+    <Compile Include="Entities\WebServiceQuery.cs" />
     <Compile Include="SessionHandler.cs" />
     <Compile Include="SettingsForFile.cs" />
     <Compile Include="Entities\Category.cs" />
