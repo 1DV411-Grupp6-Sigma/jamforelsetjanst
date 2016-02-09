@@ -70,6 +70,7 @@
     <Compile Include="Entities\CategoryOrganisationalUnit.cs" />
     <Compile Include="Models\OrganisationalUnit.cs" />
     <Compile Include="Models\PropertyDataValue.cs" />
+    <Compile Include="Models\PropertyQueryGroup.cs" />
     <Compile Include="Models\PropertyQuery.cs" />
     <Compile Include="Models\PropertyData.cs" />
     <Compile Include="WebServices\Models\KpiAnswer.cs" />
@@ -85,7 +86,7 @@
     <Compile Include="SettingsForFile.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Location.cs" />
-    <Compile Include="Entities\Municipality.cs" />
+    <Compile Include="Entities\Municipality_Unused.cs" />
     <Compile Include="WebServices\Models\OU.cs" />
     <Compile Include="Helpers\CacheManager.cs" />
     <Compile Include="Helpers\ICache.cs" />

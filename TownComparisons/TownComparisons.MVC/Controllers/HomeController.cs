@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using TownComparisons.Domain;
 using TownComparisons.Domain.Abstract;
 using TownComparisons.Domain.Entities;
+using TownComparisons.Domain.Models;
 using TownComparisons.Domain.WebServices.Models;
 
 namespace TownComparisons.MVC.Controllers
@@ -39,10 +40,10 @@ namespace TownComparisons.MVC.Controllers
             Category activeCategory = new Category();
             activeCategory.Id = id;
             activeCategory.Name = "Grundskola";
-            Municipality activeMunicipality = new Municipality("1290", String.Empty, String.Empty);
+            //Municipality activeMunicipality = new Municipality("1290", String.Empty, String.Empty);
 
             // ViewBags for the View.
-            ViewBag.OUnits = _service.GetOrganisationalUnitByMunicipalityAndCategory(activeMunicipality, activeCategory);
+            ViewBag.OUnits = _service.GetOrganisationalUnitsByCategory(activeCategory);
 
             return View();
         }
@@ -91,8 +92,8 @@ namespace TownComparisons.MVC.Controllers
             }
 
             // Adds Organisational Units to a list by IDs.
-            List<OU> ouListV15 = new List<OU>();
-            List<OU> ouListV17 = new List<OU>();
+            List<OrganisationalUnit> ouListV15 = new List<OrganisationalUnit>();
+            List<OrganisationalUnit> ouListV17 = new List<OrganisationalUnit>();
 
             foreach (string ou in organisationalUnitsV15)
             {
@@ -131,7 +132,7 @@ namespace TownComparisons.MVC.Controllers
             List<string> organisationalUnits = (List<string>)Session[category] ?? new List<string>();
 
             // Gets all Organisational Units from the list with IDs.
-            List<OU> ouList = new List<OU>();
+            List<OrganisationalUnit> ouList = new List<OrganisationalUnit>();
             foreach (string ou in organisationalUnits)
             {
                 ouList.Add(_service.GetOrganisationalUnitByID(ou));
@@ -150,7 +151,7 @@ namespace TownComparisons.MVC.Controllers
             }
 
             // Gets KpiGroups by choosen Category.
-            List<KpiGroup> kpiList = _service.GetKpiGroupByCategory(tempCategory);
+            List<KpiGroup> kpiList = _service.TempGetKpiGroupByCategory(tempCategory);
 
             // Adds all KpiQuestions from the KpiGroup-list to a KpiQuestion-list.
             List<KpiQuestion> kpiQuestions = new List<KpiQuestion>();
@@ -180,7 +181,7 @@ namespace TownComparisons.MVC.Controllers
 
         public ActionResult Test()
         {
-            List<KpiGroup> allKpiGroups = _service.GetAllKpiGroups();
+            List<KpiGroup> allKpiGroups = new List<KpiGroup>(); //_service.GetAllKpiGroups();
             ViewBag.allKpiGroups = allKpiGroups;
             return View();
         }

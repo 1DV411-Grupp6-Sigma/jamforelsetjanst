@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using TownComparisons.Domain.Entities;
+using TownComparisons.Domain.Models;
 
 namespace TownComparisons.MVC.Views.AdminCategories
 {
-    public class CategoryOrganisationalUnitViewModel
+    public class OrganisationalUnitViewModel
     {
         public string WebServiceName { get; set; }
 
@@ -15,11 +16,11 @@ namespace TownComparisons.MVC.Views.AdminCategories
         public string Name { get; set; } // name/title of the query
 
 
-        public CategoryOrganisationalUnitViewModel(CategoryOrganisationalUnit entity)
+        public OrganisationalUnitViewModel(OrganisationalUnit model)
         {
-            WebServiceName = entity.WebServiceName;
-            OrganisationalUnitId = entity.OrganisationalUnitId;
-            Name = entity.Name;
+            WebServiceName = model.WebServiceName;
+            OrganisationalUnitId = model.OrganisationalUnitId;
+            Name = model.Name;
         }
     }
 }

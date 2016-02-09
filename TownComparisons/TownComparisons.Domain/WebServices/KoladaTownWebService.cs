@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using System.Web.Script.Serialization;
 using TownComparisons.Domain.WebServices.Models;
 using TownComparisons.Domain.Entities;
+using TownComparisons.Domain.Models;
 
 namespace TownComparisons.Domain.WebServices
 {
@@ -19,9 +20,10 @@ namespace TownComparisons.Domain.WebServices
     /// </summary>
     public class KoladaTownWebService : TownWebServiceBase
     {
-        private readonly SettingsForFile _settings;
-        private string _municipalityId;
+        //private readonly SettingsForFile _settings;
+        //private string _municipalityId;
 
+        /*
         public KoladaTownWebService()
             :this(new SettingsForFile())
         {
@@ -37,16 +39,17 @@ namespace TownComparisons.Domain.WebServices
             _settings = settings;
             FetchMunicipalityId();
         }
+        */
         
         public override string GetName()
         {
             return "Kolada"; 
         }
         
-        public override List<OU> GetOrganisationalUnitByMunicipalityAndCategory(Municipality municipality, Category category)
+        public override List<OrganisationalUnit> GetOrganisationalUnitByMunicipalityAndCategory(string municipalityId, Category category)
         {
-            List<OU> allOUnits = GetOrganisationalUnits();
-            List<OU> tempAllOUnits = new List<OU>();
+            List<OrganisationalUnit> allOUnits = GetAllOrganisationalUnits(municipalityId);
+            List<OrganisationalUnit> tempAllOUnits = new List<OrganisationalUnit>();
 
             // Adds OrganisationalUnits by Category.
             string categoryValue = String.Empty;
@@ -63,9 +66,9 @@ namespace TownComparisons.Domain.WebServices
                 categoryValue = "V23";
             }
 
-            foreach (OU ou in allOUnits)
+            foreach (OrganisationalUnit ou in allOUnits)
             {
-                if (ou.Id.Substring(0, 3) == categoryValue)
+                if (ou.OrganisationalUnitId.Substring(0, 3) == categoryValue)
                 {
                     tempAllOUnits.Add(ou);
                 }
@@ -74,18 +77,19 @@ namespace TownComparisons.Domain.WebServices
             return tempAllOUnits;
         }
 
-        public override OU GetOrganisationalUnitByID(string id)
+        public override OrganisationalUnit GetOrganisationalUnitByID(string id)
         {
             var rawJson = string.Empty;
 
             var apiRequest = "ou/" + id;
             rawJson = RawJson(apiRequest);
             var ou = JsonConvert.DeserializeObject<OUs>(rawJson).Values;
+            OU theOu = ou.First();
 
-            return ou.First();
+            return new OrganisationalUnit(this.GetName(), theOu.Id, theOu.Title);
         }
 
-        public override List<KpiGroup> GetKpiGroupByCategory(Category category)
+        public override List<KpiGroup> TempGetKpiGroupByCategory(Category category)
         {
             var rawJson = string.Empty;
             var apiRequest = "kpi_groups?title=" + category.Name;
@@ -94,7 +98,7 @@ namespace TownComparisons.Domain.WebServices
             return kpi;
         }
 
-        public override List<KpiAnswer> GetKpiAnswersByKpiQuestionAndOrganisationalUnit(List<KpiQuestion> kpiQuestion, List<OU> organisationalUnit)
+        public override List<KpiAnswer> GetKpiAnswersByKpiQuestionAndOrganisationalUnits(List<KpiQuestion> kpiQuestion, List<OrganisationalUnit> organisationalUnits)
         {
             var rawJson = string.Empty;
             var apiRequest = "oudata/kpi/";
@@ -106,9 +110,9 @@ namespace TownComparisons.Domain.WebServices
 
             apiRequest += "/ou/";
      
-            foreach (OU ou in organisationalUnit)
+            foreach (OrganisationalUnit ou in organisationalUnits)
             {
-                apiRequest += ou.Id + ",";
+                apiRequest += ou.OrganisationalUnitId + ",";
             }
             rawJson = RawJson(apiRequest);
 
@@ -116,7 +120,7 @@ namespace TownComparisons.Domain.WebServices
             return kpiAnswers;
         }
 
-        public override List<KpiGroup> GetAllKpiGroups()
+        public override List<PropertyQueryGroup> GetAllPropertyQueries()
         {
             var rawJson = string.Empty;
             //var BaseUrlGetOperators = BaseUrl + "kpi_groups";
@@ -124,26 +128,21 @@ namespace TownComparisons.Domain.WebServices
             rawJson = RawJson(apiRequest);
             var kpi = JsonConvert.DeserializeObject<KpiGroups>(rawJson).Values;
 
-            return kpi;
+            return kpi.Select(k => new PropertyQueryGroup(this.GetName(), k.Id, k.Title, k.Members.Select(m => new PropertyQuery(this.GetName(), m.Member_id, m.Member_title)).ToList())).ToList();
         }
 
-        public override List<OU> GetOrganisationalUnits()
+        public override List<OrganisationalUnit> GetAllOrganisationalUnits(string municipalityId)
         {
             var rawJson = string.Empty;
-            var municipality = _municipalityId; //GetMunicipalityId();
-            var apiRequest = "ou?municipality=1290";
+            var apiRequest = "ou?municipality=" + municipalityId;
 
             rawJson = RawJson(apiRequest);
 
-            var OU = JsonConvert.DeserializeObject<OUs>(rawJson).Values;
-            return OU;
+            var OUs = JsonConvert.DeserializeObject<OUs>(rawJson).Values;
+            return OUs.Select(o => new OrganisationalUnit(this.GetName(), o.Id, o.Title)).ToList();
         }
-
-        public override string GetMunicipalityId()
-        {
-            return _municipalityId;
-        }
-
+        
+        /*
         /// <summary>
         /// looks up municipality Name from settingsConfig.json and fetches its Id from Kolada.se 
         /// </summary>
@@ -163,6 +162,7 @@ namespace TownComparisons.Domain.WebServices
                                where m["type"].ToString() == "K"
                                select new Municipality(m)).ToString();
         }
+        */
 
         //Replaced by FetchMunicipalityId() //andreas
         // Reads MunicipalityId from Settings

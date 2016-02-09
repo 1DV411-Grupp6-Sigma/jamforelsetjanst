@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using TownComparisons.Domain.Entities;
+using TownComparisons.Domain.Models;
 using TownComparisons.Domain.WebServices.Models;
 
 namespace TownComparisons.Domain.Abstract
@@ -20,13 +21,13 @@ namespace TownComparisons.Domain.Abstract
         internal static readonly string BaseUrl = "http://api.kolada.se/v2/";
 
         public abstract string GetName();
-        public abstract List<OU> GetOrganisationalUnits();
-        public abstract List<OU> GetOrganisationalUnitByMunicipalityAndCategory(Municipality municipality, Category category);
-        public abstract OU GetOrganisationalUnitByID(string id);
-        public abstract List<KpiGroup> GetKpiGroupByCategory(Category category);
-        public abstract List<KpiAnswer> GetKpiAnswersByKpiQuestionAndOrganisationalUnit(List<KpiQuestion> kpiQuestion, List<OU> ou);
-        public abstract List<KpiGroup> GetAllKpiGroups();
-        public abstract string GetMunicipalityId();
+        public abstract List<OrganisationalUnit> GetAllOrganisationalUnits(string municipalityId);
+        public abstract List<OrganisationalUnit> GetOrganisationalUnitByMunicipalityAndCategory(string municipalityId, Category category);
+        public abstract OrganisationalUnit GetOrganisationalUnitByID(string id);
+        public abstract List<KpiGroup> TempGetKpiGroupByCategory(Category category);
+        public abstract List<KpiAnswer> GetKpiAnswersByKpiQuestionAndOrganisationalUnits(List<KpiQuestion> kpiQuestion, List<OrganisationalUnit> organisationalUnits);
+        public abstract List<PropertyQueryGroup> GetAllPropertyQueries();
+        //public abstract string GetMunicipalityId();
 
         /// <summary>
         /// Function:
