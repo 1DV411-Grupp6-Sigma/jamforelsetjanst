@@ -13,7 +13,7 @@ namespace TownComparisons.Domain.Abstract
         //IRepository<Settings> SettingsRepository { get; }
         IRepository<GroupCategory> GroupCategoriesRepository { get; }
         IRepository<Category> CategoriesRepository { get; }
-        IRepository<WebServiceQuery> WebServiceQueriesRepository { get; }
+        IRepository<CategoryWebServiceQuery> WebServiceQueriesRepository { get; }
 
         void Save();
     }

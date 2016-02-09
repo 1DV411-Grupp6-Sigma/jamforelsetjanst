@@ -11,11 +11,11 @@ namespace TownComparisons.Domain.Abstract
     public interface ITownWebService : IDisposable
     {
         string GetName();
-        List<OrganisationalUnit> GetOrganisationalUnits();
-        List<OrganisationalUnit> GetOrganisationalUnitByMunicipalityAndCategory(Municipality municipality, Category category);
-        OrganisationalUnit GetOrganisationalUnitByID(string id);
+        List<OU> GetOrganisationalUnits();
+        List<OU> GetOrganisationalUnitByMunicipalityAndCategory(Municipality municipality, Category category);
+        OU GetOrganisationalUnitByID(string id);
         List<KpiGroup> GetKpiGroupByCategory(Category category);
-        List<KpiAnswer> GetKpiAnswersByKpiQuestionAndOrganisationalUnit(List<KpiQuestion> kpiQuestion, List<OrganisationalUnit> ou);
+        List<KpiAnswer> GetKpiAnswersByKpiQuestionAndOrganisationalUnit(List<KpiQuestion> kpiQuestion, List<OU> ou);
         List<KpiGroup> GetAllKpiGroups();
         string GetMunicipalityId();
     }
