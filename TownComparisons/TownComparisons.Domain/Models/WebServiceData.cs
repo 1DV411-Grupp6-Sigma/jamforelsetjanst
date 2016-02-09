@@ -10,7 +10,7 @@ namespace TownComparisons.Domain.Models
     {
         public WebServiceQuery Query { get; set; }
 
-        public OrganisationalUnit Ou { get; set; }
+        public OrganisationalUnit OrganisationalUnit { get; set; }
 
         public int Period { get; set; }
 

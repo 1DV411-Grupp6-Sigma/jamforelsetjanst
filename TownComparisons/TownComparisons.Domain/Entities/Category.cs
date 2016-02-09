@@ -16,6 +16,8 @@ namespace TownComparisons.Domain.Entities
         
         public virtual GroupCategory GroupCategory { get; set; }
 
-        public virtual ICollection<WebServiceQuery> Queries { get; set; }
+        public virtual ICollection<CategoryWebServiceQuery> Queries { get; set; }
+
+        public virtual ICollection<OrganisationalUnit> OrganisationalUnits { get; set; }
     }
 }

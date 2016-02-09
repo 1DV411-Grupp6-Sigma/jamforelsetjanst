@@ -11,7 +11,7 @@ namespace TownComparisons.Domain.Entities
     {
         public int Id { get; set; }
 
-        public string OrganisationalUnitId { get; set; }  // this is the external ID from the web service (Kolada)
+        public string OrganisationalUnitId { get; set; }  // this is the external ID from the web service (like Kolada)
 
         public string ShortDescription { get; set; }
 

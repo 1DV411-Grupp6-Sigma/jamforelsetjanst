@@ -91,8 +91,8 @@ namespace TownComparisons.MVC.Controllers
             }
 
             // Adds Organisational Units to a list by IDs.
-            List<OrganisationalUnit> ouListV15 = new List<OrganisationalUnit>();
-            List<OrganisationalUnit> ouListV17 = new List<OrganisationalUnit>();
+            List<OU> ouListV15 = new List<OU>();
+            List<OU> ouListV17 = new List<OU>();
 
             foreach (string ou in organisationalUnitsV15)
             {
@@ -131,7 +131,7 @@ namespace TownComparisons.MVC.Controllers
             List<string> organisationalUnits = (List<string>)Session[category] ?? new List<string>();
 
             // Gets all Organisational Units from the list with IDs.
-            List<OrganisationalUnit> ouList = new List<OrganisationalUnit>();
+            List<OU> ouList = new List<OU>();
             foreach (string ou in organisationalUnits)
             {
                 ouList.Add(_service.GetOrganisationalUnitByID(ou));

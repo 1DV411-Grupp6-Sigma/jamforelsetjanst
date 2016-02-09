@@ -35,7 +35,7 @@ namespace TownComparisons.Domain
             return _townWebService.GetAllKpiGroups();
         }
 
-        public List<KpiAnswer> GetKpiAnswersByKpiQuestionAndOrganisationalUnit(List<KpiQuestion> kpiQuestion, List<OrganisationalUnit> organisationalUnit)
+        public List<KpiAnswer> GetKpiAnswersByKpiQuestionAndOrganisationalUnit(List<KpiQuestion> kpiQuestion, List<OU> organisationalUnit)
         {
             return _townWebService.GetKpiAnswersByKpiQuestionAndOrganisationalUnit(kpiQuestion, organisationalUnit);
         }
@@ -45,12 +45,12 @@ namespace TownComparisons.Domain
             return _townWebService.GetKpiGroupByCategory(category);
         }
 
-        public OrganisationalUnit GetOrganisationalUnitByID(string id)
+        public OU GetOrganisationalUnitByID(string id)
         {
             return _townWebService.GetOrganisationalUnitByID(id);
         }
 
-        public List<OrganisationalUnit> GetOrganisationalUnitByMunicipalityAndCategory(Municipality municipality, Category category)
+        public List<OU> GetOrganisationalUnitByMunicipalityAndCategory(Municipality municipality, Category category)
         {
             return _townWebService.GetOrganisationalUnitByMunicipalityAndCategory(municipality, category);
         }

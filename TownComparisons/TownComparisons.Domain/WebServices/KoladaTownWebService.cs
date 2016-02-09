@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TownComparisons.Domain.Abstract;
-using TownComparisons.Domain.Entities;
 using System.Net;
 using System.IO;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Web.Script.Serialization;
 using TownComparisons.Domain.WebServices.Models;
+using TownComparisons.Domain.Entities;
 
 namespace TownComparisons.Domain.WebServices
 {
@@ -28,12 +28,6 @@ namespace TownComparisons.Domain.WebServices
             _settings = new SettingsForFile();
             FetchMunicipalityId();
         }
-
-        public override string GetName()
-        {
-            return "Kolada";
-        }
-
         /// <summary>
         /// Mainly used for unit tests
         /// </summary>
@@ -43,11 +37,16 @@ namespace TownComparisons.Domain.WebServices
             _settings = settings;
             FetchMunicipalityId();
         }
-
-        public override List<OrganisationalUnit> GetOrganisationalUnitByMunicipalityAndCategory(Municipality municipality, Category category)
+        
+        public override string GetName()
         {
-            List<OrganisationalUnit> allOUnits = GetOrganisationalUnits();
-            List<OrganisationalUnit> tempAllOUnits = new List<OrganisationalUnit>();
+            return "Kolada"; 
+        }
+        
+        public override List<OU> GetOrganisationalUnitByMunicipalityAndCategory(Municipality municipality, Category category)
+        {
+            List<OU> allOUnits = GetOrganisationalUnits();
+            List<OU> tempAllOUnits = new List<OU>();
 
             // Adds OrganisationalUnits by Category.
             string categoryValue = String.Empty;
@@ -64,7 +63,7 @@ namespace TownComparisons.Domain.WebServices
                 categoryValue = "V23";
             }
 
-            foreach (OrganisationalUnit ou in allOUnits)
+            foreach (OU ou in allOUnits)
             {
                 if (ou.Id.Substring(0, 3) == categoryValue)
                 {
@@ -75,13 +74,13 @@ namespace TownComparisons.Domain.WebServices
             return tempAllOUnits;
         }
 
-        public override OrganisationalUnit GetOrganisationalUnitByID(string id)
+        public override OU GetOrganisationalUnitByID(string id)
         {
             var rawJson = string.Empty;
 
             var apiRequest = "ou/" + id;
             rawJson = RawJson(apiRequest);
-            var ou = JsonConvert.DeserializeObject<OrganisationalUnits>(rawJson).Values;
+            var ou = JsonConvert.DeserializeObject<OUs>(rawJson).Values;
 
             return ou.First();
         }
@@ -95,7 +94,7 @@ namespace TownComparisons.Domain.WebServices
             return kpi;
         }
 
-        public override List<KpiAnswer> GetKpiAnswersByKpiQuestionAndOrganisationalUnit(List<KpiQuestion> kpiQuestion, List<OrganisationalUnit> organisationalUnit)
+        public override List<KpiAnswer> GetKpiAnswersByKpiQuestionAndOrganisationalUnit(List<KpiQuestion> kpiQuestion, List<OU> organisationalUnit)
         {
             var rawJson = string.Empty;
             var apiRequest = "oudata/kpi/";
@@ -107,7 +106,7 @@ namespace TownComparisons.Domain.WebServices
 
             apiRequest += "/ou/";
      
-            foreach (OrganisationalUnit ou in organisationalUnit)
+            foreach (OU ou in organisationalUnit)
             {
                 apiRequest += ou.Id + ",";
             }
@@ -128,7 +127,7 @@ namespace TownComparisons.Domain.WebServices
             return kpi;
         }
 
-        public override List<OrganisationalUnit> GetOrganisationalUnits()
+        public override List<OU> GetOrganisationalUnits()
         {
             var rawJson = string.Empty;
             var municipality = _municipalityId; //GetMunicipalityId();
@@ -136,7 +135,7 @@ namespace TownComparisons.Domain.WebServices
 
             rawJson = RawJson(apiRequest);
 
-            var OU = JsonConvert.DeserializeObject<OrganisationalUnits>(rawJson).Values;
+            var OU = JsonConvert.DeserializeObject<OUs>(rawJson).Values;
             return OU;
         }
 

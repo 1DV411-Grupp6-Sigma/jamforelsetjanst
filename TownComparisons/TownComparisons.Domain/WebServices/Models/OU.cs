@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +8,10 @@ using System.Threading.Tasks;
 
 namespace TownComparisons.Domain.WebServices.Models
 {
-    public class OrganisationalUnits
+    public class OU
     {
-        public int Count { get; set; }
-
-        [JsonProperty("values")]
-        public List<OrganisationalUnit> Values { get; set; }
-
+        public string Id { get; set; }
+        public string Municipality { get; set; }
+        public string Title { get; set; }
     }
 }
