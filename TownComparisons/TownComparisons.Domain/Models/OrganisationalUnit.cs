@@ -16,5 +16,16 @@ namespace TownComparisons.Domain.Models
 
         public string Name { get; set; }
 
+        //Constructors
+        public OrganisationalUnit()
+        {
+            // Empty
+        }
+        public OrganisationalUnit(string webServiceName, string organisationalUnitId, string name)
+        {
+            WebServiceName = webServiceName;
+            OrganisationalUnitId = organisationalUnitId;
+            Name = name;
+        }
     }
 }

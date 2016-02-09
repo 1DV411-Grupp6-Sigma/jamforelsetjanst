@@ -14,6 +14,5 @@ namespace TownComparisons.Domain.Abstract
         //IDbSet<Settings> Settings { get; set; }
         IDbSet<GroupCategory> GroupCategories { get; set; }
         IDbSet<Category> Categories { get; set; }
-        IDbSet<CategoryWebServiceQuery> WebServiceQueries { get; set; }
     }
 }

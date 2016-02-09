@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace TownComparisons.Domain.Entities
 {
-    public class OrganisationalUnit : Models.OrganisationalUnit
+    public class CategoryPropertyQuery : Models.PropertyQuery
     {
         public int Id { get; set; }
 
-        //... more properties are inherited from Models.OrganisationalUnit
+        //... more properties are inherited from Models.PropertyQuery
 
+        public virtual Category Category { get; set; }  // which category this is in
 
     }
 }

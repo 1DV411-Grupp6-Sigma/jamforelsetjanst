@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace TownComparisons.Domain.Models
 {
-    public class WebServiceData
+    public class PropertyData
     {
-        public WebServiceQuery Query { get; set; }
+        public PropertyQuery Query { get; set; }
 
         public OrganisationalUnit OrganisationalUnit { get; set; }
 
         public int Period { get; set; }
 
-        public List<WebServiceDataValue> Values { get; set; }
+        public List<PropertyDataValue> Values { get; set; }
 
+        
     }
 }

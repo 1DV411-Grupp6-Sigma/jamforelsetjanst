@@ -19,7 +19,6 @@ namespace TownComparisons.Domain.DAL
 
         private IRepository<GroupCategory> _groupCategoriesRepository;
         private IRepository<Category> _categoriesRepository;
-        private IRepository<CategoryWebServiceQuery> _webServiceQueriesRepository;
 
         //Properties
         public IRepository<OrganisationalUnitInfo> OrganisationalUnitInfoRepository
@@ -48,13 +47,6 @@ namespace TownComparisons.Domain.DAL
             get
             {
                 return _categoriesRepository ?? (_categoriesRepository = new Repository<Category>(_context));
-            }
-        }
-        public IRepository<CategoryWebServiceQuery> WebServiceQueriesRepository
-        {
-            get
-            {
-                return _webServiceQueriesRepository ?? (_webServiceQueriesRepository = new Repository<CategoryWebServiceQuery>(_context));
             }
         }
 

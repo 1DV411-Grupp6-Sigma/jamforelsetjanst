@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using TownComparisons.Domain.Entities;
 
-namespace TownComparisons.MVC.Views.Admin.Categories
+namespace TownComparisons.MVC.Views.AdminCategories
 {
     public class IndexViewModel
     {

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace TownComparisons.Domain.Entities
 {
-    public class CategoryWebServiceQuery : Models.WebServiceQuery
+    public class CategoryOrganisationalUnit : Models.OrganisationalUnit
     {
         public int Id { get; set; }
 
-        //... and properties from Models.WebServiceQuery
+        //... more properties are inherited from Models.OrganisationalUnit
         
         public virtual Category Category { get; set; }  // which category this is in
 
