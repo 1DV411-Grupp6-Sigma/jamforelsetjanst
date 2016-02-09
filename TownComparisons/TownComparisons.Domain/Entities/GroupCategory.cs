@@ -13,5 +13,12 @@ namespace TownComparisons.Domain.Entities
         public string Name { get; set; }
 
         public virtual ICollection<Category> Categories { get; set; }
+
+
+        //Constructors
+        public GroupCategory()
+        {
+            Categories = new HashSet<Category>();
+        }
     }
 }
