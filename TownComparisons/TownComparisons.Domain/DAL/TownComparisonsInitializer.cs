@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TownComparisons.Domain.Entities;
+using TownComparisons.Domain.WebServices;
 
 namespace TownComparisons.Domain.DAL
 {
@@ -13,6 +14,8 @@ namespace TownComparisons.Domain.DAL
         protected override void Seed(TownComparisonsContext context)
         {
             //some test data
+
+            string koladaWebServiceName = new KoladaTownWebService().GetName();
 
             OrganisationalUnitInfo ouInfo1 = new OrganisationalUnitInfo()
             {
@@ -23,18 +26,67 @@ namespace TownComparisons.Domain.DAL
             context.OrganisationalUnitInfos.Add(ouInfo1);
 
 
+            #region CategoryStuff
 
+            // Some queries for category
+            CategoryPropertyQuery query1 = new CategoryPropertyQuery()
+            {
+                WebServiceName = koladaWebServiceName,
+                QueryId = "N15030",
+                Title = "Lärare med pedagogisk högskoleexamen i grundskola, lägeskommun, (%)"
+            };
+            CategoryPropertyQuery query2 = new CategoryPropertyQuery()
+            {
+                WebServiceName = koladaWebServiceName,
+                QueryId = "N15033",
+                Title = "Elever/lärare (årsarbetare) i grundskola, lägeskommun, antal"
+            };
+            CategoryPropertyQuery query3 = new CategoryPropertyQuery()
+            {
+                WebServiceName = koladaWebServiceName,
+                QueryId = "N15406",
+                Title = "Elever i åk. 9 som minst uppnått kunskapskraven för Godkänd i ämnesprovet i matematik, kommunala skolor, andel (%)"
+            };
+            //and some Organisational units for category
+            CategoryOrganisationalUnit ou1 = new CategoryOrganisationalUnit()
+            {
+                WebServiceName = koladaWebServiceName,
+                OrganisationalUnitId = "V15E108000701",
+                Name = "Rödebyskolan 7-9"
+            };
+            CategoryOrganisationalUnit ou2 = new CategoryOrganisationalUnit()
+            {
+                WebServiceName = koladaWebServiceName,
+                OrganisationalUnitId = "V15E108000801",
+                Name = "Nättrabyskolan 7-9"
+            };
+            CategoryOrganisationalUnit ou3 = new CategoryOrganisationalUnit()
+            {
+                WebServiceName = koladaWebServiceName,
+                OrganisationalUnitId = "V15E108000901",
+                Name = "Fridlevstads skola F-6"
+            };
+
+            //main categories
             Category c1 = new Category()
             {
                 Name = "Grundskola"
             };
+            c1.Queries.Add(query1);
+            c1.Queries.Add(query2);
+            c1.Queries.Add(query3);
+            c1.OrganisationalUnits.Add(ou1);
+            c1.OrganisationalUnits.Add(ou2);
+            c1.OrganisationalUnits.Add(ou3);
             context.Categories.Add(c1);
+
             Category c2 = new Category()
             {
                 Name = "Förskola"
             };
             context.Categories.Add(c2);
             
+            //a group category
             GroupCategory gc1 = new GroupCategory()
             {
                 Name = "Skola"
@@ -43,6 +95,7 @@ namespace TownComparisons.Domain.DAL
             gc1.Categories.Add(c2);
             context.GroupCategories.Add(gc1);
 
+            #endregion
 
         }
 

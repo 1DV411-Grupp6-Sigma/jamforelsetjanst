@@ -16,7 +16,6 @@ namespace TownComparisons.Domain.DAL
         //public IDbSet<Settings> Settings { get; set; }
         public IDbSet<GroupCategory> GroupCategories { get; set; }
         public IDbSet<Category> Categories { get; set; }
-        public IDbSet<CategoryWebServiceQuery> WebServiceQueries { get; set; }
 
 
         public TownComparisonsContext()

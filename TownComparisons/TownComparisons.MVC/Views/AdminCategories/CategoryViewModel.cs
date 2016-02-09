@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using TownComparisons.Domain.Entities;
 
-namespace TownComparisons.MVC.Views.Admin.Categories
+namespace TownComparisons.MVC.Views.AdminCategories
 {
     public class CategoryViewModel
     {
@@ -12,11 +12,16 @@ namespace TownComparisons.MVC.Views.Admin.Categories
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public CategoryViewModel(Category category)
+        public List<CategoryPropertyQueryViewModel> Queries { get; set; }
+        public List<CategoryOrganisationalUnitViewModel> OrganisationalUnits { get; set; }
+
+        public CategoryViewModel(Category entity)
         {
-            Id = category.Id;
-            Name = category.Name;
-            Description = category.Description;
+            Id = entity.Id;
+            Name = entity.Name;
+            Description = entity.Description;
+            Queries = entity.Queries.Select(q => new CategoryPropertyQueryViewModel(q)).ToList();
+            OrganisationalUnits = entity.OrganisationalUnits.Select(o => new CategoryOrganisationalUnitViewModel(o)).ToList();
         }
     }
 }

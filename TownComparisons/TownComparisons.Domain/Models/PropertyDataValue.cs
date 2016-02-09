@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TownComparisons.Domain.Models
 {
-    public class WebServiceDataValue
+    public class PropertyDataValue
     {
         public string Gender { get; set; }
         public string Status { get; set; }
