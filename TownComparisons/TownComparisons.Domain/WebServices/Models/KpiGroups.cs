@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TownComparisons.Domain.Entities
+namespace TownComparisons.Domain.WebServices.Models
 {
     public class KpiGroups
     {

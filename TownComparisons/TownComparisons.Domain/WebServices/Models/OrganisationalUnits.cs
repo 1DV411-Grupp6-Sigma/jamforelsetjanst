@@ -5,13 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TownComparisons.Domain.Entities
+namespace TownComparisons.Domain.WebServices.Models
 {
-    public class KpiAnswers
+    public class OrganisationalUnits
     {
         public int Count { get; set; }
 
         [JsonProperty("values")]
-        public List<KpiAnswer> Values { get; set; }
+        public List<OrganisationalUnit> Values { get; set; }
+
     }
 }

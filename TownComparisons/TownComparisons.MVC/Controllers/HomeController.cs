@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using TownComparisons.Domain;
 using TownComparisons.Domain.Abstract;
 using TownComparisons.Domain.Entities;
+using TownComparisons.Domain.WebServices.Models;
 
 namespace TownComparisons.MVC.Controllers
 {
