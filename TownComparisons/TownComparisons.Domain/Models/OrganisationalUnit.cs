@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace TownComparisons.Domain.Models
 {
-    [NotMapped]
     public class OrganisationalUnit
     {
         public string WebServiceName { get; set; }
