@@ -1,0 +1,13 @@
+﻿<h3>Category Details</h3>
+<div ng-show="flags.shownFromList == true">Came from category list</div>
+<div ng-show="flags.shownFromList == false">Came from direct edit</div>
+<div>
+    <a href="#" ng-click="refreshCategory(category.CategoryId)"><span class="glyphicon glyphicon-refresh"></span></a>
+</div>
+<div>
+    <ul ng-repeat="q in category.AllPropertyQueryGroups">
+        <li>
+            {{ q.Title }}
+        </li>
+    </ul>
+</div>

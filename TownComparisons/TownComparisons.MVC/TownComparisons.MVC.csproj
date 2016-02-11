@@ -171,6 +171,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdminCategoriesController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AngularController.cs" />
     <Compile Include="Controllers\API\APIAdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -195,7 +196,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\Admin\App.js" />
+    <Content Include="App\Admin\ViewModels\AdminHomeViewModel.js" />
     <Content Include="App\Admin\ViewModels\AdminCategoriesViewModel.js" />
+    <Content Include="App\Admin\ViewModels\AdminCategoryViewModel.js" />
+    <Content Include="App\Admin\ViewModels\RootViewModel.js" />
+    <Content Include="App\Admin\Views\AdminHomeView.html" />
+    <Content Include="App\Admin\Views\AdminCategoriesView.html" />
+    <Content Include="App\Admin\Views\AdminCategoryView.html" />
     <Content Include="App\App.js" />
     <Content Include="App\Validator.js" />
     <Content Include="Content\Site.min.css">
@@ -1101,9 +1108,9 @@
     <Content Include="Views\AdminCategories\Index.cshtml" />
     <Content Include="Views\AdminCategories\Edit.cshtml" />
     <Content Include="Views\AdminCategories\EditorTemplates\PropertyQueryViewModel.cshtml" />
+    <Content Include="Views\Angular\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App\Admin\Views\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
