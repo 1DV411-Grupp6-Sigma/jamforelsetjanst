@@ -173,6 +173,7 @@
     <Compile Include="Views\AdminCategories\IndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\App.js" />
     <Content Include="Content\Site.min.css">
       <DependentUpon>Site.css</DependentUpon>
     </Content>
