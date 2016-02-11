@@ -5,6 +5,7 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TownComparisons.MVC", "TownComparisons.MVC\TownComparisons.MVC.csproj", "{2E91571A-4B5C-4596-A7CD-AB5039FB1FE9}"
 	ProjectSection(ProjectDependencies) = postProject
+		{50D58A56-3005-4B4E-B21B-E1C569E2D016} = {50D58A56-3005-4B4E-B21B-E1C569E2D016}
 		{0330CE7D-8AB1-4495-9BCF-1F249E8E72CC} = {0330CE7D-8AB1-4495-9BCF-1F249E8E72CC}
 	EndProjectSection
 EndProject

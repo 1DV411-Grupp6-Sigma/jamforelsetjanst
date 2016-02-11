@@ -1,35 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Http;
 
-namespace TownComparisons.API
+namespace TownComparisons.MVC
 {
-    public static class WebApiConfig
+    public class WebApiConfig
     {
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
 
             // Web API routes
-            //config.MapHttpAttributeRoutes();
-            MyApiConfig.Register(config);
-
-
+            config.MapHttpAttributeRoutes();
+            
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-        }
-    }
-    public static class MyApiConfig
-    {
-
-
-        public static void Register(HttpConfiguration config)
-        {
-            config.MapHttpAttributeRoutes();
         }
     }
 }
