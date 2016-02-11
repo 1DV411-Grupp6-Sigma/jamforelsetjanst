@@ -16,8 +16,11 @@
 </head>
 <body data-ng-app="main">
     @Html.Partial("_NavBar")
-
-    @RenderBody()
+    <div class="container">
+        <div class="row">
+            @RenderBody()
+        </div>
+    </div>
 
     @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/jquery")
