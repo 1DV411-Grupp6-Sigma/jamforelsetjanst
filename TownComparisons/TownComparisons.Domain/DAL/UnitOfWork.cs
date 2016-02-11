@@ -15,8 +15,6 @@ namespace TownComparisons.Domain.DAL
         private TownComparisonsContext _context = new TownComparisonsContext();
         
         private IRepository<OrganisationalUnitInfo> _organisationalUnitInfoRepository;
-        //private IRepository<Settings> _settingsRepository;
-
         private IRepository<GroupCategory> _groupCategoriesRepository;
         private IRepository<Category> _categoriesRepository;
 
