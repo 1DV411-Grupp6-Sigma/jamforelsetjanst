@@ -8,15 +8,15 @@
     }
 
     $scope.refreshCategories = function () {
-        viewModelHelper.apiGet('api/categories', null,
+        viewModelHelper.apiGet('api/admin/categories', null,
             function (result) {
-                $scope.categories = result.data;
+                $scope.groupCategories = result.data;
             });
     }
 
     $scope.showCategory = function (category) {
         $scope.flags.shownFromList = true;
-        viewModelHelper.navigateTo('category/show/' + category.CategoryId);
+        viewModelHelper.navigateTo('admin/category/' + category.Id);
     }
 
     initialize();

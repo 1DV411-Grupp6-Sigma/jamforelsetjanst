@@ -14,7 +14,7 @@
     @RenderSection("head", required: false)
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body data-ng-app="main">
+<body>
     @Html.Partial("_NavBar")
     <div class="container">
         <div class="row">
@@ -25,11 +25,20 @@
     @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/foundation")
+
+    <script type="text/javascript">
+        window.MyApp = {};
+    </script>
+    <script src="~/App/Validator.js"></script>
     <script src="~/App/App.js"></script>
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        MyApp.rootPath = '@Url.Content("~")';
+        @RenderSection("jsCode", required: false)
+    </script>
+
     <script>
         $(document).foundation();
     </script>
-    @*Use the Scripts section to define page specific scripts*@
-    @RenderSection("scripts", required: false)
 </body>
 </html>
