@@ -69,7 +69,7 @@ namespace TownComparisons.Domain
 
         public List<GroupCategory> GetAllCategories()
         {
-            return _unitOfWork.GroupCategoriesRepository.Get(null, null, "Categories").ToList();
+            return _unitOfWork.GroupCategoriesRepository.Get(null, null, "Categories.Queries,Categories.OrganisationalUnits").ToList();
         }
         
         public Category GetCategory(int id)
