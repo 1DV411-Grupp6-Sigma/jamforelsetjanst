@@ -14,14 +14,15 @@
     @RenderSection("head", required: false)
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
+<body data-ng-app="main">
     @Html.Partial("_NavBar")
 
     @RenderBody()
 
-
+    @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/foundation")
+    <script src="~/App/App.js"></script>
     <script>
         $(document).foundation();
     </script>
