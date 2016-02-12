@@ -11,7 +11,7 @@ using TownComparisons.Domain.Entities;
 using TownComparisons.Domain.Models;
 using TownComparisons.MVC.ViewModels.Admin;
 
-namespace TownComparisons.API.Controllers
+namespace TownComparisons.MVC.Controllers.API
 {
     [RoutePrefix("api")]
     public class APIAdminController : ApiController

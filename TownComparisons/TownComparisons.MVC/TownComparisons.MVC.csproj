@@ -1111,6 +1111,8 @@
     <Content Include="Views\Angular\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App\Categories\" />
+    <Folder Include="App\Category\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
