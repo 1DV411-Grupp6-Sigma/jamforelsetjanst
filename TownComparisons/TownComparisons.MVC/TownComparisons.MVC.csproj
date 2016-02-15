@@ -212,6 +212,7 @@
     <Content Include="App\Admin\Views\AdminCategoryView.html" />
     <Content Include="App\App.js" />
 
+
     <Content Include="App\Categories\App.js" />
     <Content Include="App\Categories\ViewModels\CategoriesViewModel.js" />
     <Content Include="App\Categories\ViewModels\RootViewModel.js" />

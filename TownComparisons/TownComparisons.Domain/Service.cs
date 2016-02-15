@@ -167,6 +167,7 @@ namespace TownComparisons.Domain
             var listOfAllCategories = _unitOfWork.GroupCategoriesRepository.Get(null, null, "Categories").ToList();
 
             return listOfAllCategories;
+ 
         }
 
         public Category GetCategory(int id)
