@@ -1,0 +1,15 @@
+﻿<div class="content">
+    <h4>Kategorier</h4>
+    <!-- Show groups -->
+    <ul class="categoriesList" ng-repeat="g in groupCategories">
+        <li>
+            <b>{{ g.Name }}</b>
+            <!-- Show categories inside this group -->
+            <ul ng-repeat="c in g.Categories">
+                <li>
+                    <a href="#" ng-click="showCategory(c)">{{ c.Name }}</a> (få in antal här?)
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
