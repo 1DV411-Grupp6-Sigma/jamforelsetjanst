@@ -9,6 +9,11 @@ namespace TownComparisons.MVC.Controllers
     public class AngularController : Controller
     {
         // GET: Angular
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         public ActionResult Admin()
         {
             return View();

@@ -173,6 +173,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AngularController.cs" />
     <Compile Include="Controllers\API\APIAdminController.cs" />
+    <Compile Include="Controllers\API\APIHomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -185,6 +186,11 @@
     <Compile Include="ViewModels\Admin\OrganisationalUnitViewModel.cs" />
     <Compile Include="ViewModels\Admin\PropertyQueryGroupViewModel.cs" />
     <Compile Include="ViewModels\Admin\PropertyQueryViewModel.cs" />
+    <Compile Include="ViewModels\Categories\CategoriesViewModel.cs" />
+    <Compile Include="ViewModels\Categories\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\Categories\GroupCategoryViewModel.cs" />
+    <Compile Include="ViewModels\Categories\OrganisationalUnitViewModel.cs" />
+    <Compile Include="ViewModels\Categories\PropertyQueryViewModel.cs" />
     <Compile Include="Views\AdminCategories\OrganisationalUnitViewModel.cs" />
     <Compile Include="Views\AdminCategories\PropertyQueryViewModel.cs" />
     <Compile Include="Views\AdminCategories\PropertyQueryGroupViewModel.cs" />
@@ -204,6 +210,10 @@
     <Content Include="App\Admin\Views\AdminCategoriesView.html" />
     <Content Include="App\Admin\Views\AdminCategoryView.html" />
     <Content Include="App\App.js" />
+    <Content Include="App\Categories\App.js" />
+    <Content Include="App\Categories\ViewModels\CategoriesViewModel.js" />
+    <Content Include="App\Categories\ViewModels\RootViewModel.js" />
+    <Content Include="App\Categories\Views\CategoriesView.html" />
     <Content Include="App\Validator.js" />
     <Content Include="Content\Site.min.css">
       <DependentUpon>Site.css</DependentUpon>
@@ -1109,11 +1119,12 @@
     <Content Include="Views\AdminCategories\Edit.cshtml" />
     <Content Include="Views\AdminCategories\EditorTemplates\PropertyQueryViewModel.cshtml" />
     <Content Include="Views\Angular\Admin.cshtml" />
+    <Content Include="Views\Angular\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App\Categories\" />
     <Folder Include="App\Category\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\APIHome\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
