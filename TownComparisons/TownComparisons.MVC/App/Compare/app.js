@@ -1,0 +1,4 @@
+﻿//Compare module
+(function () {
+    //
+})();
