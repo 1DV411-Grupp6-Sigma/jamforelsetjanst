@@ -171,6 +171,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdminCategoriesController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AndreasTestController.cs" />
     <Compile Include="Controllers\AngularController.cs" />
     <Compile Include="Controllers\API\APIAdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -204,6 +205,7 @@
     <Content Include="App\Admin\Views\AdminCategoriesView.html" />
     <Content Include="App\Admin\Views\AdminCategoryView.html" />
     <Content Include="App\App.js" />
+    <Content Include="App\Compare\app.js" />
     <Content Include="App\Validator.js" />
     <Content Include="Content\Site.min.css">
       <DependentUpon>Site.css</DependentUpon>
@@ -1109,6 +1111,7 @@
     <Content Include="Views\AdminCategories\Edit.cshtml" />
     <Content Include="Views\AdminCategories\EditorTemplates\PropertyQueryViewModel.cshtml" />
     <Content Include="Views\Angular\Admin.cshtml" />
+    <Content Include="Views\AndreasTest\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App\Categories\" />
@@ -1120,10 +1123,6 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TownComparisons.API\TownComparisons.API.csproj">
-      <Project>{50d58a56-3005-4b4e-b21b-e1c569e2d016}</Project>
-      <Name>TownComparisons.API</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TownComparisons.Domain\TownComparisons.Domain.csproj">
       <Project>{0330ce7d-8ab1-4495-9bcf-1f249e8e72cc}</Project>
       <Name>TownComparisons.Domain</Name>
