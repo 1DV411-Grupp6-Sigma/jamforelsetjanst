@@ -1,5 +1,7 @@
-﻿var commonModule = angular.module('common', ['ngRoute']);
-var mainModule = angular.module('main', ['common']);
+﻿var commonModule = angular.module('common', ['ngRoute', 'compare']);
+
+//making main global
+window.mainModule = angular.module('main', ['common']);
 
 commonModule.factory('viewModelHelper', function ($http, $q, $window, $location) { return MyApp.viewModelHelper($http, $q, $window, $location); });
 
