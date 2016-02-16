@@ -164,7 +164,7 @@ namespace TownComparisons.Domain
                 return (List<GroupCategory>) _cache.GetCache(cacheKey);
             }
 
-            var listOfAllCategories = _unitOfWork.GroupCategoriesRepository.Get(null, null, "Categories").ToList();
+            var listOfAllCategories = _unitOfWork.GroupCategoriesRepository.Get(null, null, "Categories.Queries,Categories.OrganisationalUnits").ToList();
 
             return listOfAllCategories;
  
