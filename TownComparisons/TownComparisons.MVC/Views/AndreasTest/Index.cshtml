@@ -7,10 +7,26 @@
     <script src="~/App/Compare/app.js"></script>
 }
 
-<div data-ng-app="main">
-    <p data-ng-controller="andreasCategoryViewModel as model">
-        {{model.hello}}
-    </p>
+<div data-ng-app="main" >
 
+    <div data-ng-controller="listViewModel" class="row">
+        <div class="small-3 columns">
+            <ul data-ng-repeat="category in categories">
+                <li>
+                    {{category}} <button data-ng-click="toggleSubject(category)" class="button tiny">lägg till</button>
+                </li>
+            </ul>
+        </div>
+        <div class="small-7 columns end" style="min-height: 300px; min-width: 200px; border: 1px solid lightgray; border-radius: 10px;">
+            <ul>
+                <li data-ng-repeat="item in listItems">
+                    {{item}}
+                </li>
+            </ul>
+        </div>
+        <div class="small-1 column end">
+                <button class="button tiny" data-ng-click="deleteAllSubjects()">Ta bort alla</button>
+            </div>
+    </div>
 </div>
 
