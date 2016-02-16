@@ -16,5 +16,23 @@ namespace TownComparisons.Domain.Entities
         public string ShortDescription { get; set; }
 
         public string LongDescription { get; set; }
+
+        public string ImagePath { get; set; }
+
+        public string Address { get; set; }
+
+        public string Telephone { get; set; }
+
+        public string Contact { get; set; }
+
+        public string Email { get; set; }
+
+        public string OrganisationalForm { get; set; } // Private, Public or some other form
+
+        public string Website { get; set; }
+
+        public string Latitude { get; set; }
+
+        public string Longitude { get; set; }
     }
 }
