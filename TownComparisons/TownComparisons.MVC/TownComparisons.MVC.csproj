@@ -171,7 +171,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdminCategoriesController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\AndreasTestController.cs" />
     <Compile Include="Controllers\AngularController.cs" />
     <Compile Include="Controllers\API\APIAdminController.cs" />
     <Compile Include="Controllers\API\APIHomeController.cs" />
@@ -1124,7 +1123,6 @@
     <Content Include="Views\AdminCategories\EditorTemplates\PropertyQueryViewModel.cshtml" />
     <Content Include="Views\Angular\Admin.cshtml" />
     <Content Include="Views\Angular\Index.cshtml" />
-    <Content Include="Views\AndreasTest\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App\Category\" />
