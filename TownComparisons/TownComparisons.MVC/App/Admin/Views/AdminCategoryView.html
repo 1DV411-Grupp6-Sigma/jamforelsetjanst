@@ -1,13 +1,53 @@
-﻿<h3>Category Details</h3>
-<div ng-show="flags.shownFromList == true">Came from category list</div>
-<div ng-show="flags.shownFromList == false">Came from direct edit</div>
+﻿<h3>Kategori: {{ category.Category.Name }}</h3>
 <div>
-    <a href="#" ng-click="refreshCategory(category.CategoryId)"><span class="glyphicon glyphicon-refresh"></span></a>
+    <a href="#" ng-click="refreshCategory(category.CategoryId)">Ladda om</a>
 </div>
-<div>
-    <ul ng-repeat="q in category.AllPropertyQueryGroups">
-        <li>
-            {{ q.Title }}
-        </li>
-    </ul>
-</div>
+
+<form novalidate>
+
+    <dl class="sub-nav">
+        <dt>Visa:</dt>
+        <dd class="{{ stateFilter == 'All' ? 'active' : '' }}"><a href="" ng-click="setStateFilter('All')">Alla</a></dd>
+        <dd class="{{ stateFilter == 'Chosen' ? 'active' : '' }}"><a href="" ng-click="setStateFilter('Chosen')">Valda</a></dd>
+        <dd class="{{ stateFilter == 'Unchosen' ? 'active' : '' }}"><a href="" ng-click="setStateFilter('Unchosen')">Ej valda</a></dd>
+    </dl>
+
+    <h5>Filtrering</h5>
+
+    <div class="row">
+        <div class="large-6 columns">
+            <label>                
+                Grupper (söker i både grupptitel och frågetitlar):
+                <input type="text" name="searchAll" ng-model="searchAll" />
+            </label>
+        </div>
+        <div class="large-6 columns">
+            <label>                
+                Fråge-titel:
+                <input type="text" name="searchQueryTitle" ng-model="searchQueryTitle" />
+            </label>
+        </div>
+    </div>
+    <!--
+    <div class="row">
+        <div class="large-6 columns">
+            <input type="checkbox" name="searchUsed" ng-model="searchUsed"><label for="searchUsed">Visa endast valda</label>
+        </div>
+    </div>
+        -->
+    <div class="row">
+        <ul ng-repeat="qg in category.AllPropertyQueryGroups | filter:searchForGroup">
+            <li>
+                <strong>Grupp: {{ qg.Title }}</strong>
+
+                <div class="row" ng-repeat="q in qg.Queries | filter:searchForQuery">
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <label><input type="checkbox" ng-model="q.Use"> {{ q.Title }}</label>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</form>
