@@ -15,19 +15,19 @@ namespace TownComparisons.Domain
 {
     public class Service : IService
     {
-        private readonly SettingsForFile _settings;
+        private readonly Settings _settings;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ITownWebService _townWebService;
         private readonly ICache _cache;
 
         //Constructors
         public Service()
-            : this (new SettingsForFile(), new UnitOfWork(), new KoladaTownWebService(), new CacheManager())
+            : this (new Settings(true), new UnitOfWork(), new KoladaTownWebService(), new CacheManager())
         {
             // Empty
         }
         
-        public Service(SettingsForFile settings, IUnitOfWork unitOfWork, ITownWebService townWebService, CacheManager cacheManager)
+        public Service(Settings settings, IUnitOfWork unitOfWork, ITownWebService townWebService, CacheManager cacheManager)
         {
             _settings = settings;
             _unitOfWork = unitOfWork;
@@ -49,7 +49,7 @@ namespace TownComparisons.Domain
             //Get from webService
             list = _townWebService.GetAllPropertyQueries();
             //Save to cache
-            _cache.SetCache(cacheKey, list);
+            _cache.SetCache(cacheKey, list, _settings.CacheSeconds_PropertyQueries);
 
             return list;
         }
@@ -73,7 +73,7 @@ namespace TownComparisons.Domain
             }
 
             var returnValue = _townWebService.GetKpiAnswersByKpiQuestionAndOrganisationalUnits(kpiQuestion, organisationalUnit);
-            _cache.SetCache(cacheKey, returnValue);
+            _cache.SetCache(cacheKey, returnValue, _settings.CacheSeconds_PropertyData);
 
             return returnValue;
         }
@@ -88,7 +88,7 @@ namespace TownComparisons.Domain
             }
 
             var listOfKpiGroup = _townWebService.TempGetKpiGroupByCategory(category);
-            _cache.SetCache(cacheKey, listOfKpiGroup);
+            _cache.SetCache(cacheKey, listOfKpiGroup, _settings.CacheSeconds_PropertyQueries);
 
             return listOfKpiGroup;
         }
@@ -103,7 +103,7 @@ namespace TownComparisons.Domain
             }
 
             var ou = _townWebService.GetOrganisationalUnitByID(id);
-            _cache.SetCache(cacheKey, ou);
+            _cache.SetCache(cacheKey, ou, _settings.CacheSeconds_OrganisationalUnits);
 
             return ou;
         }
@@ -119,7 +119,7 @@ namespace TownComparisons.Domain
             }
 
             var allOU = _townWebService.GetAllOrganisationalUnits(_settings.MunicipalityId);
-            _cache.SetCache(cacheKey, allOU);
+            _cache.SetCache(cacheKey, allOU, _settings.CacheSeconds_OrganisationalUnits);
 
             return allOU;
         }
@@ -134,7 +134,7 @@ namespace TownComparisons.Domain
             }
 
             var returnValue = _townWebService.GetOrganisationalUnitByMunicipalityAndCategory(_settings.MunicipalityId, category);
-            _cache.SetCache(cacheKey, returnValue);
+            _cache.SetCache(cacheKey, returnValue, _settings.CacheSeconds_OrganisationalUnits);
 
             return returnValue;
         }
@@ -174,19 +174,7 @@ namespace TownComparisons.Domain
 
         public Category GetCategory(int id)
         {
-            string cacheKey = $"{"getCategory"}{id.ToString()}";
-
-            //returns value from cache if cacheKey exists
-            if (_cache.HasValue(cacheKey))
-            {
-                return (Category)_cache.GetCache(cacheKey);
-            }
-
-            //Gets category from db
             Category category = _unitOfWork.CategoriesRepository.Get(c => c.Id == id).FirstOrDefault();
-            //saves to cache
-            _cache.SetCache(cacheKey, category);
-
             return category;
         }
     }
