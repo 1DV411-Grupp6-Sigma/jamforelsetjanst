@@ -69,25 +69,9 @@ namespace TownComparisons.Domain
 
         public List<GroupCategory> GetAllCategories()
         {
-<<<<<<< HEAD
             return _unitOfWork.GroupCategoriesRepository.Get(null, null, "Categories").ToList();
         }
-        
-=======
-            string cacheKey = "getAllCategories";
 
-            if (_cache.HasValue(cacheKey))
-            {
-                return (List<GroupCategory>) _cache.GetCache(cacheKey);
-            }
-
-            var listOfAllCategories = _unitOfWork.GroupCategoriesRepository.Get(null, null, "Categories.Queries,Categories.OrganisationalUnits").ToList();
-
-            return listOfAllCategories;
- 
-        }
-
->>>>>>> ba6464b10f4fde357df41f71dc3f6cdc9b4af8d9
         public Category GetCategory(int id)
         {
             return _unitOfWork.CategoriesRepository.Get(c => c.Id == id).FirstOrDefault();
