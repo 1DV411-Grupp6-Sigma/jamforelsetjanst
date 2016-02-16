@@ -25,6 +25,11 @@ namespace TownComparisons.MVC
                 defaults: new { controller = "Angular", action = "Index" });
 
             routes.MapRoute(
+                name: "operators",
+                url: "operators/{*catchall}",
+                defaults: new { controller = "Operators", action = "Index" });
+
+            routes.MapRoute(
                 name: "home",
                 url: "{*catchall}",
                 defaults: new { controller = "Angular", action = "Index" });

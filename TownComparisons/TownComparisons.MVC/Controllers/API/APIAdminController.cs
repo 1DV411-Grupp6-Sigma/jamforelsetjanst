@@ -51,5 +51,34 @@ namespace TownComparisons.MVC.Controllers.API
 
             return new HttpResponseMessage(HttpStatusCode.NotFound);
         }
+
+        [HttpGet]
+        [Route("admin/allOU/{categoryId}")]
+        public HttpResponseMessage GetStartCategories(HttpRequestMessage request, int categoryId)
+        {
+            // DEN HÄR RADEN KOMMER ANVÄNDAS!
+            //// var ous = _service.GetCategory(categoryId).OrganisationalUnits;
+
+            // Blocket nedan är temporärt, i brist på info i databas.
+            // ---------------------------------------------------
+            var ous = _service.GetAllOrganisationalUnits();
+            List<OrganisationalUnit> ousFiltered;
+            if (categoryId == 1)
+            {
+                ousFiltered = ous.Where(ou => ou.OrganisationalUnitId.Substring(0, 3) == "V15").ToList();
+            }
+            else if (categoryId == 2)
+            {
+                ousFiltered = ous.Where(ou => ou.OrganisationalUnitId.Substring(0, 3) == "V17").ToList();
+            }
+            else
+            {
+                throw new ArgumentException("Finns ingen sådan kategori.");
+            }
+            // ---------------------------------------------------
+
+            OrganisationalUnitsViewModel model = new OrganisationalUnitsViewModel(ousFiltered);
+            return request.CreateResponse<OrganisationalUnitViewModel[]>(HttpStatusCode.OK, model.GroupOrganisationalUnits.ToArray());
+        }
     }
 }
