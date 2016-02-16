@@ -169,7 +169,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AdminCategoriesController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AngularController.cs" />
     <Compile Include="Controllers\API\APIAdminController.cs" />
@@ -191,14 +190,7 @@
     <Compile Include="ViewModels\Categories\GroupCategoryViewModel.cs" />
     <Compile Include="ViewModels\Categories\OrganisationalUnitViewModel.cs" />
     <Compile Include="ViewModels\Categories\PropertyQueryViewModel.cs" />
-    <Compile Include="Views\AdminCategories\OrganisationalUnitViewModel.cs" />
-    <Compile Include="Views\AdminCategories\PropertyQueryViewModel.cs" />
-    <Compile Include="Views\AdminCategories\PropertyQueryGroupViewModel.cs" />
-    <Compile Include="Views\AdminCategories\EditViewModel.cs" />
     <Compile Include="Views\Admin\AdminIndexViewModel.cs" />
-    <Compile Include="Views\AdminCategories\CategoryViewModel.cs" />
-    <Compile Include="Views\AdminCategories\GroupCategoryViewModel.cs" />
-    <Compile Include="Views\AdminCategories\IndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\Admin\App.js" />
@@ -1118,9 +1110,6 @@
     <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
-    <Content Include="Views\AdminCategories\Index.cshtml" />
-    <Content Include="Views\AdminCategories\Edit.cshtml" />
-    <Content Include="Views\AdminCategories\EditorTemplates\PropertyQueryViewModel.cshtml" />
     <Content Include="Views\Angular\Admin.cshtml" />
     <Content Include="Views\Angular\Index.cshtml" />
   </ItemGroup>
