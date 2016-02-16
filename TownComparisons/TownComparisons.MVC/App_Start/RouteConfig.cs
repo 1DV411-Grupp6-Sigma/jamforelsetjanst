@@ -13,6 +13,7 @@ namespace TownComparisons.MVC
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+
             routes.MapRoute(
                 name: "admin",
                 url: "admin/{*catchall}",
