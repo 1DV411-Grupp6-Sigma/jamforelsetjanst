@@ -169,7 +169,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AngularController.cs" />
     <Compile Include="Controllers\API\APIAdminController.cs" />
     <Compile Include="Controllers\API\APIHomeController.cs" />
@@ -190,7 +189,6 @@
     <Compile Include="ViewModels\Categories\GroupCategoryViewModel.cs" />
     <Compile Include="ViewModels\Categories\OrganisationalUnitViewModel.cs" />
     <Compile Include="ViewModels\Categories\PropertyQueryViewModel.cs" />
-    <Compile Include="Views\Admin\AdminIndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\Admin\App.js" />
@@ -316,6 +314,7 @@
     <Content Include="sass\foundation\components\_alert-boxes.scss" />
     <Content Include="sass\foundation\components\_accordion.scss" />
     <Content Include="App_Readme\Foundation for Sites\readme.md" />
+    <Content Include="App_Data\settings.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -1103,7 +1102,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Home\Category.cshtml" />
     <Content Include="Views\Home\AddOrganisationalUnit.cshtml" />
     <Content Include="Views\Home\Compare.cshtml" />

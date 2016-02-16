@@ -8,15 +8,15 @@ namespace TownComparisons.MVC.Tests.Domain.Settings
     [TestClass]
     public class SettingsTest
     {
-        private TownComparisons.Domain.SettingsForFile _settings;
+        private TownComparisons.Domain.Settings _settings;
 
         [TestInitialize]
         public void SetUp()
         {
-            string path = Directory.GetCurrentDirectory();
-            string addDirToPath = Path.Combine(path, "App_Data");
-            string fullpath = Path.Combine(addDirToPath, "settingsConfig.json");
-            _settings = new TownComparisons.Domain.SettingsForFile(fullpath);
+            //string path = Directory.GetCurrentDirectory();
+            //string addDirToPath = Path.Combine(path, "App_Data");
+            //string fullpath = Path.Combine(addDirToPath, "settingsConfig.json");
+            _settings = new TownComparisons.Domain.Settings(); //(fullpath);
         }
 
         /// <summary>
@@ -27,8 +27,8 @@ namespace TownComparisons.MVC.Tests.Domain.Settings
         {
             string location = "Göteborg";
 
-            _settings.Municipality = location;
-            
+            _settings.MunicipalityName = location;
+            _settings.Save();
         }
 
 
@@ -39,9 +39,11 @@ namespace TownComparisons.MVC.Tests.Domain.Settings
         public void Test_Settings_ReadSettingsConfigFile()
         {
             string expected = "Växsö";
-            _settings.Municipality = expected;
+            _settings.MunicipalityName = expected;
+            _settings.Save();
 
-            var actual = _settings.Municipality;
+            _settings.Load();
+            var actual = _settings.MunicipalityName;
 
             Assert.AreEqual(actual, expected);
         }
@@ -51,10 +53,12 @@ namespace TownComparisons.MVC.Tests.Domain.Settings
         {
             string city = "Växjö";
             string cityId = "1290";
-            _settings.Municipality = city;
+            _settings.MunicipalityName = city;
             _settings.MunicipalityId = cityId;
+            _settings.Save();
 
-            var getCity = _settings.Municipality;
+            _settings.Load();
+            var getCity = _settings.MunicipalityName;
             var getId = _settings.MunicipalityId;
 
             Assert.AreEqual(getCity, getCity);
