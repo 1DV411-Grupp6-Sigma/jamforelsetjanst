@@ -174,6 +174,7 @@
     <Compile Include="Controllers\API\APIAdminController.cs" />
     <Compile Include="Controllers\API\APIHomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OperatorController.cs" />
     <Compile Include="Controllers\OperatorsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -195,6 +196,7 @@
     <Compile Include="ViewModels\Categories\GroupCategoryViewModel.cs" />
     <Compile Include="ViewModels\Categories\OrganisationalUnitViewModel.cs" />
     <Compile Include="ViewModels\Categories\PropertyQueryViewModel.cs" />
+    <Compile Include="ViewModels\OrganisationalUnitInfo\OrganisationalUnitInfoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\Admin\App.js" />
@@ -217,6 +219,9 @@
     <Content Include="App\Operators\ViewModels\OperatorsHomeViewModel.js" />
     <Content Include="App\Operators\ViewModels\RootViewModel.js" />
     <Content Include="App\Operators\Views\OperatorsHomeView.html" />
+    <Content Include="App\Operator\ViewModels\OperatorViewModel.js" />
+    <Content Include="App\Operator\ViewModels\RootViewModel.js" />
+    <Content Include="App\Operator\Views\OperatorView.html" />
     <Content Include="App\Validator.js" />
     <Content Include="App_Data\aspnet-TownComparisons-20160204.mdf" />
     <Content Include="App_Data\aspnet-TownComparisons-20160204_log.ldf">
@@ -1217,6 +1222,7 @@
     <Folder Include="Models\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="Views\APIHome\" />
+    <Folder Include="Views\Operator\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

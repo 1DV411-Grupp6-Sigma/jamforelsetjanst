@@ -108,6 +108,7 @@ namespace TownComparisons.Domain
             return ou;
         }
 
+
         public List<OrganisationalUnit> GetAllOrganisationalUnits()
         {
             string id = _settings.MunicipalityId;
