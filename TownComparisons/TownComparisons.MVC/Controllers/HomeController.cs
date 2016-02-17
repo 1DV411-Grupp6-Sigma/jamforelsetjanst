@@ -37,6 +37,9 @@ namespace TownComparisons.MVC.Controllers
         public ActionResult Operator(string ouId)
         {
             OrganisationalUnitInfo activeOU = new OrganisationalUnitInfo();
+            List<OrganisationalUnitInfo> ouInfos = _service.GetOrganisationalUnitInfos();
+
+
             activeOU.OrganisationalUnitId = ouId;
             ViewBag.Ounit = _service.GetOrganisationalUnitByID(ouId);
             return View();

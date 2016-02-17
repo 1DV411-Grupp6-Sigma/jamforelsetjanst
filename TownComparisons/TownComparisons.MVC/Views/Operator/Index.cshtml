@@ -1,0 +1,24 @@
+﻿@using TownComparisons.Domain.Entities;
+@using TownComparisons.Domain.Models;
+@{
+    ViewBag.Title = "Aktör";
+}
+@section scripts {
+    <script src="~/App/Categories/App.js"></script>
+    <script src="~/App/Categories/ViewModels/RootViewModel.js"></script>
+    <script src="~/App/Categories/ViewModels/CategoriesViewModel.js"></script>
+
+    <script src="~/App/Operators/ViewModels/OperatorsViewModel.js"></script>
+
+    <script src="~/App/Operator/ViewModels/OperatorViewModel.js"></script>
+}
+<div data-ng-app="operator" id="operator" data-ng-controller="rootViewModel">
+    <div class="container">
+        <h3>{{ pageHeading }}</h3>
+        <p>
+            Information om aktören som valdes från enkel lista...
+        </p>
+
+        <div ng-view></div>
+    </div>
+</div>
