@@ -10,6 +10,7 @@ using TownComparisons.Domain.Abstract;
 using TownComparisons.Domain.Entities;
 using TownComparisons.Domain.Models;
 using TownComparisons.MVC.ViewModels.Categories;
+using TownComparisons.MVC.ViewModels.OrganisationalUnitInfo;
 
 namespace TownComparisons.MVC.Controllers.API
 {
@@ -34,6 +35,17 @@ namespace TownComparisons.MVC.Controllers.API
             var categories = _service.GetAllCategories();
             CategoriesViewModel model = new CategoriesViewModel(categories);
             return request.CreateResponse<GroupCategoryViewModel[]>(HttpStatusCode.OK, model.GroupCategories.ToArray());
+        }
+
+        //Get sfecific organisational unit info
+        [HttpGet]
+        [Route("operator/{operatorId}")]
+        public HttpResponseMessage GetOrganisationalUnitInfo(HttpRequestMessage request, string ouId)
+        {
+            var operatorInfos = _service.GetOrganisationalUnitInfos();
+            var operatorInfo = operatorInfos.FirstOrDefault(item => item.OrganisationalUnitId == ouId); //"operator" is reserved word
+            OrganisationalUnitInfoViewModel model = new OrganisationalUnitInfoViewModel(operatorInfo);
+            return request.CreateResponse<OrganisationalUnitInfoViewModel>(HttpStatusCode.OK, model);
         }
     }
 }

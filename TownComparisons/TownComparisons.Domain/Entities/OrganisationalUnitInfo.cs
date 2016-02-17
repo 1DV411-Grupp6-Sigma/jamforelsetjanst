@@ -34,5 +34,7 @@ namespace TownComparisons.Domain.Entities
         public string Latitude { get; set; }
 
         public string Longitude { get; set; }
+
+        public string Other { get; set; }
     }
 }
