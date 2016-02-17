@@ -2,6 +2,7 @@
 var categoryModule = angular.module('category', ['common'])
     .config(function ($routeProvider, $locationProvider) {
         //$routeProvider.when('/', { templateUrl: '/App/Categories/Views/CategoriesView.html', controller: 'categoriesViewModel' });
+        $routeProvider.when('/category/:categoryId/operators', { templateUrl: '/App/Operators/Views/OperatorsHomeView.html', controller: 'operatorsHomeViewModel' });
         $routeProvider.when('/categories', { templateUrl: '/App/Categories/Views/CategoriesView.html', controller: 'categoriesViewModel' });
         $routeProvider.when('/category/:categoryId', { templateUrl: '/App/Category/Views/CategoryView.html', controller: 'categoryViewModel' });
         //$routeProvider.when('/ou/:ouId', { templateUrl: '/App/Categories/Views/OrganisationalUnitView.html', controller: 'organisationalUnitViewModel' });

@@ -18,7 +18,7 @@
     //Show OU:s inside a category
     $scope.showCategory = function (category) {
         $scope.flags.shownFromList = true;
-        viewModelHelper.navigateTo('category/' + category.Id);
+        viewModelHelper.navigateTo('category/' + category.Id + '/operators');
     }
 
     initialize();
