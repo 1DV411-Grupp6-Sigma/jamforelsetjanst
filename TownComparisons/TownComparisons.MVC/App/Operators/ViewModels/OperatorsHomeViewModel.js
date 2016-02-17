@@ -1,11 +1,11 @@
-﻿operatorsModule.controller("operatorsHomeViewModel", function ($scope, operatorsService, $http, $q, $routeParams, $window, $location, viewModelHelper) {
+﻿categoryModule.controller("operatorsHomeViewModel", function ($scope, categoryService, $http, $q, $routeParams, $window, $location, viewModelHelper) {
 
     $scope.viewModelHelper = viewModelHelper;
-    $scope.operatorsService = operatorsService;
+    $scope.categoryService = categoryService;
 
 
     var initialize = function () {
-        $scope.getOrganisationalUntsByCategoryId(1);
+        $scope.getOrganisationalUntsByCategoryId($routeParams.categoryId);
     }
 
     $scope.getOrganisationalUntsByCategoryId = function (categoryId) {

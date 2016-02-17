@@ -208,8 +208,10 @@
     <Content Include="App\App.js" />
     <Content Include="App\Categories\App.js" />
     <Content Include="App\Categories\ViewModels\CategoriesViewModel.js" />
+    <Content Include="App\Categories\ViewModels\OperatorsViewModel.js" />
     <Content Include="App\Categories\ViewModels\RootViewModel.js" />
     <Content Include="App\Categories\Views\CategoriesView.html" />
+    <Content Include="App\Categories\Views\OperatorsView.html" />
     <Content Include="App\Compare\app.js" />
     <Content Include="App\Operators\App.js" />
     <Content Include="App\Operators\ViewModels\OperatorsHomeViewModel.js" />

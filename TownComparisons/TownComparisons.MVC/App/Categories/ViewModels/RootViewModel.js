@@ -9,16 +9,16 @@
         $scope.pageHeading = "Hitta och jämför service";
     }
 
-    $scope.categoriesList = function () {
+    /*$scope.categoriesList = function () {
         viewModelHelper.navigateTo('categories');
-    }
+    }*/
 
-    $scope.showCategory = function () {
+    /*$scope.showCategory = function () {
         if (categoryService.categoryId != 0) {
             $scope.flags.shownFromList = false;
-            viewModelHelper.navigateTo('home/category/' + categoryService.categoryId);
+            viewModelHelper.navigateTo('category/' + categoryService.categoryId + '/operators');
         }
-    }
+    }*/
 
     initialize();
 });
