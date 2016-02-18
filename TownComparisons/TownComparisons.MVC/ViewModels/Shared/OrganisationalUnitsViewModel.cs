@@ -5,7 +5,7 @@ using System.Web;
 using TownComparisons.Domain.Entities;
 using TownComparisons.Domain.Models;
 
-namespace TownComparisons.MVC.ViewModels.Admin
+namespace TownComparisons.MVC.ViewModels.Shared
 {
     public class OrganisationalUnitsViewModel
     {

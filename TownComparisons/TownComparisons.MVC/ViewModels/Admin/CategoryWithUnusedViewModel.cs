@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using TownComparisons.Domain.Entities;
 using TownComparisons.Domain.Models;
+using TownComparisons.MVC.ViewModels.Shared;
 
 namespace TownComparisons.MVC.ViewModels.Admin
 {

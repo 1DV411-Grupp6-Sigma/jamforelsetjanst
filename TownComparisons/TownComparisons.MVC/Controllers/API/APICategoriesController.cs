@@ -9,27 +9,27 @@ using TownComparisons.Domain;
 using TownComparisons.Domain.Abstract;
 using TownComparisons.Domain.Entities;
 using TownComparisons.Domain.Models;
-using TownComparisons.MVC.ViewModels.Categories;
+using TownComparisons.MVC.ViewModels.Shared;
 using TownComparisons.MVC.ViewModels.OrganisationalUnitInfo;
 
 namespace TownComparisons.MVC.Controllers.API
 {
     [RoutePrefix("api")]
-    public class APIHomeController : ApiController
+    public class APICategoriesController : ApiController
     {
         private IService _service;
 
-        public APIHomeController()
-            : this(new Service())
+        public APICategoriesController()
+            : this (new Service())
         { }
-        public APIHomeController(IService service)
+        public APICategoriesController(IService service)
         {
             _service = service;
         }
 
-        //Get all groupCategories and the categories inside each group
+
         [HttpGet]
-        [Route("home/categories")]
+        [Route("categories")]
         public HttpResponseMessage GetCategories(HttpRequestMessage request)
         {
             var categories = _service.GetAllCategories();
@@ -37,15 +37,19 @@ namespace TownComparisons.MVC.Controllers.API
             return request.CreateResponse<GroupCategoryViewModel[]>(HttpStatusCode.OK, model.GroupCategories.ToArray());
         }
 
-        //Get sfecific organisational unit info
         [HttpGet]
-        [Route("operator/{operatorId}")]
-        public HttpResponseMessage GetOrganisationalUnitInfo(HttpRequestMessage request, string ouId)
+        [Route("category/{categoryId}")]
+        public HttpResponseMessage GetCategory(HttpRequestMessage request, int categoryId)
         {
-            var operatorInfos = _service.GetOrganisationalUnitInfos();
-            var operatorInfo = operatorInfos.FirstOrDefault(item => item.OrganisationalUnitId == ouId); //"operator" is reserved word
-            OrganisationalUnitInfoViewModel model = new OrganisationalUnitInfoViewModel(operatorInfo);
-            return request.CreateResponse<OrganisationalUnitInfoViewModel>(HttpStatusCode.OK, model);
+            Category category = _service.GetCategory(categoryId);
+            if (category != null)
+            {
+                CategoryViewModel model = new CategoryViewModel(category);
+                return request.CreateResponse<CategoryViewModel>(HttpStatusCode.OK, model);
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.NotFound);
         }
+        
     }
 }
