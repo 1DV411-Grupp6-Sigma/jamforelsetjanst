@@ -173,7 +173,6 @@
     <Compile Include="Controllers\AngularController.cs" />
     <Compile Include="Controllers\API\APICategoriesController.cs" />
     <Compile Include="Controllers\API\APIAdminController.cs" />
-    <Compile Include="Controllers\API\APIHomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OperatorController.cs" />
     <Compile Include="Controllers\OperatorsController.cs" />
@@ -215,7 +214,7 @@
     <Content Include="App\Categories\ViewModels\RootViewModel.js" />
     <Content Include="App\Categories\Views\CategoriesView.html" />
     <Content Include="App\Categories\Views\OperatorsView.html" />
-    <Content Include="App\Compare\app.js" />
+    <Content Include="App\Compare\App.js" />
     <Content Include="App\Operators\App.js" />
     <Content Include="App\Operators\ViewModels\OperatorsHomeViewModel.js" />
     <Content Include="App\Operators\ViewModels\RootViewModel.js" />

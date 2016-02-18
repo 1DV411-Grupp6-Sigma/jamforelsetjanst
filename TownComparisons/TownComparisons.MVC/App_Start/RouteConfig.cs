@@ -13,14 +13,6 @@ namespace TownComparisons.MVC
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            //TEST TEST TEST
-            //Denna route måste kommenteras bort för att det andra i projektet ska funka.
-            //routes.MapRoute(
-            //    name: "AndreasTestController",
-            //    url: "{controller}/{action}",
-            //    defaults: new { controller = "AndreasTest", action = "Index"}
-            //);
-
             routes.MapRoute(
                 name: "admin",
                 url: "admin/{*catchall}",
@@ -36,10 +28,21 @@ namespace TownComparisons.MVC
                 url: "operator/{*catchall}",
                 defaults: new { controller = "Operator", action = "Index" });
 
+            routes.MapRoute(
+                name: "AdminCategories",
+                url: "AdminCategories/{*catchall}",
+                defaults: new { controller = "Angular", action = "Index" });
+
             /*routes.MapRoute(
                 name: "operators",
                 url: "operators/{*catchall}",
                 defaults: new { controller = "Angular", action = "Index" });*/
+
+            routes.MapRoute(
+                name: "AndreasTestController",
+                url: "{controller}/{action}",
+                defaults: new { controller = "AndreasTest", action = "Index" }
+            );
 
             routes.MapRoute(
                 name: "home",
