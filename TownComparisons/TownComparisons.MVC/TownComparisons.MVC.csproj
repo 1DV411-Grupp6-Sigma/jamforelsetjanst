@@ -1190,6 +1190,8 @@
     <Content Include="Scripts\i18n\angular-locale_zu-za.js" />
     <Content Include="Scripts\i18n\angular-locale_zu.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\mm-foundation-0.8.0.min.js" />
+    <Content Include="Scripts\mm-foundation-0.8.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">

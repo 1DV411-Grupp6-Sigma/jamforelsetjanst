@@ -8,7 +8,7 @@
     }
 
     $scope.refreshCategories = function () {
-        viewModelHelper.apiGet('api/admin/categories', null,
+        viewModelHelper.apiGet('api/categories', null,
             function (result) {
                 $scope.groupCategories = result.data;
             });
