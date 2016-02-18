@@ -13,10 +13,10 @@ namespace TownComparisons.MVC.Tests.Domain.Settings
         [TestInitialize]
         public void SetUp()
         {
-            //string path = Directory.GetCurrentDirectory();
-            //string addDirToPath = Path.Combine(path, "App_Data");
-            //string fullpath = Path.Combine(addDirToPath, "settingsConfig.json");
-            _settings = new TownComparisons.Domain.Settings(); //(fullpath);
+            string path = Directory.GetCurrentDirectory();
+            string addDirToPath = Path.Combine(path, "App_Data");
+            string fullpath = Path.Combine(addDirToPath, "settingsConfig.json");
+            _settings = new TownComparisons.Domain.Settings(true, fullpath); //(fullpath);
         }
 
         /// <summary>
