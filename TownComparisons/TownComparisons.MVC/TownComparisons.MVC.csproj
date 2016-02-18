@@ -212,10 +212,8 @@
     <Content Include="App\App.js" />
     <Content Include="App\Categories\App.js" />
     <Content Include="App\Categories\ViewModels\CategoriesViewModel.js" />
-    <Content Include="App\Categories\ViewModels\OperatorsViewModel.js" />
     <Content Include="App\Categories\ViewModels\RootViewModel.js" />
     <Content Include="App\Categories\Views\CategoriesView.html" />
-    <Content Include="App\Categories\Views\OperatorsView.html" />
     <Content Include="App\Compare\App.js" />
     <Content Include="App\Operators\App.js" />
     <Content Include="App\Operators\ViewModels\OperatorsHomeViewModel.js" />
@@ -426,6 +424,7 @@
     </None>
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="obj\Debug\TownComparisons.MVC.csprojResolveAssemblyReference.cache" />
+    <None Include="Properties\PublishProfiles\Binero.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\foundation\fastclick.js" />
     <Content Include="Scripts\foundation\foundation.abide.js" />
