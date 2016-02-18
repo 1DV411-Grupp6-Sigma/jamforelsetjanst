@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using TownComparisons.Domain.Entities;
 
-namespace TownComparisons.MVC.ViewModels.Admin
+namespace TownComparisons.MVC.ViewModels.Shared
 {
     public class GroupCategoryViewModel
     {

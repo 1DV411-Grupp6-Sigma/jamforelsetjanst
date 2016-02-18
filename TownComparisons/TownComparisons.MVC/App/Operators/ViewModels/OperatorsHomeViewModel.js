@@ -9,7 +9,7 @@
     }
 
     $scope.getOrganisationalUntsByCategoryId = function (categoryId) {
-        viewModelHelper.apiGet('api/admin/allOU/' + categoryId, null,
+        viewModelHelper.apiGet('api/operators_in_category/' + categoryId, null,
             function (result) {
                 $scope.organisationalUnits = result.data;
             });
