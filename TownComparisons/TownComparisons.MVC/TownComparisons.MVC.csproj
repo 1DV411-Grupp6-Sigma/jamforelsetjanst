@@ -1192,6 +1192,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\mm-foundation-0.8.0.min.js" />
     <Content Include="Scripts\mm-foundation-0.8.0.js" />
+    <Content Include="Scripts\mm-foundation-tpls-0.8.0.js" />
+    <Content Include="Scripts\mm-foundation-tpls-0.8.0.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
