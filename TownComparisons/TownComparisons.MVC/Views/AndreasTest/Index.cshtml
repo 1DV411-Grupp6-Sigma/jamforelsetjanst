@@ -4,11 +4,12 @@
 }
 
 @section scripts{
-    <script src="~/App/Compare/app.js"></script>
+    @*<script src="~/App/Compare/App.js"></script>*@
+
 }
 
-<div data-ng-app="main" >
-    
+<div data-ng-app="testApp">
+
     <div data-ng-controller="listViewModel" class="row">
         <div class="small-3 columns">
             <ul data-ng-repeat="category in categories">
@@ -25,8 +26,8 @@
             </ul>
         </div>
         <div class="small-1 column end">
-                <button class="button tiny" data-ng-click="deleteAllSubjects()">Ta bort alla</button>
-            </div>
+            <button class="button tiny" data-ng-click="deleteAllSubjects()">Ta bort alla</button>
+        </div>
     </div>
 </div>
 

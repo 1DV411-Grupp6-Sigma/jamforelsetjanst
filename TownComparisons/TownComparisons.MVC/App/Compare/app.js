@@ -1,10 +1,17 @@
-﻿//Service for adding units to a list
-mainModule.factory('collectorFactory', function() {
+﻿//Service for adding objects to a list
+
+/*
+ * INSTRUCTIONS ON BOTTOM OF PAGE
+*/
+
+var collector = angular.module('collector', []);
+
+collector.factory('collectorFactory', function () {
     var factory = {};
     //List that contains all selected subjects
     factory.listOfSubjects = [];
 
-    //add a subject to list
+    //Add a subject to list
     factory.addSubject = function (subject) {
         factory.listOfSubjects.push(subject);
     }
@@ -38,26 +45,38 @@ mainModule.factory('collectorFactory', function() {
     return factory;
 });
 
+//INSTRUCTIONS
+//htmlpage = AndreasTest/Index.cshtml
+
+//TEST APP
+var testApp = angular.module("testApp", ['common']);
 
 //TEST CONTROLLER
-mainModule.controller("listViewModel", ['$scope', 'collectorFactory', function ($scope, collectorFactory) {
+testApp.controller("listViewModel", ['$scope', 'collectorFactory', function ($scope, collectorFactory) {
 
+    //Dummy data
     $scope.categories = ["Skola1", "Skola2", "Skola3", "Skola4", "Skola5"];
 
+    //This is the list of selected items
     $scope.listItems = collectorFactory.listOfSubjects;
 
+    //add items to a list
     $scope.addSubject = function (subject) {
         collectorFactory.addSubject(subject);
     }
+
+    //remove item from a list
     $scope.removeSubject = function(subject) {
         collectorFactory.deleteSubject(subject);
     }
+
+    //toggle items on the list
     $scope.toggleSubject = function (subject) {
         collectorFactory.toggleSubject(subject);
     }
+
+    //deletes all item on the list
     $scope.deleteAllSubjects = function () {
         collectorFactory.deleteAllSubjects();
     }
-
-
 }]);
