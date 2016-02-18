@@ -31,6 +31,13 @@ namespace TownComparisons.MVC
 
             bundles.Add(Foundation.Scripts());
             #endregion
+
+
+            bundles.Add(new ScriptBundle("~/bundles/mm-foundation").Include(
+                        "~/Scripts/mm-foundation-tpls-*"));
+
+
+
         }
     }
 }

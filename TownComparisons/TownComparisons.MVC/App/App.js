@@ -1,4 +1,4 @@
-﻿var commonModule = angular.module('common', ['ngRoute', 'collector']);
+﻿var commonModule = angular.module('common', ['ngRoute', 'collector', 'mm.foundation']);
 //making main global
 window.mainModule = angular.module('main', ['common']);
 
