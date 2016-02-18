@@ -6,7 +6,6 @@ mainModule.factory('collectorFactory', function() {
 
     //add a subject to list
     factory.addSubject = function (subject) {
-        
         factory.listOfSubjects.push(subject);
     }
 
@@ -38,6 +37,7 @@ mainModule.factory('collectorFactory', function() {
 
     return factory;
 });
+
 
 //TEST CONTROLLER
 mainModule.controller("listViewModel", ['$scope', 'collectorFactory', function ($scope, collectorFactory) {

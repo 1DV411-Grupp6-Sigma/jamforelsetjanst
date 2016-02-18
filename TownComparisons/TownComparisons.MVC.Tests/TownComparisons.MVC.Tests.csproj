@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\settingsConfig.json" />
+    <None Include="App_Data\settings.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
