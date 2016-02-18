@@ -1,7 +1,9 @@
 ﻿<h3>Kategori: {{ category.Category.Name }}</h3>
+<!--
 <div>
     <a href="#" ng-click="refreshCategory(category.CategoryId)">Ladda om</a>
 </div>
+-->
 
 <form novalidate>
 
@@ -29,26 +31,6 @@
         </div>
     </div>
 
-    <accordion close-others="oneAtATime">
-        <accordion-group heading="Static Header, initially expanded" is-open="true">
-            This content is straight in the template.
-        </accordion-group>
-        <accordion-group heading="{{group.title}}" ng-repeat="group in groups">
-            {{group.content}}
-        </accordion-group>
-        <accordion-group heading="Dynamic Body Content">
-            <p>The body of the accordion group grows to fit the contents</p>
-            <button class="button small" ng-click="addItem()">Add Item</button>
-            <div ng-repeat="item in items">{{item}}</div>
-        </accordion-group>
-        <accordion-group is-open="isopen">
-            <accordion-heading>
-                I can have markup, too! <i class="right" ng-class="{'fa fa-chevron-down': isopen, 'fa fa-chevron-right': !isopen}"></i>
-            </accordion-heading>
-            This is just some content to illustrate fancy headings.
-        </accordion-group>
-    </accordion>
-
     <!--
     <div class="row">
         <div class="large-6 columns">
@@ -56,11 +38,9 @@
         </div>
     </div>
         -->
-    <div class="row">
-        <ul ng-repeat="qg in category.AllPropertyQueryGroups | filter:searchForGroup">
-            <li>
-                <strong>Grupp: {{ qg.Title }}</strong>
-
+    <div>
+        <accordion close-others="oneAtATime" ng-repeat="qg in category.AllPropertyQueryGroups | filter:searchForGroup">
+            <accordion-group heading="Grupp: {{ qg.Title }}">
                 <div class="row" ng-repeat="q in qg.Queries | filter:searchForQuery">
                     <div class="row">
                         <div class="large-12 columns">
@@ -68,8 +48,24 @@
                         </div>
                     </div>
                 </div>
-            </li>
-        </ul>
+            </accordion-group>
+
+            <!--
+            <ul ng-repeat="qg in category.AllPropertyQueryGroups | filter:searchForGroup">
+                <li>
+                    <strong>Grupp: {{ qg.Title }}</strong>
+
+                    <div class="row" ng-repeat="q in qg.Queries | filter:searchForQuery">
+                        <div class="row">
+                            <div class="large-12 columns">
+                                <label><input type="checkbox" ng-model="q.Use"> {{ q.Title }}</label>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+                -->
+        </accordion>
     </div>
 
 

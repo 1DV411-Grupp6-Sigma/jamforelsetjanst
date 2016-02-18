@@ -10,7 +10,7 @@
     $scope.flags = { shownFromList: false };
 
     var initialize = function () {
-        $scope.pageHeading = "Category Section";
+        $scope.pageHeading = "Kategorier";
     }
 
     $scope.categoriesList = function () {
