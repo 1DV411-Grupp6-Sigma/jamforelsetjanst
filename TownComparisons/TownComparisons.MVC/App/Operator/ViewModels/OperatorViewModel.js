@@ -5,16 +5,24 @@
 
 
     var initialize = function () {
-        $scope.getOrganisationalUnitInfoByOUId($routeParams.ouId);
+        $scope.getOrganisationalUnitInfoByOUId($routeParams.ouId); // testa "V15E128300201"
+        //$scope.getOrganisationalUnitInfoByOUId("V15E128300201");
     }
     
     //Get Organisational Unit Info via OperatorController
     $scope.getOrganisationalUnitInfoByOUId = function (ouId) {
-        viewModelHelper.apiGet('operator/' + ouId, null,
+        viewModelHelper.apiGet('api/operator/' + ouId, null,
             function (result) {
                 $scope.organisationalUnit = result.data;
             });
     }
+
+    //$scope.getOrganisationalUnitInfoByOUId = function (ouId) {
+    //    viewModelHelper.apiGet('api/operator/' + ouId, null,
+    //        function (result) {
+    //            $scope.organisationalUnit = result.data;
+    //        });
+    //}
 
     //$scope.showOrder = function () {
     //    if (orderService.orderId != 0) {
