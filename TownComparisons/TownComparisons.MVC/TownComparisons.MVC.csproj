@@ -173,6 +173,7 @@
     <Compile Include="Controllers\AngularController.cs" />
     <Compile Include="Controllers\API\APICategoriesController.cs" />
     <Compile Include="Controllers\API\APIAdminController.cs" />
+    <Compile Include="Controllers\API\APIOperatorController.cs" />
     <Compile Include="Controllers\API\APIOperatorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OperatorController.cs" />
@@ -1230,6 +1231,7 @@
     <Folder Include="Models\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="Views\APIHome\" />
+    <Folder Include="Views\APIOperator\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

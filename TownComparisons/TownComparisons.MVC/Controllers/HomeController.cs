@@ -33,6 +33,7 @@ namespace TownComparisons.MVC.Controllers
             return View();
         }
 
+      
         // Returns information about one organisational unit by kolada api id
         public ActionResult Operator(string ouId)
         {
