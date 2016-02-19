@@ -13,10 +13,8 @@ namespace TownComparisons.Domain.Abstract
     {
         string GetName();
         List<OrganisationalUnit> GetAllOrganisationalUnits(string municipalityId);
-        List<OrganisationalUnit> GetOrganisationalUnitByMunicipalityAndCategory(string municipalityId, Category category);
         OrganisationalUnit GetOrganisationalUnitByID(string id);
-        List<KpiGroup> TempGetKpiGroupByCategory(Category category);
-        List<KpiAnswer> GetKpiAnswersByKpiQuestionAndOrganisationalUnits(List<KpiQuestion> kpiQuestion, List<OrganisationalUnit> organisationalUnits);
+        List<PropertyResult> GetPropertyResults(List<PropertyQuery> queries, List<OrganisationalUnit> organisationalUnits);
         List<PropertyQueryGroup> GetAllPropertyQueries();
         //string GetMunicipalityId();
     }

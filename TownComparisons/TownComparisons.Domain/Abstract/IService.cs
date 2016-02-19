@@ -11,26 +11,21 @@ namespace TownComparisons.Domain.Abstract
 {
     public interface IService
     {
-        // Gets a list of all KpiGroups by Category.
-        List<KpiGroup> TempGetKpiGroupByCategory(Category category);
-
-        // Gets a list of all KpiAnswers by a list of KpiQuestions and a list of Organisational Units.
-        List<KpiAnswer> GetKpiAnswersByKpiQuestionAndOrganisationalUnit(List<KpiQuestion> kpiQuestion, List<OrganisationalUnit> organisationalUnit);
-
         // Gets a list of all KpiGroups.
         List<PropertyQueryGroup> GetAllPropertyQueries();
+
+        // Gets a list of all PropertyResult for a list of PropertyQuery and a list of Organisational Units.
+        List<PropertyResult> GetPropertyResults(List<PropertyQuery> queries, List<OrganisationalUnit> organisationalUnits);
 
         // Gets a Organisational Unit by ID.
         OrganisationalUnit GetOrganisationalUnitByID(string id);
 
         List<OrganisationalUnit> GetAllOrganisationalUnits();
-
-        // Gets a list of all Organisational Units by Municipality and Category.
-        List<OrganisationalUnit> GetOrganisationalUnitsByCategory(Category category);
-
-
-        List<OrganisationalUnitInfo> GetOrganisationalUnitInfos();
         
+        List<OrganisationalUnitInfo> GetOrganisationalUnitInfos();
+
+        OrganisationalUnitInfo GetOrganisationalUnitInfo(string organisationalUnitId);
+
         // Gets a list of all Group categories (including it's categories)
         List<GroupCategory> GetAllCategories();
 
