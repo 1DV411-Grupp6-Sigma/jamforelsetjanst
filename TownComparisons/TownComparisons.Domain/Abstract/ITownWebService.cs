@@ -12,10 +12,10 @@ namespace TownComparisons.Domain.Abstract
     public interface ITownWebService : IDisposable
     {
         string GetName();
+
         List<OrganisationalUnit> GetAllOrganisationalUnits(string municipalityId);
-        OrganisationalUnit GetOrganisationalUnitByID(string id);
-        List<PropertyResult> GetPropertyResults(List<PropertyQuery> queries, List<OrganisationalUnit> organisationalUnits);
+        OrganisationalUnit GetOrganisationalUnit(string id);
+        List<PropertyResult> GetPropertyResults(List<string> queryIds, List<string> organisationalUnitIds);
         List<PropertyQueryGroup> GetAllPropertyQueries();
-        //string GetMunicipalityId();
     }
 }

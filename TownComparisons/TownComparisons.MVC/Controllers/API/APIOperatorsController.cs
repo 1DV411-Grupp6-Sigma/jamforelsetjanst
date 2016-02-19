@@ -47,7 +47,7 @@ namespace TownComparisons.MVC.Controllers.API
 
             // Blocket nedan är temporärt, i brist på info i databas.
             // ---------------------------------------------------
-            var ous = _service.GetAllOrganisationalUnits();
+            var ous = _service.GetWebServiceOrganisationalUnits();
             List<OrganisationalUnit> ousFiltered;
             if (categoryId == 1)
             {

@@ -37,8 +37,8 @@ namespace TownComparisons.MVC.Controllers.API
             Category category = _service.GetCategory(categoryId);
             if (category != null)
             {
-                List<OrganisationalUnit> allOrganisationalUnits = _service.GetAllOrganisationalUnits();
-                List<PropertyQueryGroup> allPropertyQueryGroups = _service.GetAllPropertyQueries();
+                List<OrganisationalUnit> allOrganisationalUnits = _service.GetWebServiceOrganisationalUnits();
+                List<PropertyQueryGroup> allPropertyQueryGroups = _service.GetWebServicePropertyQueries();
                 CategoryWithUnusedViewModel model = new CategoryWithUnusedViewModel(category, allOrganisationalUnits, allPropertyQueryGroups);
                 return request.CreateResponse<CategoryWithUnusedViewModel>(HttpStatusCode.OK, model);
             }

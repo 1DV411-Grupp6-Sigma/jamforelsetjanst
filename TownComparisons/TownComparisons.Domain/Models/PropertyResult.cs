@@ -8,9 +8,13 @@ namespace TownComparisons.Domain.Models
 {
     public class PropertyResult
     {
-        public PropertyQuery Query { get; set; }
+        //public PropertyQuery Query { get; set; }
 
-        public OrganisationalUnit OrganisationalUnit { get; set; }
+        //public OrganisationalUnit OrganisationalUnit { get; set; }
+
+        public string QueryId { get; set; }
+
+        public string OrganisationalUnitId { get; set; }
 
         public int Period { get; set; }
 
@@ -22,10 +26,10 @@ namespace TownComparisons.Domain.Models
         {
             // Empty
         }
-        public PropertyResult(PropertyQuery query, OrganisationalUnit organisationalUnit, int period, List<PropertyResultValue> values)
+        public PropertyResult(string queryId, string organisationalUnitId, int period, List<PropertyResultValue> values)
         {
-            Query = query;
-            OrganisationalUnit = organisationalUnit;
+            QueryId = queryId;
+            OrganisationalUnitId = organisationalUnitId;
             Period = period;
             Values = values;
         }

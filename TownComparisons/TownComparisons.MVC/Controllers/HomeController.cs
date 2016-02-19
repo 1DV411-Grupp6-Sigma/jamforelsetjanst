@@ -43,7 +43,7 @@ namespace TownComparisons.MVC.Controllers
 
 
             activeOU.OrganisationalUnitId = ouId;
-            ViewBag.Ounit = _service.GetOrganisationalUnitByID(ouId);
+            ViewBag.Ounit = _service.GetOrganisationalUnit(ouId);
             return View();
         }
 
@@ -111,11 +111,11 @@ namespace TownComparisons.MVC.Controllers
 
             foreach (string ou in organisationalUnitsV15)
             {
-                ouListV15.Add(_service.GetOrganisationalUnitByID(ou));
+                ouListV15.Add(_service.GetOrganisationalUnit(ou));
             }
             foreach (string ou in organisationalUnitsV17)
             {
-                ouListV17.Add(_service.GetOrganisationalUnitByID(ou));
+                ouListV17.Add(_service.GetOrganisationalUnit(ou));
             }
 
             // Adds the list to the Session.
@@ -123,7 +123,7 @@ namespace TownComparisons.MVC.Controllers
             session.AddSession("ComparisonV17", organisationalUnitsV17);
 
             // ViewBags for the View.
-            ViewBag.AddedOU = _service.GetOrganisationalUnitByID(id);
+            ViewBag.AddedOU = _service.GetOrganisationalUnit(id);
             ViewBag.ComparisionV15 = ouListV15;
             ViewBag.ComparisionV17 = ouListV17;
 
@@ -149,7 +149,7 @@ namespace TownComparisons.MVC.Controllers
             List<OrganisationalUnit> ouList = new List<OrganisationalUnit>();
             foreach (string ou in organisationalUnits)
             {
-                ouList.Add(_service.GetOrganisationalUnitByID(ou));
+                ouList.Add(_service.GetOrganisationalUnit(ou));
             }
 
             // Creates a Category by ID. (Should be in Settings-file.)
