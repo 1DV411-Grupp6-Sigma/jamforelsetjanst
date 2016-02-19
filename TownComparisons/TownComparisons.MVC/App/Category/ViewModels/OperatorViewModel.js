@@ -5,7 +5,7 @@
 
 
     var initialize = function () {
-        $scope.getOrganisationalUnitInfoByOUId($routeParams.ouId); // testa "V15E128300201"
+        $scope.getOrganisationalUnitInfoByOUId($routeParams.operatorId); // testa "V15E128300201"
         //$scope.getOrganisationalUnitInfoByOUId("V15E128300201");
     }
     
