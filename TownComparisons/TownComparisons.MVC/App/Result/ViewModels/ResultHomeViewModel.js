@@ -6,7 +6,8 @@
     $scope.resultService = resultService;
 
     var initialize = function () {
-        $scope.getOrganisationalUntsByCategoryId(1);
+        //$scope.getOrganisationalUntsByCategoryId(1);
+        $scope.getOperatorsById();
     }
 
     $scope.getOrganisationalUntsByCategoryId = function (categoryId) {

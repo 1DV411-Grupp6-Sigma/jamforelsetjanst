@@ -1231,6 +1231,7 @@
     <Content Include="Views\Operator\Index.cshtml" />
     <Content Include="Views\Home\Operator.cshtml" />
     <Content Include="Views\Angular\Result.cshtml" />
+    <Content Include="Views\Home\Result.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App\Category\" />

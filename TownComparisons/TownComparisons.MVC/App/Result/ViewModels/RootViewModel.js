@@ -12,7 +12,7 @@
     $scope.flags = { shownFromList: false };
 
     var initialize = function () {
-        $scope.pageHeading = "Result Root";
+        $scope.pageHeading = "ResultRootViewModel.js";
     }
 
     initialize();

@@ -1,6 +1,6 @@
 ﻿var resultModule = angular.module('result', ['common']) //inject compare
     .config(function ($routeProvider, $locationProvider) {
-        $routeProvider.when('/result', { templateUrl: '/App/Result/Views/ResultHomeView.html', controller: 'ResultHomeViewModel' });
+        $routeProvider.when('/result', { templateUrl: '/App/Result/Views/ResultHomeView.html', controller: 'resultHomeViewModel' });
         $routeProvider.otherwise({ redirectTo: '/result' });
         $locationProvider.html5Mode({
             enabled: true,
@@ -13,7 +13,7 @@ resultModule.factory('resultService', function ($rootScope, $http, $q, $location
 (function (myApp) {
     var resultService = function ($rootScope, $http, $q, $location, viewModelHelper) {
 
-        var self = this;
+        //var self = this;
 
         //self.operatorsId = 0;
 
