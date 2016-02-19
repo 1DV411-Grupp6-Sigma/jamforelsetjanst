@@ -9,7 +9,7 @@
 
     //Get all categories via APIHomeController
     $scope.viewAllCategories = function () {
-        viewModelHelper.apiGet('api/home/categories', null,
+        viewModelHelper.apiGet('api/categories', null,
             function (result) {
                 $scope.groupCategories = result.data;
             });
