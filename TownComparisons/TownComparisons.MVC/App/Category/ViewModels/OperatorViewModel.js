@@ -1,4 +1,4 @@
-﻿categoryModule.controller("operatorViewModel", function ($scope, operatorService, $http, $q, $routeParams, $window, $location, viewModelHelper) {
+﻿categoryModule.controller("operatorViewModel", function ($scope, categoryService, $http, $q, $routeParams, $window, $location, viewModelHelper) {
 
     $scope.viewModelHelper = viewModelHelper;
     $scope.categoryService = categoryService;

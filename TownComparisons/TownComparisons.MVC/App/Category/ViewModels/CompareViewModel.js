@@ -7,6 +7,7 @@
 
     var initialize = function () {
         $scope.getOrganisationalUntsByCategoryId(1);
+        $scope.loadOperatorsToCompare();
     }
 
     $scope.getOrganisationalUntsByCategoryId = function (categoryId) {
@@ -14,6 +15,11 @@
             function (result) {
                 $scope.organisationalUnits = result.data;
             });
+    }
+
+    $scope.loadOperatorsToCompare = function () {
+        $scope.operatorsToCompare = $scope.categoryService.getSubjectList();
+        console.log($scope.operatorsToCompare);
     }
 
     initialize();
