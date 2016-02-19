@@ -215,8 +215,16 @@
     <Content Include="App\Categories\ViewModels\CategoriesViewModel.js" />
     <Content Include="App\Categories\ViewModels\RootViewModel.js" />
     <Content Include="App\Categories\Views\CategoriesView.html" />
+    <Content Include="App\Category\App.js" />
+    <Content Include="App\Category\ViewModels\OperatorViewModel.js" />
+    <Content Include="App\Category\ViewModels\CompareViewModel.js" />
+    <Content Include="App\Category\ViewModels\RootViewModel.js" />
+    <Content Include="App\Category\Views\CategoryView.html" />
+    <Content Include="App\Category\Views\OperatorView.html" />
+    <Content Include="App\Category\Views\CompareView.html" />
     <Content Include="App\Compare\App.js" />
     <Content Include="App\Operators\App.js" />
+    <Content Include="App\Category\ViewModels\CategoryViewModel.js" />
     <Content Include="App\Operators\ViewModels\OperatorsHomeViewModel.js" />
     <Content Include="App\Operators\ViewModels\RootViewModel.js" />
     <Content Include="App\Operators\Views\OperatorsHomeView.html" />
@@ -1232,9 +1240,9 @@
     <Content Include="Views\Home\Operator.cshtml" />
     <Content Include="Views\Angular\Result.cshtml" />
     <Content Include="Views\Home\Result.cshtml" />
+    <Content Include="Views\Angular\Category.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App\Category\" />
     <Folder Include="Models\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="Views\APIHome\" />

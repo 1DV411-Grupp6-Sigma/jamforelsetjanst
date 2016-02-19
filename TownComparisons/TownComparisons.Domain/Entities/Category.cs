@@ -19,8 +19,7 @@ namespace TownComparisons.Domain.Entities
         public virtual ICollection<CategoryPropertyQuery> Queries { get; set; }
 
         public virtual ICollection<CategoryOrganisationalUnit> OrganisationalUnits { get; set; }
-
-        public bool Temp { get; set; }
+        
 
         //Constructors
         public Category()

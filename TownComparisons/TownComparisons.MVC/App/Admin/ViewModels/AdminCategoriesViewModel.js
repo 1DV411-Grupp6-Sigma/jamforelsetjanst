@@ -16,7 +16,8 @@
 
     $scope.showCategory = function (category) {
         $scope.flags.shownFromList = true;
-        viewModelHelper.navigateTo('admin/category/' + category.Id);
+        //viewModelHelper.navigateTo('admin/category/' + category.Id);
+        viewModelHelper.navigateTo('/categories');
     }
 
     initialize();
