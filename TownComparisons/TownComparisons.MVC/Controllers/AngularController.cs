@@ -28,5 +28,15 @@ namespace TownComparisons.MVC.Controllers
         {
             return View();
         }
+
+        public ActionResult Operators()
+        {
+            return View();
+        }
+
+        public ActionResult Operator()
+        {
+            return View();
+        }
     }
 }
