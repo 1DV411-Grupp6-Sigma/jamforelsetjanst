@@ -27,7 +27,6 @@ namespace TownComparisons.MVC.Controllers.API
             _service = service;
         }
 
-        
         //Get specific organisational unit info
         [HttpGet]
         [Route("operator/{operatorId}")]
