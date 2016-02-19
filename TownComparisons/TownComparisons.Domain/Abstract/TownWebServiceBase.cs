@@ -22,8 +22,8 @@ namespace TownComparisons.Domain.Abstract
 
         public abstract string GetName();
         public abstract List<OrganisationalUnit> GetAllOrganisationalUnits(string municipalityId);
-        public abstract OrganisationalUnit GetOrganisationalUnitByID(string id);
-        public abstract List<PropertyResult> GetPropertyResults(List<PropertyQuery> queries, List<OrganisationalUnit> organisationalUnits);
+        public abstract OrganisationalUnit GetOrganisationalUnit(string id);
+        public abstract List<PropertyResult> GetPropertyResults(List<string> queryIds, List<string> organisationalUnitIds);
         public abstract List<PropertyQueryGroup> GetAllPropertyQueries();
         //public abstract string GetMunicipalityId();
 

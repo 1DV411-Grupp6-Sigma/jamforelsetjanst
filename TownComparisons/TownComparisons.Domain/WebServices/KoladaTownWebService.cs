@@ -46,7 +46,7 @@ namespace TownComparisons.Domain.WebServices
             return "Kolada"; 
         }
         
-        public override OrganisationalUnit GetOrganisationalUnitByID(string id)
+        public override OrganisationalUnit GetOrganisationalUnit(string id)
         {
             var rawJson = string.Empty;
 
@@ -58,27 +58,38 @@ namespace TownComparisons.Domain.WebServices
             return new OrganisationalUnit(this.GetName(), theOu.Id, theOu.Title);
         }
         
-        public override List<PropertyResult> GetPropertyResults(List<PropertyQuery> queries, List<OrganisationalUnit> organisationalUnits)
+        public override List<PropertyResult> GetPropertyResults(List<string> queryIds, List<string> organisationalUnitIds) //List<PropertyQuery> queries, List<OrganisationalUnit> organisationalUnits)
         {
             var rawJson = string.Empty;
 
             //Set the Kolada url
             var apiRequest = "oudata/kpi/";
-            foreach (PropertyQuery query in queries)
+            apiRequest += string.Join(",", queryIds);
+            /*
+            foreach (string query in queryIds)
             {
-                apiRequest += query.QueryId + ",";
+                apiRequest += query + ",";
             }
-            apiRequest += "/ou/";
+            */
+            apiRequest += "/ou/" + string.Join(",", organisationalUnitIds);
+            /*
             foreach (OrganisationalUnit ou in organisationalUnits)
             {
                 apiRequest += ou.OrganisationalUnitId + ",";
             }
+            */
 
             //Load the data from Kolada
             rawJson = RawJson(apiRequest);
 
             //Return the data in correct form
             var kpiAnswers = JsonConvert.DeserializeObject<KpiAnswers>(rawJson).Values;
+            return kpiAnswers.Select(a => new PropertyResult(a.Kpi,
+                                                             a.Ou,
+                                                             a.Period,
+                                                             a.Values.Select(v => new PropertyResultValue(v.Gender, v.Status, v.Value)).ToList()))
+                            .ToList();
+            /*
             return kpiAnswers.Select(a => new PropertyResult(
                                     queries.Find(q => q.QueryId == a.Kpi),
                                     organisationalUnits.Find(o => o.OrganisationalUnitId == a.Ou),
@@ -86,6 +97,7 @@ namespace TownComparisons.Domain.WebServices
                                     a.Values.Select(v => new PropertyResultValue(v.Gender, v.Status, v.Value)).ToList()))
                             .Where(r => r.OrganisationalUnit != null && r.Query != null)
                             .ToList();
+            */
         }
 
         public override List<PropertyQueryGroup> GetAllPropertyQueries()
@@ -132,33 +144,33 @@ namespace TownComparisons.Domain.WebServices
         }
         */
 
-        //Replaced by FetchMunicipalityId() //andreas
-        // Reads MunicipalityId from Settings
-        //public override string GetMunicipalityId()
-        //{
-        //    //var _settings = new Settings();
-        //    var municipalityId = _settings.MunicipalityId;
-        //    return municipalityId;
-        //}
+            //Replaced by FetchMunicipalityId() //andreas
+            // Reads MunicipalityId from Settings
+            //public override string GetMunicipalityId()
+            //{
+            //    //var _settings = new Settings();
+            //    var municipalityId = _settings.MunicipalityId;
+            //    return municipalityId;
+            //}
 
-        /// <summary>
-        /// Function returns OrganisationalUnits for one municipality.
-        /// Id, Municipality and Title are given.
-        /// </summary>
-        /// <param></param>
-        /// <returns>List of OUs in one municipality</returns>
+            /// <summary>
+            /// Function returns OrganisationalUnits for one municipality.
+            /// Id, Municipality and Title are given.
+            /// </summary>
+            /// <param></param>
+            /// <returns>List of OUs in one municipality</returns>
 
 
-        //public override List<KpiGroups> GetKpiGroups()
-        //{
-        //    var rawJson = string.Empty;
-        //    var apiRequest = "KpiGroups";
+            //public override List<KpiGroups> GetKpiGroups()
+            //{
+            //    var rawJson = string.Empty;
+            //    var apiRequest = "KpiGroups";
 
-        //    rawJson = RawJson(apiRequest);
+            //    rawJson = RawJson(apiRequest);
 
-        //    // Additional help http://stackoverflow.com/questions/11220776/deserialize-list-of-objects-using-json-net
-        //    var kpiGroups = JsonConvert.DeserializeObject<List<KpiGroups>>(rawJson);
-        //    return kpiGroups;
-        //}
+            //    // Additional help http://stackoverflow.com/questions/11220776/deserialize-list-of-objects-using-json-net
+            //    var kpiGroups = JsonConvert.DeserializeObject<List<KpiGroups>>(rawJson);
+            //    return kpiGroups;
+            //}
+        }
     }
-}

@@ -28,7 +28,7 @@ namespace TownComparisons.MVC.Tests.Domain.WebServices
             var expected = new OrganisationalUnit("Kolada", "V15E128300201", "Elinebergsskolan");
 
             _webService = new KoladaTownWebService();
-            var actual = _webService.GetOrganisationalUnitByID(UnitId);
+            var actual = _webService.GetOrganisationalUnit(UnitId);
 
             Assert.AreEqual(actual.Name, expected.Name);
             Assert.AreEqual(actual.OrganisationalUnitId, expected.OrganisationalUnitId);

@@ -35,8 +35,43 @@ namespace TownComparisons.Domain
             _cache = cacheManager;
         }
 
+
         //Methods
-        public List<PropertyQueryGroup> GetAllPropertyQueries()
+
+        #region WebService functionality
+
+        public OrganisationalUnit GetWebServiceOrganisationalUnit(string id)
+        {
+            string cacheKey = $"{"getOrganisationalUnitByID"}{id}";
+
+            if (_cache.HasValue(cacheKey))
+            {
+                return (OrganisationalUnit)_cache.GetCache(cacheKey);
+            }
+
+            var ou = _townWebService.GetOrganisationalUnit(id);
+            _cache.SetCache(cacheKey, ou, _settings.CacheSeconds_OrganisationalUnits);
+
+            return ou;
+        }
+
+        public List<OrganisationalUnit> GetWebServiceOrganisationalUnits()
+        {
+            string id = _settings.MunicipalityId;
+            string cacheKey = $"{"getAllOrganisationalUnitsFromWebService"}{id}";
+
+            if (_cache.HasValue(cacheKey))
+            {
+                return (List<OrganisationalUnit>)_cache.GetCache(cacheKey);
+            }
+
+            var allOU = _townWebService.GetAllOrganisationalUnits(_settings.MunicipalityId);
+            _cache.SetCache(cacheKey, allOU, _settings.CacheSeconds_OrganisationalUnits);
+
+            return allOU;
+        }
+
+        public List<PropertyQueryGroup> GetWebServicePropertyQueries()
         {
             var list = new List<PropertyQueryGroup>();
             string cacheKey = "getAllPropertyQueries";
@@ -55,64 +90,58 @@ namespace TownComparisons.Domain
             return list;
         }
 
-        public List<PropertyResult> GetPropertyResults(List<PropertyQuery> queries, List<OrganisationalUnit> organisationalUnits)
+        public List<PropertyResult> GetWebServicePropertyResults(List<string> queryIds, List<string> organisationalUnitIds) //List<PropertyQuery> queries, List<OrganisationalUnit> organisationalUnits)
         {
             //Get id's from All KpiQuestions and OrganisationalUnits in parameter
             //and compund to an unique cacheKey
-            var kpiQuestionIds = from q in queries
-                                 select q.QueryId;
-            var ouIds = from ou in organisationalUnits
+            /*
+            var queryIds = from q in category.Queries
+                           select q.QueryId;
+            var organisationalUnitIds = from ou in category.OrganisationalUnits
                         select ou.OrganisationalUnitId;
+            */
 
             //adding all KPIQuestionId + ouIds 
-            var cacheKey = kpiQuestionIds.Aggregate("", (current, kpi) => current + kpi);
-            cacheKey = ouIds.Aggregate(cacheKey, (current, ouId) => current + ouId);
+            var cacheKey = "PropertyResults" + queryIds.Aggregate("", (current, kpi) => current + kpi);
+            cacheKey = organisationalUnitIds.Aggregate(cacheKey, (current, ouId) => current + ouId);
 
             if (_cache.HasValue(cacheKey))
             {
                 return (List<PropertyResult>)_cache.GetCache(cacheKey);
             }
-
-            var returnValue = _townWebService.GetPropertyResults(queries, organisationalUnits);
+            
+            var returnValue = _townWebService.GetPropertyResults(queryIds, organisationalUnitIds);
             _cache.SetCache(cacheKey, returnValue, _settings.CacheSeconds_PropertyResult);
 
             return returnValue;
         }
-        
-        public OrganisationalUnit GetOrganisationalUnitByID(string id)
+
+        #endregion
+
+
+        #region Database functionality
+
+        public List<GroupCategory> GetAllCategories()
         {
-            string cacheKey = $"{"getOrganisationalUnitByID"}{id}";
+            string cacheKey = "getAllCategories";
 
             if (_cache.HasValue(cacheKey))
             {
-                return (OrganisationalUnit)_cache.GetCache(cacheKey);
+                return (List<GroupCategory>)_cache.GetCache(cacheKey);
             }
 
-            var ou = _townWebService.GetOrganisationalUnitByID(id);
-            _cache.SetCache(cacheKey, ou, _settings.CacheSeconds_OrganisationalUnits);
+            var listOfAllCategories = _unitOfWork.GroupCategoriesRepository.Get(null, null, "Categories").ToList();
 
-            return ou;
+            return listOfAllCategories;
+
         }
 
-
-        public List<OrganisationalUnit> GetAllOrganisationalUnits()
+        public Category GetCategory(int id)
         {
-            string id = _settings.MunicipalityId;
-            string cacheKey = $"{"getAllOrganisationalUnits"}{id}";
-
-            if (_cache.HasValue(cacheKey))
-            {
-                return (List<OrganisationalUnit>)_cache.GetCache(cacheKey);
-            }
-
-            var allOU = _townWebService.GetAllOrganisationalUnits(_settings.MunicipalityId);
-            _cache.SetCache(cacheKey, allOU, _settings.CacheSeconds_OrganisationalUnits);
-
-            return allOU;
+            Category category = _unitOfWork.CategoriesRepository.Get(c => c.Id == id).FirstOrDefault();
+            return category;
         }
-        
-        // Just a temp method to use to access some database entitites
-        //Saves in cache for 10 seconds
+
         public List<OrganisationalUnitInfo> GetOrganisationalUnitInfos()
         {
             string cacheKey = "getOrganisationalUnitInfos";
@@ -144,26 +173,7 @@ namespace TownComparisons.Domain
 
             return returnValue;
         }
-
-        public List<GroupCategory> GetAllCategories()
-        {
-            string cacheKey = "getAllCategories";
-
-            if (_cache.HasValue(cacheKey))
-            {
-                return (List<GroupCategory>)_cache.GetCache(cacheKey);
-            }
-
-            var listOfAllCategories = _unitOfWork.GroupCategoriesRepository.Get(null, null, "Categories").ToList();
-
-            return listOfAllCategories;
-
-        }
-
-        public Category GetCategory(int id)
-        {
-            Category category = _unitOfWork.CategoriesRepository.Get(c => c.Id == id).FirstOrDefault();
-            return category;
-        }
+        
+        #endregion
     }
 }

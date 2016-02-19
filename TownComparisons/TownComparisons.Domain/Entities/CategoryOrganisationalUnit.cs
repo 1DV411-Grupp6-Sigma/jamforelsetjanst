@@ -13,6 +13,6 @@ namespace TownComparisons.Domain.Entities
         //... more properties are inherited from Models.OrganisationalUnit
         
         public virtual Category Category { get; set; }  // which category this is in
-
+        
     }
 }
