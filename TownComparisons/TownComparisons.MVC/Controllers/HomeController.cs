@@ -13,6 +13,7 @@ namespace TownComparisons.MVC.Controllers
 {
     public class HomeController : Controller
     {
+        /*
         private IService _service;
 
         public HomeController()
@@ -198,5 +199,6 @@ namespace TownComparisons.MVC.Controllers
             ViewBag.allKpiGroups = allKpiGroups;
             return View();
         }
+        */
     }
 }

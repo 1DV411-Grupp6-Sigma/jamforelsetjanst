@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TownComparisons.Domain.Helpers
 {
-    interface ICache
+    public interface ICache
     {
         Object GetCache(string key);
         void SetCache(string key, Object data, int cacheItemPolicy);

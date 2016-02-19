@@ -46,37 +46,6 @@ namespace TownComparisons.Domain.WebServices
             return "Kolada"; 
         }
         
-        public override List<OrganisationalUnit> GetOrganisationalUnitByMunicipalityAndCategory(string municipalityId, Category category)
-        {
-            List<OrganisationalUnit> allOUnits = GetAllOrganisationalUnits(municipalityId);
-            List<OrganisationalUnit> tempAllOUnits = new List<OrganisationalUnit>();
-
-            // Adds OrganisationalUnits by Category.
-            string categoryValue = String.Empty;
-            if (category.Id == 1)
-            {
-                categoryValue = "V15";
-            }
-            else if (category.Id == 2)
-            {
-                categoryValue = "V17";
-            }
-            else if (category.Id == 3)
-            {
-                categoryValue = "V23";
-            }
-
-            foreach (OrganisationalUnit ou in allOUnits)
-            {
-                if (ou.OrganisationalUnitId.Substring(0, 3) == categoryValue)
-                {
-                    tempAllOUnits.Add(ou);
-                }
-            }
-
-            return tempAllOUnits;
-        }
-
         public override OrganisationalUnit GetOrganisationalUnitByID(string id)
         {
             var rawJson = string.Empty;
@@ -88,36 +57,35 @@ namespace TownComparisons.Domain.WebServices
 
             return new OrganisationalUnit(this.GetName(), theOu.Id, theOu.Title);
         }
-
-        public override List<KpiGroup> TempGetKpiGroupByCategory(Category category)
+        
+        public override List<PropertyResult> GetPropertyResults(List<PropertyQuery> queries, List<OrganisationalUnit> organisationalUnits)
         {
             var rawJson = string.Empty;
-            var apiRequest = "kpi_groups?title=" + category.Name;
-            rawJson = RawJson(apiRequest);
-            var kpi = JsonConvert.DeserializeObject<KpiGroups>(rawJson).Values;
-            return kpi;
-        }
 
-        public override List<KpiAnswer> GetKpiAnswersByKpiQuestionAndOrganisationalUnits(List<KpiQuestion> kpiQuestion, List<OrganisationalUnit> organisationalUnits)
-        {
-            var rawJson = string.Empty;
+            //Set the Kolada url
             var apiRequest = "oudata/kpi/";
-
-            foreach (KpiQuestion kq in kpiQuestion)
+            foreach (PropertyQuery query in queries)
             {
-                apiRequest += kq.Member_id + ",";
+                apiRequest += query.QueryId + ",";
             }
-
             apiRequest += "/ou/";
-     
             foreach (OrganisationalUnit ou in organisationalUnits)
             {
                 apiRequest += ou.OrganisationalUnitId + ",";
             }
+
+            //Load the data from Kolada
             rawJson = RawJson(apiRequest);
 
+            //Return the data in correct form
             var kpiAnswers = JsonConvert.DeserializeObject<KpiAnswers>(rawJson).Values;
-            return kpiAnswers;
+            return kpiAnswers.Select(a => new PropertyResult(
+                                    queries.Find(q => q.QueryId == a.Kpi),
+                                    organisationalUnits.Find(o => o.OrganisationalUnitId == a.Ou),
+                                    a.Period,
+                                    a.Values.Select(v => new PropertyResultValue(v.Gender, v.Status, v.Value)).ToList()))
+                            .Where(r => r.OrganisationalUnit != null && r.Query != null)
+                            .ToList();
         }
 
         public override List<PropertyQueryGroup> GetAllPropertyQueries()

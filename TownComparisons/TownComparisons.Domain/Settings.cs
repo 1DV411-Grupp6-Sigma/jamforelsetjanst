@@ -23,7 +23,7 @@ namespace TownComparisons.Domain
 
         public int CacheSeconds_PropertyQueries { get; set; }
         public int CacheSeconds_OrganisationalUnits { get; set; }
-        public int CacheSeconds_PropertyData { get; set; }
+        public int CacheSeconds_PropertyResult { get; set; }
 
 
         //Constructors
@@ -35,7 +35,7 @@ namespace TownComparisons.Domain
             //default values:
             CacheSeconds_PropertyQueries = (60 * 60 * 24); // 1 day
             CacheSeconds_OrganisationalUnits = (60 * 60 * 24); // 1 day
-            CacheSeconds_PropertyData = (60 * 60 * 24); // 1 day
+            CacheSeconds_PropertyResult = (60 * 60 * 24); // 1 day
 
             if (load)
             {

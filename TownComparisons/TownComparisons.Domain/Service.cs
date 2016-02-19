@@ -27,7 +27,7 @@ namespace TownComparisons.Domain
             // Empty
         }
         
-        public Service(Settings settings, IUnitOfWork unitOfWork, ITownWebService townWebService, CacheManager cacheManager)
+        public Service(Settings settings, IUnitOfWork unitOfWork, ITownWebService townWebService, ICache cacheManager)
         {
             _settings = settings;
             _unitOfWork = unitOfWork;
@@ -35,6 +35,7 @@ namespace TownComparisons.Domain
             _cache = cacheManager;
         }
 
+        //Methods
         public List<PropertyQueryGroup> GetAllPropertyQueries()
         {
             var list = new List<PropertyQueryGroup>();
@@ -54,13 +55,13 @@ namespace TownComparisons.Domain
             return list;
         }
 
-        public List<KpiAnswer> GetKpiAnswersByKpiQuestionAndOrganisationalUnit(List<KpiQuestion> kpiQuestion, List<OrganisationalUnit> organisationalUnit)
+        public List<PropertyResult> GetPropertyResults(List<PropertyQuery> queries, List<OrganisationalUnit> organisationalUnits)
         {
             //Get id's from All KpiQuestions and OrganisationalUnits in parameter
             //and compund to an unique cacheKey
-            var kpiQuestionIds = from q in kpiQuestion
-                                 select q.Member_id;
-            var ouIds = from ou in organisationalUnit
+            var kpiQuestionIds = from q in queries
+                                 select q.QueryId;
+            var ouIds = from ou in organisationalUnits
                         select ou.OrganisationalUnitId;
 
             //adding all KPIQuestionId + ouIds 
@@ -69,30 +70,15 @@ namespace TownComparisons.Domain
 
             if (_cache.HasValue(cacheKey))
             {
-                return (List<KpiAnswer>)_cache.GetCache(cacheKey);
+                return (List<PropertyResult>)_cache.GetCache(cacheKey);
             }
 
-            var returnValue = _townWebService.GetKpiAnswersByKpiQuestionAndOrganisationalUnits(kpiQuestion, organisationalUnit);
-            _cache.SetCache(cacheKey, returnValue, _settings.CacheSeconds_PropertyData);
+            var returnValue = _townWebService.GetPropertyResults(queries, organisationalUnits);
+            _cache.SetCache(cacheKey, returnValue, _settings.CacheSeconds_PropertyResult);
 
             return returnValue;
         }
-
-        public List<KpiGroup> TempGetKpiGroupByCategory(Category category)
-        {
-            string cacheKey = $"{"tempGetKpiGroupByCategory"}{category.Id}";
-
-            if (_cache.HasValue(cacheKey))
-            {
-                return (List<KpiGroup>)_cache.GetCache(cacheKey);
-            }
-
-            var listOfKpiGroup = _townWebService.TempGetKpiGroupByCategory(category);
-            _cache.SetCache(cacheKey, listOfKpiGroup, _settings.CacheSeconds_PropertyQueries);
-
-            return listOfKpiGroup;
-        }
-
+        
         public OrganisationalUnit GetOrganisationalUnitByID(string id)
         {
             string cacheKey = $"{"getOrganisationalUnitByID"}{id}";
@@ -124,22 +110,7 @@ namespace TownComparisons.Domain
 
             return allOU;
         }
-
-        public List<OrganisationalUnit> GetOrganisationalUnitsByCategory(Category category)
-        {
-            string cacheKey = $"{"GetOrganisationalUnitsByCategory"}{category.Id}";
-
-            if (_cache.HasValue(cacheKey))
-            {
-                return (List<OrganisationalUnit>)_cache.GetCache(cacheKey);
-            }
-
-            var returnValue = _townWebService.GetOrganisationalUnitByMunicipalityAndCategory(_settings.MunicipalityId, category);
-            _cache.SetCache(cacheKey, returnValue, _settings.CacheSeconds_OrganisationalUnits);
-
-            return returnValue;
-        }
-
+        
         // Just a temp method to use to access some database entitites
         //Saves in cache for 10 seconds
         public List<OrganisationalUnitInfo> GetOrganisationalUnitInfos()
@@ -152,6 +123,22 @@ namespace TownComparisons.Domain
             }
 
             var returnValue = _unitOfWork.OrganisationalUnitInfoRepository.Get().ToList();
+            //Saves in cache for 10 seconds
+            _cache.SetCache(cacheKey, returnValue, 10);
+
+            return returnValue;
+        }
+
+        public OrganisationalUnitInfo GetOrganisationalUnitInfo(string organisationalUnitId)
+        {
+            string cacheKey = "getOrganisationalUnitInfo";
+
+            if (_cache.HasValue(cacheKey))
+            {
+                return (OrganisationalUnitInfo)_cache.GetCache(cacheKey);
+            }
+
+            var returnValue = _unitOfWork.OrganisationalUnitInfoRepository.Get(o => o.OrganisationalUnitId == organisationalUnitId).FirstOrDefault();
             //Saves in cache for 10 seconds
             _cache.SetCache(cacheKey, returnValue, 10);
 

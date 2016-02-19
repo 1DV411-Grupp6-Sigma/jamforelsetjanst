@@ -12,6 +12,7 @@ namespace TownComparisons.MVC.Tests.Controllers
     [TestClass]
     public class HomeControllerTest
     {
+        /*
         [TestMethod]
         public void Index()
         {
@@ -24,6 +25,7 @@ namespace TownComparisons.MVC.Tests.Controllers
             // Assert
             Assert.IsNotNull(result);
         }
+        */
         
     }
 }
