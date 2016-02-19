@@ -1,6 +1,13 @@
 ﻿<h3>ResultHomeView</h3>
 
 <!--Tabel with chosen operators from "compare"-->
+<ul ng-repeat="o in operatorsToCompare">
+    <li>
+        {{ o.Name }} ({{ o.OrganisationalUnitId }})
+    </li>
+</ul>
+
+<!-- 
 <div ng-repeat="ou in organisationalUnits">
     <div class="row">
         <div class="small-5 columns">
@@ -22,3 +29,4 @@
         </div>
     </div>
 </div>
+    -->
