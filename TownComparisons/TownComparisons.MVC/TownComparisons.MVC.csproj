@@ -224,6 +224,10 @@
     <Content Include="App\Operator\ViewModels\OperatorViewModel.js" />
     <Content Include="App\Operator\ViewModels\RootViewModel.js" />
     <Content Include="App\Operator\Views\OperatorView.html" />
+    <Content Include="App\Result\App.js" />
+    <Content Include="App\Result\ViewModels\ResultHomeViewModel.js" />
+    <Content Include="App\Result\ViewModels\RootViewModel.js" />
+    <Content Include="App\Result\Views\ResultHomeView.html" />
     <Content Include="App\Validator.js" />
     <Content Include="App_Data\aspnet-TownComparisons-20160204.mdf" />
     <Content Include="App_Data\aspnet-TownComparisons-20160204_log.ldf">
@@ -1225,6 +1229,7 @@
     <Content Include="Views\Operators\Index.cshtml" />
     <Content Include="Views\Operator\Index.cshtml" />
     <Content Include="Views\Home\Operator.cshtml" />
+    <Content Include="Views\Angular\Result.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App\Category\" />
