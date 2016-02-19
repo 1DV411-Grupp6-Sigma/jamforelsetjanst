@@ -126,7 +126,7 @@ namespace TownComparisons.Domain.DAL
             };
             context.Categories.Add(c2);
             
-            //a group category
+            //group categories
             GroupCategory gc1 = new GroupCategory()
             {
                 Name = "Skola"
@@ -134,6 +134,20 @@ namespace TownComparisons.Domain.DAL
             gc1.Categories.Add(c1);
             gc1.Categories.Add(c2);
             context.GroupCategories.Add(gc1);
+
+            Category c3 = new Category()
+            {
+                Name = "Sjukhus"
+            };
+            context.Categories.Add(c3);
+
+            GroupCategory gc2 = new GroupCategory()
+            {
+                Name = "Sjukvård & hälsa"
+            };
+            gc2.Categories.Add(c3);
+            context.GroupCategories.Add(gc2);
+
 
             #endregion
 

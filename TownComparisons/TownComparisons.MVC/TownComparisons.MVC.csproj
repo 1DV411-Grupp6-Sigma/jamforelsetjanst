@@ -430,6 +430,7 @@
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="obj\Debug\TownComparisons.MVC.csprojResolveAssemblyReference.cache" />
     <None Include="Properties\PublishProfiles\Binero.pubxml" />
+    <None Include="Properties\PublishProfiles\kommunal-jamforelsetjanst.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\foundation\fastclick.js" />
     <Content Include="Scripts\foundation\foundation.abide.js" />
