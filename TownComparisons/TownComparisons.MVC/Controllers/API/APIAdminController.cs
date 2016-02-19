@@ -29,6 +29,7 @@ namespace TownComparisons.MVC.Controllers.API
         }
         
 
+        /* A special get category for admin pages, where all OU and Property queries also are included (not only the selected ones) */
         [HttpGet]
         [Route("admin/category/{categoryId}")]
         public HttpResponseMessage GetCategory(HttpRequestMessage request, int categoryId)

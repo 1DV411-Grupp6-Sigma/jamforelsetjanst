@@ -20,7 +20,7 @@
     $scope.showCategory = function () {
         if (adminService.categoryId != 0) {
             $scope.flags.shownFromList = false;
-            viewModelHelper.navigateTo('admin/category/' + adminService.categoryId);
+            viewModelHelper.navigateTo('admin/operator/' + adminService.categoryId);
         }
     }
 

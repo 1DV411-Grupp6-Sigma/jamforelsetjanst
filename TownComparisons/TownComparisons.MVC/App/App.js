@@ -78,6 +78,7 @@ commonModule.factory('viewModelHelper', function ($http, $q, $window, $location)
         }
 
         self.navigateTo = function (path) {
+            console.log(path);
             $location.path(MyApp.rootPath + path);
         }
 
