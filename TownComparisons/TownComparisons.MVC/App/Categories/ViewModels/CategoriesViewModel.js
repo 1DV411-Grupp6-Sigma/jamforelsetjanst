@@ -15,10 +15,10 @@
             });
     }
 
-    //Show OU:s inside a category
+    //Show all organisational units inside a category
     $scope.showCategory = function (category) {
         $scope.flags.shownFromList = true;
-        viewModelHelper.navigateTo('category/' + category.Id + '/operators');
+        viewModelHelper.navigateTo('category/' + category.Id);
     }
 
     initialize();
