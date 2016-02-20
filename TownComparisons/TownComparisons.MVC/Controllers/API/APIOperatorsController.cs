@@ -27,13 +27,13 @@ namespace TownComparisons.MVC.Controllers.API
             _service = service;
         }
 
-        //Get specific organisational unit info
         [HttpGet]
         [Route("operator/{operatorId}")]
-        public HttpResponseMessage GetOrganisationalUnitInfo(HttpRequestMessage request, string ouId)
+        public HttpResponseMessage GetOrganisationalUnitInfo(HttpRequestMessage request, string operatorId)
         {
-            var operatorInfos = _service.GetOrganisationalUnitInfos();
-            var operatorInfo = operatorInfos.FirstOrDefault(item => item.OrganisationalUnitId == ouId); //"operator" is reserved word
+            //var operatorInfos = _service.GetOrganisationalUnitInfos();
+            //var operatorInfo = operatorInfos.FirstOrDefault(item => item.OrganisationalUnitId == ouId); //"operator" is reserved word
+            var operatorInfo = _service.GetOrganisationalUnitInfo(operatorId);
             OrganisationalUnitInfoViewModel model = new OrganisationalUnitInfoViewModel(operatorInfo);
             return request.CreateResponse<OrganisationalUnitInfoViewModel>(HttpStatusCode.OK, model);
         }
