@@ -1,5 +1,5 @@
-﻿<h3>Aktörer</h3>
-
+﻿
+<h3>Aktörer</h3>
 {{ 10 + 5}}
 <div ng-repeat="ou in organisationalUnits">
     <div class="row">
@@ -14,7 +14,8 @@
         <div class="small-6 columns">Lorem ipsum dolor sit amet, mea id epicuri consetetur, quo te etiam minim reformidans. Quo at numquam persecuti, ad his amet soleat.</div>
         <div class="small-4 columns">
             <div class="row">
-                <a href="" ng-click="addOperatorToCompareList(ou)">Jämför</a>
+                <a href="" ng-click="toggleOperators(ou)">Jämför</a>
+                <!--<a href="" ng-click="addOperatorToCompareList(ou)">Jämför</a>-->
             </div>
             <div class="row">
                 <a href="#">Karta</a>
@@ -22,4 +23,5 @@
         </div>
     </div>
 </div>
+
 
