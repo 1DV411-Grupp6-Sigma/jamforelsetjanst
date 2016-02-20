@@ -168,6 +168,9 @@ namespace TownComparisons.Domain
             }
 
             var returnValue = _unitOfWork.OrganisationalUnitInfoRepository.Get(o => o.OrganisationalUnitId == organisationalUnitId).FirstOrDefault();
+
+            // Search with GetByID is NOT possible, because datatypes of organisationaUnitid and correspondent field in the database are different
+            //var returnValue = _unitOfWork.OrganisationalUnitInfoRepository.GetByID(organisationalUnitId);
             //Saves in cache for 10 seconds
             _cache.SetCache(cacheKey, returnValue, 10);
 
