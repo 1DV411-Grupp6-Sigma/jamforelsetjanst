@@ -68,6 +68,11 @@
     <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="Entities\GroupCategory.cs" />
     <Compile Include="Entities\CategoryOrganisationalUnit.cs" />
+    <Compile Include="Migrations\201602201558492_InitialMigration.cs" />
+    <Compile Include="Migrations\201602201558492_InitialMigration.Designer.cs">
+      <DependentUpon>201602201558492_InitialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\OrganisationalUnit.cs" />
     <Compile Include="Models\PropertyResultValue.cs" />
     <Compile Include="Models\PropertyQueryGroup.cs" />
@@ -120,6 +125,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201602201558492_InitialMigration.resx">
+      <DependentUpon>201602201558492_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

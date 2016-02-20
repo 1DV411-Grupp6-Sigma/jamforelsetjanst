@@ -230,10 +230,6 @@
     <Content Include="App\Result\ViewModels\RootViewModel.js" />
     <Content Include="App\Result\Views\ResultHomeView.html" />
     <Content Include="App\Validator.js" />
-    <Content Include="App_Data\aspnet-TownComparisons-20160204.mdf" />
-    <Content Include="App_Data\aspnet-TownComparisons-20160204_log.ldf">
-      <DependentUpon>aspnet-TownComparisons-20160204.mdf</DependentUpon>
-    </Content>
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Antlr3.Runtime.pdb" />
     <Content Include="bin\EntityFramework.dll" />
@@ -430,8 +426,6 @@
     </None>
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="obj\Debug\TownComparisons.MVC.csprojResolveAssemblyReference.cache" />
-    <None Include="Properties\PublishProfiles\Binero.pubxml" />
-    <None Include="Properties\PublishProfiles\kommunal-jamforelsetjanst.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\foundation\fastclick.js" />
     <Content Include="Scripts\foundation\foundation.abide.js" />
@@ -1229,6 +1223,7 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
