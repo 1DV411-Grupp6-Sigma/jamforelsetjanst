@@ -28,8 +28,8 @@ namespace TownComparisons.MVC.Controllers.API
         }
 
         [HttpGet]
-        [Route("operator/{operatorId}")]
-        public HttpResponseMessage GetOrganisationalUnitInfo(HttpRequestMessage request, string operatorId)
+        [Route("operators/{operatorId}")]
+        public HttpResponseMessage GetOperator(HttpRequestMessage request, string operatorId)
         {
             //var operatorInfos = _service.GetOrganisationalUnitInfos();
             //var operatorInfo = operatorInfos.FirstOrDefault(item => item.OrganisationalUnitId == ouId); //"operator" is reserved word
@@ -40,15 +40,25 @@ namespace TownComparisons.MVC.Controllers.API
 
         [HttpGet]
         [Route("operators_in_category/{categoryId}")]
-        public HttpResponseMessage GetStartCategories(HttpRequestMessage request, int categoryId)
+        public HttpResponseMessage GetOperatorsInCategory(HttpRequestMessage request, int categoryId)
         {
             // DEN HÄR RADEN KOMMER ANVÄNDAS!
-            //// var ous = _service.GetCategory(categoryId).OrganisationalUnits;
+            Category category = _service.GetCategory(categoryId);
+            if (category != null)
+            {
+                var ous = category.OrganisationalUnits.ToList();
+
+                OrganisationalUnitsViewModel model = new OrganisationalUnitsViewModel(ous);
+                return request.CreateResponse<OrganisationalUnitViewModel[]>(HttpStatusCode.OK, model.OrganisationalUnits.ToArray());
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.BadRequest);
 
             // Blocket nedan är temporärt, i brist på info i databas.
             // ---------------------------------------------------
+            /*
             var ous = _service.GetWebServiceOrganisationalUnits();
-            List<OrganisationalUnit> ousFiltered;
+            List<OrganisationalUnitInfo> ousFiltered;
             if (categoryId == 1)
             {
                 ousFiltered = ous.Where(ou => ou.OrganisationalUnitId.Substring(0, 3) == "V15").ToList();
@@ -61,10 +71,8 @@ namespace TownComparisons.MVC.Controllers.API
             {
                 throw new ArgumentException("Finns ingen sådan kategori.");
             }
+            */
             // ---------------------------------------------------
-
-            OrganisationalUnitsViewModel model = new OrganisationalUnitsViewModel(ousFiltered);
-            return request.CreateResponse<OrganisationalUnitViewModel[]>(HttpStatusCode.OK, model.GroupOrganisationalUnits.ToArray());
         }
     }
 }

@@ -138,7 +138,7 @@ namespace TownComparisons.Domain
 
         public Category GetCategory(int id)
         {
-            Category category = _unitOfWork.CategoriesRepository.Get(c => c.Id == id).FirstOrDefault();
+            Category category = _unitOfWork.CategoriesRepository.Get(c => c.Id == id, null, "GroupCategory, Queries, OrganisationalUnits").FirstOrDefault();
             return category;
         }
 

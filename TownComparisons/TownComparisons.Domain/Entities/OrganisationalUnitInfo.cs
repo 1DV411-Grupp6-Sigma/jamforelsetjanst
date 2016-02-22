@@ -9,9 +9,12 @@ namespace TownComparisons.Domain.Entities
     //this class holds the extra info for an "OU"
     public class OrganisationalUnitInfo
     {
-        public int Id { get; set; }
-
+        public int Id { get; set; } //just the database table id
+        
         public string OrganisationalUnitId { get; set; }  // this is the external ID from the web service (like Kolada)
+
+
+        public string Name { get; set; }
 
         public string ShortDescription { get; set; }
 
@@ -36,5 +39,8 @@ namespace TownComparisons.Domain.Entities
         public string Longitude { get; set; }
 
         public string Other { get; set; }
+
+
+        public virtual Category Category { get; set; }  // which category this is in
     }
 }

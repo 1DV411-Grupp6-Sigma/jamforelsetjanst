@@ -9,20 +9,16 @@ namespace TownComparisons.MVC.ViewModels.Shared
 {
     public class OrganisationalUnitsViewModel
     {
-        public List<OrganisationalUnitViewModel> GroupOrganisationalUnits { get; set; }
+        public List<OrganisationalUnitViewModel> OrganisationalUnits { get; set; }
 
         public OrganisationalUnitsViewModel()
         {
             //Empty
         }
-        public OrganisationalUnitsViewModel(ICollection<CategoryOrganisationalUnit> groupOrganisationalUnits)
-        {
-            GroupOrganisationalUnits = groupOrganisationalUnits.Select(g => new OrganisationalUnitViewModel(g)).ToList();
-        }
 
-        public OrganisationalUnitsViewModel(List<OrganisationalUnit> groupOrganisationalUnits)
+        public OrganisationalUnitsViewModel(List<Domain.Entities.OrganisationalUnitInfo> entities)
         {
-            GroupOrganisationalUnits = groupOrganisationalUnits.Select(g => new OrganisationalUnitViewModel(g)).ToList();
+            OrganisationalUnits = entities.Select(g => new OrganisationalUnitViewModel(g)).ToList();
         }
     }
 }

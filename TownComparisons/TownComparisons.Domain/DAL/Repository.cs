@@ -52,7 +52,7 @@ namespace TownComparisons.Domain.DAL
             return orderBy == null ? query.ToList() : orderBy(query).ToList();
         }
 
-        /// <summary>
+        /// <summary>   
         /// 
         /// </summary>
         /// <param name="id"></param>

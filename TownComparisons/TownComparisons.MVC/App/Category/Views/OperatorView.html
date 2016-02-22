@@ -4,6 +4,12 @@
         <div data-ng-app="operator" data-ng-controller="rootViewModel" ng-model="organisationalUnit">
             <div>
                 <p class="input-group">
+                    <span class="input-group-addon">Namn</span>
+                    <div>
+                        {{ organisationalUnit.Name }}
+                    </div>
+                </p>
+                <p class="input-group">
                     <span class="input-group-addon">Vem är vi?</span>
                     <div>
                         {{ organisationalUnit.ShortDescription }}

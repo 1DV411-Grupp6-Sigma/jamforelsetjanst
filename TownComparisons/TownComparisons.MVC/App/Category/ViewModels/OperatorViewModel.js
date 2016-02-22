@@ -11,7 +11,8 @@
     
     //Get Organisational Unit Info via OperatorController
     $scope.getOrganisationalUnitInfoByOUId = function (ouId) {
-        viewModelHelper.apiGet('api/operator/' + ouId, null,
+        
+        viewModelHelper.apiGet('api/operators/' + ouId, null,
             function (result) {
                 $scope.organisationalUnit = result.data;
             });

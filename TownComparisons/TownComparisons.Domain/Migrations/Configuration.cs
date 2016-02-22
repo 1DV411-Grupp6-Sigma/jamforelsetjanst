@@ -12,7 +12,7 @@ namespace TownComparisons.Domain.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = false; 
         }
 
         protected override void Seed(TownComparisons.Domain.DAL.TownComparisonsContext context)
@@ -20,6 +20,7 @@ namespace TownComparisons.Domain.Migrations
 
             string koladaWebServiceName = new KoladaTownWebService().GetName();
 
+            /*
             OrganisationalUnitInfo ouInfo1 = new OrganisationalUnitInfo()
             {
                 ShortDescription = "Lorem ipsum dolor sit amet," +
@@ -67,7 +68,7 @@ namespace TownComparisons.Domain.Migrations
                 Other = "Gymnasieskola",
             };
             context.OrganisationalUnitInfos.Add(ouInfo1);
-
+            */
 
             #region CategoryStuff
 
@@ -91,21 +92,18 @@ namespace TownComparisons.Domain.Migrations
                 Title = "Elever i åk. 9 som minst uppnått kunskapskraven för Godkänd i ämnesprovet i matematik, kommunala skolor, andel (%)"
             };
             //and some Organisational units for category
-            CategoryOrganisationalUnit ou1 = new CategoryOrganisationalUnit()
+            OrganisationalUnitInfo ou1 = new OrganisationalUnitInfo()
             {
-                WebServiceName = koladaWebServiceName,
                 OrganisationalUnitId = "V15E108000701",
                 Name = "Rödebyskolan 7-9"
             };
-            CategoryOrganisationalUnit ou2 = new CategoryOrganisationalUnit()
+            OrganisationalUnitInfo ou2 = new OrganisationalUnitInfo()
             {
-                WebServiceName = koladaWebServiceName,
                 OrganisationalUnitId = "V15E108000801",
                 Name = "Nättrabyskolan 7-9"
             };
-            CategoryOrganisationalUnit ou3 = new CategoryOrganisationalUnit()
+            OrganisationalUnitInfo ou3 = new OrganisationalUnitInfo()
             {
-                WebServiceName = koladaWebServiceName,
                 OrganisationalUnitId = "V15E108000901",
                 Name = "Fridlevstads skola F-6"
             };
