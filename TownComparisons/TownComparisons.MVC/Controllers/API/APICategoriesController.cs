@@ -37,6 +37,17 @@ namespace TownComparisons.MVC.Controllers.API
             return request.CreateResponse<GroupCategoryViewModel[]>(HttpStatusCode.OK, model.GroupCategories.ToArray());
         }
 
+
+        [HttpGet]
+        [Route("categories/alphabet")]
+        public HttpResponseMessage GetCategoriesBasedOnAlphabet(HttpRequestMessage request)
+        {
+            var categories = _service.GetAllCategoriesBasedOnAlphabet();
+            AlphabetViewModel model = new AlphabetViewModel(categories);
+            return request.CreateResponse<CategoryViewModel[]>(HttpStatusCode.OK, model.Categories.ToArray());
+           
+        }
+
         [HttpGet]
         [Route("category/{categoryId}")]
         public HttpResponseMessage GetCategory(HttpRequestMessage request, int categoryId)
