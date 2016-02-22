@@ -78,9 +78,6 @@
     <Compile Include="Models\PropertyQueryGroup.cs" />
     <Compile Include="Models\PropertyQuery.cs" />
     <Compile Include="Models\PropertyResult.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="WebServices\Models\KpiAnswer.cs" />
     <Compile Include="WebServices\Models\KpiAnswers.cs" />
@@ -103,29 +100,11 @@
     <Compile Include="WebServices\KoladaTownWebService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Debug\EntityFramework.dll" />
-    <Content Include="bin\Debug\EntityFramework.SqlServer.dll" />
-    <Content Include="bin\Debug\EntityFramework.SqlServer.xml" />
-    <Content Include="bin\Debug\EntityFramework.xml" />
-    <Content Include="bin\Debug\Newtonsoft.Json.dll" />
-    <Content Include="bin\Debug\Newtonsoft.Json.xml" />
-    <Content Include="bin\Debug\TownComparisons.Domain.dll" />
-    <Content Include="bin\Debug\TownComparisons.Domain.pdb" />
-    <Content Include="obj\Debug\TownComparisons.Domain.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\Debug\TownComparisons.Domain.dll" />
-    <Content Include="obj\Debug\TownComparisons.Domain.pdb" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="App_Data\settingsConfig.json" />
-    <None Include="bin\Debug\TownComparisons.Domain.dll.config" />
-    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <None Include="obj\Debug\TownComparisons.Domain.csprojResolveAssemblyReference.cache" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="obj\Debug\TempPE\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201602201558492_InitialMigration.resx">
       <DependentUpon>201602201558492_InitialMigration.cs</DependentUpon>
