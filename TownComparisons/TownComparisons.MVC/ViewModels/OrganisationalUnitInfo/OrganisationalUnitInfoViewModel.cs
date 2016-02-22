@@ -11,6 +11,8 @@ namespace TownComparisons.MVC.ViewModels.OrganisationalUnitInfo
 
         public string OrganisationalUnitId { get; set; }  // this is the external ID from the web service (like Kolada)
 
+        public string Name { get; set; }
+
         public string ShortDescription { get; set; }
 
         public string LongDescription { get; set; }
@@ -43,6 +45,7 @@ namespace TownComparisons.MVC.ViewModels.OrganisationalUnitInfo
         {
             Id = entity.Id;
             OrganisationalUnitId = entity.OrganisationalUnitId;
+            Name = entity.Name;
             ShortDescription = entity.ShortDescription;
             LongDescription = entity.LongDescription;
             ImagePath = entity.ImagePath;

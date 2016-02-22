@@ -9,7 +9,7 @@ namespace TownComparisons.MVC.ViewModels.Shared
 {
     public class OrganisationalUnitViewModel
     {
-        public string WebServiceName { get; set; }
+        //public string WebServiceName { get; set; }
 
         public string OrganisationalUnitId { get; set; } // Kpi id if using Kolada
 
@@ -22,9 +22,14 @@ namespace TownComparisons.MVC.ViewModels.Shared
         }
         public OrganisationalUnitViewModel(OrganisationalUnit model)
         {
-            WebServiceName = model.WebServiceName;
+            //WebServiceName = model.WebServiceName;
             OrganisationalUnitId = model.OrganisationalUnitId;
             Name = model.Name;
+        }
+        public OrganisationalUnitViewModel(Domain.Entities.OrganisationalUnitInfo entity)
+        {
+            OrganisationalUnitId = entity.OrganisationalUnitId;
+            Name = entity.Name;
         }
     }
 }

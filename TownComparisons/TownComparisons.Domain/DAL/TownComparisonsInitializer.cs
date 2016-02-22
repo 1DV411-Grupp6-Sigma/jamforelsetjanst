@@ -88,21 +88,18 @@ namespace TownComparisons.Domain.DAL
                 Title = "Elever i åk. 9 som minst uppnått kunskapskraven för Godkänd i ämnesprovet i matematik, kommunala skolor, andel (%)"
             };
             //and some Organisational units for category
-            CategoryOrganisationalUnit ou1 = new CategoryOrganisationalUnit()
+            OrganisationalUnitInfo ou1 = new OrganisationalUnitInfo()
             {
-                WebServiceName = koladaWebServiceName,
                 OrganisationalUnitId = "V15E108000701",
                 Name = "Rödebyskolan 7-9"
             };
-            CategoryOrganisationalUnit ou2 = new CategoryOrganisationalUnit()
+            OrganisationalUnitInfo ou2 = new OrganisationalUnitInfo()
             {
-                WebServiceName = koladaWebServiceName,
                 OrganisationalUnitId = "V15E108000801",
                 Name = "Nättrabyskolan 7-9"
             };
-            CategoryOrganisationalUnit ou3 = new CategoryOrganisationalUnit()
+            OrganisationalUnitInfo ou3 = new OrganisationalUnitInfo()
             {
-                WebServiceName = koladaWebServiceName,
                 OrganisationalUnitId = "V15E108000901",
                 Name = "Fridlevstads skola F-6"
             };
