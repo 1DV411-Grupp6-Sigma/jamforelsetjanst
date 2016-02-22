@@ -21,6 +21,7 @@ namespace TownComparisons.Domain.Abstract
 
 
         List<GroupCategory> GetAllCategories();
+        List<Category> GetAllCategoriesBasedOnAlphabet();
 
         Category GetCategory(int id);
 

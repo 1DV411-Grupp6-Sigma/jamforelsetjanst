@@ -1,0 +1,16 @@
+﻿<div class="content">
+    <h4>Kategorier</h4>
+
+    <!-- navbar for sorting -->
+    <dl class="sub-nav">
+        <dt>Sortera:</dt>
+        <dd><a href="#" ng-click="changeView()">Kategori</a></dd>
+        <dd class="active"><a href="#">Alla A-Ö</a></dd>
+    </dl>
+    <!-- Show categories -->
+    <ul class="categoriesList" ng-repeat="c in alphabetCategories">
+        <li>
+            <a href="#" ng-click="showCategory(c)">{{ c.Name }}</a> (få in antal här?)
+        </li>
+    </ul>
+</div>

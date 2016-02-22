@@ -6,7 +6,8 @@ var categoryModule = angular.module('category', ['common'])
         $routeProvider.when('/category/:categoryId', { templateUrl: '/App/Category/Views/CategoryView.html', controller: 'categoryViewModel' });
         $routeProvider.when('/category/:categoryId/compare', { templateUrl: '/App/Category/Views/CompareView.html', controller: 'compareViewModel' });
         $routeProvider.when('/category/:categoryId/operator/:operatorId', { templateUrl: '/App/Category/Views/OperatorView.html', controller: 'operatorViewModel' });
-        //$routeProvider.when('/ou/:ouId', { templateUrl: '/App/Categories/Views/OrganisationalUnitView.html', controller: 'organisationalUnitViewModel' });
+        //Show sorting A-Ö
+        $routeProvider.when('/categories/alphabet', { templateUrl: '/App/Categories/Views/AlphabetView.html', controller: 'alphabetViewModel' });
         $routeProvider.otherwise({ redirectTo: '/categories' });
         //$locationProvider.html5Mode(true);
         $locationProvider.html5Mode({

@@ -1,17 +1,17 @@
-﻿categoryModule.controller("categoriesViewModel", function ($scope, categoryService, $http, $q, $routeParams, $window, $location, viewModelHelper) {
+﻿categoryModule.controller("alphabetViewModel", function ($scope, categoryService, $http, $q, $routeParams, $window, $location, viewModelHelper) {
 
     $scope.viewModelHelper = viewModelHelper;
     $scope.categoryService = categoryService;
 
     var initialize = function () {
-        $scope.viewAllCategories();
+        $scope.viewCategoriesBasedOnAlphabet();
     }
 
-    //Get all categories based on category via APICategoriesController
-    $scope.viewAllCategories = function () {
-        viewModelHelper.apiGet('api/categories', null,
+    //Get all categories based on alphabet via APICategoriesController
+    $scope.viewCategoriesBasedOnAlphabet = function () {
+        viewModelHelper.apiGet('api/categories/alphabet', null,
             function (result) {
-                $scope.groupCategories = result.data;
+                $scope.alphabetCategories = result.data;
             });
     }
 
@@ -21,7 +21,7 @@
         viewModelHelper.navigateTo('category/' + category.Id);
     }
 
-     //Maybe this function should be global?
+    //Maybe this function should be global?
     $scope.changeView = function (value) {
         $scope.flags.shownFromList = true;
         if (value == undefined) {
@@ -30,7 +30,6 @@
         else {
 
             viewModelHelper.navigateTo('categories' + value);
-            //Can I run a function here?
         }
     }
 

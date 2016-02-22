@@ -180,6 +180,7 @@
     <Compile Include="ViewModels\Admin\OrganisationalUnitViewModel.cs" />
     <Compile Include="ViewModels\Admin\PropertyQueryViewModel.cs" />
     <Compile Include="ViewModels\Admin\SettingsViewModel.cs" />
+    <Compile Include="ViewModels\Shared\AlphabetViewModel.cs" />
     <Compile Include="ViewModels\Shared\CategoriesViewModel.cs" />
     <Compile Include="ViewModels\Shared\CategoryViewModel.cs" />
     <Compile Include="ViewModels\Admin\CategoryWithUnusedViewModel.cs" />
@@ -201,8 +202,10 @@
     <Content Include="App\Admin\Views\AdminCategoryView.html" />
     <Content Include="App\App.js" />
     <Content Include="App\Categories\App.js" />
+    <Content Include="App\Categories\ViewModels\AlphabetViewModel.js" />
     <Content Include="App\Categories\ViewModels\CategoriesViewModel.js" />
     <Content Include="App\Categories\ViewModels\RootViewModel.js" />
+    <Content Include="App\Categories\Views\AlphabetView.html" />
     <Content Include="App\Categories\Views\CategoriesView.html" />
     <Content Include="App\Category\App.js" />
     <Content Include="App\Category\ViewModels\OperatorViewModel.js" />
