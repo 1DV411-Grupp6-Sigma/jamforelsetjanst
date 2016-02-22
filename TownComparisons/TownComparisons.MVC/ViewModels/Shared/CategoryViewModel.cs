@@ -25,7 +25,7 @@ namespace TownComparisons.MVC.ViewModels.Shared
             Id = entity.Id;
             Name = entity.Name;
             Description = entity.Description;
-            Queries = entity.Queries.Select(q => new PropertyQueryViewModel(q, true)).ToList();
+            Queries = entity.Queries.Select(q => new PropertyQueryViewModel(q)).ToList();
             OrganisationalUnits = entity.OrganisationalUnits.Select(o => new OrganisationalUnitViewModel(o)).ToList();
         }
     }

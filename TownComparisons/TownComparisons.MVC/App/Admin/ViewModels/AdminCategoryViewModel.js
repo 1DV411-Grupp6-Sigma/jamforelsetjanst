@@ -17,6 +17,58 @@
             });
     }
 
+    $scope.saveCategory = function () {
+        setCategoryOrganisationalUnitsToUse();
+        setCategoryQueriesToUse();
+
+        viewModelHelper.apiPost('api/admin/category/' + adminService.categoryId, $scope.category.Category,
+            function (result) {
+                console.log(result.data);
+            });
+    }
+
+    var setCategoryOrganisationalUnitsToUse = function () {
+        var ousToUse = [];
+        for (var i = 0; i < $scope.category.AllOrganisationalUnits.length; i++) {
+
+            //if checked (Use == true)
+            if ($scope.category.AllOrganisationalUnits[i].Use == true) {
+                //add it
+                ousToUse.push($scope.category.AllOrganisationalUnits[i]);
+            }
+        }
+        console.log(ousToUse);
+        $scope.category.Category.OrganisationalUnits = ousToUse;
+    }
+    var setCategoryQueriesToUse = function () {
+        var queriesToUse = [];
+        for (var i = 0; i < $scope.category.AllPropertyQueryGroups.length; i++) {
+            for (var j = 0; j < $scope.category.AllPropertyQueryGroups[i].Queries.length; j++) {
+
+                //if checked (Use == true)
+                if ($scope.category.AllPropertyQueryGroups[i].Queries[j].Use == true) {
+
+                    //check not the same query already has been added (if exists in multiple query groups)
+                    var alreadyUsed = false;
+                    for (var u = 0; u < queriesToUse.length; u++) {
+                        if (queriesToUse[u].WebServiceName == $scope.category.AllPropertyQueryGroups[i].Queries[j].WebServiceName &&
+                            queriesToUse[u].QueryId == $scope.category.AllPropertyQueryGroups[i].Queries[j].QueryId) {
+                            alreadyUsed = true;
+                        }
+                    }
+                    if (!alreadyUsed) {
+                        //add it
+                        queriesToUse.push($scope.category.AllPropertyQueryGroups[i].Queries[j]);
+                    }
+                }
+            }
+        }
+        console.log(queriesToUse);
+        $scope.category.Category.Queries = queriesToUse;
+    }
+
+
+
     $scope.setStateFilter = function (filter) {
         $scope.stateFilter = filter;
     }
