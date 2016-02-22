@@ -46,5 +46,25 @@ namespace TownComparisons.MVC.Controllers.API
             return new HttpResponseMessage(HttpStatusCode.NotFound);
         }
         
+
+        [HttpPost]
+        [Route("admin/category/{categoryId}")]
+        public HttpResponseMessage SaveCategory(HttpRequestMessage request, [FromBody]CategoryViewModel category)
+        {
+            category = category;
+            return new HttpResponseMessage(HttpStatusCode.OK);
+            /*
+            Category category = _service.GetCategory(categoryId);
+            if (category != null)
+            {
+                List<OrganisationalUnit> allOrganisationalUnits = _service.GetWebServiceOrganisationalUnits();
+                List<PropertyQueryGroup> allPropertyQueryGroups = _service.GetWebServicePropertyQueries();
+                CategoryWithUnusedViewModel model = new CategoryWithUnusedViewModel(category, allOrganisationalUnits, allPropertyQueryGroups);
+                return request.CreateResponse<CategoryWithUnusedViewModel>(HttpStatusCode.OK, model);
+            }
+            return new HttpResponseMessage(HttpStatusCode.NotFound);
+            */
+        }
+
     }
 }

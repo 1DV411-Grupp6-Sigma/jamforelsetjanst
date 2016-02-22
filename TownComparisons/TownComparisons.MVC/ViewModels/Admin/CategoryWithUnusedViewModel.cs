@@ -25,6 +25,18 @@ namespace TownComparisons.MVC.ViewModels.Admin
             Category = new CategoryViewModel(category);
             AllOrganisationalUnits = allOrganisationalUnits.Select(o => new OrganisationalUnitViewModel(o)).ToList();
             AllPropertyQueryGroups = allPropertyQueryGroups.Select(p => new PropertyQueryGroupViewModel(p)).ToList();
+
+            foreach (OrganisationalUnitViewModel ou in AllOrganisationalUnits)
+            {
+                ou.Use = (Category.OrganisationalUnits.Find(cou => cou.OrganisationalUnitId == ou.OrganisationalUnitId) != null);
+            }
+            foreach (PropertyQueryGroupViewModel qg in AllPropertyQueryGroups)
+            {
+                foreach (PropertyQueryViewModel q in qg.Queries)
+                {
+                    q.Use = (Category.Queries.Find(cq => cq.WebServiceName == q.WebServiceName && cq.QueryId == q.QueryId) != null);
+                }
+            }
         }
     }
 }

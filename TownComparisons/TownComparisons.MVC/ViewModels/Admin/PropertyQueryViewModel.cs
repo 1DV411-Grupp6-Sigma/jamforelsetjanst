@@ -5,26 +5,26 @@ using System.Web;
 using TownComparisons.Domain.Entities;
 using TownComparisons.Domain.Models;
 
-namespace TownComparisons.MVC.ViewModels.Shared
+namespace TownComparisons.MVC.ViewModels.Admin
 {
-    public class PropertyQueryViewModel
+    public class PropertyQueryViewModel : Shared.PropertyQueryViewModel
     {
-        public string WebServiceName { get; set; }
+        public bool Use { get; set; }
 
-        public string QueryId { get; set; } // Kpi id if using Kolada
-
-        public string Title { get; set; } // name/title of the query
+        //.. more properties from Shared.PropertyQueryViewModel
 
 
         public PropertyQueryViewModel()
         {
             //Empty
         }
-        public PropertyQueryViewModel(PropertyQuery model)
+        public PropertyQueryViewModel(PropertyQuery model, bool use = false)
         {
             WebServiceName = model.WebServiceName;
             QueryId = model.QueryId;
             Title = model.Title;
+
+            Use = use;
         }
     }
 }
