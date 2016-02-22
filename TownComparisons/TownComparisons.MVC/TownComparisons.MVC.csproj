@@ -177,6 +177,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Admin\OrganisationalUnitViewModel.cs" />
+    <Compile Include="ViewModels\Admin\PropertyQueryViewModel.cs" />
     <Compile Include="ViewModels\Admin\SettingsViewModel.cs" />
     <Compile Include="ViewModels\Shared\CategoriesViewModel.cs" />
     <Compile Include="ViewModels\Shared\CategoryViewModel.cs" />
@@ -184,7 +186,7 @@
     <Compile Include="ViewModels\Shared\GroupCategoryViewModel.cs" />
     <Compile Include="ViewModels\Shared\OrganisationalUnitsViewModel.cs" />
     <Compile Include="ViewModels\Shared\OrganisationalUnitViewModel.cs" />
-    <Compile Include="ViewModels\Shared\PropertyQueryGroupViewModel.cs" />
+    <Compile Include="ViewModels\Admin\PropertyQueryGroupViewModel.cs" />
     <Compile Include="ViewModels\Shared\PropertyQueryViewModel.cs" />
     <Compile Include="ViewModels\OrganisationalUnitInfo\OrganisationalUnitInfoViewModel.cs" />
   </ItemGroup>
