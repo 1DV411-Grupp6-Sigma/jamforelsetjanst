@@ -6,26 +6,35 @@
 
 var collector = angular.module('collector', []);
 
-collector.factory('collectorFactory', function () {
+collector.factory('collectorFactory', ['$cookies', function ($cookies) {
     var factory = {};
+    //Name of cookie
+    var savedList = "savedList";
+    //Expiration
+    var expire = new Date(new Date().getTime() + 180 * 60000);
+
     //List that contains all selected subjects
-    factory.listOfSubjects = [];
+    factory.listOfSubjects = $cookies.getObject(savedList) || [];
+    
 
     //Add a subject to list
     factory.addSubject = function (subject) {
         factory.listOfSubjects.push(subject);
+        $cookies.putObject(savedList, factory.listOfSubjects, { "expires": expire });
     }
 
     //Deletes from list
     factory.deleteSubject = function(subject) {
         factory.listOfSubjects.splice(factory.listOfSubjects.indexOf(subject), 1);
+        $cookies.remove(savedList);
+        $cookies.putObject(savedList, factory.listOfSubjects, { "expires": expire });
     }
 
     //Deletes from list if exists, else adds to list
     factory.toggleSubject = function(subject) {
         var exists = false;
         for (var i = 0; i < factory.listOfSubjects.length; i++) {
-            if (factory.listOfSubjects[i] === subject) {
+            if (factory.listOfSubjects[i].OrganisationalUnitId === subject.OrganisationalUnitId) {
                 exists = true;
             } 
         }
@@ -40,10 +49,11 @@ collector.factory('collectorFactory', function () {
     //Deletes all in list
     factory.deleteAllSubjects = function() {
         factory.listOfSubjects.length = 0;
+        $cookies.remove(savedList);
     }
 
     return factory;
-});
+}]);
 
 //INSTRUCTIONS
 //htmlpage = AndreasTest/Index.cshtml
