@@ -17,3 +17,22 @@
   font-size: 20px; }
 .accordion-navigation.active > a:after {
   content: "↟"; }
+
+#compare{
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    position: fixed;
+    right: 50px;
+    ul{
+        margin:0;
+        padding: 0;
+    }
+    li{
+        list-style: none;
+        padding: 0;
+    }
+}
+
+.pointer{
+    cursor: pointer
+}

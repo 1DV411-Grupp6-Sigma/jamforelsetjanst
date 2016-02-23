@@ -1,8 +1,8 @@
-﻿categoryModule.controller("categoryViewModel", function ($scope, categoryService, $http, $q, $routeParams, $window, $location, viewModelHelper, collectorFactory) {
+﻿categoryModule.controller("categoryViewModel", function ($rootScope, $scope, categoryService, $http, $q, $routeParams, $window, $location, viewModelHelper, collectorFactory) {
 
     $scope.viewModelHelper = viewModelHelper;
     $scope.categoryService = categoryService;
-
+    
 
     var initialize = function () {
         $scope.getOrganisationalUntsByCategoryId($routeParams.categoryId);
@@ -15,10 +15,6 @@
             });
     }
 
-    $scope.addOperatorToCompareList = function(operator) {
-        $scope.categoryService.addSubject(operator);
-        console.log($scope.categoryService.getSubjectList());
-    }
 
     //Show OU:s inside a category
     $scope.showOperator = function (ou) {
@@ -27,18 +23,22 @@
     }
 
     //List with selected OU's
-    $scope.listItems = collectorFactory.listOfSubjects;
-
+    $rootScope.listItems = collectorFactory.listOfSubjects;
+    
     //Toggle OU on the $scope.listItems
-    $scope.toggleOperators = function (subject) {
+    $rootScope.toggleOperators = function (subject) {
         collectorFactory.toggleSubject(subject);
-        console.log($scope.listItems);
+    }
+
+    $rootScope.deleteOperator = function(subject) {
+        collectorFactory.deleteSubject(subject);
     }
 
     //Deletes all item on $scope.listItems
-    $scope.deleteAllOperators = function () {
+    $rootScope.deleteAllOperators = function () {
         collectorFactory.deleteAllSubjects();
     }
+
 
     initialize();
 });
