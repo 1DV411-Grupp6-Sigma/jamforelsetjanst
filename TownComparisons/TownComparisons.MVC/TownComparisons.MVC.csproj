@@ -1118,7 +1118,7 @@
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Angular\Admin.cshtml" />
     <Content Include="Views\Angular\Index.cshtml" />
-    <Content Include="Views\Angular\Result.cshtml" />
+    <Content Include="Views\Angular\Compare.cshtml" />
     <Content Include="Views\Angular\Category.cshtml" />
     <Content Include="Views\Angular\Operator.cshtml" />
     <Content Include="Views\Angular\Operators.cshtml" />

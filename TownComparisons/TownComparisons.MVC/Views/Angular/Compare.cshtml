@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Angular>Compare.cshtml";
+}
+@section scripts {
+    <script src="~/App/Category/App.js"></script>
+    <script src="~/App/Category/ViewModels/RootViewModel.js"></script>
+    <script src="~/App/Category/ViewModels/CompareViewModel.js"></script>
+}
+
+<div data-ng-app="category" id="category" data-ng-controller="rootViewModel">
+    <div class="container">
+        <h3>{{ pageHeading }}</h3>
+        <p>
+            Angular>Compare.cshtml
+        </p>
+
+        <div ng-view></div>
+    </div>
+</div>
