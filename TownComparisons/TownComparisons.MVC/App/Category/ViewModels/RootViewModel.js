@@ -6,8 +6,9 @@
     $scope.flags = { shownFromList: false };
 
     var initialize = function () {
-        $scope.pageHeading = "Kategori";
+        $scope.pageHeading = "Kategori ?? Används denna???";
     }
+
     
 
     initialize();

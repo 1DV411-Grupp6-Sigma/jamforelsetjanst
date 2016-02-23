@@ -2,7 +2,7 @@
 
     $scope.viewModelHelper = viewModelHelper;
     $scope.categoryService = categoryService;
-
+    
 
     var initialize = function () {
         $scope.getOrganisationalUnitInfoByOUId($routeParams.operatorId); // testa "V15E128300201"

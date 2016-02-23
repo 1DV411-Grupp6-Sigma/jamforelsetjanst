@@ -3,7 +3,7 @@
 {{ 10 + 5}}
 <div ng-repeat="ou in organisationalUnits">
     <div class="row">
-        <div class="small-5 columns">
+        <div class="small-5 columns end">
             <h5><a href="#" ng-click="showOperator(ou)">{{ ou.Name }}</a></h5>
         </div>
     </div>
@@ -15,7 +15,6 @@
         <div class="small-4 columns">
             <div class="row">
                 <a href="" ng-click="toggleOperators(ou)">Jämför</a>
-                <!--<a href="" ng-click="addOperatorToCompareList(ou)">Jämför</a>-->
             </div>
             <div class="row">
                 <a href="#">Karta</a>
