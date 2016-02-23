@@ -4,6 +4,7 @@ var categoryModule = angular.module('category', ['common'])
         $routeProvider.when('/category/:categoryId', { templateUrl: '/App/Category/Views/CategoryView.html', controller: 'categoryViewModel' });
         $routeProvider.when('/category/:categoryId/compare', { templateUrl: '/App/Category/Views/CompareView.html', controller: 'compareViewModel' });
         $routeProvider.when('/category/:categoryId/operator/:operatorId', { templateUrl: '/App/Category/Views/OperatorView.html', controller: 'operatorViewModel' });
+        $routeProvider.when('/compare', { templateUrl: '/App/Category/Views/CompareView.html', controller: 'compareViewModel' });
         $routeProvider.otherwise({ redirectTo: '/' });
 
         $locationProvider.html5Mode({
