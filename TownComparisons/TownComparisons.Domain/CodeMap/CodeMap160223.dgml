@@ -5,7 +5,7 @@
     <Node Id="(@1 @3 @45 Member=(Name=GetSession OverloadingParameters=[(@52 Namespace=System Type=String)]))" Category="CodeSchema_Method" Bounds="301.197286927818,65.0329107451486,94.14,25.96" CodeSchemaProperty_IsPublic="True" DelayedCrossGroupLinksState="Fetched" Label="GetSession" UseManualLocation="True" />
     <Node Id="(@1 @3 @45 Member=.ctor)" Category="CodeSchema_Method" Bounds="301.197286927818,120.992910745149,117.403333333333,25.96" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" DelayedCrossGroupLinksState="Fetched" Label="SessionHandler" UseManualLocation="True" />
     <Node Id="(@1 @9 Type=Location)" Category="CodeSchema_Class" Bounds="934.206666666665,0,106.123333333333,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="Location" />
-    <Node Id="(@1 @9 Type=Municipality_Unused)" Category="CodeSchema_Class" Bounds="1070.33,0,170.8,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="Municipality_Unused" />
+    <Node Id="(@1 @9 Type=Municipality_Unused)" Category="CodeSchema_Class" Bounds="1070.33,5.45644046985367,170.8,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="Municipality_Unused" UseManualLocation="True" />
     <Node Id="@10" Category="CodeSchema_Namespace" Bounds="826.431034388771,616.445187611813,479.148333333334,253.375283333341" DelayedChildNodesState="Incomplete" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="7" Group="Expanded" Label="TownComparisons‎.Domain‎.Entities" UseManualLocation="True" />
     <Node Id="@11" Category="CodeSchema_Namespace" Bounds="902.539046953557,56.443887611813,240.736666666667,85.0002" DelayedChildNodesState="Fetched" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="2" Group="Expanded" Label="TownComparisons‎.Domain‎.Helpers" UseManualLocation="True" />
     <Node Id="@13" Category="CodeSchema_Namespace" Bounds="885.646210919479,899.820454278482,401.776666666667,250.0005" DelayedChildNodesState="Incomplete" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="5" Group="Expanded" Label="TownComparisons‎.Domain‎.Models" />
@@ -51,6 +51,7 @@
     <Node Id="@51" Category="CodeSchema_Class" Bounds="503.004999999998,840,123.716666666667,25" CodeSchemaProperty_IsInternal="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="UnitOfWork" />
     <Node Id="@6" Category="CodeSchema_Namespace" Bounds="911.598358476533,281.444587611814,345.823333333334,305.0006" DelayedChildNodesState="Fetched" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="6" Group="Expanded" Label="TownComparisons‎.Domain‎.Abstract" UseManualLocation="True" />
     <Node Id="@8" Category="CodeSchema_Namespace" Bounds="1437.84957406173,-394.527121011426,442.495000000004,140.0003" DelayedChildNodesState="Incomplete" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="4" Group="Expanded" Label="TownComparisons‎.Domain‎.DAL" UseManualLocation="True" />
+    <Node Id="KanRaderas?" Category="Comment" Bounds="1111.07483886719,-50.5036595298934,87.52,25.96" Label="Kan raderas?" UseManualLocation="True" />
   </Nodes>
   <Links>
     <Link Source="@10" Target="(@1 @9 Type=Location)" Category="Contains" FetchingParent="@10" />
@@ -272,6 +273,7 @@
     <Category Id="CodeSchema_Namespace" Label="Namespace" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Type" Icon="CodeSchema_Namespace" NavigationActionLabel="Namespaces" />
     <Category Id="CodeSchema_ReturnTypeLink" Label="Return" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Return types" OutgoingActionLabel="Return types" />
     <Category Id="CodeSchema_Type" Label="Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" NavigationActionLabel="Types" />
+    <Category Id="Comment" Label="Comment" Description="Represents a user defined comment on the diagram" CanBeDataDriven="True" IsProviderRoot="False" NavigationActionLabel="Comments" />
     <Category Id="Contains" Label="Contains" Description="Whether the source of the link contains the target object" CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Contained By" IsContainment="True" OutgoingActionLabel="Contains" />
     <Category Id="File" Label="File" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="File" NavigationActionLabel="Files" />
     <Category Id="FileSystem.Category.FileOfType.dll" BasedOn="CodeSchema_Assembly" CanBeDataDriven="True" IsProviderRoot="False" />
@@ -598,6 +600,14 @@
       <Setter Property="Stroke" Value="#9A9A9A" />
       <Setter Property="StrokeDashArray" Value="2 2" />
       <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Comment" ValueLabel="Has comment">
+      <Condition Expression="HasCategory('Comment')" />
+      <Setter Property="Background" Value="#FFFFFACD" />
+      <Setter Property="Stroke" Value="#FFE5C365" />
+      <Setter Property="StrokeThickness" Value="1" />
+      <Setter Property="NodeRadius" Value="2" />
+      <Setter Property="MaxWidth" Value="250" />
     </Style>
   </Styles>
   <Paths>
