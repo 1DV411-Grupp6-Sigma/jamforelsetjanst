@@ -1,8 +1,36 @@
 ﻿<h3>CompareView</h3>
 
 <!--Tabel with chosen operators from "compare"-->
-<ul ng-repeat="operator in operators">
+<!--<ul ng-repeat="operator in operators">
     <li>
-        {{ operator.Name }}
+        {{ operator.ID }}
     </li>
-</ul>
+</ul>-->
+<table class="dataTable row-border hover" datatable="ng" dt-options="vm.dtOptions">
+    <thead>
+        <tr>
+            <th class="secondary-text">
+                <div class="table-header">
+                    <span class="column-title">Operator ID</span>
+                </div>
+            </th>
+            <th class="secondary-text">
+                <div class="table-header">
+                    <span class="column-title">Namn</span>
+                </div>
+            </th>
+            <th class="secondary-text">
+                <div class="table-header">
+                    <span class="column-title">KPI</span>
+                </div>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="operator in operators">
+            <td>{{ operator.ID }}</td>
+            <td>{{ operator.Name }}</td>
+            <td>{{ operator.KPI }}</td>
+        </tr>
+    </tbody>
+</table>
