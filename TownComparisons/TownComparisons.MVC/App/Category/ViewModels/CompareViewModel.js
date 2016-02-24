@@ -1,18 +1,21 @@
-﻿categoryModule.controller("compareViewModel", function ($scope, categoryService, $http, $q, $routeParams, $window, $location, viewModelHelper, collectorFactory) {
+﻿categoryModule.controller("compareViewModel", function ($scope, $rootScope, categoryService, $http, $q, $routeParams, $window, $location, viewModelHelper, collectorFactory) {
 
     $scope.viewModelHelper = viewModelHelper;
     $scope.categoryService = categoryService;
-    //$scope.operators = collectorFactory.listOfSubjects;
+    //$scope.operatorIds = $rootScope.operatorIds;
+    $scope.operatorIDs = ["1", "2", "3", "4", "5", "6"]; //$rootScope.operatorIds;
     $scope.operators = [
             {
-                Name: "Skola1"
+                ID: 1,
+                Name: "Tallbackaskolan",
+                KPI: "Get KPI from Kolada"
             },
             {
-                Name: "Skola2"
+                ID: 2,
+                Name: "Hemskolan",
+                KPI: "KPI"
             }
     ];
-
-    console.log($scope.operators[0].Name);
 
     //var initialize = function () {
     //    $scope.getOrganisationalUntsByCategoryId(1);
