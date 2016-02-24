@@ -1,36 +1,41 @@
 ﻿<h3>CompareView</h3>
 
-<!--Tabel with chosen operators from "compare"-->
-<!--<ul ng-repeat="operator in operators">
-    <li>
-        {{ operator.ID }}
-    </li>
-</ul>-->
-<table class="dataTable row-border hover" datatable="ng" dt-options="vm.dtOptions">
+<!--Tabel with chosen operators-->
+<table class="dataTable row-border hover" datatable="ng">
+    <caption>Jämförelse </caption>
     <thead>
         <tr>
             <th class="secondary-text">
                 <div class="table-header">
-                    <span class="column-title">Operator ID</span>
+                    <span class="column-title"></span>
                 </div>
             </th>
             <th class="secondary-text">
                 <div class="table-header">
-                    <span class="column-title">Namn</span>
+                    <span class="column-title">Allmän fakta</span>
                 </div>
             </th>
             <th class="secondary-text">
                 <div class="table-header">
-                    <span class="column-title">KPI</span>
+                    <span class="column-title">Enkätundersökning 2015</span>
                 </div>
             </th>
         </tr>
     </thead>
     <tbody>
         <tr ng-repeat="operator in operators">
-            <td>{{ operator.ID }}</td>
-            <td>{{ operator.Name }}</td>
-            <td>{{ operator.KPI }}</td>
+            <td>
+                <div class="small-4 columns">
+                    {{ operator.img }}
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Lmspic.png" />
+                </div>
+                <div>
+                    {{ operator.Name }}<br />
+                    {{ operator.address }}Adress
+                </div>
+            </td>
+            <td></td>
+            <td></td>
         </tr>
     </tbody>
 </table>
