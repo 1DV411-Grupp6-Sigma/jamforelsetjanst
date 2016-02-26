@@ -1,4 +1,4 @@
-﻿categoryModule.controller("rootViewModel", function ($scope, categoryService, $http, $q, $routeParams, $window, $location, viewModelHelper) {
+﻿categoryModule.controller("rootViewModel", function ($rootScope, $scope, categoryService, $http, $q, $routeParams, $window, $location, viewModelHelper, collectorFactory) {
 
     $scope.viewModelHelper = viewModelHelper;
     $scope.categoryService = categoryService;
@@ -8,6 +8,9 @@
     var initialize = function () {
         $scope.pageHeading = "Hitta och jämför service";
     }
+
+    //List with selected OU's
+    $rootScope.listItems = collectorFactory.listOfSubjects;
 
     /*$scope.categoriesList = function () {
         viewModelHelper.navigateTo('categories');
