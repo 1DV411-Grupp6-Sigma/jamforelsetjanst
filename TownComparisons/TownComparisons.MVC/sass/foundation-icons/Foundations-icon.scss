@@ -3,7 +3,7 @@
 //Add styles below
 
 $green: green;
-$blue: #blue;
+$blue: blue;
 $symbolSize: xx-large;
 
 .fi-check{
@@ -12,6 +12,6 @@ $symbolSize: xx-large;
 }
 
 .fi-plus{
-    color: $blue;
-    font-size: $symbolSize;
+    font-size: large;
+    margin-right: 4px;
 }
