@@ -1,7 +1,11 @@
 ﻿
 <h3>Aktörer</h3>
-{{ 10 + 5}}
-<div ng-repeat="ou in organisationalUnits">
+<div id="search" class="row">
+    <div class="small-4 columns end">
+        <input id="search-box" placeholder="Sök" type="text" data-ng-model="filter.name" />
+    </div>
+</div>
+<div ng-repeat="ou in organisationalUnits | filter:filter.name">
     <div class="row">
         <div class="small-5 columns end">
             <h5><a href="#" ng-click="showOperator(ou)">{{ ou.Name }}</a></h5>
