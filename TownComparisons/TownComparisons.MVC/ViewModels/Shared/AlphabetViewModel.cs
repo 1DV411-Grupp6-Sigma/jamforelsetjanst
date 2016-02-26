@@ -9,6 +9,8 @@ namespace TownComparisons.MVC.ViewModels.Shared
     public class AlphabetViewModel
     {
         public List<CategoryViewModel> Categories { get; set; }
+        public List<OrganisationalUnitsViewModel> OrganisationalUnits { get; set; }
+        public List<GroupCategoryViewModel> GroupCategory { get; set; }
 
         public AlphabetViewModel()
         {
@@ -16,7 +18,9 @@ namespace TownComparisons.MVC.ViewModels.Shared
         }
         public AlphabetViewModel(List<Category> groupCategories)
         {
+            GroupCategory = groupCategories.Select(g => new GroupCategoryViewModel(g.GroupCategory)).ToList();
             Categories = groupCategories.Select(c => new CategoryViewModel(c)).ToList();
+            OrganisationalUnits = groupCategories.Select(c => new OrganisationalUnitsViewModel(c.OrganisationalUnits.ToList())).ToList();
         }
     }
 }
