@@ -7,6 +7,25 @@
  * 2. Prevent iOS text size adjust after orientation change, without disabling
  *    user zoom.
  */
+
+.before-compare{
+    width: 100px;
+    border: 1px solid #eee;
+    text-align: center;
+}
+
+.after-compare{
+    width: 100px;
+    border: 1px solid #eee;
+    background-color: #eee;
+    text-align: center;
+}
+
+.after-compare a:link, .after-compare a:visited{
+    color: #90D495;
+}
+
+
 html {
   font-family: sans-serif;
   /* 1 */

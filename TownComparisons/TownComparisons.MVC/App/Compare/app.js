@@ -41,6 +41,9 @@ collector.factory('collectorFactory', ['$cookies', function ($cookies) {
 
         if (exists) {
             factory.deleteSubject(subject);
+            subject.icon = "fi-plus";
+            subject.class = "beforeCompare";
+            subject.text = "Jämför";
         } else {
             factory.addSubject(subject);
         }
