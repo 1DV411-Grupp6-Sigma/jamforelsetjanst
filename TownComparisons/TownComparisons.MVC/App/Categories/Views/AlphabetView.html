@@ -10,7 +10,7 @@
     <!-- Show categories -->
     <ul class="categoriesList" ng-repeat="c in alphabetCategories">
         <li>
-            <a href="#" ng-click="showCategory(c)">{{ c.Name }}</a> (få in antal här?)
+            <a href="#" ng-click="showCategory(c)">{{ c.Name }}</a> ({{ c.OrganisationalUnits.length }})
         </li>
     </ul>
 </div>
