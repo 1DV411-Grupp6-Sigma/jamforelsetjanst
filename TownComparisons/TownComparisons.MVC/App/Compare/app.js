@@ -20,14 +20,22 @@ collector.factory('collectorFactory', ['$cookies', function ($cookies) {
     //Add a subject to list
     factory.addSubject = function (subject) {
         factory.listOfSubjects.push(subject);
+
+        console.log(factory.listOfSubjects.indexOf(subject));
+
         $cookies.putObject(savedList, factory.listOfSubjects, { "expires": expire });
     }
 
     //Deletes from list
     factory.deleteSubject = function(subject) {
+        console.log(subject.Name);
+        console.log(factory.listOfSubjects);
+        console.log(factory.listOfSubjects.indexOf(subject));
+        
         factory.listOfSubjects.splice(factory.listOfSubjects.indexOf(subject), 1);
-        $cookies.remove(savedList);
+
         $cookies.putObject(savedList, factory.listOfSubjects, { "expires": expire });
+        
     }
 
     //Deletes from list if exists, else adds to list
