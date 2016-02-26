@@ -139,13 +139,13 @@ namespace TownComparisons.Domain
         public List<Category> GetAllCategoriesBasedOnAlphabet()
         {
             string cacheKey = "getAllCategoriesBasedOnAlphabet";
-
+            
             if (_cache.HasValue(cacheKey))
             {
                 return (List<Category>)_cache.GetCache(cacheKey);
             }
 
-            var listOfAllCategories = _unitOfWork.CategoriesRepository.Get(null, null, "Queries, OrganisationalUnits").OrderBy(n => n.Name).ToList();
+            var listOfAllCategories = _unitOfWork.CategoriesRepository.Get(null, null, "GroupCategory, OrganisationalUnits").OrderBy(n => n.Name).ToList();
 
             return listOfAllCategories;
 
