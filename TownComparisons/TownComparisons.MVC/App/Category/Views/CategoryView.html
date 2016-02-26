@@ -6,6 +6,9 @@
     </div>
 </div>
 <div ng-repeat="ou in organisationalUnits | filter:filter.name">
+    {{ getStandardSettings(ou)}}
+    
+    {{ checkWhichSchoolsAreCompared(ou) }}
     <div class="row">
         <div class="small-5 columns end">
             <h5><a href="#" ng-click="showOperator(ou)">{{ ou.Name }}</a></h5>
@@ -18,7 +21,7 @@
         <div class="small-6 columns">Lorem ipsum dolor sit amet, mea id epicuri consetetur, quo te etiam minim reformidans. Quo at numquam persecuti, ad his amet soleat ??.</div>
         <div class="small-4 columns">
             <div class="row">
-                <a href="" ng-click="toggleOperators(ou)">Jämför</a>
+                <div class="{{ ou.class }}"><a href="" ng-click="toggleOperators(ou)"><i class="{{ ou.icon }}"></i>{{ ou.text}}</a></div>
             </div>
             <div class="row">
                 <a href="#">Karta</a>
