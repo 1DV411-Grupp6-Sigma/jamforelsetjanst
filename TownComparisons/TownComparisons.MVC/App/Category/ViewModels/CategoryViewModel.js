@@ -61,6 +61,8 @@
         $scope.visibleName = '';
         $scope.visibleId = 'invisible';
         $scope.fileName = 'sortAsc';
+        $scope.activeName = 'active';
+        $scope.activeId = '';
 
         if ($scope.sortBy == 'Name') {
             $scope.sortBy = '-Name';
@@ -77,6 +79,8 @@
         $scope.visibleId = '';
         $scope.visibleName = 'invisible';
         $scope.fileId = 'sortAsc';
+        $scope.activeName = '';
+        $scope.activeId = 'active';
 
         if ($scope.sortBy == 'OrganisationalUnitId') {
             $scope.sortBy = '-OrganisationalUnitId';
