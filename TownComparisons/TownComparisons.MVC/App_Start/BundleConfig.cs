@@ -29,7 +29,7 @@ namespace TownComparisons.MVC
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                         "~/Content/site.css",
-                        "~/sass/foundation-icons/foundation-icons.css"));
+                        "~/Content/Foundations-icon.css"));
 
             #region Foundation Bundles
 
