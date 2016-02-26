@@ -217,14 +217,24 @@
     <Content Include="App\Category\ViewModels\CategoryViewModel.js" />
     <Content Include="App\Compare\app.js" />
     <Content Include="App\Validator.js" />
+    <Content Include="Content\Foundations-icon.css" />
+    <Content Include="Content\Foundations-icon.min.css">
+      <DependentUpon>Foundations-icon.css</DependentUpon>
+    </Content>
     <Content Include="Content\Site.min.css">
       <DependentUpon>Site.css</DependentUpon>
     </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="sass\foundation-icons\foundation-icons.css" />
+    <None Include="sass\foundation-icons\foundation-icons-master.scss" />
     <Content Include="sass\foundation-icons\foundation-icons.svg" />
+    <Content Include="sass\foundation-icons\Foundations-icon.css">
+      <DependentUpon>Foundations-icon.scss</DependentUpon>
+    </Content>
+    <Content Include="sass\foundation-icons\Foundations-icon.min.css">
+      <DependentUpon>Foundations-icon.css</DependentUpon>
+    </Content>
     <Content Include="sass\foundation-icons\preview.html" />
     <Content Include="sass\foundation-icons\svgs\fi-address-book.svg" />
     <Content Include="sass\foundation-icons\svgs\fi-alert.svg" />
@@ -615,11 +625,11 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
-    <Content Include="sass\foundation-icons\.DS_Store" />
     <Content Include="sass\foundation-icons\.fontcustom-data" />
     <Content Include="sass\foundation-icons\foundation-icons.eot" />
     <Content Include="sass\foundation-icons\foundation-icons.ttf" />
     <Content Include="sass\foundation-icons\foundation-icons.woff" />
+    <Content Include="sass\foundation-icons\Foundations-icon.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\foundation\fastclick.js" />
     <Content Include="Scripts\foundation\foundation.abide.js" />
