@@ -56,12 +56,7 @@ collector.factory('collectorFactory', ['$cookies', function ($cookies) {
 }]);
 
 //INSTRUCTIONS
-//htmlpage = AndreasTest/Index.cshtml
-
-//TEST APP
-var testApp = angular.module("testApp", ['common']);
-
-//TEST CONTROLLER
+/*
 testApp.controller("listViewModel", ['$scope', 'collectorFactory', function ($scope, collectorFactory) {
 
     //Dummy data
@@ -90,3 +85,4 @@ testApp.controller("listViewModel", ['$scope', 'collectorFactory', function ($sc
         collectorFactory.deleteAllSubjects();
     }
 }]);
+*/
