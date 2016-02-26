@@ -5,9 +5,21 @@
         <input id="search-box" placeholder="Sök" type="text" data-ng-model="filter.name" />
     </div>
 </div>
-<div ng-repeat="ou in organisationalUnits | filter:filter.name">
+<div id="sort" class="row">
+    <div class="small-3 columns end">
+        <p>Sortera efter:</p>
+    </div>
+    <div class="small-4 columns end">
+        <a href="" ng-click="sortOuById()">Id</a>
+        <img class="{{ visibleId }}" src="/Content/pictures/{{ fileId }}.png" ng-click="sortOuById()" />
+        <a href="" ng-click="sortOuByName()">Namn</a>
+        <img class="{{ visibleName }}" src="/Content/pictures/{{ fileName }}.png" ng-click="sortOuByName()" />
+    </div>
+</div>
+
+<div ng-repeat="ou in organisationalUnits | filter:filter.name | orderBy:sortByOrder + sortBy">
     {{ getStandardSettings(ou)}}
-    
+
     {{ checkWhichSchoolsAreCompared(ou) }}
     <div class="row">
         <div class="small-5 columns end">

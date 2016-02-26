@@ -6,6 +6,7 @@
 
     var initialize = function () {
         $scope.getOrganisationalUntsByCategoryId($routeParams.categoryId);
+        $scope.sortOuById();
     }
 
     $scope.getStandardSettings = function (ou) {
@@ -55,6 +56,37 @@
         collectorFactory.deleteAllSubjects();
     }
 
+    // Sorts the Organisational Units by Name (Desc).
+    $rootScope.sortOuByName = function () {
+        $scope.visibleName = '';
+        $scope.visibleId = 'invisible';
+        $scope.fileName = 'sortAsc';
+
+        if ($scope.sortBy == 'Name') {
+            $scope.sortBy = '-Name';
+            $scope.fileName = 'sortDesc';
+        }
+        else {
+            $scope.sortBy = 'Name';
+            $scope.fileName = 'sortAsc';
+        }
+    }
+
+    // Sorts the Organisational Units by Id (Desc).
+    $rootScope.sortOuById = function () {
+        $scope.visibleId = '';
+        $scope.visibleName = 'invisible';
+        $scope.fileId = 'sortAsc';
+
+        if ($scope.sortBy == 'OrganisationalUnitId') {
+            $scope.sortBy = '-OrganisationalUnitId';
+            $scope.fileId = 'sortDesc';
+        }
+        else {
+            $scope.sortBy = 'OrganisationalUnitId';
+            $scope.fileId = 'sortAsc';
+        }
+    }
 
     initialize();
 });
