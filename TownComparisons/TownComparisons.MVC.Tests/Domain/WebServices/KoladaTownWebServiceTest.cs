@@ -3,6 +3,8 @@ using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TownComparisons.Domain.WebServices;
 using TownComparisons.Domain.Models;
+using TownComparisons.Domain.Entities;
+using TownComparisons.Domain.Helpers;
 
 namespace TownComparisons.MVC.Tests.Domain.WebServices
 {
@@ -35,13 +37,46 @@ namespace TownComparisons.MVC.Tests.Domain.WebServices
 
         }
 
-        //For Development, _webService.FetchMunicipalityInfo() is private in production code
-        //[TestMethod]
-        //public void Test_GetMunicipality_NoExceptionsThrown()
-        //{
-        //   
-        //   _webService.FetchMunicipalityInfo();
+        /// <summary>
+        /// Test that method will read data from Database from known ID
+        /// </summary>
+        [TestMethod()]
+        public void Test_KoladaTownWebService_GetOrganisationalUnitTest()
+        {
+            string UnitId = "V15E108000901";
+            var expected = new OrganisationalUnitInfo();
+            expected.Id = 3;
+            expected.Name = "Fridlevstads skola F-6";
+            expected.OrganisationalUnitId = "V15E108000901";
 
-        //}
+            _webService = new KoladaTownWebService();
+            var actual = _webService.GetOrganisationalUnit(UnitId);
+
+            Assert.AreEqual(actual.Name, expected.Name);
+            Assert.AreEqual(actual.OrganisationalUnitId, expected.OrganisationalUnitId);
+        }
+
+        /// <summary>
+        /// Test if it is possible to assign value to properties of instance of class OrganisationalUnitInfo
+        /// </summary>
+        [TestMethod]
+        public void Test_Settings_DeclareOrganisationalUnitInfo()
+        {
+            int id = 4;
+            string name = "testName";
+
+            var ouTest = new OrganisationalUnitInfo();
+            try
+            {
+                ouTest.Id = id;
+                ouTest.Name = name;
+            }
+            catch
+            {
+                Assert.Fail();
+            }
+           
+        }
+       
     }
 }

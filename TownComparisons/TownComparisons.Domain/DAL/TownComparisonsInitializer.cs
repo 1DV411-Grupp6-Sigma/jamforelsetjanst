@@ -17,53 +17,53 @@ namespace TownComparisons.Domain.DAL
 
             string koladaWebServiceName = new KoladaTownWebService().GetName();
 
-            OrganisationalUnitInfo ouInfo1 = new OrganisationalUnitInfo()
-            {
-                ShortDescription = "Lorem ipsum dolor sit amet," +
-                                   "consectetur adipiscing elit, sed do eiusmod tempor" +
-                                   "incididunt ut labore et dolore magna aliqua. Ut enim ad" +
-                                   "minim veniam, quis nostrud exercitation ullamco laboris nisi" +
-                                   "ut aliquip ex ea commodo consequat. Duis aute irure dolor in" +
-                                   "reprehenderit in voluptate velit esse cillum dolore eu fugiat" +
-                                   "nulla pariatur. Excepteur sint occaecat cupidatat non proident," +
-                                   "sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                LongDescription = "Lorem ipsum dolor sit amet," +
-                                   "consectetur adipiscing elit, sed do eiusmod tempor" +
-                                   "incididunt ut labore et dolore magna aliqua. Ut enim ad" +
-                                   "minim veniam, quis nostrud exercitation ullamco laboris nisi" +
-                                   "ut aliquip ex ea commodo consequat. Duis aute irure dolor in" +
-                                   "reprehenderit in voluptate velit esse cillum dolore eu fugiat" +
-                                   "nulla pariatur. Excepteur sint occaecat cupidatat non proident," +
-                                   "sunt in culpa qui officia deserunt mollit anim id est laborum." +
-                                   "Lorem ipsum dolor sit amet," +
-                                   "consectetur adipiscing elit, sed do eiusmod tempor" +
-                                   "incididunt ut labore et dolore magna aliqua. Ut enim ad" +
-                                   "minim veniam, quis nostrud exercitation ullamco laboris nisi" +
-                                   "ut aliquip ex ea commodo consequat. Duis aute irure dolor in" +
-                                   "reprehenderit in voluptate velit esse cillum dolore eu fugiat" +
-                                   "nulla pariatur. Excepteur sint occaecat cupidatat non proident," +
-                                   "sunt in culpa qui officia deserunt mollit anim id est laborum." +
-                                   "Lorem ipsum dolor sit amet," +
-                                   "consectetur adipiscing elit, sed do eiusmod tempor" +
-                                   "incididunt ut labore et dolore magna aliqua. Ut enim ad" +
-                                   "minim veniam, quis nostrud exercitation ullamco laboris nisi" +
-                                   "ut aliquip ex ea commodo consequat. Duis aute irure dolor in" +
-                                   "reprehenderit in voluptate velit esse cillum dolore eu fugiat" +
-                                   "nulla pariatur. Excepteur sint occaecat cupidatat non proident," +
-                                   "sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                OrganisationalUnitId = "V15E128300201",
-                ImagePath = "",
-                Address = "Essingestråket 24 112 66 Stockholm",
-                Telephone = "08-441 30 30",
-                Contact = "Sophie Maraux, rektor gymnasium",
-                Email = "secretariat@​lfsl.net",
-                OrganisationalForm = "Fristående/privat",
-                Website= "http:/​/​www.​lfsl.​net/ ",
-                Latitude="",
-                Longitude="",
-                Other= "Gymnasieskola",
-            };
-            context.OrganisationalUnitInfos.Add(ouInfo1);
+            //OrganisationalUnitInfo ouInfo1 = new OrganisationalUnitInfo()
+            //{
+            //    ShortDescription = "Lorem ipsum dolor sit amet," +
+            //                       "consectetur adipiscing elit, sed do eiusmod tempor" +
+            //                       "incididunt ut labore et dolore magna aliqua. Ut enim ad" +
+            //                       "minim veniam, quis nostrud exercitation ullamco laboris nisi" +
+            //                       "ut aliquip ex ea commodo consequat. Duis aute irure dolor in" +
+            //                       "reprehenderit in voluptate velit esse cillum dolore eu fugiat" +
+            //                       "nulla pariatur. Excepteur sint occaecat cupidatat non proident," +
+            //                       "sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            //    LongDescription = "Lorem ipsum dolor sit amet," +
+            //                       "consectetur adipiscing elit, sed do eiusmod tempor" +
+            //                       "incididunt ut labore et dolore magna aliqua. Ut enim ad" +
+            //                       "minim veniam, quis nostrud exercitation ullamco laboris nisi" +
+            //                       "ut aliquip ex ea commodo consequat. Duis aute irure dolor in" +
+            //                       "reprehenderit in voluptate velit esse cillum dolore eu fugiat" +
+            //                       "nulla pariatur. Excepteur sint occaecat cupidatat non proident," +
+            //                       "sunt in culpa qui officia deserunt mollit anim id est laborum." +
+            //                       "Lorem ipsum dolor sit amet," +
+            //                       "consectetur adipiscing elit, sed do eiusmod tempor" +
+            //                       "incididunt ut labore et dolore magna aliqua. Ut enim ad" +
+            //                       "minim veniam, quis nostrud exercitation ullamco laboris nisi" +
+            //                       "ut aliquip ex ea commodo consequat. Duis aute irure dolor in" +
+            //                       "reprehenderit in voluptate velit esse cillum dolore eu fugiat" +
+            //                       "nulla pariatur. Excepteur sint occaecat cupidatat non proident," +
+            //                       "sunt in culpa qui officia deserunt mollit anim id est laborum." +
+            //                       "Lorem ipsum dolor sit amet," +
+            //                       "consectetur adipiscing elit, sed do eiusmod tempor" +
+            //                       "incididunt ut labore et dolore magna aliqua. Ut enim ad" +
+            //                       "minim veniam, quis nostrud exercitation ullamco laboris nisi" +
+            //                       "ut aliquip ex ea commodo consequat. Duis aute irure dolor in" +
+            //                       "reprehenderit in voluptate velit esse cillum dolore eu fugiat" +
+            //                       "nulla pariatur. Excepteur sint occaecat cupidatat non proident," +
+            //                       "sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            //    OrganisationalUnitId = "V15E128300201",
+            //    ImagePath = "",
+            //    Address = "Essingestråket 24 112 66 Stockholm",
+            //    Telephone = "08-441 30 30",
+            //    Contact = "Sophie Maraux, rektor gymnasium",
+            //    Email = "secretariat@​lfsl.net",
+            //    OrganisationalForm = "Fristående/privat",
+            //    Website= "http:/​/​www.​lfsl.​net/ ",
+            //    Latitude="",
+            //    Longitude="",
+            //    Other= "Gymnasieskola",
+            //};
+            //context.OrganisationalUnitInfos.Add(ouInfo1);
 
 
             #region CategoryStuff

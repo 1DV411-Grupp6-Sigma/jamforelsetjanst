@@ -7,13 +7,13 @@ namespace TownComparisons.Domain.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class CategoryChanges : IMigrationMetadata
+    public sealed partial class InitialMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CategoryChanges));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "201602221019085_CategoryChanges"; }
+            get { return "201602262311013_InitialMigration"; }
         }
         
         string IMigrationMetadata.Source
