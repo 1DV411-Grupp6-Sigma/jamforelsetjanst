@@ -1154,7 +1154,9 @@
 
 .fi-check {
   color: green;
-  font-size: xx-large; }
+  margin: 0;
+  padding: 0;
+  font-size: 23px; }
 
 .fi-plus {
   font-size: large;
