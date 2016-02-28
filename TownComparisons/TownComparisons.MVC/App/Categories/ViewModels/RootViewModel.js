@@ -12,6 +12,20 @@
     //List with selected OU's
     $rootScope.listItems = collectorFactory.listOfSubjects;
 
+    //Deletes all item on $scope.listItems
+    $rootScope.deleteAllOperators = function () {
+        collectorFactory.deleteAllSubjects();
+    }
+
+    //Toggle OU on the $scope.listItems
+    $rootScope.toggleOperators = function (subject) {
+        collectorFactory.toggleSubject(subject);
+    }
+
+    $rootScope.deleteOperator = function (subject) {
+        collectorFactory.deleteSubject(subject);
+    }
+
     /*$scope.categoriesList = function () {
         viewModelHelper.navigateTo('categories');
     }*/
