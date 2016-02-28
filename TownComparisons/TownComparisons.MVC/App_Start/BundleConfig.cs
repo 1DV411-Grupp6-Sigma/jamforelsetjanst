@@ -28,7 +28,8 @@ namespace TownComparisons.MVC
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-           "~/Content/site.css"));
+                        "~/Content/site.css",
+                        "~/Content/Foundations-icon.css"));
 
             #region Foundation Bundles
 

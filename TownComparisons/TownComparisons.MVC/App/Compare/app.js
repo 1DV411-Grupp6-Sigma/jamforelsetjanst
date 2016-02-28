@@ -20,14 +20,22 @@ collector.factory('collectorFactory', ['$cookies', function ($cookies) {
     //Add a subject to list
     factory.addSubject = function (subject) {
         factory.listOfSubjects.push(subject);
+
+        console.log(factory.listOfSubjects.indexOf(subject));
+
         $cookies.putObject(savedList, factory.listOfSubjects, { "expires": expire });
     }
 
     //Deletes from list
     factory.deleteSubject = function(subject) {
+        console.log(subject.Name);
+        console.log(factory.listOfSubjects);
+        console.log(factory.listOfSubjects.indexOf(subject));
+        
         factory.listOfSubjects.splice(factory.listOfSubjects.indexOf(subject), 1);
-        $cookies.remove(savedList);
+
         $cookies.putObject(savedList, factory.listOfSubjects, { "expires": expire });
+        
     }
 
     //Deletes from list if exists, else adds to list
@@ -41,6 +49,9 @@ collector.factory('collectorFactory', ['$cookies', function ($cookies) {
 
         if (exists) {
             factory.deleteSubject(subject);
+            subject.icon = "fi-plus";
+            subject.class = "beforeCompare";
+            subject.text = "Jämför";
         } else {
             factory.addSubject(subject);
         }
@@ -56,12 +67,7 @@ collector.factory('collectorFactory', ['$cookies', function ($cookies) {
 }]);
 
 //INSTRUCTIONS
-//htmlpage = AndreasTest/Index.cshtml
-
-//TEST APP
-var testApp = angular.module("testApp", ['common']);
-
-//TEST CONTROLLER
+/*
 testApp.controller("listViewModel", ['$scope', 'collectorFactory', function ($scope, collectorFactory) {
 
     //Dummy data
@@ -90,3 +96,4 @@ testApp.controller("listViewModel", ['$scope', 'collectorFactory', function ($sc
         collectorFactory.deleteAllSubjects();
     }
 }]);
+*/

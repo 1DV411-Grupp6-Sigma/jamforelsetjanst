@@ -1,4 +1,4 @@
-﻿categoryModule.controller("rootViewModel", function ($scope, categoryService, $http, $q, $routeParams, $window, $location, viewModelHelper) {
+﻿categoryModule.controller("rootViewModel", function ($rootScope, $scope, categoryService, $http, $q, $routeParams, $window, $location, viewModelHelper, collectorFactory) {
 
     $scope.viewModelHelper = viewModelHelper;
     $scope.categoryService = categoryService;
@@ -7,6 +7,23 @@
 
     var initialize = function () {
         $scope.pageHeading = "Hitta och jämför service";
+    }
+
+    //List with selected OU's
+    $rootScope.listItems = collectorFactory.listOfSubjects;
+
+    //Deletes all item on $scope.listItems
+    $rootScope.deleteAllOperators = function () {
+        collectorFactory.deleteAllSubjects();
+    }
+
+    //Toggle OU on the $scope.listItems
+    $rootScope.toggleOperators = function (subject) {
+        collectorFactory.toggleSubject(subject);
+    }
+
+    $rootScope.deleteOperator = function (subject) {
+        collectorFactory.deleteSubject(subject);
     }
 
     /*$scope.categoriesList = function () {

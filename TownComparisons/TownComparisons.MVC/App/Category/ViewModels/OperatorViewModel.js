@@ -1,4 +1,4 @@
-﻿categoryModule.controller("operatorViewModel", function ($scope, categoryService, $http, $q, $routeParams, $window, $location, viewModelHelper) {
+﻿categoryModule.controller("operatorViewModel", function ($rootScope, $scope, categoryService, $http, $q, $routeParams, $window, $location, viewModelHelper, collectorFactory) {
 
     $scope.viewModelHelper = viewModelHelper;
     $scope.categoryService = categoryService;
@@ -31,6 +31,23 @@
     //        viewModelHelper.navigateTo('operator/' + orderService.orderId);
     //    }
     //}
+
+    //List with selected OU's
+    $rootScope.listItems = collectorFactory.listOfSubjects;
+
+    //Toggle OU on the $scope.listItems
+    $rootScope.toggleOperators = function (subject) {
+        collectorFactory.toggleSubject(subject);
+    }
+
+    $rootScope.deleteOperator = function (subject) {
+        collectorFactory.deleteSubject(subject);
+    }
+
+    //Deletes all item on $scope.listItems
+    $rootScope.deleteAllOperators = function () {
+        collectorFactory.deleteAllSubjects();
+    }
 
     initialize();
 });

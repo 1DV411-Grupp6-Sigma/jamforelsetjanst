@@ -68,13 +68,9 @@
     <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="Entities\GroupCategory.cs" />
     <Compile Include="Entities\CategoryOrganisationalUnit.cs" />
-    <Compile Include="Migrations\201602201558492_InitialMigration.cs" />
-    <Compile Include="Migrations\201602201558492_InitialMigration.Designer.cs">
-      <DependentUpon>201602201558492_InitialMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602221019085_CategoryChanges.cs" />
-    <Compile Include="Migrations\201602221019085_CategoryChanges.Designer.cs">
-      <DependentUpon>201602221019085_CategoryChanges.cs</DependentUpon>
+    <Compile Include="Migrations\201602262311013_InitialMigration.cs" />
+    <Compile Include="Migrations\201602262311013_InitialMigration.Designer.cs">
+      <DependentUpon>201602262311013_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\OrganisationalUnit.cs" />
@@ -109,13 +105,9 @@
     <None Include="CodeMap\CodeMap160223.dgml" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201602201558492_InitialMigration.resx">
-      <DependentUpon>201602201558492_InitialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602221019085_CategoryChanges.resx">
-      <DependentUpon>201602221019085_CategoryChanges.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201602262311013_InitialMigration.resx">
+      <DependentUpon>201602262311013_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

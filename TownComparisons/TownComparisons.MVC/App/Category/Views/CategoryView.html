@@ -1,7 +1,24 @@
 ﻿
 <h3>Aktörer</h3>
-{{ 10 + 5}}
-<div ng-repeat="ou in organisationalUnits">
+<div id="search" class="row">
+    <div class="small-4 columns end">
+        <input id="search-box" placeholder="Sök" type="text" data-ng-model="filter.name" />
+    </div>
+</div>
+
+<!-- navbar for sorting -->
+<div class="row">
+    <dl class="sub-nav">
+        <dt>Sortera:</dt>
+        <dd class="{{ activeId }}"><a href="" ng-click="sortOuById()">Id</a><img class="{{ visibleId }}" src="/Content/pictures/{{ fileId }}.png" ng-click="sortOuById()" /></dd>
+        <dd class="{{ activeName }}"><a href="" ng-click="sortOuByName()">Namn</a><img class="{{ visibleName }}" src="/Content/pictures/{{ fileName }}.png" ng-click="sortOuByName()" /></dd>
+    </dl>
+</div>
+
+<div ng-repeat="ou in organisationalUnits | filter:filter.name | orderBy:sortByOrder + sortBy">
+    {{ getStandardSettings(ou)}}
+
+    {{ checkWhichSchoolsAreCompared(ou) }}
     <div class="row">
         <div class="small-5 columns end">
             <h5><a href="#" ng-click="showOperator(ou)">{{ ou.Name }}</a></h5>
@@ -11,10 +28,10 @@
         <div class="small-2 columns">
             <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Lmspic.png" />
         </div>
-        <div class="small-6 columns">Lorem ipsum dolor sit amet, mea id epicuri consetetur, quo te etiam minim reformidans. Quo at numquam persecuti, ad his amet soleat.</div>
+        <div class="small-6 columns">Lorem ipsum dolor sit amet, mea id epicuri consetetur, quo te etiam minim reformidans. Quo at numquam persecuti, ad his amet soleat ??.</div>
         <div class="small-4 columns">
             <div class="row">
-                <a href="" ng-click="toggleOperators(ou)">Jämför</a>
+                <div class="{{ ou.class }}"><a href="" ng-click="toggleOperators(ou)"><i class="{{ ou.icon }}"></i>{{ ou.text}}</a></div>
             </div>
             <div class="row">
                 <a href="#">Karta</a>
