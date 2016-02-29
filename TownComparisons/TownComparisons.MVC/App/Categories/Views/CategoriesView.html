@@ -9,22 +9,24 @@
     </div>
 
     <!-- navbar for sorting -->
-    <dl class="sub-nav">
-        <dt>Sortera:</dt>
-        <dd class="active"><a href="#">Kategori</a></dd>
-        <dd><a href="#" ng-click="changeView('/alphabet')">Alla A-Ö</a></dd>
-    </dl>
-
-        <!-- Show groups -->
-        <ul class="categoriesList" ng-repeat="g in groupCategories | filter:filter.name">
-            <li>
-                <b>{{ g.Name }}</b>
-                <!-- Show categories inside this group -->
-                <ul ng-repeat="c in g.Categories">
-                    <li>
-                        <a href="#" ng-click="showCategory(c)">{{ c.Name }}</a> (få in antal här?)
-                    </li>
-                </ul>
-            </li>
-        </ul>
+    <div class="row">
+        <dl class="sub-nav">
+            <dt>Sortera:</dt>
+            <dd class="active"><a href="#">Kategori</a></dd>
+            <dd><a href="#" ng-click="changeView('/alphabet')">Alla A-Ö</a></dd>
+        </dl>
     </div>
+
+    <!-- Show groups -->
+    <ul class="categoriesList" ng-repeat="g in groupCategories | filter:filter.name">
+        <li>
+            <b>{{ g.Name }}</b>
+            <!-- Show categories inside this group -->
+            <ul ng-repeat="c in g.Categories">
+                <li>
+                    <a href="#" ng-click="showCategory(c)">{{ c.Name }}</a> (få in antal här?)
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
