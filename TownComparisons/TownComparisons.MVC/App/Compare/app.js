@@ -28,10 +28,6 @@ collector.factory('collectorFactory', ['$cookies', function ($cookies) {
 
     //Deletes from list
     factory.deleteSubject = function(subject) {
-        console.log(subject.Name);
-        console.log(factory.listOfSubjects);
-        console.log(factory.listOfSubjects.indexOf(subject));
-        
         factory.listOfSubjects.splice(factory.listOfSubjects.indexOf(subject), 1);
 
         $cookies.putObject(savedList, factory.listOfSubjects, { "expires": expire });
