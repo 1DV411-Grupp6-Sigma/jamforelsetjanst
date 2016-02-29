@@ -1,16 +1,18 @@
-﻿categoryModule.controller("compareViewModel", function ($scope, categoryService, $http, $q, $routeParams, $window, $location, viewModelHelper) {
-
-    //IDs. Has to work with URL and button
-    //Get data from database and Kolada
+﻿categoryModule.controller("compareViewModel", function ($scope, categoryService, $http, $q, $routeParams, $window, $location, viewModelHelper, $rootScope) {
 
     //debugger;
 
+    $scope.OperatorUnitList = $rootScope.listItems;
+    console.log($scope.OperatorUnitList[0].OrganisationalUnitId); //loop through for all iDs, IDs. Has to work both with URL and button
+    //$scope.operatorID
+    $scope.operatorID = $scope.OperatorUnitList[0].OrganisationalUnitId
     $scope.viewModelHelper = viewModelHelper;
     $scope.categoryService = categoryService;
-    $scope.categoryID = 1; //categoryService.categoryID;
-    $scope.operatorIDs = ["1", "2", "3", "4", "5", "6"]; //$rootScope.operatorIds;
-    $scope.operatorID = 'V15E128300201';
-    $scope.operators = [//];
+
+    //In Initialize() call (new) API controller who goes to the service layer and gets data from database and Kolada
+
+    //only for test purpose
+    $scope.operators = [
             {
                 ID: 1,
                 Name: "Tallbackaskolan",
@@ -23,26 +25,19 @@
             }
     ];
 
-    //var initialize = function () {
-    //    $scope.getOrganisationalUnitInfoByOperatorID($scope.operatorID);
-    //    //$scope.getOrganisationalUnitsInCategoryByIds(1, 'V17E21008461');
-    //    //$scope.loadOperatorsToCompare();
-    //}
+    var initialize = function () {
+        $scope.getOrganisationalUnitInfoByOperatorID($scope.operatorID);
+    }
 
-    ////var initialize = function () {
-    ////    $scope.getOrganisationalUntsByCategoryId(1);
-    ////    $scope.loadOperatorsToCompare();
-    ////}
+    //Get Organisational Unit Info via OperatorController
+    $scope.getOrganisationalUnitInfoByOperatorID = function (operatorID) {
 
-    ////Get Organisational Unit Info via OperatorController
-    //$scope.getOrganisationalUnitInfoByOperatorID = function (operatorID) {
+        viewModelHelper.apiGet('api/operators/' + operatorID, null, //gets data from database. loop through for more than one operator
+            function (result) {
+                console.log(result.data); //result data from server
+                //$scope.organisationalUnit = result.data;
+            });
+    }
 
-    //    viewModelHelper.apiGet('api/operators/' + operatorID, null,
-    //        function (result) {
-    //            console.log(result.data);
-    //            //$scope.organisationalUnit = result.data;
-    //        });
-    //}
-
-    //initialize();
+    initialize();
 });
