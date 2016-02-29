@@ -3,28 +3,26 @@
 <!--Tabel with chosen operators-->
 <table class="dataTable row-border hover" datatable="ng">
     <caption>Jämförelse </caption>
+    
     <thead>
         <tr>
-            <th class="secondary-text">
-                <div class="table-header">
-                    <span class="column-title"></span>
+            <td ng-repeat="operator in operators">
+                <div class="table-header small-4 columns">
+                    {{ operator.img }}
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Lmspic.png" />
                 </div>
-            </th>
-            <th class="secondary-text">
-                <div class="table-header">
-                    <span class="column-title">Allmän fakta</span>
+                <div>
+                    {{ operator.Name }}<br />
+                    {{ operator.address }}Adress
                 </div>
-            </th>
-            <th class="secondary-text">
-                <div class="table-header">
-                    <span class="column-title">Enkätundersökning 2015</span>
-                </div>
-            </th>
+            </td>
+            <td></td>
+            <td></td>
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="operator in operators">
-            <td>
+        <tr >
+            <td ng-repeat="operator in operators">
                 <div class="small-4 columns">
                     {{ operator.img }}
                     <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Lmspic.png" />
