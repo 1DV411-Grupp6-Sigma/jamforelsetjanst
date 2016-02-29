@@ -7,6 +7,7 @@
         $scope.viewAllCategories();
     }
 
+
     //Get all categories based on category via APICategoriesController
     $scope.viewAllCategories = function () {
         viewModelHelper.apiGet('api/categories', null,
