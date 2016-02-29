@@ -17,6 +17,8 @@
             }
     ];
 
+    debugger;
+
     //var initialize = function () {
     //    $scope.getOrganisationalUntsByCategoryId(1);
     //    $scope.loadOperatorsToCompare();
