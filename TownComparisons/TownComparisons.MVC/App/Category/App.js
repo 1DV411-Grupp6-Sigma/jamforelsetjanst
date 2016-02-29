@@ -36,3 +36,4 @@ categoryModule.factory('categoryService', function ($rootScope, $http, $q, $loca
     };
     myApp.categoryService = categoryService;
 }(window.MyApp));
+

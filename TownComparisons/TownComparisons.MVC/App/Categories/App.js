@@ -42,3 +42,27 @@ categoryModule.factory('categoryService', function ($rootScope, $http, $q, $loca
     };
     myApp.categoryService = categoryService;
 }(window.MyApp));
+
+
+//Factory for global functions on categoryModule
+categoryModule.factory('categoriesFactory', function (viewModelHelper) {
+    var factory = {};
+
+     //Show all organisational units inside a category
+    factory.showCategory = function (category) {
+        viewModelHelper.navigateTo('category/' + category.Id);
+    }
+
+    //Switch between sorting
+    factory.changeView = function (value) {
+        if (value == undefined) {
+            viewModelHelper.navigateTo('categories');
+        }
+        else {
+
+            viewModelHelper.navigateTo('categories' + value);
+        }
+    }
+
+    return factory;
+});
