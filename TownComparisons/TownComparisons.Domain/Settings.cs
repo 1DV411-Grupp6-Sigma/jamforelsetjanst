@@ -27,6 +27,7 @@ namespace TownComparisons.Domain
 
 
         //Constructors
+        [JsonConstructor]
         public Settings(bool load = false)
         {
             string pathAppData = HttpContext.Current.ApplicationInstance.Server.MapPath("~/App_Data/");
@@ -34,12 +35,12 @@ namespace TownComparisons.Domain
 
             Initialize(load);
         }
-        //public Settings(string filepath, bool load = false)
-        //{
-        //    _filePath = filepath;
+        public Settings(string filepath, bool load = false)
+        {
+            _filePath = filepath;
 
-        //    Initialize(load);
-        //}
+            Initialize(load);
+        }
         
         //Methods
         public void Initialize(bool load = false)
