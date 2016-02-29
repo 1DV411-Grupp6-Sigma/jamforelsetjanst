@@ -32,6 +32,18 @@ namespace TownComparisons.Domain
             string pathAppData = HttpContext.Current.ApplicationInstance.Server.MapPath("~/App_Data/");
             _filePath = Path.Combine(pathAppData, FILENAME);
 
+            Initialize(load);
+        }
+        public Settings(string filepath, bool load = false)
+        {
+            _filePath = filepath;
+
+            Initialize(load);
+        }
+        
+        //Methods
+        public void Initialize(bool load = false)
+        {
             //default values:
             CacheSeconds_PropertyQueries = (60 * 60 * 24); // 1 day
             CacheSeconds_OrganisationalUnits = (60 * 60 * 24); // 1 day
@@ -42,8 +54,6 @@ namespace TownComparisons.Domain
                 Load();
             }
         }
-
-        //Methods
         public void Load()
         {
             if (System.IO.File.Exists(_filePath))

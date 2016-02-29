@@ -43,7 +43,9 @@ collector.factory('collectorFactory', ['$cookies', function ($cookies) {
         var exists = false;
         for (var i = 0; i < factory.listOfSubjects.length; i++) {
             if (factory.listOfSubjects[i].OrganisationalUnitId === subject.OrganisationalUnitId) {
+                subject = factory.listOfSubjects[i];
                 exists = true;
+                break;
             } 
         }
 
