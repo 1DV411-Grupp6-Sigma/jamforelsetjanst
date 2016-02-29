@@ -1,4 +1,4 @@
-﻿categoryModule.controller("categoryViewModel", function ($rootScope, $scope, categoryService, $http, $q, $routeParams, $window, $location, viewModelHelper, collectorFactory) {
+﻿categoryModule.controller("categoryViewModel", function ($rootScope, $scope, categoryService, $http, $q, $routeParams, $window, $location, viewModelHelper, collectorFactory, categoriesFactory) {
 
     $scope.viewModelHelper = viewModelHelper;
     $scope.categoryService = categoryService;
@@ -11,6 +11,11 @@
     var initialize = function () {
         $scope.getOrganisationalUntsByCategoryId($routeParams.categoryId);
         $scope.sortOuByName();
+    }
+
+    //Switch between sortings
+    $scope.changeListView = function (value) {
+        categoriesFactory.changeListView(value, $routeParams.categoryId);
     }
 
     $scope.getStandardSettings = function (ou) {

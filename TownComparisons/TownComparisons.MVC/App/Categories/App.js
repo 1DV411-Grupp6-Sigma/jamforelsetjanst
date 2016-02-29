@@ -6,9 +6,19 @@ var categoryModule = angular.module('category', ['common'])
             .when('/categories', {
                  templateUrl: '/App/Categories/Views/CategoriesView.html', controller: 'categoriesViewModel'
             })
+            //Show sorting A-Ö
+            .when('/categories/alphabet', {
+                     templateUrl: '/App/Categories/Views/AlphabetView.html', controller: 'categoriesViewModel'
+                })
+            //Default is detailed list
             .when('/category/:categoryId', {
                      templateUrl: '/App/Category/Views/CategoryView.html', controller: 'categoryViewModel'
                 })
+            //View simple list
+            .when('/category/:categoryId/enkel', {
+                templateUrl: '/App/Category/Views/SimpleView.html',
+                controller: 'categoryViewModel'
+            })
             .when('/category/:categoryId/compare', {
                      templateUrl: '/App/Category/Views/CompareView.html',
                      controller: 'compareViewModel'
@@ -16,10 +26,10 @@ var categoryModule = angular.module('category', ['common'])
             .when('/category/:categoryId/operator/:operatorId', {
                      templateUrl: '/App/Category/Views/OperatorView.html', controller: 'operatorViewModel'
                 })
-            //Show sorting A-Ö
-            .when('/categories/alphabet', {
-                     templateUrl: '/App/Categories/Views/AlphabetView.html', controller: 'alphabetViewModel'
-                })
+            .when('/compare', {
+                templateUrl: '/App/Category/Views/CompareView.html',
+                controller: 'compareViewModel'
+            })
             .otherwise({ redirectTo: '/categories' });
 
         //$locationProvider.html5Mode(true);
@@ -59,8 +69,17 @@ categoryModule.factory('categoriesFactory', function (viewModelHelper) {
             viewModelHelper.navigateTo('categories');
         }
         else {
-
             viewModelHelper.navigateTo('categories' + value);
+        }
+    }
+
+    //Switch between listing
+    factory.changeListView = function (value, urlParam) {
+        if (value == undefined) {
+            viewModelHelper.navigateTo('category/' + urlParam);
+        }
+        else {
+            viewModelHelper.navigateTo('category/' + urlParam + value);
         }
     }
 

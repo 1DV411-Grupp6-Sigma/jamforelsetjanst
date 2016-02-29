@@ -1,4 +1,4 @@
-﻿categoryModule.controller("alphabetViewModel", function ($scope, categoryService, $http, $q, $routeParams, $window, $location, viewModelHelper, categoriesFactory) {
+﻿/*categoryModule.controller("alphabetViewModel", function ($scope, categoryService, $http, $q, $routeParams, $window, $location, viewModelHelper, categoriesFactory) {
 
     $scope.viewModelHelper = viewModelHelper;
     $scope.categoryService = categoryService;
@@ -27,3 +27,4 @@
 
     initialize();
 });
+*/

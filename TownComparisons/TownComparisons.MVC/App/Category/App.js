@@ -1,4 +1,5 @@
-﻿
+﻿/* TROR INTE ATT DEN HÄR FILEN BEHÖVS DÅ DE REDAN ÄR DEFINERADE I APP/CATEGORIES/APP.JS
+
 var categoryModule = angular.module('category', ['common'])
     .config(function ($routeProvider, $locationProvider) {
         $routeProvider
@@ -25,7 +26,7 @@ var categoryModule = angular.module('category', ['common'])
             requireBase: false
         });
     });
-
+    
 categoryModule.factory('categoryService', function ($rootScope, $http, $q, $location, viewModelHelper) { return MyApp.categoryService($rootScope, $http, $q, $location, viewModelHelper); });
 
 (function (myApp) {
@@ -37,3 +38,4 @@ categoryModule.factory('categoryService', function ($rootScope, $http, $q, $loca
     myApp.categoryService = categoryService;
 }(window.MyApp));
 
+*/
