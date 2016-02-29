@@ -2,11 +2,15 @@
 
     $scope.viewModelHelper = viewModelHelper;
     $scope.categoryService = categoryService;
+    $scope.sortByName = 'Name';
+    $scope.sortAsc = 'sortAsc';
+    $scope.sortDesc = 'sortDesc';
+    $scope.classActive = 'active';
+    $scope.classInvisible = 'invisible';
     
-
     var initialize = function () {
         $scope.getOrganisationalUntsByCategoryId($routeParams.categoryId);
-        $scope.sortOuById();
+        $scope.sortOuByName();
     }
 
     $scope.getStandardSettings = function (ou) {
@@ -59,36 +63,16 @@
     // Sorts the Organisational Units by Name (Desc).
     $rootScope.sortOuByName = function () {
         $scope.visibleName = '';
-        $scope.visibleId = 'invisible';
-        $scope.fileName = 'sortAsc';
-        $scope.activeName = 'active';
-        $scope.activeId = '';
+        $scope.fileName = $scope.sortAsc;
+        $scope.activeName = $scope.classActive;
 
-        if ($scope.sortBy == 'Name') {
-            $scope.sortBy = '-Name';
-            $scope.fileName = 'sortDesc';
+        if ($scope.sortBy == $scope.sortByName) {
+            $scope.sortBy = '-' + $scope.sortByName;
+            $scope.fileName = $scope.sortDesc;
         }
         else {
-            $scope.sortBy = 'Name';
-            $scope.fileName = 'sortAsc';
-        }
-    }
-
-    // Sorts the Organisational Units by Id (Desc).
-    $rootScope.sortOuById = function () {
-        $scope.visibleId = '';
-        $scope.visibleName = 'invisible';
-        $scope.fileId = 'sortAsc';
-        $scope.activeName = '';
-        $scope.activeId = 'active';
-
-        if ($scope.sortBy == 'OrganisationalUnitId') {
-            $scope.sortBy = '-OrganisationalUnitId';
-            $scope.fileId = 'sortDesc';
-        }
-        else {
-            $scope.sortBy = 'OrganisationalUnitId';
-            $scope.fileId = 'sortAsc';
+            $scope.sortBy = $scope.sortByName;
+            $scope.fileName = $scope.sortAsc;
         }
     }
 

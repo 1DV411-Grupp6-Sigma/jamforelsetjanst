@@ -26,6 +26,10 @@
         collectorFactory.deleteSubject(subject);
     }
 
+    $scope.compare = function () {
+        viewModelHelper.navigateTo('category/' + $routeParams.categoryId + '/compare/');
+    }
+
     /*$scope.categoriesList = function () {
         viewModelHelper.navigateTo('categories');
     }*/

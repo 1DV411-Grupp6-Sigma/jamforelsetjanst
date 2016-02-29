@@ -1,4 +1,9 @@
-﻿categoryModule.controller("compareViewModel", function ($scope, $rootScope, categoryService, $http, $q, $routeParams, $window, $location, viewModelHelper, collectorFactory) {
+﻿categoryModule.controller("compareViewModel", function ($scope, categoryService, $http, $q, $routeParams, $window, $location, viewModelHelper) {
+
+    //IDs. Has to work with URL and button
+    //Get data from database and Kolada
+
+    //debugger;
 
     $scope.viewModelHelper = viewModelHelper;
     $scope.categoryService = categoryService;
@@ -18,21 +23,26 @@
             }
     ];
 
-    var initialize = function () {
-        $scope.getOrganisationalUnitInfoByOperatorID($scope.operatorID);
-        //$scope.getOrganisationalUnitsInCategoryByIds(1, 'V17E21008461');
-        //$scope.loadOperatorsToCompare();
-    }
+    //var initialize = function () {
+    //    $scope.getOrganisationalUnitInfoByOperatorID($scope.operatorID);
+    //    //$scope.getOrganisationalUnitsInCategoryByIds(1, 'V17E21008461');
+    //    //$scope.loadOperatorsToCompare();
+    //}
 
-    //Get Organisational Unit Info via OperatorController
-    $scope.getOrganisationalUnitInfoByOperatorID = function (operatorID) {
+    ////var initialize = function () {
+    ////    $scope.getOrganisationalUntsByCategoryId(1);
+    ////    $scope.loadOperatorsToCompare();
+    ////}
 
-        viewModelHelper.apiGet('api/operators/' + operatorID, null,
-            function (result) {
-                console.log(result.data);
-                //$scope.organisationalUnit = result.data;
-            });
-    }
+    ////Get Organisational Unit Info via OperatorController
+    //$scope.getOrganisationalUnitInfoByOperatorID = function (operatorID) {
 
-    initialize();
+    //    viewModelHelper.apiGet('api/operators/' + operatorID, null,
+    //        function (result) {
+    //            console.log(result.data);
+    //            //$scope.organisationalUnit = result.data;
+    //        });
+    //}
+
+    //initialize();
 });
