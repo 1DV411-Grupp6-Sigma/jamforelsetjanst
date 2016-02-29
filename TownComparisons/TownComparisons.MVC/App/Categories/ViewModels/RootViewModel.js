@@ -1,19 +1,8 @@
-﻿categoryModule.controller("rootViewModel", function ($rootScope, $scope, categoryService, $http, $q, $routeParams, $window, $location, viewModelHelper, collectorFactory) {
+﻿categoryModule.controller("rootViewModel", function ($rootScope, $scope, categoryService, $http, $q, $routeParams, $window, $location, viewModelHelper, collectorFactory, $httpParamSerializer) {
 
     $scope.viewModelHelper = viewModelHelper;
     $scope.categoryService = categoryService;
     
-    $scope.test = function () {
-        var list = ["V15sdfg, V16sdfgh, V17234567"];
-        var querystring = "";
-        for (var i = 0; i < list.length; i++) {
-            querystring += list[i] + ",";
-        }
-        viewModelHelper.navigateTo('category/' + $routeParams.categoryId + '/compare?id=as' );
-    }
-
-    $scope.flags = { shownFromList: false };
-
     var initialize = function () {
         $scope.pageHeading = "Hitta och jämför service";
     }
@@ -36,7 +25,16 @@
     }
 
     $scope.compare = function () {
-        viewModelHelper.navigateTo('category/' + $routeParams.categoryId + '/compare/');
+        //Create a query string for objects in compare list
+        var ouId = [];
+        for (var i = 0; i < $rootScope.listItems.length; i++) {
+            ouId.push($rootScope.listItems[i].OrganisationalUnitId);
+        }
+        var params = { "id": ouId }
+        var queryString = $httpParamSerializer(params);
+
+        //NavigateTo
+        $location.path('category/' + $routeParams.categoryId + '/compare').search(queryString);
     }
 
 

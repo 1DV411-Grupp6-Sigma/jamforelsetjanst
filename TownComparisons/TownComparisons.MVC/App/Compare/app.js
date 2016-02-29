@@ -11,27 +11,22 @@ collector.factory('collectorFactory', ['$cookies', function ($cookies) {
     //Name of cookie
     var savedList = "savedList";
     //Expiration
-    var expire = new Date(new Date().getTime() + 180 * 60000);
+    //var expire = new Date(new Date().getTime() + 180 * 60000);
 
     //List that contains all selected subjects
     factory.listOfSubjects = $cookies.getObject(savedList) || [];
-    
-    factory.message = "hejsan bananer";
 
     //Add a subject to list
     factory.addSubject = function (subject) {
         factory.listOfSubjects.push(subject);
-
-        console.log(factory.listOfSubjects.indexOf(subject));
-
-        $cookies.putObject(savedList, factory.listOfSubjects, { "expires": expire });
+        $cookies.putObject(savedList, factory.listOfSubjects, { "expires": "Session", "path": "/" });
     }
 
     //Deletes from list
     factory.deleteSubject = function(subject) {
         factory.listOfSubjects.splice(factory.listOfSubjects.indexOf(subject), 1);
 
-        $cookies.putObject(savedList, factory.listOfSubjects, { "expires": expire });
+        $cookies.putObject(savedList, factory.listOfSubjects, { "expires": "Session", "path": "/" });
         
     }
 
@@ -59,7 +54,7 @@ collector.factory('collectorFactory', ['$cookies', function ($cookies) {
     //Deletes all in list
     factory.deleteAllSubjects = function() {
         factory.listOfSubjects.length = 0;
-        $cookies.remove(savedList);
+        $cookies.remove(savedList, { "path": "/" });
     }
 
     return factory;
