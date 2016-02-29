@@ -5,6 +5,7 @@ using TownComparisons.Domain.WebServices;
 using TownComparisons.Domain.Models;
 using TownComparisons.Domain.Entities;
 using TownComparisons.Domain.Helpers;
+using System.Collections.Generic;
 
 namespace TownComparisons.MVC.Tests.Domain.WebServices
 {
@@ -77,6 +78,91 @@ namespace TownComparisons.MVC.Tests.Domain.WebServices
             }
            
         }
-       
+        /// <summary>
+        /// Checks if getAllPropertyQueries returns list of objects of correct type
+        /// </summary>
+        [TestMethod]
+        public void Test_GetAllPropertyQueries()
+        {
+            
+            var actual = _webService.GetAllPropertyQueries();
+            var t = actual[0];
+
+            if (!(t is PropertyQueryGroup))
+            {
+                Assert.Fail();
+            }
+        }
+        /// <summary>
+        /// Checks if method getAllPropertyQueries returns property that has an
+        /// additional list of type PropertyQuery.
+        /// Nesting of objects.
+        /// </summary>
+        [TestMethod]
+        public void Test_GetAllPropertyQueries_getQueries()
+        {
+            PropertyQueryGroup propQueryGroup = new PropertyQueryGroup();
+
+            var actual = _webService.GetAllPropertyQueries();
+            var t = actual[0].Queries[0];
+
+            if (!(t is PropertyQuery))
+            {
+                Assert.Fail();
+            }
+        }
+        /// <summary>
+        /// Checks if QueryGroupId has datatype string
+        /// </summary>
+        [TestMethod]
+        public void Test_GetAllPropertyQueries_getId()
+        {
+            PropertyQueryGroup propQueryGroup = new PropertyQueryGroup();
+
+            var actual = _webService.GetAllPropertyQueries();
+            var t = actual[0].QueryGroupId;
+
+
+            if (t.GetType() != typeof(string))
+            {
+                Assert.Fail();
+            }
+        }
+
+        /// <summary>
+        /// Checks if Title has datatype string
+        /// </summary>
+        [TestMethod]
+        public void Test_GetAllPropertyQueries_getTitle()
+        {
+            PropertyQueryGroup propQueryGroup = new PropertyQueryGroup();
+
+            var actual = _webService.GetAllPropertyQueries();
+            var t = actual[0].Title;
+
+            if (t.GetType() != typeof(string))
+            {
+                Assert.Fail();
+            }
+        }
+
+        /// <summary>
+        /// Checks if WebServiceName has datatype string
+        /// </summary>
+        [TestMethod]
+        public void Test_GetAllPropertyQueries_getWebServiceName()
+        {
+            PropertyQueryGroup propQueryGroup = new PropertyQueryGroup();
+
+            var actual = _webService.GetAllPropertyQueries();
+            var t = actual[0].WebServiceName;
+
+            if (t.GetType() != typeof(string))
+            {
+                Assert.Fail();
+            }
+        }
+
+
     }
 }
