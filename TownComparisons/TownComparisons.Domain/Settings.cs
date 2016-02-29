@@ -34,12 +34,12 @@ namespace TownComparisons.Domain
 
             Initialize(load);
         }
-        public Settings(string filepath, bool load = false)
-        {
-            _filePath = filepath;
+        //public Settings(string filepath, bool load = false)
+        //{
+        //    _filePath = filepath;
 
-            Initialize(load);
-        }
+        //    Initialize(load);
+        //}
         
         //Methods
         public void Initialize(bool load = false)
