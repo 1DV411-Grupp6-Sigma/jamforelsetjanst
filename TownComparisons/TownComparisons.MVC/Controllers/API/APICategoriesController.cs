@@ -33,6 +33,7 @@ namespace TownComparisons.MVC.Controllers.API
         public HttpResponseMessage GetCategories(HttpRequestMessage request)
         {
             var categories = _service.GetAllCategories();
+            //Category OrganisationalUnits
             CategoriesViewModel model = new CategoriesViewModel(categories);
             return request.CreateResponse<GroupCategoryViewModel[]>(HttpStatusCode.OK, model.GroupCategories.ToArray());
         }

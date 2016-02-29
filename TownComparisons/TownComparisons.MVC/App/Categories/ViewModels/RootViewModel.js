@@ -2,6 +2,15 @@
 
     $scope.viewModelHelper = viewModelHelper;
     $scope.categoryService = categoryService;
+    
+    $scope.test = function () {
+        var list = ["V15sdfg, V16sdfgh, V17234567"];
+        var querystring = "";
+        for (var i = 0; i < list.length; i++) {
+            querystring += list[i] + ",";
+        }
+        viewModelHelper.navigateTo('category/' + $routeParams.categoryId + '/compare?id=as' );
+    }
 
     $scope.flags = { shownFromList: false };
 
@@ -29,6 +38,7 @@
     $scope.compare = function () {
         viewModelHelper.navigateTo('category/' + $routeParams.categoryId + '/compare/');
     }
+
 
     /*$scope.categoriesList = function () {
         viewModelHelper.navigateTo('categories');
