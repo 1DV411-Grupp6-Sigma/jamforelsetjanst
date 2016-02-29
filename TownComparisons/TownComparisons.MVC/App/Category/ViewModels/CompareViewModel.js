@@ -1,10 +1,16 @@
-﻿categoryModule.controller("compareViewModel", function ($scope, $rootScope, categoryService, $http, $q, $routeParams, $window, $location, viewModelHelper, collectorFactory) {
+﻿categoryModule.controller("compareViewModel", function ($scope, categoryService, $http, $q, $routeParams, $window, $location, viewModelHelper) {
+
+    //IDs. Has to work with URL and button
+    //Get data from database and Kolada
+
+    //debugger;
 
     $scope.viewModelHelper = viewModelHelper;
     $scope.categoryService = categoryService;
-    //$scope.operatorIds = $rootScope.operatorIds;
+    $scope.categoryID = 1; //categoryService.categoryID;
     $scope.operatorIDs = ["1", "2", "3", "4", "5", "6"]; //$rootScope.operatorIds;
-    $scope.operators = [
+    $scope.operatorID = 'V15E128300201';
+    $scope.operators = [//];
             {
                 ID: 1,
                 Name: "Tallbackaskolan",
@@ -17,23 +23,25 @@
             }
     ];
 
-    debugger;
-
     //var initialize = function () {
-    //    $scope.getOrganisationalUntsByCategoryId(1);
-    //    $scope.loadOperatorsToCompare();
+    //    $scope.getOrganisationalUnitInfoByOperatorID($scope.operatorID);
+    //    //$scope.getOrganisationalUnitsInCategoryByIds(1, 'V17E21008461');
+    //    //$scope.loadOperatorsToCompare();
     //}
 
-    //$scope.getOrganisationalUntsByCategoryId = function (categoryId) {
-    //    viewModelHelper.apiGet('api/admin/allOU/' + categoryId, null, //get data from kolada based on id:s
+    ////var initialize = function () {
+    ////    $scope.getOrganisationalUntsByCategoryId(1);
+    ////    $scope.loadOperatorsToCompare();
+    ////}
+
+    ////Get Organisational Unit Info via OperatorController
+    //$scope.getOrganisationalUnitInfoByOperatorID = function (operatorID) {
+
+    //    viewModelHelper.apiGet('api/operators/' + operatorID, null,
     //        function (result) {
-    //            $scope.organisationalUnits = result.data;
+    //            console.log(result.data);
+    //            //$scope.organisationalUnit = result.data;
     //        });
-    //}
-
-    //$scope.loadOperatorsToCompare = function () {
-    //    $scope.operatorsToCompare = $scope.categoryService.getSubjectList();
-    //    console.log($scope.operatorsToCompare);
     //}
 
     //initialize();
