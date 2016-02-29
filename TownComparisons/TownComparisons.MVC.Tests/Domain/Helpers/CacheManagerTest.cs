@@ -149,7 +149,7 @@ namespace TownComparisons.MVC.Tests.Domain.Helpers
         /// </summary>
         [TestMethod]
         [ExpectedException(typeof(ArgumentException), "A Id of null was inappropriately allowed in cache")]
-        public void NullId_OrganisationalUnitInfo()
+        public void Test_NullId_OrganisationalUnitInfo()
         {
             string key = "cacheKey";
             OrganisationalUnitInfo ouInfo = new OrganisationalUnitInfo();
