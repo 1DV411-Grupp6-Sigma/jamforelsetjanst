@@ -1,4 +1,4 @@
-﻿categoryModule.controller("alphabetViewModel", function ($scope, categoryService, $http, $q, $routeParams, $window, $location, viewModelHelper) {
+﻿categoryModule.controller("alphabetViewModel", function ($scope, categoryService, $http, $q, $routeParams, $window, $location, viewModelHelper, categoriesFactory) {
 
     $scope.viewModelHelper = viewModelHelper;
     $scope.categoryService = categoryService;
@@ -17,20 +17,12 @@
 
     //Show all organisational units inside a category
     $scope.showCategory = function (category) {
-        $scope.flags.shownFromList = true;
-        viewModelHelper.navigateTo('category/' + category.Id);
+        categoriesFactory.showCategory(category);
     }
 
-    //Maybe this function should be global?
+    //Switch between sortings
     $scope.changeView = function (value) {
-        $scope.flags.shownFromList = true;
-        if (value == undefined) {
-            viewModelHelper.navigateTo('categories');
-        }
-        else {
-
-            viewModelHelper.navigateTo('categories' + value);
-        }
+        categoriesFactory.changeView(value);
     }
 
     initialize();

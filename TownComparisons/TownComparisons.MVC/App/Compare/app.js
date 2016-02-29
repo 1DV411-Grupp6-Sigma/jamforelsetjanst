@@ -16,6 +16,7 @@ collector.factory('collectorFactory', ['$cookies', function ($cookies) {
     //List that contains all selected subjects
     factory.listOfSubjects = $cookies.getObject(savedList) || [];
     
+    factory.message = "hejsan bananer";
 
     //Add a subject to list
     factory.addSubject = function (subject) {
