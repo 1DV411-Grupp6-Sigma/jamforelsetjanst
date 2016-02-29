@@ -31,7 +31,6 @@ var categoryModule = angular.module('category', ['common'])
                 controller: 'compareViewModel'
             })
             .otherwise({ redirectTo: '/categories' });
-
         //$locationProvider.html5Mode(true);
         $locationProvider.html5Mode({
             enabled: true,
