@@ -1,6 +1,13 @@
 ﻿<div class="content">
     <h4>Kategorier</h4>
 
+    <!-- seachbar -->
+    <div id="search" class="row">
+        <div class="small-4 columns end">
+            <input id="search-box" placeholder="Sök" type="text" data-ng-model="filter.name" />
+        </div>
+    </div>
+
     <!-- navbar for sorting -->
     <dl class="sub-nav">
         <dt>Sortera:</dt>
@@ -9,7 +16,7 @@
     </dl>
 
         <!-- Show groups -->
-        <ul class="categoriesList" ng-repeat="g in groupCategories">
+        <ul class="categoriesList" ng-repeat="g in groupCategories | filter:filter.name">
             <li>
                 <b>{{ g.Name }}</b>
                 <!-- Show categories inside this group -->
