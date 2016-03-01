@@ -35,7 +35,7 @@
 
     var initialize = function () {
         $scope.getOrganisationalUnitInfoByOperatorID($scope.operatorID);
-        
+ 
     }
 
     //Get Organisational Unit Info via OperatorController
