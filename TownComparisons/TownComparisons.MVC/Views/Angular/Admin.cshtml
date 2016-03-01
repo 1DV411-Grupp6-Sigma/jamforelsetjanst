@@ -8,20 +8,23 @@
     <script src="~/App/Admin/ViewModels/AdminHomeViewModel.js"></script>
     <script src="~/App/Admin/ViewModels/AdminCategoriesViewModel.js"></script>
     <script src="~/App/Admin/ViewModels/AdminCategoryViewModel.js"></script>
+    <script src="~/App/Admin/ViewModels/AdminOperatorsViewModel.js"></script>
+    <script src="~/App/Admin/ViewModels/AdminOperatorViewModel.js"></script>
 }
 @section jsCode {
     <!-- angular.bootstrap(document.getElementById("admin"), ['admin']); -->    
 }
 
 <div data-ng-app="admin" id="admin" data-ng-controller="rootViewModel">
-    <h2>{{ pageHeading }}</h2>
     
+    <!--
     <div class="row">
         <div class="col-md-4">
             <button class="btn btn-primary" ng-click="categoriesList()">Kategorier</button>
         </div>
     </div>
     <hr />
+    -->
     
     <div ng-view></div>
 </div>

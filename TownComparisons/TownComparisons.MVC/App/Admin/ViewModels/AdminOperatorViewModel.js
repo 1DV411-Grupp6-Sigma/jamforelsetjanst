@@ -1,23 +1,19 @@
-﻿adminModule.controller("adminCategoryViewModel", function ($scope, adminService, $http, $q, $routeParams, $window, $location, viewModelHelper) {
+﻿adminModule.controller("adminOperatorViewModel", function ($scope, adminService, $http, $q, $routeParams, $window, $location, viewModelHelper) {
 
     $scope.viewModelHelper = viewModelHelper;
     $scope.adminService = adminService;
-    
+
     var initialize = function () {
-        $scope.categoryHasBeenLoaded = false;
-        $scope.pageHeading = 'Laddar kategori...';
         $scope.queriesStateFilter = 'All';
-        $scope.operatorsStateFilter = 'All';
         $scope.refreshCategory($routeParams.categoryId);
     }
 
     $scope.refreshCategory = function (categoryId) {
         viewModelHelper.apiGet('api/admin/category/' + categoryId, null,
             function (result) {
+                console.log(result.data);
                 adminService.categoryId = categoryId;
                 $scope.category = result.data;
-                $scope.pageHeading = 'Kategori: ' + $scope.category.Category.Name;
-                $scope.categoryHasBeenLoaded = true;
             });
     }
 
@@ -30,16 +26,18 @@
                 console.log(result.data);
             });
     }
+
     var setCategoryOrganisationalUnitsToUse = function () {
         var ousToUse = [];
         for (var i = 0; i < $scope.category.AllOrganisationalUnits.length; i++) {
 
-            //if checked (i.e. Use == true)
+            //if checked (Use == true)
             if ($scope.category.AllOrganisationalUnits[i].Use == true) {
                 //add it
                 ousToUse.push($scope.category.AllOrganisationalUnits[i]);
             }
         }
+        console.log(ousToUse);
         $scope.category.Category.OrganisationalUnits = ousToUse;
     }
     var setCategoryQueriesToUse = function () {
@@ -47,7 +45,7 @@
         for (var i = 0; i < $scope.category.AllPropertyQueryGroups.length; i++) {
             for (var j = 0; j < $scope.category.AllPropertyQueryGroups[i].Queries.length; j++) {
 
-                //if checked (i.e. Use == true)
+                //if checked (Use == true)
                 if ($scope.category.AllPropertyQueryGroups[i].Queries[j].Use == true) {
 
                     //check not the same query already has been added (if exists in multiple query groups)
@@ -65,23 +63,18 @@
                 }
             }
         }
+        console.log(queriesToUse);
         $scope.category.Category.Queries = queriesToUse;
     }
 
 
 
-    $scope.setOperatorsStateFilter = function (filter) {
-        $scope.operatorsStateFilter = filter;
-        console.log(filter);
-    }
     $scope.setQueriesStateFilter = function (filter) {
         $scope.queriesStateFilter = filter;
-        console.log(filter);
     }
 
     $scope.searchForGroup = function (queryGroup) {
 
-        //console.log('searching query groups');
         if ($scope.searchQueryAll !== undefined && $scope.searchQueryAll.length !== 0) {
             var allMatch = false;
             if ($scope.doSearchGroupTitle(queryGroup, $scope.searchQueryAll) == true) {
@@ -111,41 +104,18 @@
 
     $scope.searchForQuery = function (query) {
 
-        //console.log('searching queries');
         if ($scope.searchQueryTitle !== undefined && $scope.searchQueryTitle.length !== 0) {
             if ($scope.doSearchQueryTitle(query, $scope.searchQueryTitle) != true) {
                 return false;
             }
         }
-        if ($scope.doCheckUseFilter($scope.queriesStateFilter, query) != true) {
+        if ($scope.doSearchQueryUse(query) != true) {
             return false;
         }
 
         return true;
     };
 
-
-
-    $scope.searchForOperators = function (operator) {
-
-        //console.log('searching operators');
-        if ($scope.searchOperatorsTitle !== undefined && $scope.searchOperatorsTitle.length !== 0) {
-            if ($scope.doSearchOperatorName(operator, $scope.searchOperatorsTitle) != true) {
-                return false;
-            }
-        }
-        if ($scope.doCheckUseFilter($scope.operatorsStateFilter, operator) != true) {
-            return false;
-        }
-
-        return true;
-    };
-    $scope.doSearchOperatorName = function (operator, searchValue) {
-        if (operator.Name.toLowerCase().indexOf(searchValue) >= 0) {
-            return true;
-        }
-        return false;
-    }
 
     $scope.doSearchGroupTitle = function (queryGroup, searchValue) {
         if (queryGroup.Title.toLowerCase().indexOf(searchValue) >= 0) {
@@ -169,20 +139,20 @@
         return false;
     }
 
-    $scope.doSearchGroupQueryUse = function (queryGroup) {
-        for (var i = 0; i < queryGroup.Queries.length; i++) {
-            if ($scope.doCheckUseFilter($scope.queriesStateFilter, queryGroup.Queries[i])) {
-                return true;
-            }
+    $scope.doSearchQueryUse = function (query) {
+        if ($scope.queriesStateFilter == 'All' ||
+            ($scope.queriesStateFilter == 'Chosen' && query.Use == true) ||
+            ($scope.queriesStateFilter == 'Unchosen' && query.Use != true)) {
+
+            return true;
         }
         return false;
     }
-    $scope.doCheckUseFilter = function (filter, model) {
-        if (filter == 'All' ||
-            (filter == 'Chosen' && model.Use == true) ||
-            (filter == 'Unchosen' && model.Use != true)) {
-
-            return true;
+    $scope.doSearchGroupQueryUse = function (queryGroup) {
+        for (var i = 0; i < queryGroup.Queries.length; i++) {
+            if ($scope.doSearchQueryUse(queryGroup.Queries[i])) {
+                return true;
+            }
         }
         return false;
     }

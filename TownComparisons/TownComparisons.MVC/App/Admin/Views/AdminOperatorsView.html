@@ -1,0 +1,17 @@
+﻿<h3>Aktörer</h3>
+<div>
+    <a href="#" ng-click="refreshCategories()">Ladda om</a>
+</div>
+<div>
+    <ul ng-repeat="g in groupCategories">
+        <li>
+            {{ g.Name }}
+            <ul ng-repeat="c in g.Categories">
+                <li>
+                    {{ c.Name }}
+                    <a href="#" ng-click="showCategory(c)">Visa</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
