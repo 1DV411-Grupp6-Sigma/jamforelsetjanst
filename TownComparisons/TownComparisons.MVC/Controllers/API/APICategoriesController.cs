@@ -10,7 +10,6 @@ using TownComparisons.Domain.Abstract;
 using TownComparisons.Domain.Entities;
 using TownComparisons.Domain.Models;
 using TownComparisons.MVC.ViewModels.Shared;
-using TownComparisons.MVC.ViewModels.OrganisationalUnitInfo;
 
 namespace TownComparisons.MVC.Controllers.API
 {

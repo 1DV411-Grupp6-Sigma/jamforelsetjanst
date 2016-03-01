@@ -9,7 +9,7 @@ namespace TownComparisons.MVC.ViewModels.Shared
 {
     public class OrganisationalUnitsViewModel
     {
-        public List<OrganisationalUnitViewModel> OrganisationalUnits { get; set; }
+        public List<OrganisationalUnitInfoViewModel> OrganisationalUnits { get; set; }
 
         public OrganisationalUnitsViewModel()
         {
@@ -18,7 +18,7 @@ namespace TownComparisons.MVC.ViewModels.Shared
 
         public OrganisationalUnitsViewModel(List<Domain.Entities.OrganisationalUnitInfo> entities)
         {
-            OrganisationalUnits = entities.Select(g => new OrganisationalUnitViewModel(g)).ToList();
+            OrganisationalUnits = entities.Select(g => new OrganisationalUnitInfoViewModel(g)).ToList();
         }
     }
 }

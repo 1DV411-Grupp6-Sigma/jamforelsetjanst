@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using TownComparisons.Domain.Entities;
 
-namespace TownComparisons.MVC.ViewModels.OrganisationalUnitInfo
+namespace TownComparisons.MVC.ViewModels.Shared
 {
     public class OrganisationalUnitInfoViewModel
     {
         public int Id { get; set; }
 
-        public string OrganisationalUnitId { get; set; }  // this is the external ID from the web service (like Kolada)
+        public string OrganisationalUnitId { get; set; } 
 
         public string Name { get; set; }
 
@@ -37,11 +38,14 @@ namespace TownComparisons.MVC.ViewModels.OrganisationalUnitInfo
 
         public string Other { get; set; }
 
+
+
+
         public OrganisationalUnitInfoViewModel()
         {
             //Empty
         }
-        public OrganisationalUnitInfoViewModel(TownComparisons.Domain.Entities.OrganisationalUnitInfo entity)
+        public OrganisationalUnitInfoViewModel(Domain.Entities.OrganisationalUnitInfo entity)
         {
             Id = entity.Id;
             OrganisationalUnitId = entity.OrganisationalUnitId;
@@ -53,6 +57,7 @@ namespace TownComparisons.MVC.ViewModels.OrganisationalUnitInfo
             Telephone = entity.Telephone;
             Contact = entity.Contact;
             Email = entity.Email;
+            OrganisationalForm = entity.OrganisationalForm;
             Website = entity.Website;
             Latitude = entity.Latitude;
             Longitude = entity.Longitude;

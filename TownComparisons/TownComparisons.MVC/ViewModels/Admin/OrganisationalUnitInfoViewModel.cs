@@ -7,18 +7,18 @@ using TownComparisons.Domain.Models;
 
 namespace TownComparisons.MVC.ViewModels.Admin
 {
-    public class OrganisationalUnitViewModel : Shared.OrganisationalUnitViewModel
+    public class OrganisationalUnitInfoViewModel : Shared.OrganisationalUnitInfoViewModel
     {
         public bool Use { get; set; }
 
         //.. more properties from Shared.OrganisationalUnitViewModel
 
 
-        public OrganisationalUnitViewModel()
+        public OrganisationalUnitInfoViewModel()
         {
             //Empty
         }
-        public OrganisationalUnitViewModel(OrganisationalUnit model, bool use = false)
+        public OrganisationalUnitInfoViewModel(OrganisationalUnit model, bool use = false)
         {
             OrganisationalUnitId = model.OrganisationalUnitId;
             Name = model.Name;

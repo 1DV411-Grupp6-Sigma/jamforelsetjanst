@@ -10,7 +10,6 @@ using TownComparisons.Domain.Abstract;
 using TownComparisons.Domain.Entities;
 using TownComparisons.Domain.Models;
 using TownComparisons.MVC.ViewModels.Shared;
-using TownComparisons.MVC.ViewModels.OrganisationalUnitInfo;
 using TownComparisons.MVC.ViewModels.Admin;
 
 namespace TownComparisons.MVC.Controllers.API
@@ -46,7 +45,6 @@ namespace TownComparisons.MVC.Controllers.API
             return new HttpResponseMessage(HttpStatusCode.NotFound);
         }
         
-
         [HttpPost]
         [Route("admin/category/{categoryId}")]
         public HttpResponseMessage SaveCategory(HttpRequestMessage request, [FromBody]CategoryViewModel category)
