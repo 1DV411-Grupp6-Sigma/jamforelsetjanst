@@ -183,28 +183,33 @@
     <Compile Include="ViewModels\Admin\SettingsViewModel.cs" />
     <Compile Include="ViewModels\Shared\AlphabetViewModel.cs" />
     <Compile Include="ViewModels\Shared\CategoriesViewModel.cs" />
+    <Compile Include="ViewModels\Shared\CategoryPropertyResults.cs" />
     <Compile Include="ViewModels\Shared\CategoryViewModel.cs" />
     <Compile Include="ViewModels\Admin\CategoryWithUnusedViewModel.cs" />
     <Compile Include="ViewModels\Shared\GroupCategoryViewModel.cs" />
     <Compile Include="ViewModels\Shared\OrganisationalUnitsViewModel.cs" />
     <Compile Include="ViewModels\Shared\OrganisationalUnitViewModel.cs" />
     <Compile Include="ViewModels\Admin\PropertyQueryGroupViewModel.cs" />
+    <Compile Include="ViewModels\Shared\PropertyResultValueViewModel.cs" />
+    <Compile Include="ViewModels\Shared\PropertyResultViewModel.cs" />
     <Compile Include="ViewModels\Shared\PropertyQueryViewModel.cs" />
     <Compile Include="ViewModels\OrganisationalUnitInfo\OrganisationalUnitInfoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\Admin\App.js" />
+    <Content Include="App\Admin\ViewModels\AdminCategoryShowViewModel.js" />
     <Content Include="App\Admin\ViewModels\AdminOperatorViewModel.js" />
     <Content Include="App\Admin\ViewModels\AdminOperatorsViewModel.js" />
     <Content Include="App\Admin\ViewModels\AdminHomeViewModel.js" />
     <Content Include="App\Admin\ViewModels\AdminCategoriesViewModel.js" />
-    <Content Include="App\Admin\ViewModels\AdminCategoryViewModel.js" />
+    <Content Include="App\Admin\ViewModels\AdminCategoryEditViewModel.js" />
     <Content Include="App\Admin\ViewModels\RootViewModel.js" />
+    <Content Include="App\Admin\Views\AdminCategoryShowView.html" />
     <Content Include="App\Admin\Views\AdminOperatorView.html" />
     <Content Include="App\Admin\Views\AdminOperatorsView.html" />
     <Content Include="App\Admin\Views\AdminHomeView.html" />
     <Content Include="App\Admin\Views\AdminCategoriesView.html" />
-    <Content Include="App\Admin\Views\AdminCategoryView.html" />
+    <Content Include="App\Admin\Views\AdminCategoryEditView.html" />
     <Content Include="App\App.js" />
     <Content Include="App\Categories\App.js" />
     <Content Include="App\Categories\ViewModels\AlphabetViewModel.js" />

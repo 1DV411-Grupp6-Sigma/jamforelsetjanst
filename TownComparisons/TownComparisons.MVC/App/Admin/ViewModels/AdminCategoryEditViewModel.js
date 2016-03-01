@@ -1,7 +1,8 @@
-﻿adminModule.controller("adminCategoryViewModel", function ($scope, adminService, $http, $q, $routeParams, $window, $location, viewModelHelper) {
+﻿adminModule.controller("adminCategoryEditViewModel", function ($scope, adminService, $http, $q, $routeParams, $window, $location, viewModelHelper) {
 
     $scope.viewModelHelper = viewModelHelper;
     $scope.adminService = adminService;
+    $scope.editMode = (adminService.editCategoryMode ? adminService.editCategoryMode : 'general');
     
     var initialize = function () {
         $scope.categoryHasBeenLoaded = false;
@@ -9,6 +10,7 @@
         $scope.queriesStateFilter = 'All';
         $scope.operatorsStateFilter = 'All';
         $scope.refreshCategory($routeParams.categoryId);
+
     }
 
     $scope.refreshCategory = function (categoryId) {
@@ -30,6 +32,10 @@
                 console.log(result.data);
             });
     }
+    $scope.cancelEditCategory = function () {
+        viewModelHelper.navigateTo('admin/category/' + adminService.categoryId);
+    }
+
     var setCategoryOrganisationalUnitsToUse = function () {
         var ousToUse = [];
         for (var i = 0; i < $scope.category.AllOrganisationalUnits.length; i++) {

@@ -1,0 +1,55 @@
+﻿<ul class="breadcrumbs">
+    <li><a href="/admin">Hem</a></li>
+    <li><a href="/admin/categories">Kategorier</a></li>
+    <li class="current">{{ category.Category.Name }}</li>
+</ul>
+
+<h2>{{ pageHeading }}</h2>
+
+<hr />
+
+<!-- <h3>Kategori: {{ category.Category.Name }}</h3> -->
+<!--
+<div>
+    <a href="#" ng-click="refreshCategory(category.CategoryId)">Ladda om</a>
+</div>
+-->
+
+<div class="row" ng-show="categoryHasBeenLoaded">
+    <div class="medium-9 columns">
+
+        <h3>
+            Allmänna inställningar
+        </h3>
+        <dl>
+            <dt>Namn</dt>
+            <dd>{{ category.Category.Name }}</dd>
+            <dt>Beskrivning</dt>
+            <dd>{{ !category.Category.Description ? '(tom)' : category.Category.Description }}</dd>
+        </dl>
+        <button ng-click="gotoEdit('general')" class="tiny button">Ändra <i class="fi-page-edit"></i></button>
+
+        <h3>
+            Aktörer
+        </h3>
+        <ul>
+            <li ng-repeat="o in category.Category.OrganisationalUnits">
+                {{ o.Name }}
+            </li>
+        </ul>
+        <button ng-click="gotoEdit('operators')" class="tiny button">Välj aktörer <i class="fi-page-edit"></i></button>
+
+        <h3>
+            Egenskaper
+        </h3>
+        <ul>
+            <li ng-repeat="o in category.Category.Queries">
+                {{ o.Title }}
+            </li>
+        </ul>
+        <button ng-click="gotoEdit('queries')" class="tiny button">Välj egenskaper <i class="fi-page-edit"></i></button>
+
+
+
+    </div>
+</div>

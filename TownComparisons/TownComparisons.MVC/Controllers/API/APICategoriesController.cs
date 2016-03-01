@@ -50,6 +50,21 @@ namespace TownComparisons.MVC.Controllers.API
         }
 
         [HttpGet]
+        [Route("category/{categoryId}/properties")]
+        public HttpResponseMessage GetCategoryProperyResults(HttpRequestMessage request, int categoryId)
+        {
+            Category category = _service.GetCategory(categoryId);
+            if (category != null)
+            {
+                List<PropertyResult> results = _service.GetWebServicePropertyResults(category);
+                CategoryPropertyResults model = new CategoryPropertyResults(results);
+                return request.CreateResponse<PropertyResultViewModel[]>(HttpStatusCode.OK, model.Results.ToArray());
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.NotFound);
+        }
+
+        [HttpGet]
         [Route("category/{categoryId}")]
         public HttpResponseMessage GetCategory(HttpRequestMessage request, int categoryId)
         {
@@ -62,6 +77,6 @@ namespace TownComparisons.MVC.Controllers.API
 
             return new HttpResponseMessage(HttpStatusCode.NotFound);
         }
-        
+
     }
 }
