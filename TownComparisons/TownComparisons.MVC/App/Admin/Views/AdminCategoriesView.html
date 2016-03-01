@@ -1,17 +1,9 @@
-﻿<h3>Kategorier</h3>
+﻿<ul class="breadcrumbs">
+    <li><a href="/admin">Admin</a></li>
+    <li class="current">Kategorier</li>
+</ul>
+
+<h2>Kategorier</h2>
 <div>
-    <a href="#" ng-click="refreshCategories()">Ladda om</a>
-</div>
-<div>
-    <ul ng-repeat="g in groupCategories">
-        <li>
-            {{ g.Name }}
-            <ul ng-repeat="c in g.Categories">
-                <li>
-                    {{ c.Name }}
-                    <a href="#" ng-click="showCategory(c)">Visa</a>
-                </li>
-            </ul>
-        </li>
-    </ul>
+    <ng-include src="'/App/Admin/Views/_Categories.html'"></ng-include>
 </div>

@@ -21,6 +21,19 @@ adminModule.factory('adminService', function ($rootScope, $http, $q, $location, 
     var adminService = function ($rootScope, $http, $q, $location, viewModelHelper) {
 
         var self = this;
+    
+        $rootScope.refreshCategories = function () {
+            viewModelHelper.apiGet('api/categories', null,
+                function (result) {
+                    $rootScope.groupCategories = result.data;
+                });
+        }
+
+        $rootScope.showCategory = function (categoryId) {
+            viewModelHelper.navigateTo('admin/category/' + categoryId);
+        }
+
+
 
         self.adminId = 0;
 

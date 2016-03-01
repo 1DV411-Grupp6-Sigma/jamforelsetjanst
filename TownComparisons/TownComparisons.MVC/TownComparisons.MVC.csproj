@@ -205,6 +205,7 @@
     <Content Include="App\Admin\ViewModels\AdminCategoryEditViewModel.js" />
     <Content Include="App\Admin\ViewModels\RootViewModel.js" />
     <Content Include="App\Admin\Views\AdminCategoryShowView.html" />
+    <Content Include="App\Admin\Views\_Categories.html" />
     <Content Include="App\Admin\Views\AdminOperatorView.html" />
     <Content Include="App\Admin\Views\AdminOperatorsView.html" />
     <Content Include="App\Admin\Views\AdminHomeView.html" />

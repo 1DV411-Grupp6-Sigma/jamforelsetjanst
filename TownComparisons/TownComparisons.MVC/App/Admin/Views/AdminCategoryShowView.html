@@ -1,33 +1,35 @@
 ﻿<ul class="breadcrumbs">
-    <li><a href="/admin">Hem</a></li>
+    <li><a href="/admin">Admin</a></li>
     <li><a href="/admin/categories">Kategorier</a></li>
     <li class="current">{{ category.Category.Name }}</li>
 </ul>
 
-<h2>{{ pageHeading }}</h2>
+<div class="row" ng-show="categoryHasBeenLoaded">
+    <div class="medium-9 columns">
+        <h2>{{ pageHeading }}</h2>
+        <hr />
+    </div>
 
-<hr />
-
-<!-- <h3>Kategori: {{ category.Category.Name }}</h3> -->
-<!--
-<div>
-    <a href="#" ng-click="refreshCategory(category.CategoryId)">Ladda om</a>
+    <div class="medium-2 columns end" id="saveChangesPanel">
+        <div>
+            <button ng-click="gotoEdit('general')" class="medium button">Ändra kategori <i class="fi-pencil"></i></button>
+        </div>
+    </div>
 </div>
--->
 
 <div class="row" ng-show="categoryHasBeenLoaded">
     <div class="medium-9 columns">
-
+        <!--
         <h3>
             Allmänna inställningar
         </h3>
+            -->
         <dl>
             <dt>Namn</dt>
             <dd>{{ category.Category.Name }}</dd>
             <dt>Beskrivning</dt>
-            <dd>{{ !category.Category.Description ? '(tom)' : category.Category.Description }}</dd>
+            <dd>{{ category.Category.Description }}</dd>
         </dl>
-        <button ng-click="gotoEdit('general')" class="tiny button">Ändra <i class="fi-page-edit"></i></button>
 
         <h3>
             Aktörer
@@ -37,7 +39,7 @@
                 {{ o.Name }}
             </li>
         </ul>
-        <button ng-click="gotoEdit('operators')" class="tiny button">Välj aktörer <i class="fi-page-edit"></i></button>
+        <button ng-click="gotoEdit('operators')" class="tiny button">Välj aktörer <i class="fi-pencil"></i></button>
 
         <h3>
             Egenskaper
@@ -47,9 +49,10 @@
                 {{ o.Title }}
             </li>
         </ul>
-        <button ng-click="gotoEdit('queries')" class="tiny button">Välj egenskaper <i class="fi-page-edit"></i></button>
+        <button ng-click="gotoEdit('queries')" class="tiny button">Välj egenskaper <i class="fi-pencil"></i></button>
 
 
 
     </div>
+
 </div>

@@ -20,7 +20,8 @@
                 viewModelHelper.apiGet('api/category/' + categoryId + '/properties', null,
                     function (result) {
                         console.log(result);
-                    });
+                    }
+                );
             });
     }
 

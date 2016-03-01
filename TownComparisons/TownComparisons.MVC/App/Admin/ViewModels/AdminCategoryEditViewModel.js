@@ -6,7 +6,7 @@
     
     var initialize = function () {
         $scope.categoryHasBeenLoaded = false;
-        $scope.pageHeading = 'Laddar kategori...';
+        $scope.pageHeading = 'Laddar in data...';
         $scope.queriesStateFilter = 'All';
         $scope.operatorsStateFilter = 'All';
         $scope.refreshCategory($routeParams.categoryId);

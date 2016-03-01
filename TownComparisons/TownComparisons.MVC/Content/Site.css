@@ -6305,15 +6305,21 @@ th.hide-for-touch {
 .accordion-navigation.active > a:after {
   content: "↟"; }
 
+@media only screen and (min-width: 40.063em) {
+  #saveChangesPanel > div {
+    position: fixed;
+    top: 100px;
+    left: auto; } }
+
 #compare {
+  position: fixed;
+  top: 100px;
+  right: 75px;
   border: 1px solid lightgray;
   background-color: ivory;
   border-radius: 3px;
-  position: fixed;
   padding-left: 0;
-  padding-right: 0;
-  right: 75px;
-  top: 100px; }
+  padding-right: 0; }
   #compare ul {
     margin: 0;
     padding: 0; }
