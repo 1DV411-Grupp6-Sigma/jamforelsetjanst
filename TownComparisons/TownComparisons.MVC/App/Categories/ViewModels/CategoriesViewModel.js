@@ -2,8 +2,14 @@
 
     $scope.viewModelHelper = viewModelHelper;
     $scope.categoryService = categoryService;
+    $scope.sortByName = 'Name';
+    $scope.sortAsc = 'sortAsc';
+    $scope.sortDesc = 'sortDesc';
+    $scope.classActive = 'active';
+    $scope.classInvisible = 'invisible';
 
     var initialize = function () {
+        $scope.sortCategoryByName();
         if ($route.current.$$route.originalPath == "/categories/alphabet") {
             $scope.viewCategoriesBasedOnAlphabet();
         }
@@ -11,6 +17,23 @@
             $scope.viewAllCategories();
         }
     }
+
+    // Sorts the categories by Name (Desc).
+    $scope.sortCategoryByName = function () {
+        $scope.visibleName = '';
+        $scope.fileName = $scope.sortAsc;
+        $scope.activeName = $scope.classActive;
+
+        if ($scope.sortBy == $scope.sortByName) {
+            $scope.sortBy = '-' + $scope.sortByName;
+            $scope.fileName = $scope.sortDesc;
+        }
+        else {
+            $scope.sortBy = $scope.sortByName;
+            $scope.fileName = $scope.sortAsc;
+        }
+    }
+
     //Get all categories based on category via APICategoriesController
     $scope.viewAllCategories = function () {
         viewModelHelper.apiGet('api/categories', null,

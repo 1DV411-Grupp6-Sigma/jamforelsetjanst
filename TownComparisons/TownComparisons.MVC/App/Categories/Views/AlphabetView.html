@@ -1,26 +1,33 @@
-﻿<div class="content">
-    <h4>Kategorier</h4>
+﻿<h4>Kategorier</h4>
 
-    <!-- seachbar -->
-    <div id="search" class="row">
+<!-- seachbar -->
+<div class="right searchbar">
+    <div id="search">
         <div class="small-4 columns end">
             <input id="search-box" placeholder="Sök" type="text" data-ng-model="filter.name" />
         </div>
     </div>
-
-    <!-- navbar for sorting -->
+</div>
+<div class="container">
+    <!-- navbar for different views -->
     <div class="row">
-        <dl class="sub-nav">
-            <dt>Sortera:</dt>
+        <dl class="breadcrumbs">
             <dd><a href="#" ng-click="changeView()">Kategori</a></dd>
-            <dd class="active"><a href="#">Alla A-Ö</a></dd>
+            <dd class="unavailable"><a href="#">Alla A-Ö</a></dd>
         </dl>
     </div>
 
-        <!-- Show categories -->
-        <ul class="categoriesList" ng-repeat="c in alphabetCategories | filter:filter.name">
-            <li>
-                <a href="#" ng-click="showCategory(c)">{{ c.Name }}</a> ({{ c.OrganisationalUnits.length }})
-            </li>
-        </ul>
+    <!-- navbar for desc or asc sorting-->
+    <div class="row">
+        <dl class="sub-nav">
+            <dt>Sortera:</dt>
+            <dd class="{{ activeName }}"><a href="" ng-click="sortCategoryByName()">Namn</a><img class="{{ visibleName }}" src="/Content/pictures/{{ fileName }}.png" ng-click="sortCategoryByName()" /></dd>
+        </dl>
     </div>
+    <!-- Show categories -->
+    <ul class="categoriesList" ng-repeat="c in alphabetCategories | filter:filter.name | orderBy:sortByOrder + sortBy">
+        <li>
+            <a href="#" ng-click="showCategory(c)">{{ c.Name }}</a> ({{ c.OrganisationalUnits.length }})
+        </li>
+    </ul>
+</div>
