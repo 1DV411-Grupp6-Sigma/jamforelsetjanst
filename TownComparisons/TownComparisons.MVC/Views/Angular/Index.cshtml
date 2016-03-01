@@ -35,9 +35,9 @@
                 </ul>
             </div>
             <div id="comparelist-footer" class="row">
+                
                 <button id="clear-listBtn" class="tiny button" data-ng-click="deleteAllOperators()">Rensa alla</button>
-                <button id="compareBtn" class="tiny button" ng-click="compare()">Jämför</button>
-
+                <button id="compareBtn" class="tiny button" data-ng-click="compare()" data-ng-disabled="listItems.length < 2">Jämför</button>
             </div>
         </div>
     </div>
