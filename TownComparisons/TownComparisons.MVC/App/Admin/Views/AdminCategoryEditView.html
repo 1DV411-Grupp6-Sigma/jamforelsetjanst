@@ -1,4 +1,11 @@
-﻿<h2>{{ pageHeading }}</h2>
+﻿<ul class="breadcrumbs" ng-show="categoryHasBeenLoaded">
+    <li><a href="/admin">Hem</a></li>
+    <li><a href="/admin/categories">Kategorier</a></li>
+    <li><a ng-click="viewModelHelper.navigateTo('admin/category/{{$routeParams.categoryId}}')">{{ category.Category.Name }}</a></li>
+    <li class="current">Ändra</li>
+</ul>
+
+<h2>{{ pageHeading }}</h2>
 
 <hr />
 
@@ -15,8 +22,8 @@
         <form novalidate>
 
             <tabset>
-                <tab heading="Allmänt">
-                    <h3>Allmänt om kategorin</h3>
+                <tab heading="Allmänt" active="editMode == 'general'" ng-click="editMode = 'general'">
+                    <h3>Allmänna inställningar</h3>
 
                     <label>Namn:</label>
                     <input type="text" ng-model="category.Category.Name" />
@@ -27,8 +34,8 @@
 
 
 
-                <tab heading="Aktörer">
-                    <h3>Aktörer i kategorin</h3>
+                <tab heading="Aktörer" active="editMode == 'operators'" ng-click="editMode = 'operators'">
+                    <h3>Aktörer</h3>
 
                     <dl class="sub-nav">
                         <dt>Visa:</dt>
@@ -65,8 +72,8 @@
                 </tab>
 
 
-                <tab heading="Egenskaper">  
-                    <h3>Egenskaper i kategorin</h3>
+                <tab heading="Egenskaper" active="editMode == 'queries'" ng-click="editMode = 'queries'">  
+                    <h3>Egenskaper</h3>
 
                     <dl class="sub-nav">
                         <dt>Visa:</dt>
@@ -124,7 +131,18 @@
     </div>
     <div class="medium-3 columns" id="saveChangesPanel">
 
-        <input type="button" name="save" ng-click="saveCategory()" value="Spara kategori" class="button success" />
+        <div>
+            <input type="button" name="save" ng-click="saveCategory()" value="Spara ändringar" class="button success" />
+        </div>
+
+        <div ng-show="!cancel">
+            <input type="button" name="cancel" ng-click="cancel = true" value="Avbryt" class="tiny button secondary" />
+        </div>
+        <div ng-show="cancel">
+            <label>Avbryta utan att spara?</label>
+            <input type="button" name="cancel" ng-click="cancelEditCategory()" value="Ja" class="tiny button default" />
+            <input type="button" name="cancel" ng-click="cancel = false" value="X" class="tiny button secondary" />
+        </div>
 
     </div>
 </div>

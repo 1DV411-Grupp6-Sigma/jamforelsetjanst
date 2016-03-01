@@ -3,7 +3,8 @@ var adminModule = angular.module('admin', ['common'])
     .config(function ($routeProvider, $locationProvider) {
         $routeProvider.when('/admin', { templateUrl: '/App/Admin/Views/AdminHomeView.html', controller: 'adminHomeViewModel' });
         $routeProvider.when('/admin/categories', { templateUrl: '/App/Admin/Views/AdminCategoriesView.html', controller: 'adminCategoriesViewModel' });
-        $routeProvider.when('/admin/category/:categoryId', { templateUrl: '/App/Admin/Views/AdminCategoryView.html', controller: 'adminCategoryViewModel' });
+        $routeProvider.when('/admin/category/:categoryId', { templateUrl: '/App/Admin/Views/AdminCategoryShowView.html', controller: 'adminCategoryShowViewModel' });
+        $routeProvider.when('/admin/category/:categoryId/edit', { templateUrl: '/App/Admin/Views/AdminCategoryEditView.html', controller: 'adminCategoryEditViewModel' });
         $routeProvider.when('/admin/operators', { templateUrl: '/App/Admin/Views/AdminOperatorsView.html', controller: 'adminOperatorsViewModel' });
         $routeProvider.when('/admin/operators/:operatorId', { templateUrl: '/App/Admin/Views/AdminOperatorView.html', controller: 'adminOperatorViewModel' });
         $routeProvider.otherwise({ redirectTo: '/admin' });
