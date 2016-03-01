@@ -12,21 +12,21 @@ namespace TownComparisons.MVC.ViewModels.Admin
     {
         public CategoryViewModel Category { get; set; }
 
-        public List<OrganisationalUnitViewModel> AllOrganisationalUnits { get; set; }
+        public List<OrganisationalUnitInfoViewModel> AllOrganisationalUnits { get; set; }
         public List<PropertyQueryGroupViewModel> AllPropertyQueryGroups { get; set; }
 
         public CategoryWithUnusedViewModel()
         {
-            AllOrganisationalUnits = new List<OrganisationalUnitViewModel>();
+            AllOrganisationalUnits = new List<OrganisationalUnitInfoViewModel>();
             AllPropertyQueryGroups = new List<PropertyQueryGroupViewModel>();
         }
         public CategoryWithUnusedViewModel(Category category, List<OrganisationalUnit> allOrganisationalUnits, List<PropertyQueryGroup> allPropertyQueryGroups)
         {
             Category = new CategoryViewModel(category);
-            AllOrganisationalUnits = allOrganisationalUnits.Select(o => new OrganisationalUnitViewModel(o)).ToList();
+            AllOrganisationalUnits = allOrganisationalUnits.Select(o => new OrganisationalUnitInfoViewModel(o)).ToList();
             AllPropertyQueryGroups = allPropertyQueryGroups.Select(p => new PropertyQueryGroupViewModel(p)).ToList();
 
-            foreach (OrganisationalUnitViewModel ou in AllOrganisationalUnits)
+            foreach (OrganisationalUnitInfoViewModel ou in AllOrganisationalUnits)
             {
                 ou.Use = (Category.OrganisationalUnits.Find(cou => cou.OrganisationalUnitId == ou.OrganisationalUnitId) != null);
             }

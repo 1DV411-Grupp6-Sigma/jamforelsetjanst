@@ -10,7 +10,6 @@ using TownComparisons.Domain.Abstract;
 using TownComparisons.Domain.Entities;
 using TownComparisons.Domain.Models;
 using TownComparisons.MVC.ViewModels.Shared;
-using TownComparisons.MVC.ViewModels.OrganisationalUnitInfo;
 
 namespace TownComparisons.MVC.Controllers.API
 {
@@ -31,48 +30,28 @@ namespace TownComparisons.MVC.Controllers.API
         [Route("operators/{operatorId}")]
         public HttpResponseMessage GetOperator(HttpRequestMessage request, string operatorId)
         {
-            //var operatorInfos = _service.GetOrganisationalUnitInfos();
-            //var operatorInfo = operatorInfos.FirstOrDefault(item => item.OrganisationalUnitId == ouId); //"operator" is reserved word
-            var operatorInfo = _service.GetOrganisationalUnitInfo(operatorId);
-            OrganisationalUnitInfoViewModel model = new OrganisationalUnitInfoViewModel(operatorInfo);
-            return request.CreateResponse<OrganisationalUnitInfoViewModel>(HttpStatusCode.OK, model);
+            OrganisationalUnitInfo ou = _service.GetOrganisationalUnitInfo(operatorId);
+            if (ou != null)
+            {
+                OrganisationalUnitInfoViewModel model = new OrganisationalUnitInfoViewModel(ou);
+                return request.CreateResponse<OrganisationalUnitInfoViewModel>(HttpStatusCode.OK, model);
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.BadRequest);
         }
 
         [HttpGet]
         [Route("operators_in_category/{categoryId}")]
         public HttpResponseMessage GetOperatorsInCategory(HttpRequestMessage request, int categoryId)
         {
-            // DEN HÄR RADEN KOMMER ANVÄNDAS!
             Category category = _service.GetCategory(categoryId);
             if (category != null)
             {
-                var ous = category.OrganisationalUnits.ToList();
-
-                OrganisationalUnitsViewModel model = new OrganisationalUnitsViewModel(ous);
-                return request.CreateResponse<OrganisationalUnitViewModel[]>(HttpStatusCode.OK, model.OrganisationalUnits.ToArray());
+                OrganisationalUnitsViewModel model = new OrganisationalUnitsViewModel(category.OrganisationalUnits.ToList());
+                return request.CreateResponse<OrganisationalUnitInfoViewModel[]>(HttpStatusCode.OK, model.OrganisationalUnits.ToArray());
             }
 
             return new HttpResponseMessage(HttpStatusCode.BadRequest);
-
-            // Blocket nedan är temporärt, i brist på info i databas.
-            // ---------------------------------------------------
-            /*
-            var ous = _service.GetWebServiceOrganisationalUnits();
-            List<OrganisationalUnitInfo> ousFiltered;
-            if (categoryId == 1)
-            {
-                ousFiltered = ous.Where(ou => ou.OrganisationalUnitId.Substring(0, 3) == "V15").ToList();
-            }
-            else if (categoryId == 2)
-            {
-                ousFiltered = ous.Where(ou => ou.OrganisationalUnitId.Substring(0, 3) == "V17").ToList();
-            }
-            else
-            {
-                throw new ArgumentException("Finns ingen sådan kategori.");
-            }
-            */
-            // ---------------------------------------------------
         }
     }
 }

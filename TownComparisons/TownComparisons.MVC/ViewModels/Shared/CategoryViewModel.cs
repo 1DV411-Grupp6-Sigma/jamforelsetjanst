@@ -13,7 +13,7 @@ namespace TownComparisons.MVC.ViewModels.Shared
         public string Description { get; set; }
 
         public List<PropertyQueryViewModel> Queries { get; set; }
-        public List<OrganisationalUnitViewModel> OrganisationalUnits { get; set; }
+        public List<OrganisationalUnitInfoViewModel> OrganisationalUnits { get; set; }
 
 
         public CategoryViewModel()
@@ -26,7 +26,7 @@ namespace TownComparisons.MVC.ViewModels.Shared
             Name = entity.Name;
             Description = entity.Description;
             Queries = entity.Queries.Select(q => new PropertyQueryViewModel(q)).ToList();
-            OrganisationalUnits = entity.OrganisationalUnits.Select(o => new OrganisationalUnitViewModel(o)).ToList();
+            OrganisationalUnits = entity.OrganisationalUnits.Select(o => new OrganisationalUnitInfoViewModel(o)).ToList();
         }
     }
 }

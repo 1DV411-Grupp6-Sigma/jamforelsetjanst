@@ -101,7 +101,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="App_Data\settingsConfig.json" />
     <None Include="CodeMap\CodeMap160223.dgml" />
     <None Include="packages.config" />
   </ItemGroup>
