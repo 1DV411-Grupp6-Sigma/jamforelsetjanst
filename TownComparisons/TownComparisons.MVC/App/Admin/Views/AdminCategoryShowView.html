@@ -36,7 +36,7 @@
         </h3>
         <ul>
             <li ng-repeat="o in category.Category.OrganisationalUnits">
-                {{ o.Name }}
+                <a href="/admin/operators/{{ o.OrganisationalUnitId }}">{{ o.Name }}</a>
             </li>
         </ul>
         <button ng-click="gotoEdit('operators')" class="tiny button">Välj aktörer <i class="fi-pencil"></i></button>

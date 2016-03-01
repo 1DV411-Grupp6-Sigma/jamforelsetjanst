@@ -28,6 +28,26 @@ namespace TownComparisons.Domain.DAL
             //removes plural to table names
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
+
+            //
+            // This is for cascade delete to work when deleting a group category or category
+            //
+            modelBuilder.Entity<CategoryPropertyQuery>().HasKey(q => q.Id)
+                                                .HasRequired(q => q.Category)
+                                                .WithMany(c => c.Queries)
+                                                .WillCascadeOnDelete(true);
+            
+            modelBuilder.Entity<OrganisationalUnitInfo>().HasKey(o => o.Id)
+                                                .HasRequired(o => o.Category)
+                                                .WithMany(c => c.OrganisationalUnits)
+                                                .WillCascadeOnDelete(true);
+            
+
+            modelBuilder.Entity<Category>().HasKey(c => c.Id)
+                                                .HasRequired(c => c.GroupCategory)
+                                                .WithMany(g => g.Categories)
+                                                .WillCascadeOnDelete(true); 
+
             //if we want to use (automatically created) stored procedures (might enhance performance a little)
             //modelBuilder.Entity<OrganisationalUnitInfo>().MapToStoredProcedures();
 
