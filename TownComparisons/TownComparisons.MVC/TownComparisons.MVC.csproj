@@ -193,13 +193,11 @@
     <Compile Include="ViewModels\Shared\PropertyResultValueViewModel.cs" />
     <Compile Include="ViewModels\Shared\PropertyResultViewModel.cs" />
     <Compile Include="ViewModels\Shared\PropertyQueryViewModel.cs" />
-    <Compile Include="ViewModels\OrganisationalUnitInfo\OrganisationalUnitInfoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\Admin\App.js" />
     <Content Include="App\Admin\ViewModels\AdminCategoryShowViewModel.js" />
     <Content Include="App\Admin\ViewModels\AdminOperatorViewModel.js" />
-    <Content Include="App\Admin\ViewModels\AdminOperatorsViewModel.js" />
     <Content Include="App\Admin\ViewModels\AdminHomeViewModel.js" />
     <Content Include="App\Admin\ViewModels\AdminCategoriesViewModel.js" />
     <Content Include="App\Admin\ViewModels\AdminCategoryEditViewModel.js" />
@@ -207,7 +205,6 @@
     <Content Include="App\Admin\Views\AdminCategoryShowView.html" />
     <Content Include="App\Admin\Views\_Categories.html" />
     <Content Include="App\Admin\Views\AdminOperatorView.html" />
-    <Content Include="App\Admin\Views\AdminOperatorsView.html" />
     <Content Include="App\Admin\Views\AdminHomeView.html" />
     <Content Include="App\Admin\Views\AdminCategoriesView.html" />
     <Content Include="App\Admin\Views\AdminCategoryEditView.html" />
