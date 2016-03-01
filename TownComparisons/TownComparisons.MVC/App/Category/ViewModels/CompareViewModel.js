@@ -1,22 +1,19 @@
 ﻿categoryModule.controller("compareViewModel", function ($scope, categoryService, $http, $q, $routeParams, $window, $location, viewModelHelper, $rootScope, collectorFactory) {
 
     //debugger;
-    $scope.OperatorUnitList = collectorFactory.listOfSubjects;
+    //$scope.OperatorUnitList = collectorFactory.listOfSubjects;
 
-    /* this block of code will read the id from the query string and could replace the line above
+    //this block of code will read the id from the query string and could replace the line above
     
     $scope.OperatorUnitList = [];
     for (var i = 0; i < $routeParams.id.length; i++) {
         $scope.OperatorUnitList.push($routeParams.id[i]); //will save id's to an array
 
-        //this should replace '$scope.operatorID = $scope.OperatorUnitList[0].OrganisationalUnitId;' but you have the same info in $scope.OperatorUnitList 
-        $scope.operatorID = $scope.OperatorUnitList[0];
+        /*this should replace '$scope.operatorID = $scope.OperatorUnitList[0].OrganisationalUnitId;'
+        **but you have the same info in $scope.OperatorUnitList */
+        //$scope.operatorID = $scope.OperatorUnitList[0];
     }
-    */
     
-    //console.log($scope.OperatorUnitList[0].OrganisationalUnitId); //loop through for all iDs, IDs. Has to work both with URL and button
-    //$scope.operatorID
-    $scope.operatorID = $scope.OperatorUnitList[0].OrganisationalUnitId;
     $scope.viewModelHelper = viewModelHelper;
     $scope.categoryService = categoryService;
     
@@ -46,7 +43,7 @@
 
         viewModelHelper.apiGet('api/operators/' + operatorID, null, //gets data from database. loop through for more than one operator
             function (result) {
-                //console.log(result.data); //result data from server
+                console.log(result.data); //result data from server
                 //$scope.organisationalUnit = result.data;
             });
     }
