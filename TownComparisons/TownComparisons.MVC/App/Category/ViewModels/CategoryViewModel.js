@@ -47,6 +47,7 @@
         viewModelHelper.navigateTo('category/' + $routeParams.categoryId + '/operator/' + ou.OrganisationalUnitId);
     }
 
+    
     //List with selected OU's
     $rootScope.listItems = collectorFactory.listOfSubjects;
     

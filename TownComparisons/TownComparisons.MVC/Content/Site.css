@@ -6305,16 +6305,6 @@ th.hide-for-touch {
 .accordion-navigation.active > a:after {
   content: "↟"; }
 
-#saveChangesPanel {
-  /* border: 1px solid lightgray; */
-  /* background-color: ivory; */
-  /* border-radius: 3px;*/
-  position: fixed;
-  padding-left: 0;
-  padding-right: 0;
-  right: 75px;
-  /* top: 100px;  */
-} 
 #compare {
   border: 1px solid lightgray;
   background-color: ivory;
@@ -6359,7 +6349,7 @@ th.hide-for-touch {
 
 #clear-listBtn {
   float: right;
-  margin: 3px 40px 0 2px; }
+  margin: 3px 40px 3px 2px; }
 
 #compareBtn {
   float: right;
@@ -6384,4 +6374,10 @@ th.hide-for-touch {
   border: 1px solid #eee;
   height: 30px;
   margin-top: 3px; }
+
+button.disabled, button[disabled], .button.disabled, .button[disabled] {
+  background-color: lightgray; }
+
+button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
+  background-color: lightgray; }
 

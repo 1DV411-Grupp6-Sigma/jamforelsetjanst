@@ -78,7 +78,7 @@
 
 #clear-listBtn{
     float:right;
-    margin: 3px 40px 0 2px;
+    margin: 3px 40px 3px 2px;
 }
 
 #compareBtn{
@@ -107,4 +107,12 @@
     border: 1px solid #eee;
     height: 30px;
     margin-top: 3px;
+}
+
+button.disabled, button[disabled], .button.disabled, .button[disabled]{
+    background-color: lightgray;
+}
+
+button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus{
+    background-color: lightgray;
 }
