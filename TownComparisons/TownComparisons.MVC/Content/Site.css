@@ -6305,6 +6305,16 @@ th.hide-for-touch {
 .accordion-navigation.active > a:after {
   content: "↟"; }
 
+#saveChangesPanel {
+  /* border: 1px solid lightgray; */
+  /* background-color: ivory; */
+  /* border-radius: 3px;*/
+  position: fixed;
+  padding-left: 0;
+  padding-right: 0;
+  right: 75px;
+  /* top: 100px;  */
+} 
 #compare {
   border: 1px solid lightgray;
   background-color: ivory;

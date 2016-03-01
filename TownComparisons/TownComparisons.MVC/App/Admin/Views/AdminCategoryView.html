@@ -1,74 +1,130 @@
-﻿<h3>Kategori: {{ category.Category.Name }}</h3>
+﻿<h2>{{ pageHeading }}</h2>
+
+<hr />
+
+<!-- <h3>Kategori: {{ category.Category.Name }}</h3> -->
 <!--
 <div>
     <a href="#" ng-click="refreshCategory(category.CategoryId)">Ladda om</a>
 </div>
 -->
 
-<form novalidate>
+<div class="row" ng-show="categoryHasBeenLoaded">
+    <div class="medium-9 columns">
 
-    <dl class="sub-nav">
-        <dt>Visa:</dt>
-        <dd class="{{ stateFilter == 'All' ? 'active' : '' }}"><a href="" ng-click="setStateFilter('All')">Alla</a></dd>
-        <dd class="{{ stateFilter == 'Chosen' ? 'active' : '' }}"><a href="" ng-click="setStateFilter('Chosen')">Valda</a></dd>
-        <dd class="{{ stateFilter == 'Unchosen' ? 'active' : '' }}"><a href="" ng-click="setStateFilter('Unchosen')">Ej valda</a></dd>
-    </dl>
+        <form novalidate>
 
-    <input type="button" name="save" ng-click="saveCategory()" value="Spara kategori" />
+            <tabset>
+                <tab heading="Allmänt">
+                    <h3>Allmänt om kategorin</h3>
 
-    <h5>Filtrering</h5>
+                    <label>Namn:</label>
+                    <input type="text" ng-model="category.Category.Name" />
 
-    <div class="row">
-        <div class="large-6 columns">
-            <label>                
-                Grupper (söker i både grupptitel och frågetitlar):
-                <input type="text" name="searchAll" ng-model="searchAll" />
-            </label>
-        </div>
-        <div class="large-6 columns">
-            <label>                
-                Fråge-titel:
-                <input type="text" name="searchQueryTitle" ng-model="searchQueryTitle" />
-            </label>
-        </div>
-    </div>
+                    <label>Beskrivning:</label>
+                    <textarea ng-model="category.Category.Description"></textarea>
+                </tab>
 
-    <!--
-    <div class="row">
-        <div class="large-6 columns">
-            <input type="checkbox" name="searchUsed" ng-model="searchUsed"><label for="searchUsed">Visa endast valda</label>
-        </div>
-    </div>
-        -->
-    <div>
-        <accordion close-others="oneAtATime" ng-repeat="qg in category.AllPropertyQueryGroups | filter:searchForGroup">
-            <accordion-group heading="Grupp: {{ qg.Title }}">
-                <div class="row" ng-repeat="q in qg.Queries | filter:searchForQuery">
+
+
+                <tab heading="Aktörer">
+                    <h3>Aktörer i kategorin</h3>
+
+                    <dl class="sub-nav">
+                        <dt>Visa:</dt>
+                        <dd class="{{ operatorsStateFilter == 'All' ? 'active' : '' }}"><a href="" ng-click="setOperatorsStateFilter('All')">Alla</a></dd>
+                        <dd class="{{ operatorsStateFilter == 'Chosen' ? 'active' : '' }}"><a href="" ng-click="setOperatorsStateFilter('Chosen')">Valda</a></dd>
+                        <dd class="{{ operatorsStateFilter == 'Unchosen' ? 'active' : '' }}"><a href="" ng-click="setOperatorsStateFilter('Unchosen')">Ej valda</a></dd>
+                    </dl>
+
+                    <!-- <h5>Filtrera</h5> -->
+
                     <div class="row">
-                        <div class="large-12 columns">
-                            <label><input type="checkbox" ng-model="q.Use"> {{ q.Title }}</label>
+                        <div class="large-6 columns">
+                            <label>
+                                Filtrera:
+                                <input type="text" name="searchOperatorsTitle" ng-model="searchOperatorsTitle" />
+                            </label>
                         </div>
                     </div>
-                </div>
-            </accordion-group>
-
-            <!--
-            <ul ng-repeat="qg in category.AllPropertyQueryGroups | filter:searchForGroup">
-                <li>
-                    <strong>Grupp: {{ qg.Title }}</strong>
-
-                    <div class="row" ng-repeat="q in qg.Queries | filter:searchForQuery">
+                    <!--
                         <div class="row">
-                            <div class="large-12 columns">
-                                <label><input type="checkbox" ng-model="q.Use"> {{ q.Title }}</label>
+                            <div class="large-6 columns">
+                                <input type="checkbox" name="searchUsed" ng-model="searchUsed"><label for="searchUsed">Visa endast valda</label>
                             </div>
                         </div>
+                            -->
+
+                    <hr />
+
+                    <div ng-repeat="o in category.AllOrganisationalUnits | filter:searchForOperators">
+                        <div class="large-6 columns">
+                            <label><input type="checkbox" ng-model="o.Use"> {{ o.Name }}</label>
+                        </div>
                     </div>
-                </li>
-            </ul>
-                -->
-        </accordion>
+                </tab>
+
+
+                <tab heading="Egenskaper">  
+                    <h3>Egenskaper i kategorin</h3>
+
+                    <dl class="sub-nav">
+                        <dt>Visa:</dt>
+                        <dd class="{{ queriesStateFilter == 'All' ? 'active' : '' }}"><a href="" ng-click="setQueriesStateFilter('All')">Alla</a></dd>
+                        <dd class="{{ queriesStateFilter == 'Chosen' ? 'active' : '' }}"><a href="" ng-click="setQueriesStateFilter('Chosen')">Valda</a></dd>
+                        <dd class="{{ queriesStateFilter == 'Unchosen' ? 'active' : '' }}"><a href="" ng-click="setQueriesStateFilter('Unchosen')">Ej valda</a></dd>
+                    </dl>
+
+                    <!-- <h5>Filtrera</h5> -->
+
+                    <div class="row">
+                        <div class="large-6 columns">
+                            <label>
+                                Grupper (söker i både grupptitel och frågetitlar):
+                                <input type="text" name="searchQueryAll" ng-model="searchQueryAll" />
+                            </label>
+                        </div>
+                        <div class="large-6 columns">
+                            <label>
+                                Fråge-titel:
+                                <input type="text" name="searchQueryTitle" ng-model="searchQueryTitle" />
+                            </label>
+                        </div>
+                    </div>
+                    <!--
+                    <div class="row">
+                        <div class="large-6 columns">
+                            <input type="checkbox" name="searchUsed" ng-model="searchUsed"><label for="searchUsed">Visa endast valda</label>
+                        </div>
+                    </div>
+                        -->
+
+                    <hr />
+
+                    <div>
+                        <accordion close-others="oneAtATime" ng-repeat="qg in category.AllPropertyQueryGroups | filter:searchForGroup">
+                            <accordion-group heading="Grupp: {{ qg.Title }}" is-open="{{ qg.AnyQueriesToUse }}">
+                                <div class="row" ng-repeat="q in qg.Queries | filter:searchForQuery">
+                                    <div class="row">
+                                        <div class="large-12 columns">
+                                            <label><input type="checkbox" ng-model="q.Use"> {{ (q.Custom.Title != '' ? q.Custom.Title : q.Title) }}</label>
+                                            <input ng-show="q.Use" type="text" ng-model="q.Custom.Title" placeholder="Välj titel för denna information (lämna tom för att använda standard)" title="Välj titel för denna information (lämna tom för att använda standard)" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </accordion-group>
+                        </accordion>
+                    </div>
+
+                </tab>
+            </tabset>
+
+        </form>
+
     </div>
+    <div class="medium-3 columns" id="saveChangesPanel">
 
+        <input type="button" name="save" ng-click="saveCategory()" value="Spara kategori" class="button success" />
 
-</form>
+    </div>
+</div>

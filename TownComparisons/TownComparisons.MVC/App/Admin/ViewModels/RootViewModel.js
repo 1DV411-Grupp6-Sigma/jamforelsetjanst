@@ -10,7 +10,7 @@
     $scope.flags = { shownFromList: false };
 
     var initialize = function () {
-        $scope.pageHeading = "Kategorier";
+        $scope.pageHeading = ""; //Kategorier";
     }
 
     $scope.categoriesList = function () {
@@ -19,7 +19,6 @@
 
     $scope.showCategory = function () {
         if (adminService.categoryId != 0) {
-            $scope.flags.shownFromList = false;
             viewModelHelper.navigateTo('admin/operator/' + adminService.categoryId);
         }
     }

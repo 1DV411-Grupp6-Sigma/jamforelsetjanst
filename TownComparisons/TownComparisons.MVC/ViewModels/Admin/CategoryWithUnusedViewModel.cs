@@ -35,6 +35,7 @@ namespace TownComparisons.MVC.ViewModels.Admin
                 foreach (PropertyQueryViewModel q in qg.Queries)
                 {
                     q.Use = (Category.Queries.Find(cq => cq.WebServiceName == q.WebServiceName && cq.QueryId == q.QueryId) != null);
+                    if (q.Use) { qg.AnyQueriesToUse = true; }
                 }
             }
         }

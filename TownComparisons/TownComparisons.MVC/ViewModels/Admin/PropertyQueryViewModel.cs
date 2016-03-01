@@ -13,6 +13,8 @@ namespace TownComparisons.MVC.ViewModels.Admin
 
         //.. more properties from Shared.PropertyQueryViewModel
 
+        public PropertyQueryCustomViewModel Custom { get; set; } //this is where custom title etc can be set
+
 
         public PropertyQueryViewModel()
         {
@@ -25,6 +27,7 @@ namespace TownComparisons.MVC.ViewModels.Admin
             Title = model.Title;
 
             Use = use;
+            Custom = new PropertyQueryCustomViewModel(model);
         }
     }
 }

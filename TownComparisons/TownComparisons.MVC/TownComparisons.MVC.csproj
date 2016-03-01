@@ -178,6 +178,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Admin\OrganisationalUnitViewModel.cs" />
+    <Compile Include="ViewModels\Admin\PropertyQueryCustomViewModel.cs" />
     <Compile Include="ViewModels\Admin\PropertyQueryViewModel.cs" />
     <Compile Include="ViewModels\Admin\SettingsViewModel.cs" />
     <Compile Include="ViewModels\Shared\AlphabetViewModel.cs" />
@@ -193,10 +194,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\Admin\App.js" />
+    <Content Include="App\Admin\ViewModels\AdminOperatorViewModel.js" />
+    <Content Include="App\Admin\ViewModels\AdminOperatorsViewModel.js" />
     <Content Include="App\Admin\ViewModels\AdminHomeViewModel.js" />
     <Content Include="App\Admin\ViewModels\AdminCategoriesViewModel.js" />
     <Content Include="App\Admin\ViewModels\AdminCategoryViewModel.js" />
     <Content Include="App\Admin\ViewModels\RootViewModel.js" />
+    <Content Include="App\Admin\Views\AdminOperatorView.html" />
+    <Content Include="App\Admin\Views\AdminOperatorsView.html" />
     <Content Include="App\Admin\Views\AdminHomeView.html" />
     <Content Include="App\Admin\Views\AdminCategoriesView.html" />
     <Content Include="App\Admin\Views\AdminCategoryView.html" />

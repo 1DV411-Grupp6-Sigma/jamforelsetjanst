@@ -14,8 +14,10 @@ namespace TownComparisons.MVC.ViewModels.Admin
         public string QueryGroupId { get; set; } // Kpi id if using Kolada
 
         public string Title { get; set; } // name/title of the query
-
+       
         public List<PropertyQueryViewModel> Queries { get; set; }
+
+        public bool AnyQueriesToUse { get; set; }
 
 
         public PropertyQueryGroupViewModel()
