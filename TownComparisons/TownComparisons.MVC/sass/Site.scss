@@ -8,9 +8,6 @@
     list-style-type: none;
 }
 
-
-
-
 @charset "UTF-8";
 .accordion-navigation > a:after {
   content: "↡";
@@ -122,4 +119,50 @@ button.disabled, button[disabled], .button.disabled, .button[disabled]{
 
 button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus{
     background-color: lightgray;
+}
+
+input[type="text"] {
+    width: 200px;
+}
+
+.mapClass {
+    text-align: center;
+    width: 100px;
+    border: 1px solid #eee;
+    height: 30px;
+    margin-top: 3px;
+}
+
+body{
+    background-color: #ebebe0;
+}
+
+.searchbar{
+    float: right;
+    text-align: right;
+    position: relative;
+    margin-top: -50px;
+}
+
+.container{
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 10px 10px 5px #c2c2a3;
+    margin-bottom: 20px;
+}
+
+ul{
+    list-style-type: none;
+}
+
+.breadcrumbs > * {
+    font-size: 15px;
+}
+
+.table{
+    border: solid 1px #fff;
+}
+
+.operator-loop{
+    margin-bottom: 20px;
 }
