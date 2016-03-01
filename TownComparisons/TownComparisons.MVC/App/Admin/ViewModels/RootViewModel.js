@@ -7,21 +7,10 @@
     $scope.viewModelHelper = viewModelHelper;
     $scope.adminService = adminService;
 
-    $scope.flags = { shownFromList: false };
-
     var initialize = function () {
         $scope.pageHeading = ""; //Kategorier";
     }
 
-    $scope.categoriesList = function () {
-        viewModelHelper.navigateTo('admin/categories');
-    }
-
-    $scope.showCategory = function () {
-        if (adminService.categoryId != 0) {
-            viewModelHelper.navigateTo('admin/operator/' + adminService.categoryId);
-        }
-    }
 
     initialize();
 });

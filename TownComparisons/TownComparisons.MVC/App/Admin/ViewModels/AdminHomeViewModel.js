@@ -5,6 +5,7 @@
 
 
     var initialize = function () {
+        $scope.refreshCategories();
 
     }
 

@@ -1,0 +1,11 @@
+﻿<ul>
+    <li ng-repeat="g in groupCategories">
+        {{ g.Name }}
+        <ul>
+            <li ng-repeat="c in g.Categories">
+                <a href="/admin/category/{{ c.Id }}">{{ c.Name }}</a>
+                <a href="/admin/category/{{ c.Id }}/edit" class="tiny button"><i class="fi-pencil"></i></a>
+            </li>
+        </ul>
+    </li>
+</ul>

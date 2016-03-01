@@ -1,24 +1,38 @@
 ﻿<ul class="breadcrumbs" ng-show="categoryHasBeenLoaded">
-    <li><a href="/admin">Hem</a></li>
+    <li><a href="/admin">Admin</a></li>
     <li><a href="/admin/categories">Kategorier</a></li>
-    <li><a ng-click="viewModelHelper.navigateTo('admin/category/{{$routeParams.categoryId}}')">{{ category.Category.Name }}</a></li>
+    <li><a href="./">{{ category.Category.Name }}</a></li>
     <li class="current">Ändra</li>
 </ul>
 
-<h2>{{ pageHeading }}</h2>
 
-<hr />
+<div class="row">
+    <div class="medium-9 columns">
+        <h2>{{ pageHeading }}</h2>
+    </div>
 
-<!-- <h3>Kategori: {{ category.Category.Name }}</h3> -->
-<!--
-<div>
-    <a href="#" ng-click="refreshCategory(category.CategoryId)">Ladda om</a>
+    <div class="medium-2 columns end" id="saveChangesPanel" ng-show="categoryHasBeenLoaded">
+        <div>
+            <div>
+                <input type="button" name="save" ng-click="saveCategory()" value="Spara ändringar" class="button success" />
+            </div>
+
+            <div ng-show="!cancel">
+                <input type="button" name="cancel" ng-click="cancel = true" value="Avbryt" class="tiny button secondary" />
+            </div>
+            <div ng-show="cancel">
+                <label>Avbryta utan att spara?</label>
+                <input type="button" name="cancel" ng-click="cancelEditCategory()" value="Ja" class="tiny button default" />
+                <input type="button" name="cancel" ng-click="cancel = false" value="X" class="tiny button secondary" />
+            </div>
+        </div>
+    </div>
 </div>
--->
 
 <div class="row" ng-show="categoryHasBeenLoaded">
     <div class="medium-9 columns">
 
+        <hr />
         <form novalidate>
 
             <tabset>
@@ -72,7 +86,7 @@
                 </tab>
 
 
-                <tab heading="Egenskaper" active="editMode == 'queries'" ng-click="editMode = 'queries'">  
+                <tab heading="Egenskaper" active="editMode == 'queries'" ng-click="editMode = 'queries'">
                     <h3>Egenskaper</h3>
 
                     <dl class="sub-nav">
@@ -127,22 +141,6 @@
             </tabset>
 
         </form>
-
-    </div>
-    <div class="medium-3 columns" id="saveChangesPanel">
-
-        <div>
-            <input type="button" name="save" ng-click="saveCategory()" value="Spara ändringar" class="button success" />
-        </div>
-
-        <div ng-show="!cancel">
-            <input type="button" name="cancel" ng-click="cancel = true" value="Avbryt" class="tiny button secondary" />
-        </div>
-        <div ng-show="cancel">
-            <label>Avbryta utan att spara?</label>
-            <input type="button" name="cancel" ng-click="cancelEditCategory()" value="Ja" class="tiny button default" />
-            <input type="button" name="cancel" ng-click="cancel = false" value="X" class="tiny button secondary" />
-        </div>
 
     </div>
 </div>
