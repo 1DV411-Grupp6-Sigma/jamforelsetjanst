@@ -24,8 +24,8 @@
         //check if is in compare list
         var ouIsInCompare = $scope.checkIfOuIsInCompareList(ou);
         ou.class = (ouIsInCompare ? "after-compare" : "before-compare");
-        ou.icon = (ouIsInCompare ? "fi-plus" : "fi-check");
-        ou.text = (ouIsInCompare ? "Jämför" : "");
+        ou.icon = (ouIsInCompare ? "fi-check" : "fi-plus");
+        ou.text = (ouIsInCompare ? "" : "Jämför");
     }
 
     $scope.checkIfOuIsInCompareList = function (ou) {
