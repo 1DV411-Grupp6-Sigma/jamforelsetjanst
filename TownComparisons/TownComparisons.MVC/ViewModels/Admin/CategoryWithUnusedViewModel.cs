@@ -27,10 +27,31 @@ namespace TownComparisons.MVC.ViewModels.Admin
             AllOrganisationalUnits = allOrganisationalUnits.Select(o => new OrganisationalUnitInfoViewModel(o)).ToList();
             AllPropertyQueryGroups = allPropertyQueryGroups.Select(p => new PropertyQueryGroupViewModel(p)).ToList();
 
-            foreach (OrganisationalUnitInfoViewModel ou in AllOrganisationalUnits)
+            for (int i = 0; i < AllOrganisationalUnits.Count; i++)
             {
-                ou.Use = (Category.OrganisationalUnits.Find(cou => cou.OrganisationalUnitId == ou.OrganisationalUnitId) != null);
+                Shared.OrganisationalUnitInfoViewModel existing = Category.OrganisationalUnits.Find(cou => cou.OrganisationalUnitId == AllOrganisationalUnits[i].OrganisationalUnitId);
+                if (existing != null)
+                {
+                    AllOrganisationalUnits[i] = (OrganisationalUnitInfoViewModel)existing;
+                    AllOrganisationalUnits[i].Use = true;
+                }
+                //ou.Use = (Category.OrganisationalUnits.Find(cou => cou.OrganisationalUnitId == ou.OrganisationalUnitId) != null);
             }
+
+            for (int i = 0; i < AllPropertyQueryGroups.Count; i++)
+            {
+                for (int j = 0; j < AllPropertyQueryGroups[i].Queries.Count; j++)
+                {
+                    Shared.PropertyQueryViewModel existing = Category.Queries.Find(q => q.QueryId == AllPropertyQueryGroups[i].Queries[j].QueryId);
+                    if (existing != null)
+                    {
+                        AllPropertyQueryGroups[i].Queries[j] = (PropertyQueryViewModel)existing;
+                        AllPropertyQueryGroups[i].Queries[j].Use = true;
+                        AllPropertyQueryGroups[i].AnyQueriesToUse = true;
+                    }
+                }
+            }
+            /*
             foreach (PropertyQueryGroupViewModel qg in AllPropertyQueryGroups)
             {
                 foreach (PropertyQueryViewModel q in qg.Queries)
@@ -39,6 +60,7 @@ namespace TownComparisons.MVC.ViewModels.Admin
                     if (q.Use) { qg.AnyQueriesToUse = true; }
                 }
             }
+            */
         }
     }
 }

@@ -26,6 +26,7 @@ namespace TownComparisons.MVC.Controllers.API
             _service = service;
         }
 
+        /*
         [HttpGet]
         [Route("operators/{operatorId}")]
         public HttpResponseMessage GetOperator(HttpRequestMessage request, string operatorId)
@@ -39,6 +40,7 @@ namespace TownComparisons.MVC.Controllers.API
 
             return new HttpResponseMessage(HttpStatusCode.BadRequest);
         }
+        */
 
         [HttpGet]
         [Route("operators_in_category/{categoryId}")]

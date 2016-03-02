@@ -27,7 +27,8 @@ namespace TownComparisons.Domain.Abstract
 
         List<OrganisationalUnitInfo> GetOrganisationalUnitInfos();
 
-        OrganisationalUnitInfo GetOrganisationalUnitInfo(string organisationalUnitId);
-        
+        OrganisationalUnitInfo GetOrganisationalUnitInfo(int categoryId, string organisationalUnitId);
+
+
     }
 }
