@@ -8,16 +8,16 @@ namespace TownComparisons.MVC.ViewModels.Shared
 {
     public class CategoryPropertyResults
     {
-        public List<PropertyResultViewModel> Results { get; set; }
+        public List<PropertyResultForOrganisationalUnitViewModel> OrganisationalUnitResults { get; set; }
         
 
         public CategoryPropertyResults()
         {
             //Empty
         }
-        public CategoryPropertyResults(List<PropertyResult> models)
+        public CategoryPropertyResults(List<PropertyResultForOrganisationalUnit> models)
         {
-            Results = models.Select(r => new PropertyResultViewModel(r)).ToList();
+            OrganisationalUnitResults = models.Select(o => new PropertyResultForOrganisationalUnitViewModel(o)).ToList();
         }
     }
 }

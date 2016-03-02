@@ -59,9 +59,9 @@ namespace TownComparisons.MVC.Controllers.API
                 List<OrganisationalUnitInfo> organisationalUnitsToCompare = category.OrganisationalUnits.Where(o => operators.Contains(o.OrganisationalUnitId)).ToList();
                 if (organisationalUnitsToCompare.Count > 0)
                 {
-                    List<PropertyResult> results = _service.GetWebServicePropertyResults(category, organisationalUnitsToCompare);
+                    List<PropertyResultForOrganisationalUnit> results = _service.GetWebServicePropertyResults(category, organisationalUnitsToCompare);
                     CategoryPropertyResults model = new CategoryPropertyResults(results);
-                    return request.CreateResponse<PropertyResultViewModel[]>(HttpStatusCode.OK, model.Results.ToArray());
+                    return request.CreateResponse<PropertyResultForOrganisationalUnitViewModel[]>(HttpStatusCode.OK, model.OrganisationalUnitResults.ToArray());
                 }
             }
             else

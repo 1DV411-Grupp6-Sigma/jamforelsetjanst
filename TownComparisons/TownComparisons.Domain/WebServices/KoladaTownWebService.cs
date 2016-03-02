@@ -20,27 +20,6 @@ namespace TownComparisons.Domain.WebServices
     /// </summary>
     public class KoladaTownWebService : TownWebServiceBase
     {
-        //private readonly SettingsForFile _settings;
-        //private string _municipalityId;
-
-        /*
-        public KoladaTownWebService()
-            :this(new SettingsForFile())
-        {
-            _settings = new SettingsForFile();
-            FetchMunicipalityId();
-        }
-        /// <summary>
-        /// Mainly used for unit tests
-        /// </summary>
-        /// <param name="settings"></param>
-        public KoladaTownWebService(SettingsForFile settings)
-        {
-            _settings = settings;
-            FetchMunicipalityId();
-        }
-        */
-        
         public override string GetName()
         {
             return "Kolada"; 
@@ -58,44 +37,37 @@ namespace TownComparisons.Domain.WebServices
             return new OrganisationalUnit(this.GetName(), theOu.Id, theOu.Title);
         }
         
-        public override List<PropertyResult> GetPropertyResults(List<string> queryIds, List<string> organisationalUnitIds) //List<PropertyQuery> queries, List<OrganisationalUnit> organisationalUnits)
+        public override List<PropertyResultForOrganisationalUnit> GetPropertyResults(List<PropertyQuery> queries, List<OrganisationalUnitInfo> organisationalUnits) //List<PropertyQuery> queries, List<OrganisationalUnit> organisationalUnits)
         {
             var rawJson = string.Empty;
 
             //Set the Kolada url
             var apiRequest = "oudata/kpi/";
-            apiRequest += string.Join(",", queryIds);
-            /*
-            foreach (string query in queryIds)
-            {
-                apiRequest += query + ",";
-            }
-            */
-            apiRequest += "/ou/" + string.Join(",", organisationalUnitIds);
-            /*
-            foreach (OrganisationalUnit ou in organisationalUnits)
-            {
-                apiRequest += ou.OrganisationalUnitId + ",";
-            }
-            */
-
+            apiRequest += string.Join(",", queries.Select(q => q.QueryId).ToList());
+            apiRequest += "/ou/" + string.Join(",", organisationalUnits.Select(o => o.OrganisationalUnitId).ToList());
+            
             //Load the data from Kolada
             rawJson = RawJson(apiRequest);
 
-            //Return the data in correct form
+            //serialize the json data
             var kpiAnswers = JsonConvert.DeserializeObject<KpiAnswers>(rawJson).Values;
+
+            //create correct models
+            List<PropertyResultForOrganisationalUnit> results = new List<PropertyResultForOrganisationalUnit>();
+            foreach(OrganisationalUnitInfo ou in organisationalUnits)
+            {
+                results.Add(new PropertyResultForOrganisationalUnit(ou.OrganisationalUnitId, kpiAnswers.Where(a => a.Ou == ou.OrganisationalUnitId).Select(a => new PropertyResult(a.Kpi,
+                                                             a.Period,
+                                                             a.Values.Select(v => new PropertyResultValue(v.Gender, v.Status, v.Value)).ToList()))
+                            .ToList()));
+            }
+
+            return results;
+            /*
             return kpiAnswers.Select(a => new PropertyResult(a.Kpi,
                                                              a.Ou,
                                                              a.Period,
                                                              a.Values.Select(v => new PropertyResultValue(v.Gender, v.Status, v.Value)).ToList()))
-                            .ToList();
-            /*
-            return kpiAnswers.Select(a => new PropertyResult(
-                                    queries.Find(q => q.QueryId == a.Kpi),
-                                    organisationalUnits.Find(o => o.OrganisationalUnitId == a.Ou),
-                                    a.Period,
-                                    a.Values.Select(v => new PropertyResultValue(v.Gender, v.Status, v.Value)).ToList()))
-                            .Where(r => r.OrganisationalUnit != null && r.Query != null)
                             .ToList();
             */
         }
@@ -103,7 +75,6 @@ namespace TownComparisons.Domain.WebServices
         public override List<PropertyQueryGroup> GetAllPropertyQueries()
         {
             var rawJson = string.Empty;
-            //var BaseUrlGetOperators = BaseUrl + "kpi_groups";
             var apiRequest= "kpi_groups";
             rawJson = RawJson(apiRequest);
             var kpi = JsonConvert.DeserializeObject<KpiGroups>(rawJson).Values;
