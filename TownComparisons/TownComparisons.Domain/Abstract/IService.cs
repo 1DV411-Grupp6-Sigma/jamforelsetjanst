@@ -17,7 +17,7 @@ namespace TownComparisons.Domain.Abstract
 
         List<PropertyQueryGroup> GetWebServicePropertyQueries();
 
-        List<PropertyResultForOrganisationalUnit> GetWebServicePropertyResults(Category category, List<OrganisationalUnitInfo> organisationalUnits); //(List<string> queryIds, List<string> organisationalUnitIds);
+        List<PropertyQueryWithResults> GetWebServicePropertyResults(Category category, List<OrganisationalUnitInfo> organisationalUnits); //(List<string> queryIds, List<string> organisationalUnitIds);
 
 
         List<GroupCategory> GetAllCategories();

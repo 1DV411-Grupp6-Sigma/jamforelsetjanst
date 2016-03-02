@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace TownComparisons.Domain.Models
 {
-    public class PropertyResultValue
+    public class PropertyQueryResultValue
     {
         public string Gender { get; set; }
         public string Status { get; set; }
         public float? Value { get; set; }  // is it always of number type? never a string or similar?
         
         //Constructors
-        public PropertyResultValue()
+        public PropertyQueryResultValue()
         {
             // Empty
         }
-        public PropertyResultValue(string gender, string status, float? value)
+        public PropertyQueryResultValue(string gender, string status, float? value)
         {
             Gender = gender;
             Status = status;

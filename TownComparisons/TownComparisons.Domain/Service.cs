@@ -90,7 +90,7 @@ namespace TownComparisons.Domain
             return list;
         }
 
-        public List<PropertyResultForOrganisationalUnit> GetWebServicePropertyResults(Category category, List<OrganisationalUnitInfo> organisationalUnits) //List<string> queryIds, List<string> organisationalUnitIds) //List<PropertyQuery> queries, List<OrganisationalUnit> organisationalUnits)
+        public List<PropertyQueryWithResults> GetWebServicePropertyResults(Category category, List<OrganisationalUnitInfo> organisationalUnits) //List<string> queryIds, List<string> organisationalUnitIds) //List<PropertyQuery> queries, List<OrganisationalUnit> organisationalUnits)
         {
             //Get id's from All KpiQuestions and OrganisationalUnits in parameter
             //and compund to an unique cacheKey
@@ -107,7 +107,7 @@ namespace TownComparisons.Domain
 
             if (_cache.HasValue(cacheKey))
             {
-                return (List<PropertyResultForOrganisationalUnit>)_cache.GetCache(cacheKey);
+                return (List<PropertyQueryWithResults>)_cache.GetCache(cacheKey);
             }
 
             var returnValue = _townWebService.GetPropertyResults(category.Queries.Cast<PropertyQuery>().ToList(), organisationalUnits); //queryIds.ToList(), organisationalUnitIds.ToList());

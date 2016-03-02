@@ -6,23 +6,20 @@ using System.Threading.Tasks;
 
 namespace TownComparisons.Domain.Models
 {
-    public class PropertyResult
+    public class PropertyQueryResultForPeriod
     {
-        public string QueryId { get; set; }
-
         public int Period { get; set; }
 
-        public List<PropertyResultValue> Values { get; set; }
+        public List<PropertyQueryResultValue> Values { get; set; }
 
 
         //Constructors
-        public PropertyResult()
+        public PropertyQueryResultForPeriod()
         {
             // Empty
         }
-        public PropertyResult(string queryId, int period, List<PropertyResultValue> values)
+        public PropertyQueryResultForPeriod(int period, List<PropertyQueryResultValue> values)
         {
-            QueryId = queryId;
             Period = period;
             Values = values;
         }

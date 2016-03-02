@@ -37,7 +37,7 @@ namespace TownComparisons.Domain.WebServices
             return new OrganisationalUnit(this.GetName(), theOu.Id, theOu.Title);
         }
         
-        public override List<PropertyResultForOrganisationalUnit> GetPropertyResults(List<PropertyQuery> queries, List<OrganisationalUnitInfo> organisationalUnits) //List<PropertyQuery> queries, List<OrganisationalUnit> organisationalUnits)
+        public override List<PropertyQueryWithResults> GetPropertyResults(List<PropertyQuery> queries, List<OrganisationalUnitInfo> organisationalUnits) //List<PropertyQuery> queries, List<OrganisationalUnit> organisationalUnits)
         {
             var rawJson = string.Empty;
 
@@ -53,13 +53,18 @@ namespace TownComparisons.Domain.WebServices
             var kpiAnswers = JsonConvert.DeserializeObject<KpiAnswers>(rawJson).Values;
 
             //create correct models
-            List<PropertyResultForOrganisationalUnit> results = new List<PropertyResultForOrganisationalUnit>();
-            foreach(OrganisationalUnitInfo ou in organisationalUnits)
+            List<PropertyQueryWithResults> results = new List<PropertyQueryWithResults>();
+            foreach(PropertyQuery query in queries)
             {
-                results.Add(new PropertyResultForOrganisationalUnit(ou.OrganisationalUnitId, kpiAnswers.Where(a => a.Ou == ou.OrganisationalUnitId).Select(a => new PropertyResult(a.Kpi,
-                                                             a.Period,
-                                                             a.Values.Select(v => new PropertyResultValue(v.Gender, v.Status, v.Value)).ToList()))
-                            .ToList()));
+                PropertyQueryWithResults queryWithResults = new PropertyQueryWithResults(query);
+                foreach (OrganisationalUnitInfo ou in organisationalUnits)
+                {
+                    queryWithResults.Results.Add(new PropertyQueryResult(ou.OrganisationalUnitId, kpiAnswers.Where(a => a.Kpi == query.QueryId && a.Ou == ou.OrganisationalUnitId)
+                                                                                                                .Select(a => new PropertyQueryResultForPeriod(a.Period, 
+                                                                                                                                                                        a.Values.Select(v => new PropertyQueryResultValue(v.Gender, v.Status, v.Value)).ToList()))
+                                                                                                                .ToList()));
+                }
+                results.Add(queryWithResults);
             }
 
             return results;

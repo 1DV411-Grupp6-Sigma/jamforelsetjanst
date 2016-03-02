@@ -80,11 +80,12 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\OrganisationalUnit.cs" />
-    <Compile Include="Models\PropertyResultForOrganisationalUnit.cs" />
-    <Compile Include="Models\PropertyResultValue.cs" />
+    <Compile Include="Models\PropertyQueryResultForPeriod.cs" />
+    <Compile Include="Models\PropertyQueryWithResults.cs" />
+    <Compile Include="Models\PropertyQueryResultValue.cs" />
     <Compile Include="Models\PropertyQueryGroup.cs" />
     <Compile Include="Models\PropertyQuery.cs" />
-    <Compile Include="Models\PropertyResult.cs" />
+    <Compile Include="Models\PropertyQueryResult.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="WebServices\Models\KpiAnswer.cs" />
     <Compile Include="WebServices\Models\KpiAnswers.cs" />
