@@ -7,6 +7,8 @@
         $scope.pageHeading = "Hitta och jämför service";
     }
 
+    
+
     //List with selected OU's
     $rootScope.listItems = collectorFactory.listOfSubjects;
 

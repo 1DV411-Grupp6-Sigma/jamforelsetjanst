@@ -56,8 +56,8 @@
 
 
     //Show OU:s inside a category
-    $scope.showOperator = function (ou) {
-        viewModelHelper.navigateTo('category/' + $routeParams.categoryId + '/operator/' + ou.OrganisationalUnitId);
+    $scope.showOperator = function (ouId) {
+        viewModelHelper.navigateTo('category/' + $routeParams.categoryId + '/operator/' + ouId);
     }
 
     

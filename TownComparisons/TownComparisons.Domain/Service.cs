@@ -174,7 +174,7 @@ namespace TownComparisons.Domain
 
         public OrganisationalUnitInfo GetOrganisationalUnitInfo(string organisationalUnitId)
         {
-            string cacheKey = "getOrganisationalUnitInfo";
+            string cacheKey = "getOrganisationalUnitInfo" + organisationalUnitId;
 
             if (_cache.HasValue(cacheKey))
             {
