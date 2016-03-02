@@ -9,6 +9,7 @@ using TownComparisons.Domain;
 using TownComparisons.Domain.Abstract;
 using TownComparisons.Domain.Entities;
 using TownComparisons.Domain.Models;
+using TownComparisons.MVC.ModelBinders;
 using TownComparisons.MVC.ViewModels.Shared;
 
 namespace TownComparisons.MVC.Controllers.API
@@ -50,17 +51,25 @@ namespace TownComparisons.MVC.Controllers.API
 
         [HttpGet]
         [Route("category/{categoryId}/properties")]
-        public HttpResponseMessage GetCategoryProperyResults(HttpRequestMessage request, int categoryId)
+        public HttpResponseMessage GetCategoryProperyResults(HttpRequestMessage request, int categoryId, [CommaDelimitedArrayModelBinder]string[] operators)
         {
             Category category = _service.GetCategory(categoryId);
             if (category != null)
             {
-                List<PropertyResult> results = _service.GetWebServicePropertyResults(category);
-                CategoryPropertyResults model = new CategoryPropertyResults(results);
-                return request.CreateResponse<PropertyResultViewModel[]>(HttpStatusCode.OK, model.Results.ToArray());
+                List<OrganisationalUnitInfo> organisationalUnitsToCompare = category.OrganisationalUnits.Where(o => operators.Contains(o.OrganisationalUnitId)).ToList();
+                if (organisationalUnitsToCompare.Count > 0)
+                {
+                    List<PropertyResultForOrganisationalUnit> results = _service.GetWebServicePropertyResults(category, organisationalUnitsToCompare);
+                    CategoryPropertyResults model = new CategoryPropertyResults(results);
+                    return request.CreateResponse<PropertyResultForOrganisationalUnitViewModel[]>(HttpStatusCode.OK, model.OrganisationalUnitResults.ToArray());
+                }
+            }
+            else
+            {
+                return new HttpResponseMessage(HttpStatusCode.NotFound);
             }
 
-            return new HttpResponseMessage(HttpStatusCode.NotFound);
+            return new HttpResponseMessage(HttpStatusCode.BadRequest);
         }
 
         [HttpGet]
@@ -76,6 +85,7 @@ namespace TownComparisons.MVC.Controllers.API
 
             return new HttpResponseMessage(HttpStatusCode.NotFound);
         }
+
 
     }
 }

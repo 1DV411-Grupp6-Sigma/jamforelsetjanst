@@ -1,7 +1,7 @@
 ﻿<ul class="breadcrumbs" ng-show="categoryHasBeenLoaded">
     <li><a href="/admin">Admin</a></li>
     <li><a href="/admin/categories">Kategorier</a></li>
-    <li><a href="./">{{ category.Category.Name }}</a></li>
+    <li><a href="./">{{ categoryName }}</a></li>
     <li class="current">Ändra</li>
 </ul>
 
@@ -33,14 +33,26 @@
     <div class="medium-9 columns">
 
         <hr />
+
+        <alert close="closeValidationAlert=true" class="danger" ng-show="!closeValidationAlert && (validationErrors.length > 0 || knownValidationErrors.length > 0)">
+            <p>Kunde inte spara kategorin, åtgärda felen och prova igen.</p>
+            <ul ng-show="validationErrors.length > 0">
+                <li ng-repeat="error in validationErrors">{{error.name + ': ' + error.message}}</li>
+            </ul>
+            <a class="close" ng-click="close()">x</a>
+        </alert> 
+
         <form novalidate>
 
             <tabset>
                 <tab heading="Allmänt" active="editMode == 'general'" ng-click="editMode = 'general'">
                     <h3>Allmänna inställningar</h3>
 
-                    <label>Namn:</label>
-                    <input type="text" ng-model="category.Category.Name" />
+                    <label>
+                        Namn:
+                        <input type="text" ng-model="category.Category.Name" class="{{ hasValidationError('category.Name') ? 'error' : '' }}" />
+                    </label>
+                    <small class="error" ng-show="hasValidationError('category.Name')">{{ getValidationErrorMessage('category.Name') }}</small>
 
                     <label>Beskrivning:</label>
                     <textarea ng-model="category.Category.Description"></textarea>

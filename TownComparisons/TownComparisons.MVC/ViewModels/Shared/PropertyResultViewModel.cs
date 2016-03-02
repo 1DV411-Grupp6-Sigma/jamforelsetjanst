@@ -10,9 +10,7 @@ namespace TownComparisons.MVC.ViewModels.Shared
     public class PropertyResultViewModel
     {
         public string QueryId { get; set; }
-
-        public string OrganisationalUnitId { get; set; }
-
+       
         public int Period { get; set; }
 
         public List<PropertyResultValueViewModel> Values { get; set; }
@@ -25,7 +23,6 @@ namespace TownComparisons.MVC.ViewModels.Shared
         public PropertyResultViewModel(PropertyResult model)
         {
             QueryId = model.QueryId;
-            OrganisationalUnitId = model.OrganisationalUnitId;
             Period = model.Period;
             Values = model.Values.Select(v => new PropertyResultValueViewModel(v)).ToList();
         }

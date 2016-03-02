@@ -11,6 +11,7 @@ using TownComparisons.Domain.Entities;
 using TownComparisons.Domain.Models;
 using TownComparisons.MVC.ViewModels.Shared;
 using TownComparisons.MVC.ViewModels.Admin;
+using TownComparisons.MVC.Filters;
 
 namespace TownComparisons.MVC.Controllers.API
 {
@@ -47,10 +48,27 @@ namespace TownComparisons.MVC.Controllers.API
         
         [HttpPost]
         [Route("admin/category/{categoryId}")]
+        [ValidateModel] //this will handle validation (and return with errors) before method is run
         public HttpResponseMessage SaveCategory(HttpRequestMessage request, [FromBody]CategoryViewModel category)
         {
-            category = category;
-            return new HttpResponseMessage(HttpStatusCode.OK);
+            if (ModelState.IsValid)
+            {
+
+                category = category;
+
+
+                return new HttpResponseMessage(HttpStatusCode.OK);
+            }
+            else
+            {
+                //should not happen
+
+                category = category;
+            }
+
+
+            return new HttpResponseMessage(HttpStatusCode.BadRequest);
+
             /*
             Category category = _service.GetCategory(categoryId);
             if (category != null)

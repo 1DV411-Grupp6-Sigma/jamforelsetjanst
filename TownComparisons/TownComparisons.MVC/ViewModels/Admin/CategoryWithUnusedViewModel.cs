@@ -15,6 +15,7 @@ namespace TownComparisons.MVC.ViewModels.Admin
         public List<OrganisationalUnitInfoViewModel> AllOrganisationalUnits { get; set; }
         public List<PropertyQueryGroupViewModel> AllPropertyQueryGroups { get; set; }
 
+
         public CategoryWithUnusedViewModel()
         {
             AllOrganisationalUnits = new List<OrganisationalUnitInfoViewModel>();

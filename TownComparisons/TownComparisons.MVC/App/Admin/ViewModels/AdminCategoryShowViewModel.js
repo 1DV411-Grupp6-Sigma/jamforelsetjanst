@@ -17,7 +17,7 @@
                 $scope.pageHeading = 'Kategori: ' + $scope.category.Category.Name;
                 $scope.categoryHasBeenLoaded = true;
 
-                viewModelHelper.apiGet('api/category/' + categoryId + '/properties', null,
+                viewModelHelper.apiGet('api/category/' + categoryId + '/properties?operators=V15E108000801,V15E108000701,dfhdsjf', null,
                     function (result) {
                         console.log(result);
                     }

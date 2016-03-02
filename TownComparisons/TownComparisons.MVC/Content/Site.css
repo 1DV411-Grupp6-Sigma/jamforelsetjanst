@@ -6421,3 +6421,6 @@ body {
 .operator-loop {
   margin-bottom: 20px; }
 
+.alert-box p {
+  margin-bottom: 0; }
+
