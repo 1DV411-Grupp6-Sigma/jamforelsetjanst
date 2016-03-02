@@ -172,16 +172,16 @@ namespace TownComparisons.Domain
             return returnValue;
         }
 
-        public OrganisationalUnitInfo GetOrganisationalUnitInfo(string organisationalUnitId)
+        public OrganisationalUnitInfo GetOrganisationalUnitInfo(int categoryId, string organisationalUnitId)
         {
-            string cacheKey = "getOrganisationalUnitInfo" + organisationalUnitId;
+            string cacheKey = "getOrganisationalUnitInfo" + categoryId + "_" + organisationalUnitId;
 
             if (_cache.HasValue(cacheKey))
             {
                 return (OrganisationalUnitInfo)_cache.GetCache(cacheKey);
             }
 
-            var returnValue = _unitOfWork.OrganisationalUnitInfoRepository.Get(o => o.OrganisationalUnitId == organisationalUnitId).FirstOrDefault();
+            var returnValue = _unitOfWork.OrganisationalUnitInfoRepository.Get(o => o.OrganisationalUnitId == organisationalUnitId && o.Category.Id == categoryId).FirstOrDefault();
 
             // Search with GetByID is NOT possible, because datatypes of organisationaUnitid and correspondent field in the database are different
             //var returnValue = _unitOfWork.OrganisationalUnitInfoRepository.GetByID(organisationalUnitId);

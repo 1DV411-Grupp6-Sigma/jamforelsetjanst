@@ -87,5 +87,20 @@ namespace TownComparisons.MVC.Controllers.API
         }
 
 
+        [HttpGet]
+        [Route("category/{categoryId}/operator/{operatorId}")]
+        public HttpResponseMessage GetCategoryOperator(HttpRequestMessage request, int categoryId, string organisationalUnitId)
+        {
+            OrganisationalUnitInfo ou = _service.GetOrganisationalUnitInfo(categoryId, organisationalUnitId);
+            if (ou != null)
+            {
+                OrganisationalUnitInfoViewModel model = new OrganisationalUnitInfoViewModel(ou);
+                return request.CreateResponse<OrganisationalUnitInfoViewModel>(HttpStatusCode.OK, model);
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.NotFound);
+        }
+
+
     }
 }

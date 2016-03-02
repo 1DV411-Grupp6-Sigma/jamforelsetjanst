@@ -2,6 +2,7 @@
 
     $scope.viewModelHelper = viewModelHelper;
     $scope.categoryService = categoryService;
+
     $scope.sortByName = 'Name';
     $scope.sortAsc = 'sortAsc';
     $scope.sortDesc = 'sortDesc';
@@ -10,9 +11,13 @@
     $scope.classInvisible = 'invisible';
     
     var initialize = function () {
-        //$scope.getOrganisationalUntsByCategoryId($routeParams.categoryId);
-        $scope.getCategory($routeParams.categoryId);
+        categoryService.getCategory($routeParams.categoryId, afterCategoryLoaded);
         $scope.sortOuByName();
+    }
+
+    //runned after category has been loaded
+    var afterCategoryLoaded = function () {
+        $scope.pageHeading = 'Hitta och jämför ' + $rootScope.category.Name;
     }
 
     //Switch between sortings
@@ -36,15 +41,6 @@
         }
         return false;
     }
-
-    /*
-    $scope.getOrganisationalUntsByCategoryId = function (categoryId) {
-        viewModelHelper.apiGet('api/operators_in_category/' + categoryId, null,
-            function (result) {
-                $scope.organisationalUnits = result.data;
-            });
-    }
-    */
 
     $scope.getCategory = function (categoryId) {
         viewModelHelper.apiGet('api/category/' + categoryId, null,

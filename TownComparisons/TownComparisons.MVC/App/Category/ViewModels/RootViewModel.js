@@ -3,13 +3,9 @@
     $scope.viewModelHelper = viewModelHelper;
     $scope.categoryService = categoryService;
 
-    $scope.flags = { shownFromList: false };
-
     var initialize = function () {
         $scope.pageHeading = "Kategori";
     }
-
-    
 
     initialize();
 });

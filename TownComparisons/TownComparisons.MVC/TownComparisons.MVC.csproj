@@ -192,7 +192,6 @@
     <Compile Include="ViewModels\Shared\OrganisationalUnitsViewModel.cs" />
     <Compile Include="ViewModels\Shared\OrganisationalUnitInfoViewModel.cs" />
     <Compile Include="ViewModels\Admin\PropertyQueryGroupViewModel.cs" />
-    <Compile Include="ViewModels\Shared\PropertyResultValueViewModel.cs" />
     <Compile Include="ViewModels\Shared\PropertyQueryWithResultsViewModel.cs" />
     <Compile Include="ViewModels\Shared\PropertyQueryViewModel.cs" />
   </ItemGroup>

@@ -26,12 +26,7 @@ var categoryModule = angular.module('category', ['common'])
             .when('/category/:categoryId/operator/:operatorId', {
                      templateUrl: '/App/Category/Views/OperatorView.html', controller: 'operatorViewModel'
                 })
-            .when('/compare', {
-                templateUrl: '/App/Category/Views/CompareView.html',
-                controller: 'compareViewModel'
-            })
             .otherwise({ redirectTo: '/categories' });
-        //$locationProvider.html5Mode(true);
         $locationProvider.html5Mode({
             enabled: true,
             requireBase: false
@@ -47,6 +42,21 @@ categoryModule.factory('categoryService', function ($rootScope, $http, $q, $loca
 
         self.categoryId = 0;
 
+        //load a category
+        self.getCategory = function (categoryId, success, failure) {
+            viewModelHelper.apiGet('api/category/' + categoryId, null,
+                function (result) {
+                    $rootScope.category = result.data;
+
+                    if (success != null) {
+                        success();
+                    }
+                },
+                failure
+            );
+        }
+
+
         return this;
     };
     myApp.categoryService = categoryService;
@@ -61,6 +71,7 @@ categoryModule.factory('categoriesFactory', function (viewModelHelper) {
     factory.showCategory = function (category) {
         viewModelHelper.navigateTo('category/' + category.Id);
     }
+
 
     //Switch between sorting
     factory.changeView = function (value) {
