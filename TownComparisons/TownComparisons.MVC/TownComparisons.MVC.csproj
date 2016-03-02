@@ -185,7 +185,7 @@
     <Compile Include="ViewModels\Admin\SettingsViewModel.cs" />
     <Compile Include="ViewModels\Shared\AlphabetViewModel.cs" />
     <Compile Include="ViewModels\Shared\CategoriesViewModel.cs" />
-    <Compile Include="ViewModels\Shared\CategoryPropertyResults.cs" />
+    <Compile Include="ViewModels\Shared\CategoryPropertyResultsViewModel.cs" />
     <Compile Include="ViewModels\Shared\CategoryViewModel.cs" />
     <Compile Include="ViewModels\Admin\CategoryWithUnusedViewModel.cs" />
     <Compile Include="ViewModels\Shared\GroupCategoryViewModel.cs" />
@@ -193,8 +193,7 @@
     <Compile Include="ViewModels\Shared\OrganisationalUnitInfoViewModel.cs" />
     <Compile Include="ViewModels\Admin\PropertyQueryGroupViewModel.cs" />
     <Compile Include="ViewModels\Shared\PropertyResultValueViewModel.cs" />
-    <Compile Include="ViewModels\Shared\PropertyResultForOrganisationalUnitViewModel.cs" />
-    <Compile Include="ViewModels\Shared\PropertyResultViewModel.cs" />
+    <Compile Include="ViewModels\Shared\PropertyQueryWithResultsViewModel.cs" />
     <Compile Include="ViewModels\Shared\PropertyQueryViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

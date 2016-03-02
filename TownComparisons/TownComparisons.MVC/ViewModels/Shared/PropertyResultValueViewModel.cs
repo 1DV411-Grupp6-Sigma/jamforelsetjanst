@@ -18,7 +18,7 @@ namespace TownComparisons.MVC.ViewModels.Shared
         {
             //Empty
         }
-        public PropertyResultValueViewModel(PropertyResultValue model)
+        public PropertyResultValueViewModel(PropertyQueryResultValue model)
         {
             Gender = model.Gender;
             Status = model.Status;
