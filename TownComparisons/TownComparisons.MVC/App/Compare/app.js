@@ -6,7 +6,7 @@
 
 var collector = angular.module('collector', []);
 
-collector.factory('collectorFactory', ['$cookies', '$routeParams', function ($cookies, $routeParams, $location) {
+collector.factory('collectorFactory', ['$cookies', '$routeParams', function ($cookies, $routeParams) {
     var factory = {};
     //Name of cookie
     var savedList = "savedList";
