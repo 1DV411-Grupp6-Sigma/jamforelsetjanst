@@ -88,7 +88,7 @@ namespace TownComparisons.MVC.Controllers.API
 
 
         [HttpGet]
-        [Route("category/{categoryId}/operator/{operatorId}")]
+        [Route("category/{categoryId}/operator/{organisationalUnitId}")]
         public HttpResponseMessage GetCategoryOperator(HttpRequestMessage request, int categoryId, string organisationalUnitId)
         {
             OrganisationalUnitInfo ou = _service.GetOrganisationalUnitInfo(categoryId, organisationalUnitId);

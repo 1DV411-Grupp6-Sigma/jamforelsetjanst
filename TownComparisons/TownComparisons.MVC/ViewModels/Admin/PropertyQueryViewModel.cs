@@ -20,6 +20,15 @@ namespace TownComparisons.MVC.ViewModels.Admin
         {
             //Empty
         }
+        public PropertyQueryViewModel(Shared.PropertyQueryViewModel baseViewModel, bool use = false)
+        {
+            WebServiceName = baseViewModel.WebServiceName;
+            QueryId = baseViewModel.QueryId;
+            Title = baseViewModel.Title;
+
+            Use = use;
+            Custom = new PropertyQueryCustomViewModel(baseViewModel.Title);
+        }
         public PropertyQueryViewModel(PropertyQuery model, bool use = false)
         {
             WebServiceName = model.WebServiceName;
@@ -27,7 +36,7 @@ namespace TownComparisons.MVC.ViewModels.Admin
             Title = model.Title;
 
             Use = use;
-            Custom = new PropertyQueryCustomViewModel(model);
+            Custom = new PropertyQueryCustomViewModel(model.Title);
         }
     }
 }

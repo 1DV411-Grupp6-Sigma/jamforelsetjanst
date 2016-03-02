@@ -172,7 +172,6 @@
     <Compile Include="Controllers\AngularController.cs" />
     <Compile Include="Controllers\API\APICategoriesController.cs" />
     <Compile Include="Controllers\API\APIAdminController.cs" />
-    <Compile Include="Controllers\API\APIOperatorsController.cs" />
     <Compile Include="Filters\ValidateModelAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

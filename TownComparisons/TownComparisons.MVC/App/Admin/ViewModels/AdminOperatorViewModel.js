@@ -3,15 +3,20 @@
     $scope.viewModelHelper = viewModelHelper;
     $scope.adminService = adminService;
 
+    $scope.categoryId = $routeParams.categoryId;
+    $scope.operatorId = $routeParams.operatorId;
+    $scope.validationErrors = [];
+    $scope.knownValidationErrors = [];
+    $scope.closeValidationAlert = false;
+
     var initialize = function () {
-        $scope.refreshOperator($routeParams.operatorId);
+        refreshOperator();
     }
 
-    $scope.refreshOperator = function (operatorId) {
-        viewModelHelper.apiGet('api/operators/' + operatorId, null,
+    var refreshOperator = function () {
+        viewModelHelper.apiGet('api/category/' + $scope.categoryId + '/operator/' + $scope.operatorId, null,
             function (result) {
                 console.log(result.data);
-                adminService.operatorId = operatorId;
                 $scope.operator = result.data;
             });
     }

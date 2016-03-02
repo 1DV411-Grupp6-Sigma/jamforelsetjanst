@@ -6,9 +6,15 @@
     var initialize = function () {
         $scope.categoryHasBeenLoaded = false;
         $scope.pageHeading = 'Laddar kategori...';
-        $scope.refreshCategory($routeParams.categoryId);
+        adminService.getCategory($routeParams.categoryId, afterCategoryHasBeenLoaded);
     }
 
+    var afterCategoryHasBeenLoaded = function () {
+        $scope.pageHeading = 'Kategori: ' + $scope.category.Category.Name;
+        $scope.categoryHasBeenLoaded = true;
+    }
+
+    /*
     $scope.refreshCategory = function (categoryId) {
         viewModelHelper.apiGet('api/admin/category/' + categoryId, null,
             function (result) {
@@ -24,6 +30,7 @@
                 );
             });
     }
+    */
 
     $scope.gotoEdit = function (mode) {
         adminService.editCategoryMode = mode;

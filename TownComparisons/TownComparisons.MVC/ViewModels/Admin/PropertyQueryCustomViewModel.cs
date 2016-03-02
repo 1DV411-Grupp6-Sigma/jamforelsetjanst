@@ -15,9 +15,9 @@ namespace TownComparisons.MVC.ViewModels.Admin
         {
             //Empty
         }
-        public PropertyQueryCustomViewModel(PropertyQuery model)
+        public PropertyQueryCustomViewModel(string title)
         {
-            Title = model.Title;
+            Title = title;
         }
     }
 }

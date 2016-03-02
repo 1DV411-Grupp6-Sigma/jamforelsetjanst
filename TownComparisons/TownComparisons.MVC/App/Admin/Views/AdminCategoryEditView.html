@@ -54,8 +54,12 @@
                     </label>
                     <small class="error" ng-show="hasValidationError('category.Name')">{{ getValidationErrorMessage('category.Name') }}</small>
 
-                    <label>Beskrivning:</label>
-                    <textarea ng-model="category.Category.Description"></textarea>
+                    <label>
+                        Beskrivning:
+                        <textarea ng-model="category.Category.Description" class="{{ hasValidationError('category.Description') ? 'error' : '' }}"></textarea>
+                    </label>
+                    <small class="error" ng-show="hasValidationError('category.Description')">{{ getValidationErrorMessage('category.Description') }}</small>
+
                 </tab>
 
 
