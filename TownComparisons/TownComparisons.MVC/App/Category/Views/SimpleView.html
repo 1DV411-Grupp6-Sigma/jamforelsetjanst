@@ -34,7 +34,7 @@
         </thead>
         <tbody>
             <tr ng-repeat="ou in organisationalUnits | filter:filter.name | orderBy:sortByOrder + sortBy">
-                <td>{{ getStandardSettings(ou)}} {{ checkWhichSchoolsAreCompared(ou) }}</td>
+                <td>{{ setInitialCompareSettings(ou)}} {{ checkWhichSchoolsAreCompared(ou) }}</td>
 
                 <td><h5><a href="#" ng-click="showOperator(ou)">{{ ou.Name }}</a></h5></td>
                 <td>

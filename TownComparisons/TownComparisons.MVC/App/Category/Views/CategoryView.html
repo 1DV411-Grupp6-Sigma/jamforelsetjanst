@@ -1,4 +1,8 @@
-﻿<h3>Aktörer</h3>
+﻿<h2>{{ pageHeading }}</h2>
+
+<p>{{ category.Description }}</p>
+
+<h3>Aktörer</h3>
 <div class="right searchbar">
     <div id="search">
         <div class="small-4 columns end">
@@ -20,14 +24,13 @@
     <div class="row">
         <dl class="sub-nav">
             <dt>Sortera:</dt>
-            <dd class="{{ activeName }}"><a href="" ng-click="sortOuByName()">Namn</a><img class="{{ visibleName }}" src="/Content/pictures/{{ fileName }}.png" ng-click="sortOuByName()" /></dd>
+            <dd class="{{ activeName }}"><a href="" ng-click="sortOuByName()">Namn</a><img class="{{ visibleName }}" src="/Content/pictures/{{ sortOrder }}.png" ng-click="sortOuByName()" /></dd>
         </dl>
     </div>
 
-    <div class="operator-loop" ng-repeat="ou in organisationalUnits | filter:filter.name | orderBy:sortByOrder + sortBy">
-        {{ getStandardSettings(ou)}}
+    <div class="operator-loop" ng-repeat="ou in category.OrganisationalUnits | filter:filter.name | orderBy:sortBy">
+        {{ setCompareSettingsForOu(ou)}}
 
-        {{ checkWhichSchoolsAreCompared(ou) }}
         <div class="row">
             <div class="small-5 columns end">
                 <h5><a href="#" ng-click="showOperator(ou)">{{ ou.Name }}</a></h5>

@@ -5,11 +5,13 @@
     $scope.sortByName = 'Name';
     $scope.sortAsc = 'sortAsc';
     $scope.sortDesc = 'sortDesc';
+    $scope.sortOrder = $scope.sortAsc;
     $scope.classActive = 'active';
     $scope.classInvisible = 'invisible';
     
     var initialize = function () {
-        $scope.getOrganisationalUntsByCategoryId($routeParams.categoryId);
+        //$scope.getOrganisationalUntsByCategoryId($routeParams.categoryId);
+        $scope.getCategory($routeParams.categoryId);
         $scope.sortOuByName();
     }
 
@@ -18,26 +20,37 @@
         categoriesFactory.changeListView(value, $routeParams.categoryId);
     }
 
-    $scope.getStandardSettings = function (ou) {
-        ou.class = "before-compare";
-        ou.icon = "fi-plus";
-        ou.text = "Jämför";
+    $scope.setCompareSettingsForOu = function (ou) {
+        //check if is in compare list
+        var ouIsInCompare = $scope.checkIfOuIsInCompareList(ou);
+        ou.class = (ouIsInCompare ? "after-compare" : "before-compare");
+        ou.icon = (ouIsInCompare ? "fi-plus" : "fi-check");
+        ou.text = (ouIsInCompare ? "Jämför" : "");
     }
 
-    $scope.checkWhichSchoolsAreCompared = function (subject) {
+    $scope.checkIfOuIsInCompareList = function (ou) {
         for (var i = 0; i < collectorFactory.listOfSubjects.length; i++) {
-            if (collectorFactory.listOfSubjects[i].OrganisationalUnitId === subject.OrganisationalUnitId) {
-                    subject.class = "after-compare";
-                    subject.icon = "fi-check";
-                    subject.text = "";
+            if (collectorFactory.listOfSubjects[i].OrganisationalUnitId === ou.OrganisationalUnitId) {
+                return true;
             }
         }
+        return false;
     }
 
+    /*
     $scope.getOrganisationalUntsByCategoryId = function (categoryId) {
         viewModelHelper.apiGet('api/operators_in_category/' + categoryId, null,
             function (result) {
                 $scope.organisationalUnits = result.data;
+            });
+    }
+    */
+
+    $scope.getCategory = function (categoryId) {
+        viewModelHelper.apiGet('api/category/' + categoryId, null,
+            function (result) {
+                $scope.category = result.data;
+                $scope.pageHeading = 'Hitta och jämför ' + $scope.category.Name;
             });
     }
 
@@ -65,19 +78,19 @@
         collectorFactory.deleteAllSubjects();
     }
 
-    // Sorts the Organisational Units by Name (Desc).
+    // Sorts the Organisational Units by Name (Desc/Asc).
     $rootScope.sortOuByName = function () {
         $scope.visibleName = '';
-        $scope.fileName = $scope.sortAsc;
+        $scope.sortOrder = $scope.sortAsc;
         $scope.activeName = $scope.classActive;
 
         if ($scope.sortBy == $scope.sortByName) {
             $scope.sortBy = '-' + $scope.sortByName;
-            $scope.fileName = $scope.sortDesc;
+            $scope.sortOrder = $scope.sortDesc;
         }
         else {
             $scope.sortBy = $scope.sortByName;
-            $scope.fileName = $scope.sortAsc;
+            $scope.sortOrder = $scope.sortAsc;
         }
     }
 
