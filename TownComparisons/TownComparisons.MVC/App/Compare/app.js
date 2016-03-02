@@ -6,7 +6,7 @@
 
 var collector = angular.module('collector', []);
 
-collector.factory('collectorFactory', ['$cookies', function ($cookies) {
+collector.factory('collectorFactory', ['$cookies', '$routeParams', function ($cookies, $routeParams, $location) {
     var factory = {};
     //Name of cookie
     var savedList = "savedList";
@@ -18,7 +18,14 @@ collector.factory('collectorFactory', ['$cookies', function ($cookies) {
 
     //Add a subject to list
     factory.addSubject = function (subject) {
-        factory.listOfSubjects.push(subject);
+        var objToSave = {
+            OrganisationalUnitId: subject.OrganisationalUnitId,
+            Name: subject.Name,
+            Other: subject.Other,
+            Url: 'category/' + $routeParams.parameterId + "/" + subject.OrganisationalUnitId
+        };
+
+        factory.listOfSubjects.push(objToSave);
         $cookies.putObject(savedList, factory.listOfSubjects, { "expires": "Session", "path": "/" });
     }
 

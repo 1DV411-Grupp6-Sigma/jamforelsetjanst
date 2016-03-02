@@ -28,8 +28,10 @@
         for (var j = 0; j < operatorIDs.length; j++) {
             viewModelHelper.apiGet('api/operators/' + operatorIDs[j], null, //gets data from database. loop through for more than one operator
                 function (result) {
+
                     //var operatorUnit;
                     console.log(result.data); //result data from database
+
                     $scope.OperatorUnits.push(result.data);
                     //$scope.OperatorUnits.push($operatorUnit);
                 });
