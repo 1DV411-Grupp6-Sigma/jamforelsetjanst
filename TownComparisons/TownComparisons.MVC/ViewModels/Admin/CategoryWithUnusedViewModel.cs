@@ -45,8 +45,7 @@ namespace TownComparisons.MVC.ViewModels.Admin
                     Shared.PropertyQueryViewModel existing = Category.Queries.Find(q => q.QueryId == AllPropertyQueryGroups[i].Queries[j].QueryId);
                     if (existing != null)
                     {
-                        AllPropertyQueryGroups[i].Queries[j] = (PropertyQueryViewModel)existing;
-                        AllPropertyQueryGroups[i].Queries[j].Use = true;
+                        AllPropertyQueryGroups[i].Queries[j] = new PropertyQueryViewModel(existing, true);
                         AllPropertyQueryGroups[i].AnyQueriesToUse = true;
                     }
                 }

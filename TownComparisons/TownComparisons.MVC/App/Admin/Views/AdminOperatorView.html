@@ -8,16 +8,68 @@
 
 <form novalidate>
 
-    <label>Namn:</label>
-    <input type="text" ng-model="operator.Name" />
+    <label>
+        Namn:
+        <input type="text" ng-model="operator.Name" />
+    </label>
 
-    <label>Kort beskrivning:</label>
-    <textarea ng-model="operator.ShortDescription"></textarea>
+    <label>
+        Kort beskrivning:
+        <textarea ng-model="operator.ShortDescription"></textarea>
+    </label>
 
-    <label>Längre beskrivning:</label>
-    <textarea ng-model="operator.LongDescription" rows="5"></textarea>
+    <label>
+        Längre beskrivning:
+        <textarea ng-model="operator.LongDescription" rows="5"></textarea>
+    </label>
 
-    <label>Adress:</label>
-    <textarea ng-model="operator.Address"></textarea>
+    <label>
+        Adress:
+        <textarea ng-model="operator.Address"></textarea>
+    </label>
+
+    <label>
+        Kontakt:
+        <input type="text" ng-model="operator.Contact" />
+    </label>
+
+    <label>
+        Telefon:
+        <input type="text" ng-model="operator.Telephone" />
+    </label>
+
+    <label>
+        E-post:
+        <input type="text" ng-model="operator.Email" />
+    </label>
+
+    <label>
+        Webbsida:
+        <input type="text" ng-model="operator.Website" />
+    </label>
+
+    <label>
+        Organisations-form:
+        <input type="text" ng-model="operator.OrganisationalForm" />
+    </label>
+
+    <label>
+        Övrig information:
+        <textarea ng-model="operator.Other"></textarea>
+    </label>
+
+
+    <div>
+        <input type="button" name="save" ng-click="saveCategory()" value="Spara ändringar" class="button success" />
+    </div>
+
+    <div ng-show="!cancel">
+        <input type="button" name="cancel" ng-click="cancel = true" value="Avbryt" class="tiny button secondary" />
+    </div>
+    <div ng-show="cancel">
+        <label>Avbryta utan att spara?</label>
+        <input type="button" name="cancel" ng-click="cancelEditCategory()" value="Ja" class="tiny button default" />
+        <input type="button" name="cancel" ng-click="cancel = false" value="X" class="tiny button secondary" />
+    </div>
 
 </form>

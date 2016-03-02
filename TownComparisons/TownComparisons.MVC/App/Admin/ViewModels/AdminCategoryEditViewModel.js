@@ -2,6 +2,7 @@
 
     $scope.viewModelHelper = viewModelHelper;
     $scope.adminService = adminService;
+
     $scope.editMode = (adminService.editCategoryMode ? adminService.editCategoryMode : 'general');
     $scope.validationErrors = [];
     $scope.knownValidationErrors = [];
@@ -13,19 +14,13 @@
         $scope.queriesStateFilter = 'All';
         $scope.operatorsStateFilter = 'All';
 
-        $scope.refreshCategory($routeParams.categoryId);
-
+        adminService.getCategory($routeParams.categoryId, afterCategoryHasBeenLoaded);
     }
 
-    $scope.refreshCategory = function (categoryId) {
-        viewModelHelper.apiGet('api/admin/category/' + categoryId, null,
-            function (result) {
-                adminService.categoryId = categoryId;
-                $scope.category = result.data;
-                $scope.categoryName = angular.copy($scope.category.Category.Name); //to use without data binding to the category
-                $scope.pageHeading = 'Kategori: ' + $scope.categoryName;
-                $scope.categoryHasBeenLoaded = true;
-            });
+    var afterCategoryHasBeenLoaded = function () {
+        $scope.categoryName = angular.copy($scope.category.Category.Name); //to use without data binding to the category
+        $scope.pageHeading = 'Kategori: ' + $scope.categoryName;
+        $scope.categoryHasBeenLoaded = true;
     }
 
     $scope.saveCategory = function () {
@@ -39,73 +34,10 @@
             },
             function (errors) {
                 //failure
-                console.log(errors);
-                parseErrors(errors);
+                adminService.parseErrors(errors);
             });
     }
 
-    var parseErrors = function (errors) {
-        $scope.validationErrors = [];
-        $scope.knownValidationErrors = [];
-        $scope.closeValidationAlert = false;
-
-        if (errors.data && errors.data.ModelState && angular.isObject(errors.data.ModelState)) {
-            for (var key in errors.data.ModelState) {
-                for (var i = 0; i < errors.data.ModelState[key].length; i++) {
-                    $scope.validationErrors.push({ name: key, message: errors.data.ModelState[key][i] });
-                }
-            }
-            console.log($scope.validationErrors);
-            /*
-            for (var key in errors.data) {
-                $scope.validationErrors.push(errors.data[key][0]);
-            }
-            */
-        } else {
-            $scope.validationErrors.push('Kunde inte utföra åtgärden, kontrollera att allt är rätt inmatat.');
-        };
-    }
-    $scope.hasValidationError = function (errorName) {
-        console.log('checking for error: ' + errorName);
-        var errors = getValidationErrors(errorName);
-        if (errors.length > 0) {
-            console.log('errors found!');
-            return true;
-        }
-
-        return false;
-    }
-    $scope.getValidationErrorMessage = function (errorName) {
-        var errors = getValidationErrors(errorName);
-        if (errors.length > 0)
-            return errors[0].message;
-        else
-            return '';
-    }
-    var getValidationErrors = function (errorName) {
-        if (!$scope.knownValidationErrors) { $scope.knownValidationErrors = []; }
-
-        if ($scope.validationErrors) {
-            var result = $scope.validationErrors.filter(function (obj) {
-                return obj.name == errorName;
-            });
-            if (result.length > 0) {
-                //move errors found from the general array to known errors array
-                for (i = $scope.validationErrors.length - 1; i >= 0; i--) {
-                    if ($scope.validationErrors[i].name == errorName) {
-                        $scope.knownValidationErrors.push($scope.validationErrors[i]);
-                        $scope.validationErrors.splice(i, 1);
-                    }
-                }
-            }
-            var resultFromKnown = $scope.knownValidationErrors.filter(function (obj) {
-                return obj.name == errorName;
-            });
-
-            return result.concat(resultFromKnown);
-        }
-        return [];
-    }
 
 
     $scope.cancelEditCategory = function () {
