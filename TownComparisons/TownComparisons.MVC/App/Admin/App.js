@@ -8,7 +8,7 @@ var adminModule = angular.module('admin', ['common'])
         $routeProvider.when('/admin/operators', { templateUrl: '/App/Admin/Views/AdminOperatorsView.html', controller: 'adminOperatorsViewModel' });
         $routeProvider.when('/admin/operators/:operatorId', { templateUrl: '/App/Admin/Views/AdminOperatorView.html', controller: 'adminOperatorViewModel' });
         $routeProvider.otherwise({ redirectTo: '/admin' });
-        //$locationProvider.html5Mode(true);
+
         $locationProvider.html5Mode({
             enabled: true,
             requireBase: false

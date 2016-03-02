@@ -64,6 +64,19 @@ collector.factory('collectorFactory', ['$cookies', '$routeParams', function ($co
         $cookies.remove(savedList, { "path": "/" });
     }
 
+
+    //checks if in list
+    factory.checkIfInList = function (subject) {
+        if (subject != null) {
+            for (var i = 0; i < factory.listOfSubjects.length; i++) {
+                if (factory.listOfSubjects[i].OrganisationalUnitId === subject.OrganisationalUnitId) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     return factory;
 }]);
 
