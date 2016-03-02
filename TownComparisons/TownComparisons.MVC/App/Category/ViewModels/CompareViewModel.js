@@ -2,45 +2,53 @@
 
     //debugger;
 
-    //this block of code will read the id from the query string
-    $scope.OperatorUnitList = []; //IDs from
+    
+
+    //This code block read both category ID and OperatorUnit IDs from the query string
+    $scope.categoryID = $routeParams.categoryId;
+    $scope.OperatorUnitList = [];
     for (var i = 0; i < $routeParams.id.length; i++) {
-        $scope.OperatorUnitList.push($routeParams.id[i]); //will save id's to an array
+        $scope.OperatorUnitList.push($routeParams.id[i]);
     }
 
-    $scope.OperatorUnits = []; //result from database + Kolada
+    $scope.OperatorUnits = []; //result from database (+Kolada?)
 
     //Do I really need these?
     $scope.viewModelHelper = viewModelHelper;
-    $scope.categoryService = categoryService;
-    
-    //only for test purpose
-    $scope.operators = [
-            {
-                ID: 1,
-                Name: "Tallbackaskolan",
-                KPI: "Get KPI from Kolada"
-            },
-            {
-                ID: 2,
-                Name: "Hemskolan",
-                KPI: "KPI"
-            }
-    ];
+    //$scope.categoryService = categoryService;
 
     //In Initialize() call (new) API controller who goes to the service layer and gets data from database and Kolada
     var initialize = function () {
-        $scope.getOrganisationalUnitInfoByOperatorID($scope.OperatorUnitList);
+        $scope.getOrganisationalUnitInfoByOperatorID($scope.categoryID, $scope.OperatorUnitList);
+        $scope.getOrganisationalUnitInfoByOperatorID2($scope.categoryID, $scope.OperatorUnitList);
     }
 
     //Get Organisational Unit Info via OperatorController
-    $scope.getOrganisationalUnitInfoByOperatorID = function (operatorIDs) {
+    $scope.getOrganisationalUnitInfoByOperatorID = function (categoryID, operatorIDs) {
         for (var j = 0; j < operatorIDs.length; j++) {
             viewModelHelper.apiGet('api/operators/' + operatorIDs[j], null, //gets data from database. loop through for more than one operator
                 function (result) {
-                    console.log(result.data); //result data from server
+                    //var operatorUnit;
+                    console.log(result.data); //result data from database
                     $scope.OperatorUnits.push(result.data);
+                    //$scope.OperatorUnits.push($operatorUnit);
                 });
+            //viewModelHelper.apiGet('api/category/' + categoryID + '/properties?operators=' + operatorIDsV15E108000801,V15E108000701,OSV,OSV' + operatorIDs[j], null, //gets data from database. loop through for more than one operator
+            //    function (result) {
+            //        console.log(result.data); //result data from Kolada
+            //        $scope.OperatorUnits.push(result.data);
+            //    });
+        }
+    }
+
+    $scope.getOrganisationalUnitInfoByOperatorID2 = function (categoryID, operatorIDs) {
+        for (var k = 0; k < operatorIDs.length; k++) {
+            viewModelHelper.apiGet('api/category/' + categoryID + '/properties?operators=' + operatorIDs[k], null, //V15E108000801,V15E108000701,OSV,OSV' + operatorIDs[j], null, //gets data from database. loop through for more than one operator
+            function (result) {
+                console.log('no2');
+                console.log(result.data); //result data from Kolada
+                //$scope.OperatorUnits.push(result.data);
+            });
         }
     }
 
