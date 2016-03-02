@@ -20,7 +20,8 @@
     <div class="row">
         <dl class="sub-nav">
             <dt>Sortera:</dt>
-            <dd class="{{ activeName }}"><a href="" ng-click="sortOuByName()">Namn</a><img class="{{ visibleName }}" src="/Content/pictures/{{ fileName }}.png" ng-click="sortOuByName()" /></dd>
+            <dd class="{{ activeName }}"><a href="" ng-click="sortOuByName()">Namn</a><img class="{{ visibleName }}" src="/Content/pictures/{{ sortOrder }}.png" ng-click="sortOuByName()" /></dd>
+            <dd class="{{ activeAddress }}"><a href="" ng-click="sortOuByAddress()">Adress</a><img class="{{ visibleAddress }}" src="/Content/pictures/{{ sortOrder }}.png" ng-click="sortOuByAddress()" /></dd>
         </dl>
     </div>
     <table class="table">
@@ -33,13 +34,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="ou in organisationalUnits | filter:filter.name | orderBy:sortByOrder + sortBy">
+            <tr ng-repeat="ou in category.OrganisationalUnits | filter:filter.name | orderBy:sortByOrder + sortBy">
                 <td>{{ setInitialCompareSettings(ou)}} {{ checkWhichSchoolsAreCompared(ou) }}</td>
 
-                <td><h5><a href="#" ng-click="showOperator(ou)">{{ ou.Name }}</a></h5></td>
+                <td><h5><a href="#" ng-click="showOperator(ou.OrganisationalUnitId)">{{ ou.Name }}</a></h5></td>
                 <td>
-                    Storgatan 3,
-                    Kristianstad
+                    <p>{{ ou.Telephone }}</p>
                 </td>
                 <td>
                     <div class="{{ ou.class }}"><a href="" ng-click="toggleOperators(ou)"><i class="{{ ou.icon }}"></i>{{ ou.text}}</a></div>

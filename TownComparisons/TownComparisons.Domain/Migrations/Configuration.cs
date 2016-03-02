@@ -51,144 +51,54 @@ namespace TownComparisons.Domain.Migrations
             //and some Organisational units for category
             OrganisationalUnitInfo ou1 = new OrganisationalUnitInfo()
             {
-                OrganisationalUnitId = "V15E108000701",
-                Name = "Rödebyskolan 7-9",
-                ShortDescription = "Lorem ipsum dolor sit amet," +
-                                   "consectetur adipiscing elit, sed do eiusmod tempor" +
-                                   "incididunt ut labore et dolore magna aliqua. Ut enim ad" +
-                                   "minim veniam, quis nostrud exercitation ullamco laboris nisi" +
-                                   "ut aliquip ex ea commodo consequat. Duis aute irure dolor in" +
-                                   "reprehenderit in voluptate velit esse cillum dolore eu fugiat" +
-                                   "nulla pariatur. Excepteur sint occaecat cupidatat non proident," +
-                                   "sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                LongDescription = "Lorem ipsum dolor sit amet," +
-                                   "consectetur adipiscing elit, sed do eiusmod tempor" +
-                                   "incididunt ut labore et dolore magna aliqua. Ut enim ad" +
-                                   "minim veniam, quis nostrud exercitation ullamco laboris nisi" +
-                                   "ut aliquip ex ea commodo consequat. Duis aute irure dolor in" +
-                                   "reprehenderit in voluptate velit esse cillum dolore eu fugiat" +
-                                   "nulla pariatur. Excepteur sint occaecat cupidatat non proident," +
-                                   "sunt in culpa qui officia deserunt mollit anim id est laborum." +
-                                   "Lorem ipsum dolor sit amet," +
-                                   "consectetur adipiscing elit, sed do eiusmod tempor" +
-                                   "incididunt ut labore et dolore magna aliqua. Ut enim ad" +
-                                   "minim veniam, quis nostrud exercitation ullamco laboris nisi" +
-                                   "ut aliquip ex ea commodo consequat. Duis aute irure dolor in" +
-                                   "reprehenderit in voluptate velit esse cillum dolore eu fugiat" +
-                                   "nulla pariatur. Excepteur sint occaecat cupidatat non proident," +
-                                   "sunt in culpa qui officia deserunt mollit anim id est laborum." +
-                                   "Lorem ipsum dolor sit amet," +
-                                   "consectetur adipiscing elit, sed do eiusmod tempor" +
-                                   "incididunt ut labore et dolore magna aliqua. Ut enim ad" +
-                                   "minim veniam, quis nostrud exercitation ullamco laboris nisi" +
-                                   "ut aliquip ex ea commodo consequat. Duis aute irure dolor in" +
-                                   "reprehenderit in voluptate velit esse cillum dolore eu fugiat" +
-                                   "nulla pariatur. Excepteur sint occaecat cupidatat non proident," +
-                                   "sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                OrganisationalUnitId = "V15E18784702",
+                Name = "Vasaskolan",
+                ShortDescription = "Vi stöttar och utvecklar våra barn och elever till trygga, hälso-medvetna och ansvarstagande individer som är kreativa och vågar göra aktiva val i livet.",
+                LongDescription = "Vi stöttar och utvecklar våra barn och elever till trygga, hälso-medvetna och ansvarstagande individer som är kreativa och vågar göra aktiva val i livet. Vi satsar på att nå varje individ på rätt nivå genom att utveckla barnets/elevens styrkor på bästa sätt. För oss är det viktigt att alla i vår verksamhet har respekt för olikheter och vågar stå upp för andra människors värde och unikhet. Vi tror detta leder till livslång kunskap. Inom vårt skolområde görs en särskild satsning på de naturvetenskapliga ämnena från 1-16 år. Detta för att stärka individen i sin världsuppfattning.",
                 ImagePath = "",
-                Address = "Essingestråket 24 112 66 Stockholm",
-                Telephone = "08-441 30 30",
-                Contact = "Sophie Maraux, rektor gymnasium",
-                Email = "secretariat@​lfsl.net",
-                OrganisationalForm = "Fristående/privat",
-                Website = "http:/​/​www.​lfsl.​net/ ",
-                Latitude = "",
-                Longitude = "",
-                Other = "Gymnasieskola",
+                Address = "Germundsgatan 7-9, 392 45, Kalmar",
+                Telephone = "0480-45 33 50",
+                Contact = "Andreas Hjortenkrans, rektor",
+                Email = "andreas.hjortenkrans@kalmar.se",
+                OrganisationalForm = "Kommunal",
+                Website = "http://www.kalmar.se/vasaskolan/",
+                Latitude = "56.660693 ",
+                Longitude = "16.342839",
+                Other = "Grundskola",
             };
             OrganisationalUnitInfo ou2 = new OrganisationalUnitInfo()
             {
-                OrganisationalUnitId = "V15E108000801",
-                Name = "Nättrabyskolan 7-9",
-                ShortDescription = "Lorem ipsum dolor sit amet," +
-                                   "consectetur adipiscing elit, sed do eiusmod tempor" +
-                                   "incididunt ut labore et dolore magna aliqua. Ut enim ad" +
-                                   "minim veniam, quis nostrud exercitation ullamco laboris nisi" +
-                                   "ut aliquip ex ea commodo consequat. Duis aute irure dolor in" +
-                                   "reprehenderit in voluptate velit esse cillum dolore eu fugiat" +
-                                   "nulla pariatur. Excepteur sint occaecat cupidatat non proident," +
-                                   "sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                LongDescription = "Lorem ipsum dolor sit amet," +
-                                   "consectetur adipiscing elit, sed do eiusmod tempor" +
-                                   "incididunt ut labore et dolore magna aliqua. Ut enim ad" +
-                                   "minim veniam, quis nostrud exercitation ullamco laboris nisi" +
-                                   "ut aliquip ex ea commodo consequat. Duis aute irure dolor in" +
-                                   "reprehenderit in voluptate velit esse cillum dolore eu fugiat" +
-                                   "nulla pariatur. Excepteur sint occaecat cupidatat non proident," +
-                                   "sunt in culpa qui officia deserunt mollit anim id est laborum." +
-                                   "Lorem ipsum dolor sit amet," +
-                                   "consectetur adipiscing elit, sed do eiusmod tempor" +
-                                   "incididunt ut labore et dolore magna aliqua. Ut enim ad" +
-                                   "minim veniam, quis nostrud exercitation ullamco laboris nisi" +
-                                   "ut aliquip ex ea commodo consequat. Duis aute irure dolor in" +
-                                   "reprehenderit in voluptate velit esse cillum dolore eu fugiat" +
-                                   "nulla pariatur. Excepteur sint occaecat cupidatat non proident," +
-                                   "sunt in culpa qui officia deserunt mollit anim id est laborum." +
-                                   "Lorem ipsum dolor sit amet," +
-                                   "consectetur adipiscing elit, sed do eiusmod tempor" +
-                                   "incididunt ut labore et dolore magna aliqua. Ut enim ad" +
-                                   "minim veniam, quis nostrud exercitation ullamco laboris nisi" +
-                                   "ut aliquip ex ea commodo consequat. Duis aute irure dolor in" +
-                                   "reprehenderit in voluptate velit esse cillum dolore eu fugiat" +
-                                   "nulla pariatur. Excepteur sint occaecat cupidatat non proident," +
-                                   "sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                OrganisationalUnitId = "V15E088003301",
+                Name = "Falkenbergsskolan",
+                ShortDescription = "Falkenbergsskolan arbetar för att alla våra elever ska utvecklas maximalt mot god måluppfyllelse såväl när det gäller kunskaper som det sociala välmåendet.",
+                LongDescription = "Falkenbergsskolan arbetar för att alla våra elever ska utvecklas maximalt mot god måluppfyllelse såväl när det gäller kunskaper som det sociala välmåendet.Som elev vill vi att du ska vara förberedd för vidare studier, arbetslivet och livet i stort.Viktiga ledord i vårt arbete är kunskap, kommunikation, kultur samt idrott och hälsa. Samverkan med arbetslivet, föreningslivet och samhället lokalt som globalt är en viktig del av vårt arbete tillsammans med våra elever och medarbetare.",
                 ImagePath = "",
-                Address = "Essingestråket 24 112 66 Stockholm",
-                Telephone = "08-441 30 30",
-                Contact = "Sophie Maraux, rektor gymnasium",
-                Email = "secretariat@​lfsl.net",
-                OrganisationalForm = "Fristående/privat",
-                Website = "http:/​/​www.​lfsl.​net/ ",
-                Latitude = "",
-                Longitude = "",
-                Other = "Gymnasieskola",
+                Address = "Falkenbergsvägen 12, 392 44, Kalmar",
+                Telephone = "0480-45 33 00",
+                Contact = "Per-Ola Jacobson, rektor",
+                Email = "per-ola.jacobson@kalmar.se",
+                OrganisationalForm = "Kommunal",
+                Website = "http://www.kalmar.se/falkenbergsskolan",
+                Latitude = "56.662207",
+                Longitude = "16.327105",
+                Other = "Grundskola",
             };
             OrganisationalUnitInfo ou3 = new OrganisationalUnitInfo()
             {
-                OrganisationalUnitId = "V15E108000901",
-                Name = "Fridlevstads skola F-6",
-                ShortDescription = "Lorem ipsum dolor sit amet," +
-                                  "consectetur adipiscing elit, sed do eiusmod tempor" +
-                                  "incididunt ut labore et dolore magna aliqua. Ut enim ad" +
-                                  "minim veniam, quis nostrud exercitation ullamco laboris nisi" +
-                                  "ut aliquip ex ea commodo consequat. Duis aute irure dolor in" +
-                                  "reprehenderit in voluptate velit esse cillum dolore eu fugiat" +
-                                  "nulla pariatur. Excepteur sint occaecat cupidatat non proident," +
-                                  "sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                LongDescription = "Lorem ipsum dolor sit amet," +
-                                  "consectetur adipiscing elit, sed do eiusmod tempor" +
-                                  "incididunt ut labore et dolore magna aliqua. Ut enim ad" +
-                                  "minim veniam, quis nostrud exercitation ullamco laboris nisi" +
-                                  "ut aliquip ex ea commodo consequat. Duis aute irure dolor in" +
-                                  "reprehenderit in voluptate velit esse cillum dolore eu fugiat" +
-                                  "nulla pariatur. Excepteur sint occaecat cupidatat non proident," +
-                                  "sunt in culpa qui officia deserunt mollit anim id est laborum." +
-                                  "Lorem ipsum dolor sit amet," +
-                                  "consectetur adipiscing elit, sed do eiusmod tempor" +
-                                  "incididunt ut labore et dolore magna aliqua. Ut enim ad" +
-                                  "minim veniam, quis nostrud exercitation ullamco laboris nisi" +
-                                  "ut aliquip ex ea commodo consequat. Duis aute irure dolor in" +
-                                  "reprehenderit in voluptate velit esse cillum dolore eu fugiat" +
-                                  "nulla pariatur. Excepteur sint occaecat cupidatat non proident," +
-                                  "sunt in culpa qui officia deserunt mollit anim id est laborum." +
-                                  "Lorem ipsum dolor sit amet," +
-                                  "consectetur adipiscing elit, sed do eiusmod tempor" +
-                                  "incididunt ut labore et dolore magna aliqua. Ut enim ad" +
-                                  "minim veniam, quis nostrud exercitation ullamco laboris nisi" +
-                                  "ut aliquip ex ea commodo consequat. Duis aute irure dolor in" +
-                                  "reprehenderit in voluptate velit esse cillum dolore eu fugiat" +
-                                  "nulla pariatur. Excepteur sint occaecat cupidatat non proident," +
-                                  "sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                OrganisationalUnitId = "V15E088003701",
+                Name = "Lindöskolan",
+                ShortDescription = "Lindöskolan har ett centralt och naturnära läge, där vi använder oss av områdets utbud av kultur, natur och näringsliv.",
+                LongDescription = "Lindöskolan har ett centralt och naturnära läge, där vi använder oss av områdets utbud av kultur, natur och näringsliv. Tack vare vårt centrala läge har vi gång- och cykelavstånd till exempelvis muséer, Kalmar slott, ishall och simhall. Skolan omfattas av förskoleklass och grundskola 1-5 samt fritidshem.",
                 ImagePath = "",
-                Address = "Essingestråket 24 112 66 Stockholm",
-                Telephone = "08-441 30 30",
-                Contact = "Sophie Maraux, rektor gymnasium",
-                Email = "secretariat@​lfsl.net",
-                OrganisationalForm = "Fristående/privat",
-                Website = "http:/​/​www.​lfsl.​net/ ",
-                Latitude = "",
-                Longitude = "",
-                Other = "Gymnasieskola",
+                Address = "Lindövägen 3, 392 35 Kalmar",
+                Telephone = "0480-45 32 70",
+                Contact = "Karin Berggren, rektor",
+                Email = "karin.berggren@kalmar.se",
+                OrganisationalForm = "Kommunal",
+                Website = "http://www.kalmar.se/lindoskolan",
+                Latitude = "56.673646",
+                Longitude = "16.357482",
+                Other = "Grundskola",
             };
 
             //main categories
@@ -210,6 +120,12 @@ namespace TownComparisons.Domain.Migrations
             };
             context.Categories.Add(c2);
 
+            Category c4 = new Category()
+            {
+                Name = "Gymnasieskola"
+            };
+            context.Categories.Add(c4);
+
             //group categories
             GroupCategory gc1 = new GroupCategory()
             {
@@ -217,6 +133,7 @@ namespace TownComparisons.Domain.Migrations
             };
             gc1.Categories.Add(c1);
             gc1.Categories.Add(c2);
+            gc1.Categories.Add(c4);
             context.GroupCategories.Add(gc1);
 
             Category c3 = new Category()
@@ -225,11 +142,18 @@ namespace TownComparisons.Domain.Migrations
             };
             context.Categories.Add(c3);
 
+            Category c5 = new Category()
+            {
+                Name = "Vårdcentral"
+            };
+            context.Categories.Add(c5);
+
             GroupCategory gc2 = new GroupCategory()
             {
                 Name = "Sjukvård & hälsa"
             };
             gc2.Categories.Add(c3);
+            gc2.Categories.Add(c5);
             context.GroupCategories.Add(gc2);
 
 
