@@ -22,9 +22,9 @@ collector.factory('collectorFactory', ['$cookies', '$routeParams', function ($co
             OrganisationalUnitId: subject.OrganisationalUnitId,
             Name: subject.Name,
             Other: subject.Other,
-            Url: 'category/' + $routeParams.parameterId + "/" + subject.OrganisationalUnitId
+            Url: 'category/' + $routeParams.categoryId + "/operator/" + subject.OrganisationalUnitId
         };
-
+        console.log($routeParams.categoryId);
         factory.listOfSubjects.push(objToSave);
         $cookies.putObject(savedList, factory.listOfSubjects, { "expires": "Session", "path": "/" });
     }
