@@ -25,29 +25,15 @@
         categoriesFactory.changeListView(value, $routeParams.categoryId);
     }
 
+
     $scope.setCompareSettingsForOu = function (ou) {
-        //check if is in compare list
-        var ouIsInCompare = $scope.checkIfOuIsInCompareList(ou);
-        ou.class = (ouIsInCompare ? "after-compare" : "before-compare");
-        ou.icon = (ouIsInCompare ? "fi-check" : "fi-plus");
-        ou.text = (ouIsInCompare ? "" : "Jämför");
-    }
-
-    $scope.checkIfOuIsInCompareList = function (ou) {
-        for (var i = 0; i < collectorFactory.listOfSubjects.length; i++) {
-            if (collectorFactory.listOfSubjects[i].OrganisationalUnitId === ou.OrganisationalUnitId) {
-                return true;
-            }
+        if (ou != null) {
+            //check if is in compare list
+            var ouIsInCompare = collectorFactory.checkIfInList(ou);
+            ou.class = (ouIsInCompare ? "after-compare" : "before-compare");
+            ou.icon = (ouIsInCompare ? "fi-check" : "fi-plus");
+            ou.text = (ouIsInCompare ? "" : "Jämför");
         }
-        return false;
-    }
-
-    $scope.getCategory = function (categoryId) {
-        viewModelHelper.apiGet('api/category/' + categoryId, null,
-            function (result) {
-                $scope.category = result.data;
-                $scope.pageHeading = 'Hitta och jämför ' + $scope.category.Name;
-            });
     }
 
 

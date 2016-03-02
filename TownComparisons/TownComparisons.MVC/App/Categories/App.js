@@ -35,6 +35,7 @@ var categoryModule = angular.module('category', ['common'])
 
 categoryModule.factory('categoryService', function ($rootScope, $http, $q, $location, viewModelHelper) { return MyApp.categoryService($rootScope, $http, $q, $location, viewModelHelper); });
 
+
 (function (myApp) {
     var categoryService = function ($rootScope, $http, $q, $location, viewModelHelper) {
 
@@ -56,18 +57,18 @@ categoryModule.factory('categoryService', function ($rootScope, $http, $q, $loca
             );
         }
 
-
         return this;
     };
     myApp.categoryService = categoryService;
 }(window.MyApp));
 
 
+
 //Factory for global functions on categoryModule
 categoryModule.factory('categoriesFactory', function (viewModelHelper) {
     var factory = {};
 
-     //Show all organisational units inside a category
+    //Show all organisational units inside a category
     factory.showCategory = function (category) {
         viewModelHelper.navigateTo('category/' + category.Id);
     }
@@ -92,6 +93,7 @@ categoryModule.factory('categoriesFactory', function (viewModelHelper) {
             viewModelHelper.navigateTo('category/' + urlParam + value);
         }
     }
+
 
     return factory;
 });
