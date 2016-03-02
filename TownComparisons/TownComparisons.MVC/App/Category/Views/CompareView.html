@@ -6,34 +6,35 @@
     
     <thead>
         <tr>
-            <td ng-repeat="operator in operators">
+            <td></td>
+            <td ng-repeat="ou in OperatorUnits">
                 <div class="table-header small-4 columns">
-                    {{ operator.img }}
                     <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Lmspic.png" />
                 </div>
                 <div>
-                    {{ operator.Name }}<br />
-                    {{ operator.address }}Adress
+                    {{ ou.Name }}<br />
                 </div>
             </td>
-            <td></td>
-            <td></td>
         </tr>
     </thead>
     <tbody>
-        <tr >
-            <td ng-repeat="operator in operators">
-                <div class="small-4 columns">
-                    {{ operator.img }}
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Lmspic.png" />
-                </div>
-                <div>
-                    {{ operator.Name }}<br />
-                    {{ operator.address }}Adress
-                </div>
+        <tr>
+            <td>Adress</td>
+            <td ng-repeat="ou in OperatorUnits">
+                {{ ou.Address }}
             </td>
-            <td></td>
-            <td></td>
+        </tr>
+        <tr>
+            <td>Kontakt</td>
+            <td ng-repeat="ou in OperatorUnits">
+                {{ ou.Contact }}
+            </td>
+        </tr>
+        <tr>
+            <td>Kort beskrivning</td>
+            <td ng-repeat="ou in OperatorUnits">
+                {{ ou.ShortDescription }}
+            </td>
         </tr>
     </tbody>
 </table>
