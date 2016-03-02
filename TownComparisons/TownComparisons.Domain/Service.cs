@@ -174,19 +174,20 @@ namespace TownComparisons.Domain
 
         public OrganisationalUnitInfo GetOrganisationalUnitInfo(string organisationalUnitId)
         {
-            string cacheKey = "getOrganisationalUnitInfo";
+            //Wrong OU is being picked up in view
+            /*string cacheKey = "getOrganisationalUnitInfo";
 
             if (_cache.HasValue(cacheKey))
             {
                 return (OrganisationalUnitInfo)_cache.GetCache(cacheKey);
             }
-
+            */
             var returnValue = _unitOfWork.OrganisationalUnitInfoRepository.Get(o => o.OrganisationalUnitId == organisationalUnitId).FirstOrDefault();
 
             // Search with GetByID is NOT possible, because datatypes of organisationaUnitid and correspondent field in the database are different
             //var returnValue = _unitOfWork.OrganisationalUnitInfoRepository.GetByID(organisationalUnitId);
             //Saves in cache for 10 seconds
-            _cache.SetCache(cacheKey, returnValue, 10);
+            //_cache.SetCache(cacheKey, returnValue, 10);
 
             return returnValue;
         }
