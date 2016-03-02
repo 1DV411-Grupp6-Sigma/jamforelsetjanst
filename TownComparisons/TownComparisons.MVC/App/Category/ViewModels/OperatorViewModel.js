@@ -18,6 +18,22 @@
             });
     }
 
+    $scope.getStandardSettings = function (organisationalUnit) {
+        organisationalUnit.class = "before-compare";
+        organisationalUnit.icon = "fi-plus";
+        organisationalUnit.text = "Jämför";
+    }
+
+    $scope.checkWhichSchoolsAreCompared = function (subject) {
+        for (var i = 0; i < collectorFactory.listOfSubjects.length; i++) {
+            if (collectorFactory.listOfSubjects[i].OrganisationalUnitId === subject.OrganisationalUnitId) {
+                subject.class = "after-compare";
+                subject.icon = "fi-check";
+                subject.text = "";
+            }
+        }
+    }
+
     //$scope.getOrganisationalUnitInfoByOUId = function (ouId) {
     //    viewModelHelper.apiGet('api/operator/' + ouId, null,
     //        function (result) {

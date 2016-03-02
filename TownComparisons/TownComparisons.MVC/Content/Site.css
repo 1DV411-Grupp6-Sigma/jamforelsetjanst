@@ -6406,6 +6406,12 @@ body {
   position: relative;
   margin-top: -50px; }
 
+.button-div {
+  float: right;
+  text-align: right;
+  position: relative;
+  margin-right: 10px; }
+
 .container {
   background-color: #fff;
   padding: 20px;
