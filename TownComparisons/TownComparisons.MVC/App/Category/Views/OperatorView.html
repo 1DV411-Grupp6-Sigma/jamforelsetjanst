@@ -7,7 +7,7 @@
             <div class="container">
                 <div class="button-div right">
                     <div class="row">
-                        <div class="{{ organisationalUnit.class }}"><a href="" ng-click="toggleOperators(organisationalUnit)"><i class="{{ organisationalUnit.icon }}"></i>{{ organisationalUnit.text}}</a></div>
+                        <div class="{{ organisationalUnit.class }}"><a  ng-click="toggleOperators(organisationalUnit)"><i class="{{ organisationalUnit.icon }}"></i>{{ organisationalUnit.text}}</a></div>
                     </div>
                     <div class="row">
                         <div class="mapClass">
@@ -17,13 +17,16 @@
                 </div>
                 <div>
                     <p class="input-group">
-                        <span class="input-group-addon">Namn</span>
                         <div>
-                            {{ organisationalUnit.Name }}
+                            <h3>{{ organisationalUnit.Name }}</h3>
                         </div>
                     </p>
+                   
+                    <div class="table-header small-4 columns">
+                       <img src="/Content/pictures/{{organisationalUnit.ImagePath}}" alt="Skolans bild" />
+                    </div>
                     <p class="input-group">
-                        <span class="input-group-addon">Vem är vi?</span>
+                        <span class="input-group-addon"></span>
                         <div>
                             {{ organisationalUnit.ShortDescription }}
                         </div>
@@ -34,45 +37,30 @@
                             {{ organisationalUnit.LongDescription }}
                         </div>
                     </p>
-
+                    <hr />
+                    <h4>Kontaktinformation</h4>
+                    <dl>
+                        <dt>Adress</dt>
+                        <dd>
+                           {{ organisationalUnit.Address }}<br />
+                            Sverige
+                        </dd>
+                        <dt>Telefon</dt>
+                        <dd>{{ organisationalUnit.Telephone }}</dd>
+                        <dt>E-post</dt>
+                        <dd><a href="{{ organisationalUnit.Email }}"> {{ organisationalUnit.Email }}</a></dd>
+                        <dt>Webbplats</dt>
+                        <dd><a href="{{ organisationalUnit.Website }}">{{ organisationalUnit.Website }}</a></dd>    
+                    </dl>
+                    <hr />
+                    <h4>Övrig information</h4>
                     <p class="input-group">
-                        <span class="input-group-addon">Adress</span>
-                        <div>
-                            {{ organisationalUnit.Address }}
-                        </div>
-                    </p>
-
-                    <p class="input-group">
-                        <span class="input-group-addon">Telefon</span>
-                        <div>
-                            {{ organisationalUnit.Telephone }}
-                        </div>
-                    </p>
-
-                    <p class="input-group">
-                        <span class="input-group-addon">E-post</span>
-                        <div>
-                            {{ organisationalUnit.Email }}
-                        </div>
-                    </p>
-
-                    <p class="input-group">
-                        <span class="input-group-addon">Webbsida</span>
-                        <div>
-                            {{ organisationalUnit.Website }}
-                        </div>
-                    </p>
-                    <p class="input-group">
-                        <span class="input-group-addon">Övrig information</span>
                         <div>
                             {{ organisationalUnit.Other }}
                         </div>
                     </p>
                     <p class="input-group">
-                        <span class="input-group-addon">Organisationsform</span>
-                        <div>
-                            {{ organisationalUnit.OrganisationalForm }}
-                        </div>
+                        <span class="input-group-addon">Organisationsform: {{ organisationalUnit.OrganisationalForm }}</span>
                     </p>
                 </div>
             </div>

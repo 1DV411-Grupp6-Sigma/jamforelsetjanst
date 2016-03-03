@@ -230,6 +230,7 @@
     <Content Include="Content\Foundations-icon.min.css">
       <DependentUpon>Foundations-icon.css</DependentUpon>
     </Content>
+    <Content Include="Content\pictures\default.jpg" />
     <Content Include="Content\pictures\sortAsc.png" />
     <Content Include="Content\pictures\sortDesc.png" />
     <Content Include="Content\Site.min.css">
