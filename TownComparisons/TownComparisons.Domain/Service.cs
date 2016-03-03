@@ -195,6 +195,19 @@ namespace TownComparisons.Domain
             return returnValue;
         }
 
+        public List<OrganisationalUnitInfo> GetOrganisationalUnitsInfo(string operatorsList)
+        {
+            List<OrganisationalUnitInfo> oui = new List<OrganisationalUnitInfo>();
+            string[] operators = operatorsList.Split(',');
+
+            foreach (string ou in operators)
+            {
+                oui.Add(_unitOfWork.OrganisationalUnitInfoRepository.Get(o => o.OrganisationalUnitId == ou).FirstOrDefault());
+            }
+
+            return oui;
+        }
+
         public bool UpdateOrganisationalUnitInfo(OrganisationalUnitInfo ou)
         {
             _unitOfWork.OrganisationalUnitInfoRepository.Update(ou);

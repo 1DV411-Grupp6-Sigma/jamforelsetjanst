@@ -14,6 +14,9 @@
 
         //start loading category (and then compare results)
         categoryService.getCategory($scope.categoryID, getCompareResults);
+
+        getCompareOrganisationalUnits();
+        $scope.getClientPosition();
     }
 
     //runned after category has been loaded
@@ -24,10 +27,86 @@
         viewModelHelper.apiGet('api/category/' + $scope.categoryID + '/properties?operators=' + organisationalUnitIdsString, null, 
             function (result) {
                 $scope.compareResults = result.data;
-                console.log('no2');
                 console.log(result.data);
             }
         );
+    }
+
+    var getCompareOrganisationalUnits = function () {
+
+        viewModelHelper.apiGet('api/operators/' + $scope.organisationalUnitIdsToCompare.join(","), null,
+            function (result) {
+                $scope.compareOrganisationalUnits = result.data;
+                console.log(result.data);
+            }
+        );
+    }
+
+    // Gets clients position.
+    $scope.getClientPosition = function () {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                $scope.$apply(function () {
+                    $scope.posLat = position.coords.latitude;
+                    $scope.posLng = position.coords.longitude;
+                });
+            });
+        }
+    }
+
+    // Gets distance between client and operators positions.
+    $scope.getDistanceBetweenPositions = function (ou) {
+        var lat1 = ou.Latitude;
+        var lon1 = ou.Longitude;
+
+        var R = 6371; // km 
+        var x1 = $scope.posLat - lat1;
+        var dLat = $scope.toRad(x1);
+        var x2 = $scope.posLng - lon1;
+        var dLon = $scope.toRad(x2);
+        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                        Math.cos($scope.toRad(lat1)) * Math.cos($scope.toRad($scope.posLat)) *
+                        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        var d = R * c;
+
+        return parseFloat(d.toFixed(2));
+    }
+
+    $scope.toRad = function (coord) {
+        return coord * Math.PI / 180;
+    }
+
+    // Checks if string contains "(%)".
+    $scope.containsPercent = function (str) {
+        if (str.indexOf('(%)') >= 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // Checks if string contains "(Ja=1/Nej=0)" or "(Ja=1, Nej=0)".
+    $scope.containsYesNo = function (str) {
+        if (str.indexOf('(Ja=1/Nej=0)') >= 0 || str.indexOf('(Ja=1, Nej=0)') >= 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // Checks if string contains "procentenheter".
+    $scope.containsPercentage = function (str) {
+        if (str.indexOf('procentenheter') >= 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // Rounds a float number to two decimals.
+    $scope.roundOneDecimal = function (num) {
+        return num.toFixed(1);
     }
     
     initialize();
