@@ -14,9 +14,9 @@
     <!--navbar for simple or detailed list -->
     <div class="row">
         <dl class="breadcrumbs">
-            <dd class="unavailable"><a href="#">Visa detaljerad lista</a></dd>
+            <dd class="{{ detailedClass }}"><a href="#" data-ng-click="showMe()">Visa detaljerad lista</a></dd>
             <dd><a href="#" ng-click="changeView('&karta')">Visa på karta</a></dd>
-            <dd><a ng-click="changeListView('/enkel')">Visa enkel lista</a></dd>
+            <dd class="{{ simpleClass }}"><a href="#" data-ng-click="hideMe()">Visa enkel lista</a></dd>
         </dl>
     </div>
 
@@ -29,29 +29,65 @@
         </dl>
     </div>
 
-    <div class="operator-loop" ng-repeat="ou in category.OrganisationalUnits | filter:filter.name | orderBy:sortBy">
-        {{ setCompareSettingsForOu(ou)}}
+    <div data-ng-show="simple">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th width="10"></th>
+                    <th width="150">Namn</th>
+                    <th width="100">Kontaktuppgifter</th>
+                    <th width="100"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="ou in category.OrganisationalUnits | filter:filter.name | orderBy:sortByOrder + sortBy">
+                    <td>{{ setCompareSettingsForOu(ou)}}</td>
 
-        <div class="row">
-            <div class="small-5 columns end">
-                <h5><a href="#" ng-click="showOperator(ou.OrganisationalUnitId)">{{ ou.Name }}</a></h5>
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-2 columns">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Lmspic.png" />
-            </div>
-            <div class="small-7 columns">
-                <div>{{ ou.Telephone }}</div>
-                <div>{{ ou.Address }}</div>
-                <div>{{ ou.Email }}</div>
-            </div>
-            <div class="small-3 columns">
-                <div class="row">
-                    <div class="{{ ou.class }}"><a href="" ng-click="toggleOperators(ou)"><i class="{{ ou.icon }}"></i>{{ ou.text}}</a></div>
+                    <td><h5><a href="#" ng-click="showOperator(ou.OrganisationalUnitId)">{{ ou.Name }}</a></h5></td>
+                    <td>
+                        <p>
+                            {{ ou.Address }}<br />
+                            Telefon: {{ ou.Telephone }}
+                        </p>
+                    </td>
+                    <td>
+                        <div class="{{ ou.class }}"><a href="" ng-click="toggleOperators(ou)"><i class="{{ ou.icon }}"></i>{{ ou.text}}</a></div>
+                        <div class="mapClass"><a href="#">Karta</a></div>
+                    </td>
+
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div data-ng-show="detailed">
+        <div class="operator-loop" ng-repeat="ou in category.OrganisationalUnits | filter:filter.name | orderBy:sortBy">
+            {{ setCompareSettingsForOu(ou)}}
+
+
+
+            <div class="row">
+                <div class="small-5 columns end">
+                    <h5><a href="#" ng-click="showOperator(ou.OrganisationalUnitId)">{{ ou.Name }}</a></h5>
                 </div>
-                <div class="row">
-                    <div class="mapClass"><a href="#">Karta</a></div>
+            </div>
+            <div class="row">
+                <div class="small-2 columns">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Lmspic.png" />
+                </div>
+                <div class="small-7 columns">
+                    <div>{{ ou.Telephone }}</div>
+                    <div>{{ ou.Address }}</div>
+                    <div>{{ ou.Email }}</div>
+                </div>
+                <div class="small-3 columns">
+                    <div class="row">
+                        <div class="{{ ou.class }}"><a href="" ng-click="toggleOperators(ou)"><i class="{{ ou.icon }}"></i>{{ ou.text}}</a></div>
+                    </div>
+                    <div class="row">
+                        <div class="mapClass"><a href="#">Karta</a></div>
+                    </div>
                 </div>
             </div>
         </div>

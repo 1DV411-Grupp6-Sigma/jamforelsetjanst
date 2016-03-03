@@ -14,11 +14,6 @@ var categoryModule = angular.module('category', ['common'])
             .when('/category/:categoryId', {
                      templateUrl: '/App/Category/Views/CategoryView.html', controller: 'categoryViewModel'
                 })
-            //View simple list
-            .when('/category/:categoryId/enkel', {
-                templateUrl: '/App/Category/Views/SimpleView.html',
-                controller: 'categoryViewModel'
-            })
             .when('/category/:categoryId/compare', {
                      templateUrl: '/App/Category/Views/CompareView.html',
                      controller: 'compareViewModel'
