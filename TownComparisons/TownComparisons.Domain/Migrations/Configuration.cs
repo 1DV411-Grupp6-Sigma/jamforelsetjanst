@@ -48,6 +48,24 @@ namespace TownComparisons.Domain.Migrations
                 QueryId = "N15406",
                 Title = "Elever i åk. 9 som minst uppnått kunskapskraven för Godkänd i ämnesprovet i matematik, kommunala skolor, andel (%)"
             };
+            CategoryPropertyQuery query4 = new CategoryPropertyQuery()
+            {
+                WebServiceName = koladaWebServiceName,
+                QueryId = "N15807",
+                Title = "Elever i grundskola belägen i kommunen, antal"
+            };
+            CategoryPropertyQuery query5 = new CategoryPropertyQuery()
+            {
+                WebServiceName = koladaWebServiceName,
+                QueryId = "N15403",
+                Title = "Elever i åk. 9, meritvärde kommunala skolor, genomsnitt (16 ämnen)"
+            };
+            CategoryPropertyQuery query6 = new CategoryPropertyQuery()
+            {
+                WebServiceName = koladaWebServiceName,
+                QueryId = "N15422",
+                Title = "Elever i åk. 9 som är behöriga till ekonomi-, humanistiska och samhällsvetenskapsprogrammet, lägeskommun, andel (%)"
+            };
             //and some Organisational units for category
             OrganisationalUnitInfo ou1 = new OrganisationalUnitInfo()
             {
@@ -143,6 +161,9 @@ namespace TownComparisons.Domain.Migrations
             c1.Queries.Add(query1);
             c1.Queries.Add(query2);
             c1.Queries.Add(query3);
+            c1.Queries.Add(query4);
+            c1.Queries.Add(query5);
+            c1.Queries.Add(query6);
             c1.OrganisationalUnits.Add(ou1);
             c1.OrganisationalUnits.Add(ou2);
             c1.OrganisationalUnits.Add(ou3);

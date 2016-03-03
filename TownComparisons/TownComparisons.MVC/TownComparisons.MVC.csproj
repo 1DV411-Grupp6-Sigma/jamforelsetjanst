@@ -210,7 +210,6 @@
     <Content Include="App\Admin\Views\AdminCategoryEditView.html" />
     <Content Include="App\App.js" />
     <Content Include="App\Categories\App.js" />
-    <Content Include="App\Categories\ViewModels\AlphabetViewModel.js" />
     <Content Include="App\Categories\ViewModels\CategoriesViewModel.js" />
     <Content Include="App\Categories\ViewModels\RootViewModel.js" />
     <Content Include="App\Categories\Views\AlphabetView.html" />
@@ -223,6 +222,10 @@
     <Content Include="App\Category\Views\OperatorView.html" />
     <Content Include="App\Category\Views\CompareView.html" />
     <Content Include="App\Category\ViewModels\CategoryViewModel.js" />
+    <Content Include="App\Category\Views\Partials\_PercentageView.html" />
+    <Content Include="App\Category\Views\Partials\_PercentView.html" />
+    <Content Include="App\Category\Views\Partials\_StandardView.html" />
+    <Content Include="App\Category\Views\Partials\_YesOrNoView.html" />
     <Content Include="App\Compare\app.js" />
     <Content Include="App\Validator.js" />
     <Content Include="Content\Foundations-icon.css" />

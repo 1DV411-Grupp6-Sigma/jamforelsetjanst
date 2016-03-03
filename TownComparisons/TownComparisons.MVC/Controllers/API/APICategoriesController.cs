@@ -35,6 +35,8 @@ namespace TownComparisons.MVC.Controllers.API
             var categories = _service.GetAllCategories();
             //Category OrganisationalUnits
             CategoriesViewModel model = new CategoriesViewModel(categories);
+            var ous = _service.GetCategory(1);
+            CategoryViewModel model2 = new CategoryViewModel(ous);
             return request.CreateResponse<GroupCategoryViewModel[]>(HttpStatusCode.OK, model.GroupCategories.ToArray());
         }
 
@@ -96,6 +98,20 @@ namespace TownComparisons.MVC.Controllers.API
             {
                 OrganisationalUnitInfoViewModel model = new OrganisationalUnitInfoViewModel(ou);
                 return request.CreateResponse<OrganisationalUnitInfoViewModel>(HttpStatusCode.OK, model);
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.NotFound);
+        }
+
+        [HttpGet]
+        [Route("operators/{operatorsList}")]
+        public HttpResponseMessage GetOperatorsByList(HttpRequestMessage request, string operatorsList)
+        {
+            List<OrganisationalUnitInfo> ou = _service.GetOrganisationalUnitsInfo(operatorsList);
+            if (ou.Count > 0)
+            {
+                OrganisationalUnitsViewModel model = new OrganisationalUnitsViewModel(ou);
+                return request.CreateResponse<OrganisationalUnitsViewModel>(HttpStatusCode.OK, model);
             }
 
             return new HttpResponseMessage(HttpStatusCode.NotFound);

@@ -27,6 +27,8 @@ namespace TownComparisons.Domain.Abstract
 
         List<OrganisationalUnitInfo> GetOrganisationalUnitInfos();
 
+        List<OrganisationalUnitInfo> GetOrganisationalUnitsInfo(string operatorsList);
+
         OrganisationalUnitInfo GetOrganisationalUnitInfo(int categoryId, string organisationalUnitId);
 
         bool UpdateOrganisationalUnitInfo(OrganisationalUnitInfo ou);
