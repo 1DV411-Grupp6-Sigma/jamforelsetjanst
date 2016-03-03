@@ -86,7 +86,7 @@ namespace TownComparisons.MVC.Controllers.API
 
         [HttpPost]
         [Route("admin/category/{categoryId}/operator/{organisationalUnitId}/image")]
-        public HttpResponseMessage UploadOrganisationalUnitImage(HttpRequestMessage request, int categoryId, string organisationalUnitId) //, HttpPostedFileBase imageFile)
+        public HttpResponseMessage SaveOrganisationalUnitImage(HttpRequestMessage request, int categoryId, string organisationalUnitId) //, HttpPostedFileBase imageFile)
         {
             OrganisationalUnitInfo ou = _service.GetOrganisationalUnitInfo(categoryId, organisationalUnitId);
             if (ou != null)
@@ -115,6 +115,7 @@ namespace TownComparisons.MVC.Controllers.API
                         return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
                     }
 
+                    //update entity
                     ou.ImagePath = filename;
                     _service.UpdateOrganisationalUnitInfo(ou);
 
@@ -127,26 +128,18 @@ namespace TownComparisons.MVC.Controllers.API
 
         [HttpPost]
         [Route("admin/category/{categoryId}/operator/{organisationalUnitId}")]
-        [ValidateModel] //this will handle validation (and return with errors) before method is run
-        public HttpResponseMessage SaveCategoryOrganisationalUnit(HttpRequestMessage request, int categoryId, string organisationalUnitId, [FromBody]OrganisationalUnitInfoEditViewModel organisationalUnit, HttpPostedFileBase imageFile)
+        [ValidateModel] //this will handle validation (and return with any errors) before method is run
+        public HttpResponseMessage SaveOrganisationalUnit(HttpRequestMessage request, int categoryId, string organisationalUnitId, [FromBody]ViewModels.Shared.OrganisationalUnitInfoViewModel organisationalUnit)
         {
-            Category category = _service.GetCategory(categoryId);
-            if (category != null)
+            OrganisationalUnitInfo ou = _service.GetOrganisationalUnitInfo(categoryId, organisationalUnitId);
+            if (ou != null)
             {
-                if (imageFile != null)
-                {
-
-                }
+                //transfer info from view model to existing entity
+                organisationalUnit.TransferToEntity(ou);
+                _service.UpdateOrganisationalUnitInfo(ou);
 
                 return new HttpResponseMessage(HttpStatusCode.OK);
             }
-            else
-            {
-                //should not happen
-
-                category = category;
-            }
-
 
             return new HttpResponseMessage(HttpStatusCode.BadRequest);
         }

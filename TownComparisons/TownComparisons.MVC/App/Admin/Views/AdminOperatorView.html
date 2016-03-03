@@ -8,6 +8,15 @@
 <h2>Ändra aktör</h2>
 <h3>{{ operator.Name }}</h3>
 
+
+<alert close="closeValidationAlert=true" class="danger" ng-show="!closeValidationAlert && (validationErrors.length > 0 || knownValidationErrors.length > 0)">
+    <p>Kunde inte spara kategorin, åtgärda felen och prova igen.</p>
+    <ul ng-show="validationErrors.length > 0">
+        <li ng-repeat="error in validationErrors">{{error.name + ': ' + error.message}}</li>
+    </ul>
+    <a class="close" ng-click="close()">x</a>
+</alert> 
+
 <form novalidate>
 
     <!--
@@ -29,51 +38,62 @@
         Namn:
         <input type="text" ng-model="operator.Name" />
     </label>
+    <small class="error" ng-show="hasValidationError('organisationalUnit.Name')">{{ getValidationErrorMessage('organisationalUnit.Name') }}</small>
+
 
     <label>
         Kort beskrivning:
         <textarea ng-model="operator.ShortDescription"></textarea>
     </label>
+    <small class="error" ng-show="hasValidationError('organisationalUnit.ShortDescription')">{{ getValidationErrorMessage('organisationalUnit.ShortDescription') }}</small>
 
     <label>
         Längre beskrivning:
         <textarea ng-model="operator.LongDescription" rows="5"></textarea>
     </label>
+    <small class="error" ng-show="hasValidationError('organisationalUnit.LongDescription')">{{ getValidationErrorMessage('organisationalUnit.LongDescription') }}</small>
 
     <label>
         Adress:
         <textarea ng-model="operator.Address"></textarea>
     </label>
+    <small class="error" ng-show="hasValidationError('organisationalUnit.Address')">{{ getValidationErrorMessage('organisationalUnit.Address') }}</small>
 
     <label>
         Kontakt:
         <input type="text" ng-model="operator.Contact" />
     </label>
+    <small class="error" ng-show="hasValidationError('organisationalUnit.Contact')">{{ getValidationErrorMessage('organisationalUnit.Contact') }}</small>
 
     <label>
         Telefon:
         <input type="text" ng-model="operator.Telephone" />
     </label>
+    <small class="error" ng-show="hasValidationError('organisationalUnit.Telephone')">{{ getValidationErrorMessage('organisationalUnit.Telephone') }}</small>
 
     <label>
         E-post:
         <input type="text" ng-model="operator.Email" />
     </label>
+    <small class="error" ng-show="hasValidationError('organisationalUnit.Email')">{{ getValidationErrorMessage('organisationalUnit.Email') }}</small>
 
     <label>
         Webbsida:
         <input type="text" ng-model="operator.Website" />
     </label>
+    <small class="error" ng-show="hasValidationError('organisationalUnit.Website')">{{ getValidationErrorMessage('organisationalUnit.Website') }}</small>
 
     <label>
         Organisations-form:
         <input type="text" ng-model="operator.OrganisationalForm" />
     </label>
+    <small class="error" ng-show="hasValidationError('organisationalUnit.OrganisationalForm')">{{ getValidationErrorMessage('organisationalUnit.OrganisationalForm') }}</small>
 
     <label>
         Övrig information:
         <textarea ng-model="operator.Other"></textarea>
     </label>
+    <small class="error" ng-show="hasValidationError('organisationalUnit.Other')">{{ getValidationErrorMessage('organisationalUnit.Other') }}</small>
 
 
     <div>
