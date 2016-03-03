@@ -18,6 +18,29 @@
             }
         }
     }
+    //Get Organisational Unit Info via OperatorController
+    $scope.getOrganisationalUnitInfoByOUId = function (ouId) {
+        viewModelHelper.apiGet('api/operators/' + ouId, null,
+            function (result) {
+                $scope.organisationalUnit = result.data;
+            });
+    }
+
+    $scope.setCompareSettingsForOu = function (organisationalUnit) {
+        var ouIsInCompare = $scope.checkIfOuIsInCompareList(organisationalUnit);
+        organisationalUnit.class = (ouIsInCompare ? "before-compare" : "after-compare");
+        organisationalUnit.icon = (ouIsInCompare ? "fi-check" : "fi-plus");
+        organisationalUnit.text = (ouIsInCompare ? "" : "Jämför");
+    }
+
+    $scope.checkIfOuIsInCompareList = function (ou) {
+        for (var i = 0; i < collectorFactory.listOfSubjects.length; i++) {
+            if (collectorFactory.listOfSubjects[i].OrganisationalUnitId === ou.OrganisationalUnitId) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     $scope.setCompareSettingsForOu = function (ou) {
         if (ou != null) {

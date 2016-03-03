@@ -27,19 +27,20 @@
     <table class="table">
         <thead>
             <tr>
-                <th></th>
-                <th width="300">Namn</th>
-                <th width="50">Kontaktuppgifter</th>
-                <th width="200"></th>
+                <th width="10"></th>
+                <th width="150">Namn</th>
+                <th width="100">Kontaktuppgifter</th>
+                <th width="100"></th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="ou in category.OrganisationalUnits | filter:filter.name | orderBy:sortByOrder + sortBy">
-                <td>{{ setInitialCompareSettings(ou)}} {{ checkWhichSchoolsAreCompared(ou) }}</td>
+                <td>{{ setCompareSettingsForOu(ou)}}</td>
 
                 <td><h5><a href="#" ng-click="showOperator(ou.OrganisationalUnitId)">{{ ou.Name }}</a></h5></td>
                 <td>
-                    <p>{{ ou.Telephone }}</p>
+                    <p>{{ ou.Address }}<br/>
+                    Telefon: {{ ou.Telephone }}</p>
                 </td>
                 <td>
                     <div class="{{ ou.class }}"><a href="" ng-click="toggleOperators(ou)"><i class="{{ ou.icon }}"></i>{{ ou.text}}</a></div>

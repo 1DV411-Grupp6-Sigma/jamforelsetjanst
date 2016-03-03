@@ -2,16 +2,18 @@
     <h4>Operator</h4>
         <!-- Show Operator -->
         <div data-ng-app="operator" data-ng-controller="rootViewModel" ng-model="organisationalUnit">
+
             {{ setCompareSettingsForOu(organisationalUnit)}}
 
             <div class="container">
                 <div class="button-div right">
                     <div class="row">
-                        <div class="{{ organisationalUnit.class }}"><a  ng-click="toggleOperators(organisationalUnit)"><i class="{{ organisationalUnit.icon }}"></i>{{ organisationalUnit.text}}</a></div>
+                        <div class="{{ organisationalUnit.class }}"><a  data-ng-click="toggleOperators(organisationalUnit)"><i class="{{ organisationalUnit.icon }}"></i>{{ organisationalUnit.text}}</a></div>
+
                     </div>
                     <div class="row">
                         <div class="mapClass">
-                            <a href="#" ng-click="#">Visa i kartan</a>
+                            <!--<a href="#" data-ng-click="#">-->Visa i kartan<!--</a>-->
                         </div>
                     </div>
                 </div>
@@ -64,6 +66,6 @@
                     </p>
                 </div>
             </div>
-    </div>
+    <!--</div>-->
 
 </div>
