@@ -56,9 +56,7 @@ namespace TownComparisons.MVC.ViewModels.Shared
 
         [MaxLength(50, ErrorMessage = "Övrigt kan inte vara längre än {1} tecken.")]
         public string Other { get; set; }
-
-
-
+        
 
         public OrganisationalUnitInfoViewModel()
         {

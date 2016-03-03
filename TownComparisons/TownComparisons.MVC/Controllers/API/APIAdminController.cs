@@ -86,41 +86,42 @@ namespace TownComparisons.MVC.Controllers.API
 
         [HttpPost]
         [Route("admin/category/{categoryId}/operator/{organisationalUnitId}/image")]
-        public HttpResponseMessage SaveCategoryOrganisationalUnit(HttpRequestMessage request, int categoryId, string organisationalUnitId) //, HttpPostedFileBase imageFile)
+        public HttpResponseMessage UploadOrganisationalUnitImage(HttpRequestMessage request, int categoryId, string organisationalUnitId) //, HttpPostedFileBase imageFile)
         {
-            
-            Category category = _service.GetCategory(categoryId);
-            if (category != null)
+            OrganisationalUnitInfo ou = _service.GetOrganisationalUnitInfo(categoryId, organisationalUnitId);
+            if (ou != null)
             {
                 var file = HttpContext.Current.Request.Files.Count > 0 ? HttpContext.Current.Request.Files[0] : null;
-                file = file;
-                
                 if (file != null && file.ContentLength > 0)
                 {
-                    var fileName = Path.GetFileName(file.FileName);
+                    string fileExtension = Path.GetExtension(file.FileName);
+                    string filename = "";
+                    var path = "";
+                    while (path == "" || System.IO.File.Exists(path))
+                    {
+                        filename = Guid.NewGuid() + "." + fileExtension;
+                        path = Path.Combine(HttpContext.Current.Server.MapPath("~/uploads/operator_images"),
+                                                filename);
 
-                    var path = Path.Combine(
-                        HttpContext.Current.Server.MapPath("~/uploads/operator_images"),
-                        fileName
-                    );
+                    }
 
-                    file.SaveAs(path);
+                    try
+                    {
+                        file.SaveAs(path);
+                    }
+                    catch (Exception ex)
+                    {
+                        ModelState.AddModelError(null, "Kunde inte spara bilden.");
+                        return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                    }
+
+                    ou.ImagePath = filename;
+                    _service.UpdateOrganisationalUnitInfo(ou);
+
+                    return new HttpResponseMessage(HttpStatusCode.OK);
                 }
-
-                //return file != null ? "/uploads/" + file.FileName : null;
-                
-
-
-                return new HttpResponseMessage(HttpStatusCode.OK);
             }
-            else
-            {
-                //should not happen
-
-                category = category;
-            }
-
-
+            
             return new HttpResponseMessage(HttpStatusCode.BadRequest);
         }
 
