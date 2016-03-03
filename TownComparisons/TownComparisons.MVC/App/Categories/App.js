@@ -3,22 +3,14 @@ var categoryModule = angular.module('category', ['common'])
     .config(function ($routeProvider, $locationProvider) {
         //$routeProvider.when('/', { templateUrl: '/App/Categories/Views/CategoriesView.html', controller: 'categoriesViewModel' });
         $routeProvider
+            //Default is group list
             .when('/categories', {
                  templateUrl: '/App/Categories/Views/CategoriesView.html', controller: 'categoriesViewModel'
             })
-            //Show sorting A-Ö
-            .when('/categories/alphabet', {
-                     templateUrl: '/App/Categories/Views/AlphabetView.html', controller: 'categoriesViewModel'
-                })
             //Default is detailed list
             .when('/category/:categoryId', {
                      templateUrl: '/App/Category/Views/CategoryView.html', controller: 'categoryViewModel'
                 })
-            //View simple list
-            .when('/category/:categoryId/enkel', {
-                templateUrl: '/App/Category/Views/SimpleView.html',
-                controller: 'categoryViewModel'
-            })
             .when('/category/:categoryId/compare', {
                      templateUrl: '/App/Category/Views/CompareView.html',
                      controller: 'compareViewModel'

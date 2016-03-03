@@ -10,12 +10,24 @@
 
     var initialize = function () {
         $scope.sortCategoryByName();
-        if ($route.current.$$route.originalPath == "/categories/alphabet") {
-            $scope.viewCategoriesBasedOnAlphabet();
-        }
-        else {
-            $scope.viewAllCategories();
-        }
+        $scope.showMe();
+        $scope.groupClass = "unavailable";
+    }
+
+    $scope.showMe = function () {
+        $scope.viewAllCategories();
+        $scope.group = true;
+        $scope.alphabet = false;
+        $scope.groupClass = "unavailable";
+        $scope.alphabetClass = "";
+    }
+    
+    $scope.hideMe = function () {
+        $scope.viewCategoriesBasedOnAlphabet();
+        $scope.group = false;
+        $scope.alphabet = true;
+        $scope.alphabetClass = "unavailable";
+        $scope.groupClass = "";
     }
 
     // Sorts the categories by Name (Desc).

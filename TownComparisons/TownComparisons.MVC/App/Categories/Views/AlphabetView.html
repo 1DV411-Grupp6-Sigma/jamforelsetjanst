@@ -1,6 +1,5 @@
-﻿<h4>Kategorier</h4>
+﻿<!--<h4>Kategorier</h4>
 
-<!-- seachbar -->
 <div class="right searchbar">
     <div id="search">
         <div class="small-4 columns end">
@@ -9,7 +8,6 @@
     </div>
 </div>
 <div class="container">
-    <!-- navbar for different views -->
     <div class="row">
         <dl class="breadcrumbs">
             <dd><a href="#" ng-click="changeView()">Kategori</a></dd>
@@ -17,17 +15,16 @@
         </dl>
     </div>
 
-    <!-- navbar for desc or asc sorting-->
     <div class="row">
         <dl class="sub-nav">
             <dt>Sortera:</dt>
             <dd class="{{ activeName }}"><a href="" ng-click="sortCategoryByName()">Namn</a><img class="{{ visibleName }}" src="/Content/pictures/{{ fileName }}.png" ng-click="sortCategoryByName()" /></dd>
         </dl>
     </div>
-    <!-- Show categories -->
     <ul class="categoriesList" ng-repeat="c in alphabetCategories | filter:filter.name | orderBy:sortByOrder + sortBy">
         <li>
             <a href="#" ng-click="showCategory(c)">{{ c.Name }}</a> ({{ c.OrganisationalUnits.length }})
         </li>
     </ul>
 </div>
+    -->
