@@ -14,8 +14,8 @@
         <!-- navbar for different views -->
         <div class="row">
             <dl class="breadcrumbs">
-                <dd class="unavailable"><a href="#">Kategori</a></dd>
-                <dd><a href="#" ng-click="changeView('/alphabet')">Alla A-Ö</a></dd>
+                <dd class="{{ groupClass }}"><a href="#" data-ng-click="showMe()">Kategori</a></dd>
+                <dd class="{{ alphabetClass }}"><a href="#" data-ng-click="hideMe()">Alla A-Ö</a></dd>
             </dl>
         </div>
 
@@ -27,17 +27,27 @@
             </dl>
         </div>
 
-        <!-- show groups -->
-        <ul class="categoriesList" ng-repeat="g in groupCategories | filter:filter.name | orderBy:sortByOrder + sortBy">
-            <li>
-                <b>{{ g.Name }}</b>
-                <!-- Show categories inside this group -->
-                <ul ng-repeat="c in g.Categories | orderBy:'Name'">
-                    <li>
-                        <a href="#" ng-click="showCategory(c)">{{ c.Name }}</a> (få in antal här?)
-                    </li>
-                </ul>
-            </li>
-        </ul>
+        <!-- Show categories -->
+        <div data-ng-show="alphabet">
+            <ul class="categoriesList" ng-repeat="c in alphabetCategories | filter:filter.name | orderBy:sortByOrder + sortBy">
+                <li>
+                    <a href="#" ng-click="showCategory(c)">{{ c.Name }}</a> ({{ c.OrganisationalUnits.length }})
+                </li>
+            </ul>
+        </div>
+        <div data-ng-show="group">
+            <!-- show groups -->
+            <ul class="categoriesList" ng-repeat="g in groupCategories | filter:filter.name | orderBy:sortByOrder + sortBy">
+                <li>
+                    <b>{{ g.Name }}</b>
+                    <!-- Show categories inside this group -->
+                    <ul ng-repeat="c in g.Categories | orderBy:'Name'">
+                        <li>
+                            <a href="#" ng-click="showCategory(c)">{{ c.Name }}</a> (få in antal här?)
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
