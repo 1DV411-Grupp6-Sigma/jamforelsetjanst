@@ -9,6 +9,11 @@ namespace TownComparisons.MVC.ViewModels.Shared
 {
     public class OrganisationalUnitInfoViewModel
     {
+
+        //private static string PhysicalUploadedImagesPath= System.Web.HttpContext.Current.Server.MapPath(".") + @"\Content\pictures\";
+
+        private static string path = System.AppDomain.CurrentDomain.BaseDirectory + @"\Content\pictures\";
+
         public int Id { get; set; }
 
         public string OrganisationalUnitId { get; set; }
@@ -65,7 +70,14 @@ namespace TownComparisons.MVC.ViewModels.Shared
             Name = entity.Name;
             ShortDescription = entity.ShortDescription;
             LongDescription = entity.LongDescription;
-            ImagePath = entity.ImagePath;
+            if(entity.ImagePath != "")
+            {
+                ImagePath = entity.ImagePath;
+            }
+            else
+            {
+                ImagePath = "default.jpg";
+            }
             Address = entity.Address;
             Telephone = entity.Telephone;
             Contact = entity.Contact;
