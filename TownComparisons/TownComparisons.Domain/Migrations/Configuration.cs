@@ -100,6 +100,40 @@ namespace TownComparisons.Domain.Migrations
                 Longitude = "16.357482",
                 Other = "Grundskola",
             };
+            OrganisationalUnitInfo ou4 = new OrganisationalUnitInfo()
+            {
+                OrganisationalUnitId = "V15E018001701",
+                Name = "Gärdesskolan",
+                ShortDescription = "Gärdesskolan är F-9 skola med ca 750 elever på Gärdet/Östermalm. Gärdesskolan har låg- mellan- och högstadium. Skolans övergripande profiler är hälsa och läsning. ",
+                LongDescription = "Gärdesskolan är F-9 skola med ca 750 elever på Gärdet/Östermalm. Gärdesskolan har låg- mellan- och högstadium. Skolans övergripande profiler är hälsa och läsning. ",
+                ImagePath = "",
+                Address = "Banergatan 56, 115 53, Stockholm",
+                Telephone = "08-508 44 250",
+                Contact = "Maria Radway, rektor",
+                Email = "maria.radway@stockholm.se",
+                OrganisationalForm = "Kommunal",
+                Website = "http://http://gardesskolan.stockholm.se/",
+                Latitude = "59.34019 ",
+                Longitude = "18.098517",
+                Other = "Grundskola",
+            };
+            OrganisationalUnitInfo ou5 = new OrganisationalUnitInfo()
+            {
+                OrganisationalUnitId = "V15E078000201",
+                Name = "Fagrabäckskolan",
+                ShortDescription = "Fagrabäckskolans elever kommer från Högstorpskolan, Lillestadskolan, Östregårdskolan, Furuby skola, Åryd skola, Sandsbro skola, Centrumskolan och Ulriksbergskolan.",
+                LongDescription = "Fagrabäckskolans elever kommer från Högstorpskolan, Lillestadskolan, Östregårdskolan, Furuby skola, Åryd skola, Sandsbro skola, Centrumskolan och Ulriksbergskolan. Detta läsår har vi cirka 650 elever och ungefär 100 av dem går på skolans Naturvetenskapliga och Tekniska inriktning, NoT, som är förlagd på Teknikum.",
+                ImagePath = "",
+                Address = "Österleden 70, 352 42, Växjö",
+                Telephone = "0470-416 95",
+                Contact = "Caroline Hedenbergh, rektor",
+                Email = "caroline.hedenbergh@vaxjo.se",
+                OrganisationalForm = "Kommunal",
+                Website = "http://www.vaxjo.se/fagrabackskolan",
+                Latitude = "56.881238",
+                Longitude = "14.830092",
+                Other = "Grundskola",
+            };
 
             //main categories
             Category c1 = new Category()
@@ -112,6 +146,8 @@ namespace TownComparisons.Domain.Migrations
             c1.OrganisationalUnits.Add(ou1);
             c1.OrganisationalUnits.Add(ou2);
             c1.OrganisationalUnits.Add(ou3);
+            c1.OrganisationalUnits.Add(ou4);
+            c1.OrganisationalUnits.Add(ou5);
             context.Categories.Add(c1);
 
             Category c2 = new Category()
