@@ -190,7 +190,7 @@ namespace TownComparisons.Domain
 
             return returnValue;
         }
-        
+
         #endregion
     }
 }
