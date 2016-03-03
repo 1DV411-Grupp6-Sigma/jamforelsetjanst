@@ -1,5 +1,5 @@
 ﻿
-var adminModule = angular.module('admin', ['common'])
+var adminModule = angular.module('admin', ['common', 'ngFileUpload'])
     .config(function ($routeProvider, $locationProvider) {
         $routeProvider.when('/admin', { templateUrl: '/App/Admin/Views/AdminHomeView.html', controller: 'adminHomeViewModel' });
         $routeProvider.when('/admin/categories', { templateUrl: '/App/Admin/Views/AdminCategoriesView.html', controller: 'adminCategoriesViewModel' });
@@ -21,7 +21,7 @@ adminModule.factory('adminService', function ($rootScope, $http, $q, $location, 
     var adminService = function ($rootScope, $http, $q, $location, viewModelHelper) {
 
         var self = this;
-    
+
         $rootScope.refreshCategories = function () {
             viewModelHelper.apiGet('api/categories', null,
                 function (result) {
