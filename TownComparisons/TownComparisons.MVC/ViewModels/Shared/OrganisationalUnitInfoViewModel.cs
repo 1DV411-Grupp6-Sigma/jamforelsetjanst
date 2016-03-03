@@ -16,44 +16,45 @@ namespace TownComparisons.MVC.ViewModels.Shared
 
         public int Id { get; set; }
 
+        [Required]
         public string OrganisationalUnitId { get; set; }
 
-        [Required]
-        [MaxLength(100)]
+        [Required(ErrorMessage = "Namnet måste fyllas i.")]
+        [MaxLength(100, ErrorMessage = "Namnet kan inte vara längre än {1} tecken.")]
         public string Name { get; set; }
 
-        [Required]
-        [MaxLength(300)]
+        [Required(ErrorMessage = "Korta beskrivningen måste fyllas i.")]
+        [MaxLength(400, ErrorMessage = "Korta beskrivningen kan inte vara längre än {1} tecken.")]
         public string ShortDescription { get; set; }
 
         public string LongDescription { get; set; }
 
         public string ImagePath { get; set; }
 
-        [MaxLength(255)]
+        [MaxLength(255, ErrorMessage = "Adressen kan inte vara längre än {1} tecken.")]
         public string Address { get; set; }
 
-        [MaxLength(50)]
+        [MaxLength(50, ErrorMessage = "Telefon kan inte vara längre än {1} tecken.")]
         public string Telephone { get; set; }
 
-        [MaxLength(100)]
+        [MaxLength(100, ErrorMessage = "Kontakt kan inte vara längre än {1} tecken.")]
         public string Contact { get; set; }
 
-        [MaxLength(100)]
-        [EmailAddress]
+        [MaxLength(100, ErrorMessage = "E-post kan inte vara längre än {1} tecken.")]
+        [EmailAddress(ErrorMessage = "E-post är inte i korrekt format")]
         public string Email { get; set; }
 
-        [MaxLength(50)]
+        [MaxLength(50, ErrorMessage = "Organisations-form kan inte vara längre än {1} tecken.")]
         public string OrganisationalForm { get; set; } // Private, Public or some other form
 
-        [MaxLength(100)]
+        [MaxLength(100, ErrorMessage = "Webbsida kan inte vara längre än {1} tecken.")]
         public string Website { get; set; }
         
         public string Latitude { get; set; }
 
         public string Longitude { get; set; }
 
-        [MaxLength(50)]
+        [MaxLength(50, ErrorMessage = "Övrigt kan inte vara längre än {1} tecken.")]
         public string Other { get; set; }
 
 

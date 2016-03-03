@@ -39,6 +39,10 @@ namespace TownComparisons.MVC
 
             bundles.Add(new ScriptBundle("~/bundles/mm-foundation").Include(
                         "~/Scripts/mm-foundation-tpls-*"));
+            
+            bundles.Add(new ScriptBundle("~/bundles/ng-file-upload").Include(
+                        "~/Scripts/ng-file-upload-shim*",
+                        "~/Scripts/ng-file-upload*"));
 
 
 
