@@ -62,7 +62,7 @@ namespace TownComparisons.MVC.ViewModels.Shared
         {
             //Empty
         }
-        public OrganisationalUnitInfoViewModel(Domain.Entities.OrganisationalUnitInfo entity)
+        public OrganisationalUnitInfoViewModel(OrganisationalUnitInfo entity)
         {
             Id = entity.Id;
             OrganisationalUnitId = entity.OrganisationalUnitId;
@@ -86,6 +86,23 @@ namespace TownComparisons.MVC.ViewModels.Shared
             Latitude = entity.Latitude;
             Longitude = entity.Longitude;
             Other = entity.Other;
+        }
+
+        public void TransferToEntity(OrganisationalUnitInfo entity)
+        {
+            entity.Name = Name;
+            entity.ShortDescription = ShortDescription;
+            entity.LongDescription = LongDescription;
+            entity.ImagePath = ImagePath;
+            entity.Address = Address;
+            entity.Telephone = Telephone;
+            entity.Contact = Contact;
+            entity.Email = Email;
+            entity.OrganisationalForm = OrganisationalForm;
+            entity.Website = Website;
+            entity.Latitude = Latitude;
+            entity.Longitude = Longitude;
+            entity.Other = Other;
         }
     }
 }

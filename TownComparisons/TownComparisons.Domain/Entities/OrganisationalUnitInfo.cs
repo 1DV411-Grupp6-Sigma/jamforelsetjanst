@@ -41,5 +41,6 @@ namespace TownComparisons.Domain.Entities
 
 
         public virtual Category Category { get; set; }  // which category this is in
+        
     }
 }
