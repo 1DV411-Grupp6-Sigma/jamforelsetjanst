@@ -16,6 +16,7 @@
         $scope.sortOuByName();
         $scope.showMe();
         $scope.detailedClass = "unavailable";
+        $scope.getClientPosition();
     }
 
     $scope.showMe = function () {
@@ -76,6 +77,41 @@
         collectorFactory.deleteAllSubjects();
     }
 
+    // Gets clients position.
+    $scope.getClientPosition = function () {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                $scope.$apply(function () {
+                    $scope.posLat = position.coords.latitude;
+                    $scope.posLng = position.coords.longitude;
+                });
+            });
+        }
+    }
+
+    // Gets distance between client and operators positions.
+    $scope.getDistanceBetweenPositions = function (ou) {
+        var lat1 = ou.Latitude;
+        var lon1 = ou.Longitude;
+
+        var R = 6371; // km 
+        var x1 = $scope.posLat - lat1;
+        var dLat = $scope.toRad(x1);
+        var x2 = $scope.posLng - lon1;
+        var dLon = $scope.toRad(x2);
+        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                        Math.cos($scope.toRad(lat1)) * Math.cos($scope.toRad($scope.posLat)) *
+                        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        var d = R * c;
+
+        return parseFloat(d.toFixed(2));
+    }
+
+    $scope.toRad = function (coord) {
+        return coord * Math.PI / 180;
+    }
+
     // Sorts the Organisational Units by Name (Desc/Asc).
     $rootScope.sortOuByName = function () {
         $scope.clearSortOuBy();
@@ -112,12 +148,23 @@
         }
     }
 
+    $rootScope.sortOuByDistance = function () {
+        $scope.clearSortOuBy();
+
+        $scope.visibleDistance = '';
+        $scope.sortOrder = $scope.sortAsc;
+        $scope.activeDistance = $scope.classActive;
+        $scope.sortBy = $scope.getDistanceBetweenPositions;
+        $scope.sortOrder = $scope.sortAsc;
+    }
+
     $rootScope.clearSortOuBy = function () {
 
         $scope.visibleName = 'invisible';
         $scope.visibleAddress = 'invisible';
         $scope.activeName = '';
         $scope.activeAddress = '';
+        $scope.activeDistance = '';
     }
 
     initialize();

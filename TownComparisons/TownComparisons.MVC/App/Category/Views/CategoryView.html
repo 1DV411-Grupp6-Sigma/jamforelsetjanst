@@ -26,6 +26,7 @@
             <dt>Sortera:</dt>
             <dd class="{{ activeName }}"><a href="" ng-click="sortOuByName()">Namn</a><img class="{{ visibleName }}" src="/Content/pictures/{{ sortOrder }}.png" ng-click="sortOuByName()" /></dd>
             <dd class="{{ activeAddress }}"><a href="" ng-click="sortOuByAddress()">Adress</a><img class="{{ visibleAddress }}" src="/Content/pictures/{{ sortOrder }}.png" ng-click="sortOuByAddress()" /></dd>
+            <dd ng-if="posLat != undefined && posLng != undefined" class="{{ activeDistance }}"><a href="" ng-click="sortOuByDistance()">Distans</a></dd>
         </dl>
     </div>
 
@@ -77,9 +78,9 @@
                     <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Lmspic.png" />
                 </div>
                 <div class="small-7 columns">
-                    <div>{{ ou.Telephone }}</div>
-                    <div>{{ ou.Address }}</div>
-                    <div>{{ ou.Email }}</div>
+                    <div>{{ ou.ShortDescription }}</div>
+                    <div><strong>Adress:</strong> {{ ou.Address }}</div>
+                    <div ng-if="getDistanceBetweenPositions(ou) >= 0.0"><strong>Distans:</strong> {{ getDistanceBetweenPositions(ou) }} km</div>
                 </div>
                 <div class="small-3 columns">
                     <div class="row">
