@@ -1,0 +1,54 @@
+﻿<h3>Aktörer</h3>
+<div class="right searchbar">
+    <div id="search">
+        <div class="small-4 columns end">
+            <input id="search-box" placeholder="Sök" type="text" data-ng-model="filter.name" />
+        </div>
+    </div>
+</div>
+<div class="container">
+    <!--navbar for simple or detailed list -->
+    <div class="row">
+        <dl class="breadcrumbs">
+            <dd><a href="#" ng-click="changeListView()">Visa detaljerad lista</a></dd>
+            <dd><a href="#" ng-click="changeView('/karta')">Visa på karta</a></dd>
+            <dd class="unavailable"><a href="#">Visa enkel lista</a></dd>
+        </dl>
+    </div>
+
+    <!-- navbar for sorting -->
+    <div class="row">
+        <dl class="sub-nav">
+            <dt>Sortera:</dt>
+            <dd class="{{ activeName }}"><a href="" ng-click="sortOuByName()">Namn</a><img class="{{ visibleName }}" src="/Content/pictures/{{ sortOrder }}.png" ng-click="sortOuByName()" /></dd>
+            <dd class="{{ activeAddress }}"><a href="" ng-click="sortOuByAddress()">Adress</a><img class="{{ visibleAddress }}" src="/Content/pictures/{{ sortOrder }}.png" ng-click="sortOuByAddress()" /></dd>
+        </dl>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th width="10"></th>
+                <th width="150">Namn</th>
+                <th width="100">Kontaktuppgifter</th>
+                <th width="100"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="ou in category.OrganisationalUnits | filter:filter.name | orderBy:sortByOrder + sortBy">
+                <td>{{ setCompareSettingsForOu(ou)}}</td>
+
+                <td><h5><a href="#" ng-click="showOperator(ou.OrganisationalUnitId)">{{ ou.Name }}</a></h5></td>
+                <td>
+                    <p>{{ ou.Address }}<br/>
+                    Telefon: {{ ou.Telephone }}</p>
+                </td>
+                <td>
+                    <div class="{{ ou.class }}"><a href="" ng-click="toggleOperators(ou)"><i class="{{ ou.icon }}"></i>{{ ou.text}}</a></div>
+                    <div class="mapClass"><a href="#">Karta</a></div>
+                </td>
+
+            </tr>
+
+        </tbody>
+    </table>
+</div>

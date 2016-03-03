@@ -1,0 +1,16 @@
+﻿    @{
+    ViewBag.Title = "Category";
+}
+@section scripts {
+    <script src="~/App/Category/App.js"></script>
+    <script src="~/App/Category/ViewModels/RootViewModel.js"></script>
+    <script src="~/App/Category/ViewModels/CategoryViewModel.js"></script>
+    <script src="~/App/Category/ViewModels/CompareViewModel.js"></script>
+    <script src="~/App/Category/ViewModels/OperatorViewModel.js"></script>
+}
+
+<div data-ng-app="category" id="category" data-ng-controller="rootViewModel">
+    <div>
+        <div ng-view></div>
+    </div>
+</div>

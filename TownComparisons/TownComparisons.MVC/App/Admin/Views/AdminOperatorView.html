@@ -1,0 +1,85 @@
+﻿<ul class="breadcrumbs">
+    <li><a href="/admin">Admin</a></li>
+    <li><a href="/admin/operators">Aktörer</a></li>
+    <li class="current">{{ operator.Name }}</li>
+</ul>
+
+<h3>Aktör: {{ operator.Name }}</h3>
+
+<form novalidate>
+
+    <!--
+    <input type="file" accept="image/*" ng-file-select="saveOperatorImage(imageFile)" ng-model="imageFile" name="imageFile">
+    <input type="button" name="saveImage" ng-click="saveOperatorImage()" value="Spara bild" class="button success" />
+        -->
+    <div class="button" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
+         ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"> <!-- ngf-resize="{width: 100, height: 100}" -->
+        Select
+    </div>
+    <div class="button" ngf-select="saveOperatorImage($file)">Upload on file select</div>
+
+    <label>
+        Namn:
+        <input type="text" ng-model="operator.Name" />
+    </label>
+
+    <label>
+        Kort beskrivning:
+        <textarea ng-model="operator.ShortDescription"></textarea>
+    </label>
+
+    <label>
+        Längre beskrivning:
+        <textarea ng-model="operator.LongDescription" rows="5"></textarea>
+    </label>
+
+    <label>
+        Adress:
+        <textarea ng-model="operator.Address"></textarea>
+    </label>
+
+    <label>
+        Kontakt:
+        <input type="text" ng-model="operator.Contact" />
+    </label>
+
+    <label>
+        Telefon:
+        <input type="text" ng-model="operator.Telephone" />
+    </label>
+
+    <label>
+        E-post:
+        <input type="text" ng-model="operator.Email" />
+    </label>
+
+    <label>
+        Webbsida:
+        <input type="text" ng-model="operator.Website" />
+    </label>
+
+    <label>
+        Organisations-form:
+        <input type="text" ng-model="operator.OrganisationalForm" />
+    </label>
+
+    <label>
+        Övrig information:
+        <textarea ng-model="operator.Other"></textarea>
+    </label>
+
+
+    <div>
+        <input type="button" name="save" ng-click="saveOperator()" value="Spara ändringar" class="button success" />
+    </div>
+
+    <div ng-show="!cancel">
+        <input type="button" name="cancel" ng-click="cancel = true" value="Avbryt" class="tiny button secondary" />
+    </div>
+    <div ng-show="cancel">
+        <label>Avbryta utan att spara?</label>
+        <input type="button" name="cancel" ng-click="cancelEditCategory()" value="Ja" class="tiny button default" />
+        <input type="button" name="cancel" ng-click="cancel = false" value="X" class="tiny button secondary" />
+    </div>
+
+</form>

@@ -14,9 +14,29 @@ namespace TownComparisons.MVC
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "admin",
+                url: "admin/{*catchall}",
+                defaults: new { controller = "Angular", action = "Admin" });
+
+            routes.MapRoute(
+                name: "categories",
+                url: "categories/{*catchall}",
+                defaults: new { controller = "Angular", action = "Index" });
+
+            routes.MapRoute(
+                name: "category",
+                url: "category/{*catchall}",
+                defaults: new { controller = "Angular", action = "Index" });
+
+            routes.MapRoute(
+               name: "compare",
+               url: "compare",
+               defaults: new { controller = "Angular", action = "Compare" });
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Angular", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

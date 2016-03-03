@@ -1,0 +1,162 @@
+﻿<ul class="breadcrumbs" ng-show="categoryHasBeenLoaded">
+    <li><a href="/admin">Admin</a></li>
+    <li><a href="/admin/categories">Kategorier</a></li>
+    <li><a href="./">{{ categoryName }}</a></li>
+    <li class="current">Ändra</li>
+</ul>
+
+
+<div class="row">
+    <div class="medium-9 columns">
+        <h2>{{ pageHeading }}</h2>
+    </div>
+
+    <div class="medium-2 columns end" id="saveChangesPanel" ng-show="categoryHasBeenLoaded">
+        <div>
+            <div>
+                <input type="button" name="save" ng-click="saveCategory()" value="Spara ändringar" class="button success" />
+            </div>
+
+            <div ng-show="!cancel">
+                <input type="button" name="cancel" ng-click="cancel = true" value="Avbryt" class="tiny button secondary" />
+            </div>
+            <div ng-show="cancel">
+                <label>Avbryta utan att spara?</label>
+                <input type="button" name="cancel" ng-click="cancelEditCategory()" value="Ja" class="tiny button default" />
+                <input type="button" name="cancel" ng-click="cancel = false" value="X" class="tiny button secondary" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" ng-show="categoryHasBeenLoaded">
+    <div class="medium-9 columns">
+
+        <hr />
+
+        <alert close="closeValidationAlert=true" class="danger" ng-show="!closeValidationAlert && (validationErrors.length > 0 || knownValidationErrors.length > 0)">
+            <p>Kunde inte spara kategorin, åtgärda felen och prova igen.</p>
+            <ul ng-show="validationErrors.length > 0">
+                <li ng-repeat="error in validationErrors">{{error.name + ': ' + error.message}}</li>
+            </ul>
+            <a class="close" ng-click="close()">x</a>
+        </alert> 
+
+        <form novalidate>
+
+            <tabset>
+                <tab heading="Allmänt" active="editMode == 'general'" ng-click="editMode = 'general'">
+                    <h3>Allmänna inställningar</h3>
+
+                    <label>
+                        Namn:
+                        <input type="text" ng-model="category.Category.Name" class="{{ hasValidationError('category.Name') ? 'error' : '' }}" />
+                    </label>
+                    <small class="error" ng-show="hasValidationError('category.Name')">{{ getValidationErrorMessage('category.Name') }}</small>
+
+                    <label>
+                        Beskrivning:
+                        <textarea ng-model="category.Category.Description" class="{{ hasValidationError('category.Description') ? 'error' : '' }}"></textarea>
+                    </label>
+                    <small class="error" ng-show="hasValidationError('category.Description')">{{ getValidationErrorMessage('category.Description') }}</small>
+
+                </tab>
+
+
+
+                <tab heading="Aktörer" active="editMode == 'operators'" ng-click="editMode = 'operators'">
+                    <h3>Aktörer</h3>
+
+                    <dl class="sub-nav">
+                        <dt>Visa:</dt>
+                        <dd class="{{ operatorsStateFilter == 'All' ? 'active' : '' }}"><a href="" ng-click="setOperatorsStateFilter('All')">Alla</a></dd>
+                        <dd class="{{ operatorsStateFilter == 'Chosen' ? 'active' : '' }}"><a href="" ng-click="setOperatorsStateFilter('Chosen')">Valda</a></dd>
+                        <dd class="{{ operatorsStateFilter == 'Unchosen' ? 'active' : '' }}"><a href="" ng-click="setOperatorsStateFilter('Unchosen')">Ej valda</a></dd>
+                    </dl>
+
+                    <!-- <h5>Filtrera</h5> -->
+
+                    <div class="row">
+                        <div class="large-6 columns">
+                            <label>
+                                Filtrera:
+                                <input type="text" name="searchOperatorsTitle" ng-model="searchOperatorsTitle" />
+                            </label>
+                        </div>
+                    </div>
+                    <!--
+                        <div class="row">
+                            <div class="large-6 columns">
+                                <input type="checkbox" name="searchUsed" ng-model="searchUsed"><label for="searchUsed">Visa endast valda</label>
+                            </div>
+                        </div>
+                            -->
+
+                    <hr />
+
+                    <div ng-repeat="o in category.AllOrganisationalUnits | filter:searchForOperators">
+                        <div class="large-6 columns">
+                            <label><input type="checkbox" ng-model="o.Use"> {{ o.Name }}</label>
+                        </div>
+                    </div>
+                </tab>
+
+
+                <tab heading="Egenskaper" active="editMode == 'queries'" ng-click="editMode = 'queries'">
+                    <h3>Egenskaper</h3>
+
+                    <dl class="sub-nav">
+                        <dt>Visa:</dt>
+                        <dd class="{{ queriesStateFilter == 'All' ? 'active' : '' }}"><a href="" ng-click="setQueriesStateFilter('All')">Alla</a></dd>
+                        <dd class="{{ queriesStateFilter == 'Chosen' ? 'active' : '' }}"><a href="" ng-click="setQueriesStateFilter('Chosen')">Valda</a></dd>
+                        <dd class="{{ queriesStateFilter == 'Unchosen' ? 'active' : '' }}"><a href="" ng-click="setQueriesStateFilter('Unchosen')">Ej valda</a></dd>
+                    </dl>
+
+                    <!-- <h5>Filtrera</h5> -->
+
+                    <div class="row">
+                        <div class="large-6 columns">
+                            <label>
+                                Grupper (söker i både grupptitel och frågetitlar):
+                                <input type="text" name="searchQueryAll" ng-model="searchQueryAll" />
+                            </label>
+                        </div>
+                        <div class="large-6 columns">
+                            <label>
+                                Fråge-titel:
+                                <input type="text" name="searchQueryTitle" ng-model="searchQueryTitle" />
+                            </label>
+                        </div>
+                    </div>
+                    <!--
+                    <div class="row">
+                        <div class="large-6 columns">
+                            <input type="checkbox" name="searchUsed" ng-model="searchUsed"><label for="searchUsed">Visa endast valda</label>
+                        </div>
+                    </div>
+                        -->
+
+                    <hr />
+
+                    <div>
+                        <accordion close-others="oneAtATime" ng-repeat="qg in category.AllPropertyQueryGroups | filter:searchForGroup">
+                            <accordion-group heading="Grupp: {{ qg.Title }}" is-open="{{ qg.AnyQueriesToUse }}">
+                                <div class="row" ng-repeat="q in qg.Queries | filter:searchForQuery">
+                                    <div class="row">
+                                        <div class="large-12 columns">
+                                            <label><input type="checkbox" ng-model="q.Use"> {{ (q.Custom.Title != '' ? q.Custom.Title : q.Title) }}</label>
+                                            <input ng-show="q.Use" type="text" ng-model="q.Custom.Title" placeholder="Välj titel för denna information (lämna tom för att använda standard)" title="Välj titel för denna information (lämna tom för att använda standard)" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </accordion-group>
+                        </accordion>
+                    </div>
+
+                </tab>
+            </tabset>
+
+        </form>
+
+    </div>
+</div>
