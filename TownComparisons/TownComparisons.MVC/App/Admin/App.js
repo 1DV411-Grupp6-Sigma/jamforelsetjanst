@@ -34,23 +34,29 @@ adminModule.factory('adminService', function ($rootScope, $http, $q, $location, 
         }
 
         self.getCategory = function (categoryId, success, failure) {
-            viewModelHelper.apiGet('api/admin/category/' + categoryId, null,
-                function (result) {
-                    self.categoryId = categoryId;
-                    $rootScope.category = result.data;
-                    if (success != null) {
-                        success();
-                    }
-                    /*
-                    viewModelHelper.apiGet('api/category/' + categoryId + '/properties?operators=V15E108000801,V15E108000701,dfhdsjf', null,
-                        function (result) {
-                            console.log(result);
-                        }
-                    );
-                    */
-                },
-                failure
-            );
+            doGetCategory(categoryId, true, success, failure);
+        }
+        self.getNormalCategory = function (categoryId, success, failure) {
+            doGetCategory(categoryId, false, success, failure);
+        }
+        var doGetCategory = function(categoryId, adminModel, success, failure) {
+            viewModelHelper.apiGet('api' + (adminModel ? '/admin' : '') + '/category/' + categoryId, null,
+                            function (result) {
+                                self.categoryId = categoryId;
+                                $rootScope.category = result.data;
+                                if (success != null) {
+                                    success();
+                                }
+                                /*
+                                viewModelHelper.apiGet('api/category/' + categoryId + '/properties?operators=V15E108000801,V15E108000701,dfhdsjf', null,
+                                    function (result) {
+                                        console.log(result);
+                                    }
+                                );
+                                */
+                            },
+                            failure
+                        );
         }
 
 

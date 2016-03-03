@@ -11,6 +11,7 @@
 
     var initialize = function () {
         refreshOperator();
+        adminService.getNormalCategory($scope.categoryId);
     }
 
     var refreshOperator = function () {

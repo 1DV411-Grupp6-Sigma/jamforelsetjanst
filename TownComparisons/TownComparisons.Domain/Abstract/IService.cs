@@ -29,6 +29,7 @@ namespace TownComparisons.Domain.Abstract
 
         OrganisationalUnitInfo GetOrganisationalUnitInfo(int categoryId, string organisationalUnitId);
 
+        bool UpdateOrganisationalUnitInfo(OrganisationalUnitInfo ou);
 
     }
 }
