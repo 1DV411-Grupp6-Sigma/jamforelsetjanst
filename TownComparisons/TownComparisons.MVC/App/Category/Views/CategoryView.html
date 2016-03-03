@@ -25,6 +25,7 @@
         <dl class="sub-nav">
             <dt>Sortera:</dt>
             <dd class="{{ activeName }}"><a href="" ng-click="sortOuByName()">Namn</a><img class="{{ visibleName }}" src="/Content/pictures/{{ sortOrder }}.png" ng-click="sortOuByName()" /></dd>
+            <dd class="{{ activeAddress }}"><a href="" ng-click="sortOuByAddress()">Adress</a><img class="{{ visibleAddress }}" src="/Content/pictures/{{ sortOrder }}.png" ng-click="sortOuByAddress()" /></dd>
         </dl>
     </div>
 
@@ -40,7 +41,11 @@
             <div class="small-2 columns">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Lmspic.png" />
             </div>
-            <div class="small-7 columns">Lorem ipsum dolor sit amet, mea id epicuri consetetur, quo te etiam minim reformidans. Quo at numquam persecuti, ad his amet soleat ??.</div>
+            <div class="small-7 columns">
+                <div>{{ ou.Telephone }}</div>
+                <div>{{ ou.Address }}</div>
+                <div>{{ ou.Email }}</div>
+            </div>
             <div class="small-3 columns">
                 <div class="row">
                     <div class="{{ ou.class }}"><a href="" ng-click="toggleOperators(ou)"><i class="{{ ou.icon }}"></i>{{ ou.text}}</a></div>

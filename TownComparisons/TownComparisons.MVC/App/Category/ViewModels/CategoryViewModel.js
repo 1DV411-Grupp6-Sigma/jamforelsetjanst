@@ -4,6 +4,7 @@
     $scope.categoryService = categoryService;
 
     $scope.sortByName = 'Name';
+    $scope.sortByAddress = 'Address';
     $scope.sortAsc = 'sortAsc';
     $scope.sortDesc = 'sortDesc';
     $scope.sortOrder = $scope.sortAsc;
@@ -62,6 +63,8 @@
 
     // Sorts the Organisational Units by Name (Desc/Asc).
     $rootScope.sortOuByName = function () {
+        $scope.clearSortOuBy();
+
         $scope.visibleName = '';
         $scope.sortOrder = $scope.sortAsc;
         $scope.activeName = $scope.classActive;
@@ -74,6 +77,32 @@
             $scope.sortBy = $scope.sortByName;
             $scope.sortOrder = $scope.sortAsc;
         }
+    }
+
+    // Sorts the Organisational Units by Address (Desc/Asc).
+    $rootScope.sortOuByAddress = function () {
+        $scope.clearSortOuBy();
+
+        $scope.visibleAddress = '';
+        $scope.sortOrder = $scope.sortAsc;
+        $scope.activeAddress = $scope.classActive;
+
+        if ($scope.sortBy == $scope.sortByAddress) {
+            $scope.sortBy = '-' + $scope.sortByAddress;
+            $scope.sortOrder = $scope.sortDesc;
+        }
+        else {
+            $scope.sortBy = $scope.sortByAddress;
+            $scope.sortOrder = $scope.sortAsc;
+        }
+    }
+
+    $rootScope.clearSortOuBy = function () {
+
+        $scope.visibleName = 'invisible';
+        $scope.visibleAddress = 'invisible';
+        $scope.activeName = '';
+        $scope.activeAddress = '';
     }
 
     initialize();

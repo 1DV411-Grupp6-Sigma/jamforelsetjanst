@@ -32,7 +32,7 @@
             <li>
                 <b>{{ g.Name }}</b>
                 <!-- Show categories inside this group -->
-                <ul ng-repeat="c in g.Categories">
+                <ul ng-repeat="c in g.Categories | orderBy:'Name'">
                     <li>
                         <a href="#" ng-click="showCategory(c)">{{ c.Name }}</a> (få in antal här?)
                     </li>
