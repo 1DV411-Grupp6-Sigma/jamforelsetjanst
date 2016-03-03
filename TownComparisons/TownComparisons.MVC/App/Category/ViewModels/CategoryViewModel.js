@@ -14,6 +14,21 @@
     var initialize = function () {
         categoryService.getCategory($routeParams.categoryId, afterCategoryLoaded);
         $scope.sortOuByName();
+        $scope.showMe();
+        $scope.detailedClass = "unavailable";
+    }
+
+    $scope.showMe = function () {
+        $scope.detailed = true;
+        $scope.simple = false;
+        $scope.detailedClass = "unavailable";
+        $scope.simpleClass = "";
+    }
+    $scope.hideMe = function () {
+        $scope.detailed = false;
+        $scope.simple = true;
+        $scope.simpleClass = "unavailable";
+        $scope.detailedClass = "";
     }
 
     //runned after category has been loaded
