@@ -22,14 +22,50 @@
     $scope.showMe = function () {
         $scope.detailed = true;
         $scope.simple = false;
+        $scope.map = false;
         $scope.detailedClass = "unavailable";
         $scope.simpleClass = "";
+        $scope.mapClass = "";
     }
     $scope.hideMe = function () {
         $scope.detailed = false;
         $scope.simple = true;
+        $scope.map = false;
         $scope.simpleClass = "unavailable";
         $scope.detailedClass = "";
+        $scope.mapClass = "";
+    }
+    $scope.showMap = function () {
+        $scope.detailed = false;
+        $scope.simple = false;
+        $scope.map = true;
+        $scope.detailedClass = "";
+        $scope.simpleClass = "";
+        $scope.mapClass = "unavailable";
+
+        $scope.mapOperators();
+    }
+
+    $scope.mapOperators = function () {
+        $scope.mapBox = {
+            center: {
+                latitude: 56.662207,
+                longitude: 16.327105
+            },
+            zoom: 8
+        };
+
+        $scope.marker = {
+            id: 0,
+            coords: {
+                latitude: 56.673646,
+                longitude: 16.357482
+            },
+            options: { draggable: false },
+            events: {
+                
+            }
+        };
     }
 
     //runned after category has been loaded

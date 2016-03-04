@@ -1,8 +1,5 @@
-﻿<h2>{{ pageHeading }}</h2>
+﻿<h2>Aktörer</h2>
 
-<p>{{ category.Description }}</p>
-
-<h3>Aktörer</h3>
 <div class="right searchbar">
     <div id="search">
         <div class="small-4 columns end">
@@ -15,7 +12,7 @@
     <div class="row">
         <dl class="breadcrumbs">
             <dd class="{{ detailedClass }}"><a href="#" data-ng-click="showMe()">Visa detaljerad lista</a></dd>
-            <dd><a href="#" ng-click="changeView('&karta')">Visa på karta</a></dd>
+            <dd class="{{ mapClass }}"><a href="#" data-ng-click="showMap()">Visa på karta</a></dd>
             <dd class="{{ simpleClass }}"><a href="#" data-ng-click="hideMe()">Visa enkel lista</a></dd>
         </dl>
     </div>
@@ -93,4 +90,16 @@
             </div>
         </div>
     </div>
+
+    <div data-ng-show="map">
+        <!--<ui-gmap-google-map center='mapBox.center' zoom='mapBox.zoom'></ui-gmap-google-map>-->
+        <ui-gmap-google-map center="mapBox.center" zoom="mapBox.zoom" draggable="true">
+            <div ng-repeat="mapOu in category.OrganisationalUnits">
+                <ui-gmap-marker coords="{ latitude: mapOu.Latitude, longitude: mapOu.Longitude }" options="marker.options" events="marker.events" idkey="marker.id">
+                </ui-gmap-marker>
+            </div>
+        </ui-gmap-google-map>
+    </div>
 </div>
+
+<script src='//maps.googleapis.com/maps/api/js'></script>
