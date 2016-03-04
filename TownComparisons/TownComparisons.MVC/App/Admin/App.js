@@ -41,22 +41,15 @@ adminModule.factory('adminService', function ($rootScope, $http, $q, $location, 
         }
         var doGetCategory = function(categoryId, adminModel, success, failure) {
             viewModelHelper.apiGet('api' + (adminModel ? '/admin' : '') + '/category/' + categoryId, null,
-                            function (result) {
-                                self.categoryId = categoryId;
-                                $rootScope.category = result.data;
-                                if (success != null) {
-                                    success();
-                                }
-                                /*
-                                viewModelHelper.apiGet('api/category/' + categoryId + '/properties?operators=V15E108000801,V15E108000701,dfhdsjf', null,
-                                    function (result) {
-                                        console.log(result);
-                                    }
-                                );
-                                */
-                            },
-                            failure
-                        );
+                function (result) {
+                    self.categoryId = categoryId;
+                    $rootScope.category = result.data;
+                    if (success != null) {
+                        success();
+                    }
+                },
+                failure
+            );
         }
 
 
@@ -77,7 +70,7 @@ adminModule.factory('adminService', function ($rootScope, $http, $q, $location, 
         }
 
         $rootScope.hasValidationError = function (errorName) {
-            console.log('checking for error: ' + errorName);
+            //console.log('checking for error: ' + errorName);
             var errors = $rootScope.getValidationErrors(errorName);
             if (errors.length > 0) {
                 console.log('errors found!');
@@ -117,6 +110,10 @@ adminModule.factory('adminService', function ($rootScope, $http, $q, $location, 
             }
             return [];
         }
+
+        $rootScope.closeAlert = function (index) {
+            //viewModelHelper.flashMessages.splice(index, 1);
+        };
 
 
         self.adminId = 0;

@@ -9,6 +9,17 @@
     $scope.knownValidationErrors = [];
     $scope.closeValidationAlert = false;
 
+    $scope.objectFields = [{ field: 'Name', title: 'Namn', textarea: false },
+                            { field: 'ShortDescription', title: 'Kort beskrivning', textarea: true },
+                            { field: 'LongDescription', title: 'Längre beskrivning', textarea: true },
+                            { field: 'Address', title: 'Adress', textarea: false },
+                            { field: 'Contact', title: 'Kontakt', textarea: false },
+                            { field: 'Telephone', title: 'Telefon', textarea: false },
+                            { field: 'Email', title: 'E-post', textarea: false },
+                            { field: 'Website', title: 'Webbsida', textarea: false },
+                            { field: 'OrganisationalForm', title: 'Organisations-form', textarea: false },
+                            { field: 'Other', title: 'Övrigt', textarea: true }];
+
     var initialize = function () {
         refreshOperator();
         adminService.getNormalCategory($scope.categoryId);
@@ -17,18 +28,19 @@
     var refreshOperator = function () {
         viewModelHelper.apiGet('api/category/' + $scope.categoryId + '/operator/' + $scope.operatorId, null,
             function (result) {
-                console.log(result.data);
+                //console.log(result.data);
                 $scope.operator = result.data;
+                $scope.operatorName = angular.copy($scope.operator.Name); //to use without data binding to the category
+                $scope.pageHeading = $scope.operatorName;
             });
     }
 
     $scope.saveOperator = function () {
 
-
         viewModelHelper.apiPost('api/admin/category/' + $scope.categoryId + '/operator/' + $scope.operatorId, $scope.operator,
             function (result) {
-                //success
-                console.log(result.data);
+                //success, refresh page
+                $window.location.href = $window.location.href;
             },
             function (errors) {
                 //failure
@@ -38,35 +50,23 @@
 
     $scope.saveOperatorImage = function (imageFile) {
 
-        console.log(imageFile);
         $scope.upload = Upload.upload({
             url: MyApp.rootPath + 'api/admin/category/' + $scope.categoryId + '/operator/' + $scope.operatorId + '/image', // webapi url
             method: "POST",
-            //data: { fileUploadObj: $scope.fileUploadObj },
             file: imageFile
-        }).progress(function (evt) {
-            // get upload percentage
-            console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
         }).success(function (data, status, headers, config) {
             // file is uploaded successfully
-            console.log(data);
+            $scope.operator = data;
         }).error(function (data, status, headers, config) {
             // file failed to upload
-            console.log(data);
+            $scope.validationErrors.push({ name: '', message: 'Kunde inte spara bilden.' });
         });
-
-        /*
-        viewModelHelper.apiPost('api/admin/category/' + $scope.categoryId + '/operator/' + $scope.operatorId + '/image', $scope.imageFile,
-            function (result) {
-                //success
-                console.log(result.data);
-            },
-            function (errors) {
-                //failure
-                adminService.parseErrors(errors);
-            });
-            */
     }
+
+    $scope.cancelEditOperator = function () {
+        viewModelHelper.navigateTo('admin/category/' + adminService.categoryId);
+    }
+
 
     initialize();
 });

@@ -20,6 +20,7 @@ namespace TownComparisons.MVC.Controllers.API
     public class APIAdminController : ApiController
     {
         private IService _service;
+        private readonly string _operatorImagesFolder = HttpContext.Current.Server.MapPath("~/uploads/operator_images");
 
         public APIAdminController()
             : this (new Service())
@@ -94,32 +95,48 @@ namespace TownComparisons.MVC.Controllers.API
                 var file = HttpContext.Current.Request.Files.Count > 0 ? HttpContext.Current.Request.Files[0] : null;
                 if (file != null && file.ContentLength > 0)
                 {
-                    string fileExtension = Path.GetExtension(file.FileName);
-                    string filename = "";
                     var path = "";
-                    while (path == "" || System.IO.File.Exists(path))
-                    {
-                        filename = Guid.NewGuid() + "." + fileExtension;
-                        path = Path.Combine(HttpContext.Current.Server.MapPath("~/uploads/operator_images"),
-                                                filename);
 
+                    //delete any old image file
+                    if (!String.IsNullOrWhiteSpace(ou.ImagePath))
+                    {
+                        path = Path.Combine(_operatorImagesFolder, ou.ImagePath);
+                        if (File.Exists(path))
+                        {
+                            try
+                            {
+                                File.Delete(path);
+                            }
+                            catch { }
+                        }
                     }
 
+                    //generate new filename
+                    string fileExtension = Path.GetExtension(file.FileName);
+                    string filename = "";
+                    while (path == "" || System.IO.File.Exists(path))
+                    {
+                        filename = Guid.NewGuid() + fileExtension;
+                        path = Path.Combine(_operatorImagesFolder, filename);
+
+                    }
+                    
+                    //save the new image file
                     try
                     {
                         file.SaveAs(path);
-                    }
-                    catch (Exception ex)
-                    {
-                        ModelState.AddModelError(null, "Kunde inte spara bilden.");
-                        return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-                    }
 
-                    //update entity
-                    ou.ImagePath = filename;
-                    _service.UpdateOrganisationalUnitInfo(ou);
+                        //update entity
+                        ou.ImagePath = filename;
+                        _service.UpdateOrganisationalUnitInfo(ou);
 
-                    return new HttpResponseMessage(HttpStatusCode.OK);
+                        ViewModels.Shared.OrganisationalUnitInfoViewModel model = new ViewModels.Shared.OrganisationalUnitInfoViewModel(ou);
+                        return request.CreateResponse<ViewModels.Shared.OrganisationalUnitInfoViewModel>(HttpStatusCode.OK, model);
+                    }
+                    catch { }
+
+                    ModelState.AddModelError(null, "Kunde inte spara bilden.");
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
                 }
             }
             
