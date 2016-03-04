@@ -1,9 +1,7 @@
-﻿<h3>CompareView</h3>
+﻿<h2>Jämförelse</h2>
 
 <!--Tabel with chosen operators-->
 <table class="dataTable row-border hover" datatable="ng">
-    <caption>Jämförelse </caption>
-    
     <thead>
         <tr>
             <td></td>
@@ -26,7 +24,7 @@
                 </div>
             </td>
         </tr>
-        <tr>
+        <tr ng-if="posLat != undefined && posLng != undefined">
             <td><span class="text80">Distans</span></td>
             <td ng-repeat="ou in organisationalUnitIdsToCompare">
                 <div ng-repeat="ouInfo in compareOrganisationalUnits.OrganisationalUnits">
@@ -59,7 +57,7 @@
             </td>
         </tr>
         <tr>
-            <td><br /><strong>2013</strong></td>
+            <td><br /><strong>2014</strong></td>
             <td ng-repeat="ou in organisationalUnitIdsToCompare">
             </td>
         </tr>
@@ -69,7 +67,7 @@
                 <div ng-repeat="res in cr.Results">
                     <div ng-repeat="pv in res.PeriodValues">
                         
-                        <div ng-if="res.OrganisationalUnitId == ou && pv.Period == 2013 && pv.Values[0].Value != null">
+                        <div ng-if="res.OrganisationalUnitId == ou && pv.Period == 2014 && pv.Values[0].Value != null">
                             <div ng-if="containsPercent(cr.Query.Title)">
                                 <div>
                                     <div class="answer-percent-bar">

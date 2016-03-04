@@ -31,6 +31,11 @@ namespace TownComparisons.MVC
                         "~/Content/site.css",
                         "~/Content/Foundations-icon.css"));
 
+            bundles.Add(new ScriptBundle("~/bundles/angular-google-maps").Include(
+                        "~/Scripts/angular-google-maps*",
+                        "~/Scripts/lodash.js",
+                        "~/Scripts/angular-simple-logger.js"));
+
             #region Foundation Bundles
 
             bundles.Add(Foundation.Scripts());

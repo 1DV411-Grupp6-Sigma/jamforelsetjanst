@@ -1,5 +1,5 @@
 ﻿
-var categoryModule = angular.module('category', ['common'])
+var categoryModule = angular.module('category', ['common', 'uiGmapgoogle-maps'])
     .config(function ($routeProvider, $locationProvider) {
         //$routeProvider.when('/', { templateUrl: '/App/Categories/Views/CategoriesView.html', controller: 'categoriesViewModel' });
         $routeProvider
@@ -17,7 +17,11 @@ var categoryModule = angular.module('category', ['common'])
                 })
             .when('/category/:categoryId/operator/:operatorId', {
                      templateUrl: '/App/Category/Views/OperatorView.html', controller: 'operatorViewModel'
-                })
+            })
+            .when('/category/:categoryId/map', {
+                templateUrl: '/App/Category/Views/MapView.html',
+                controller: 'mapViewModel'
+            })
             .otherwise({ redirectTo: '/categories' });
         $locationProvider.html5Mode({
             enabled: true,
