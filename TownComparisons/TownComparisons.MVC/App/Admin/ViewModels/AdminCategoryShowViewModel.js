@@ -1,4 +1,4 @@
-﻿adminModule.controller("adminCategoryShowViewModel", function ($scope, adminService, $http, $q, $routeParams, $window, $location, viewModelHelper) {
+﻿adminModule.controller("adminCategoryShowViewModel", function ($scope, adminService, $http, $q, $routeParams, $window, $location, viewModelHelper, $modal) {
 
     $scope.viewModelHelper = viewModelHelper;
     $scope.adminService = adminService;
@@ -14,23 +14,39 @@
         $scope.categoryHasBeenLoaded = true;
     }
 
-    /*
-    $scope.refreshCategory = function (categoryId) {
-        viewModelHelper.apiGet('api/admin/category/' + categoryId, null,
-            function (result) {
-                adminService.categoryId = categoryId;
-                $scope.category = result.data;
-                $scope.pageHeading = 'Kategori: ' + $scope.category.Category.Name;
-                $scope.categoryHasBeenLoaded = true;
+    $scope.openOperatorEditor = function (operatorId) {
 
-                viewModelHelper.apiGet('api/category/' + categoryId + '/properties?operators=V15E108000801,V15E108000701,dfhdsjf', null,
-                    function (result) {
-                        console.log(result);
-                    }
-                );
-            });
-    }
-    */
+        console.log('opening modal');
+        adminService.selectedOperatorId = operatorId;
+
+        var modalInstance = $modal.open({
+            templateUrl: '/App/Admin/Views/AdminOperatorView.html', // myModalContent.html',
+            controller: 'adminOperatorViewModel',
+            scope: $scope
+            /* resolve: {
+                items: function () {
+                    return $scope.items;
+                }
+            } */
+        });
+
+        modalInstance.result.then(function (operator) {
+            //refresh page
+            $window.location.href = $window.location.href;
+            /*
+            console.log(operator);
+            for (var i = 0; i < $scope.category.Category.OrganisationalUnits.length; i++) {
+                if ($scope.category.Category.OrganisationalUnits[i].OrganisationalUnitId == operator.OrganisationalUnitId) {
+                    $scope.category.Category.OrganisationalUnits[i] == operator;
+                    console.log('found it!');
+                    break;
+                }
+            }
+            */
+        }, function () {
+            //modal cancelled, do something here?
+        });
+    };
 
     $scope.gotoEdit = function (mode) {
         adminService.editCategoryMode = mode;

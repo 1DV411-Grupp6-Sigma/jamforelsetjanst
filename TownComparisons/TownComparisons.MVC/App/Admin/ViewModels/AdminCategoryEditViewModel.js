@@ -38,8 +38,6 @@
             });
     }
 
-
-
     $scope.cancelEditCategory = function () {
         viewModelHelper.navigateTo('admin/category/' + adminService.categoryId);
     }

@@ -1,10 +1,10 @@
-﻿adminModule.controller("adminOperatorViewModel", function ($scope, adminService, $http, $q, $routeParams, $window, $location, viewModelHelper, Upload) {
+﻿adminModule.controller("adminOperatorViewModel", function ($scope, adminService, $http, $q, $routeParams, $window, $location, viewModelHelper, Upload, $modalInstance) {
 
-    $scope.viewModelHelper = viewModelHelper;
-    $scope.adminService = adminService;
+    //$scope.viewModelHelper = viewModelHelper;
+    //$scope.adminService = adminService;
 
     $scope.categoryId = $routeParams.categoryId;
-    $scope.operatorId = $routeParams.operatorId;
+    $scope.operatorId = adminService.selectedOperatorId;
     $scope.validationErrors = [];
     $scope.knownValidationErrors = [];
     $scope.closeValidationAlert = false;
@@ -22,13 +22,11 @@
 
     var initialize = function () {
         refreshOperator();
-        adminService.getNormalCategory($scope.categoryId);
     }
 
     var refreshOperator = function () {
         viewModelHelper.apiGet('api/category/' + $scope.categoryId + '/operator/' + $scope.operatorId, null,
             function (result) {
-                //console.log(result.data);
                 $scope.operator = result.data;
                 $scope.operatorName = angular.copy($scope.operator.Name); //to use without data binding to the category
                 $scope.pageHeading = $scope.operatorName;
@@ -39,8 +37,8 @@
 
         viewModelHelper.apiPost('api/admin/category/' + $scope.categoryId + '/operator/' + $scope.operatorId, $scope.operator,
             function (result) {
-                //success, refresh page
-                $window.location.href = $window.location.href;
+                //success, close modal
+                $modalInstance.close($scope.operator);
             },
             function (errors) {
                 //failure
@@ -64,9 +62,9 @@
     }
 
     $scope.cancelEditOperator = function () {
-        viewModelHelper.navigateTo('admin/category/' + adminService.categoryId);
+        //close (cancel) modal
+        $modalInstance.dismiss('cancel');
     }
-
 
     initialize();
 });
