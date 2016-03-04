@@ -1,9 +1,11 @@
-﻿<ul class="breadcrumbs">
+﻿<!--
+<ul class="breadcrumbs">
     <li><a href="/admin">Admin</a></li>
     <li><a href="/admin/categories">Kategorier</a></li>
     <li><a href="/admin/category/{{ categoryId }}">{{ category.Name }}</a></li>
     <li class="current">{{ operatorName }}</li>
 </ul>
+    -->
 
 
 <h2>Ändra aktör</h2>
@@ -58,7 +60,10 @@
     </div>
     <div ng-show="cancel">
         <label>Avbryta utan att spara?</label>
+        <button class="tiny button default" ng-click="cancelEditOperator()">Ja</button>
+        <!--
         <input type="button" name="cancel" ng-click="cancelEditOperator()" value="Ja" class="tiny button default" />
+            -->
         <input type="button" name="cancel" ng-click="cancel = false" value="X" class="tiny button secondary" />
     </div>
 

@@ -6430,51 +6430,6 @@ body {
 .alert-box p {
   margin-bottom: 0; }
 
-.percentageBox {
-    width:80px;
-    height:10px;
-    border: 1px solid silver;
-    box-shadow: 1px 1px 1px #cfcfcf;
-    border-radius: 3px;
-    background-color: #f7f7f7;
-}
-.percentage {
-    vertical-align: top;
-    height: 8px;
-    background: #8ec1ff;
-    display: inline-block;
-}
-
-.display-inline-block {
-    display: inline-block;
-}
-
-.answer-percent-bar {
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.answer-value-box {
-    display: inline-block;
-}
-
-.colorGreen {
-    color: #43AC6A;
-}
-
-.colorRed {
-    color: red;
-}
-
-.colorBlue {
-    color: dodgerblue;
-}
-
-.text80 {
-    font-size: 80%;
-}
-
-.bold {
-    font-weight: bold;
-}
+.reveal-modal-bg {
+  position: fixed; }
 
