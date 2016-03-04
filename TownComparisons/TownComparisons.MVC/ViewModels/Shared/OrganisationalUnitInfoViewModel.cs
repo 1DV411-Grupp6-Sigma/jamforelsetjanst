@@ -21,10 +21,11 @@ namespace TownComparisons.MVC.ViewModels.Shared
 
         [Required(ErrorMessage = "Namnet måste fyllas i.")]
         [MaxLength(100, ErrorMessage = "Namnet kan inte vara längre än {1} tecken.")]
+        [MinLength(3, ErrorMessage = "Namnet måste vara minst {1} tecken.")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Korta beskrivningen måste fyllas i.")]
-        [MaxLength(400, ErrorMessage = "Korta beskrivningen kan inte vara längre än {1} tecken.")]
+        [MaxLength(500, ErrorMessage = "Korta beskrivningen kan inte vara längre än {1} tecken.")]
         public string ShortDescription { get; set; }
 
         public string LongDescription { get; set; }

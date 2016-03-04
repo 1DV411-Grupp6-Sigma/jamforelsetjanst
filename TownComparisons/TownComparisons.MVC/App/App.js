@@ -3,18 +3,20 @@
 //making main global
 var mainModule = angular.module('main', ['common']);
 
-
 commonModule.factory('viewModelHelper', function ($http, $q, $window, $location) { return MyApp.viewModelHelper($http, $q, $window, $location); });
-
-
 
 (function (myApp) {
     var viewModelHelper = function ($http, $q, $window, $location) {
 
         var self = this;
-
+        
         self.modelIsValid = true;
         self.modelErrors = [];
+        self.flashMessages = [];
+
+        self.addFlashMessage = function(message) {
+
+        }
 
         self.resetModelErrors = function () {
             self.modelErrors = [];

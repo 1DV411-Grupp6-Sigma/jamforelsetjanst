@@ -79,4 +79,3 @@ applicationhost.config
 *.mdf
 *.ldf
 PublishProfiles/
-operator_images/*
