@@ -148,22 +148,18 @@ namespace TownComparisons.MVC.Tests.Domain.Helpers
         /// Try to add to cache with id of null
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException), "A Id of null was inappropriately allowed in cache")]
         public void Test_NullId_OrganisationalUnitInfo()
         {
             string key = "cacheKey";
             OrganisationalUnitInfo ouInfo = new OrganisationalUnitInfo();
             CacheManager cache = new CacheManager();
 
-            try
-            {
-                cache.SetCache(key, ouInfo.Id);
-                Assert.Fail(); // raises AssertionException
-            }
-            catch (Exception)
-            {
-                // Catches the assertion exception, and the test passes
-            }
+            cache.SetCache(key, ouInfo.Id);
+
+            var expected = cache.GetCache(key);
+
+            Assert.AreEqual(expected, 0);
+
         }
     }
 }

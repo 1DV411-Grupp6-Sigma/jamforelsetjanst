@@ -2,13 +2,14 @@
 using System.IO;
 using System.Web;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TownComparisons.MVC.Tests.mock_stub_shim_fake;
 
 namespace TownComparisons.MVC.Tests.Domain.Settings
 {
     [TestClass]
     public class SettingsTest
     {
-        private TownComparisons.Domain.Settings _settings;
+        private TownComparisons.Domain.ISettings _settings;
 
         [TestInitialize]
         public void SetUp()
@@ -16,7 +17,7 @@ namespace TownComparisons.MVC.Tests.Domain.Settings
             string path = Directory.GetCurrentDirectory();
             string addDirToPath = Path.Combine(path, "App_Data");
             string fullpath = Path.Combine(addDirToPath, "settingsConfig.json");
-            _settings = new TownComparisons.Domain.Settings(fullpath, true); //(fullpath);
+            _settings = new SettingsForTesting(fullpath);
 
         }
 

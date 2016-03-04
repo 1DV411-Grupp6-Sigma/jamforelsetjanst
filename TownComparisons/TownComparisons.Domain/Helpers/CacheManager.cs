@@ -30,13 +30,16 @@ namespace TownComparisons.Domain.Helpers
         /// <param name="cacheItemPolicy">Lifetime of cache in seconds</param>
         public void SetCache(string key, object value, int cacheItemPolicy)
         {
-            CacheItem cacheItem = new CacheItem(key, value);
-            CacheItemPolicy policy = new CacheItemPolicy
+            if (key != null && value != null)
             {
-                AbsoluteExpiration = new DateTimeOffset(DateTime.Now.AddSeconds(cacheItemPolicy))
-            };
+                CacheItem cacheItem = new CacheItem(key, value);
+                CacheItemPolicy policy = new CacheItemPolicy
+                {
+                    AbsoluteExpiration = new DateTimeOffset(DateTime.Now.AddSeconds(cacheItemPolicy))
+                };
 
-            Cache.Add(cacheItem.Key, cacheItem.Value, policy);
+                Cache.Add(cacheItem.Key, cacheItem.Value, policy);
+            }
         }
 
         /// <summary>
@@ -47,13 +50,17 @@ namespace TownComparisons.Domain.Helpers
         /// <param name="value">Value to save in cache</param>
         public void SetCache(string key, object value)
         {
-            CacheItem cacheItem = new CacheItem(key, value);
-            CacheItemPolicy policy = new CacheItemPolicy
+            if (key != null && value != null)
             {
-                AbsoluteExpiration = new DateTimeOffset(DateTime.Now.AddDays(1))
-            };
+                CacheItem cacheItem = new CacheItem(key, value);
+                CacheItemPolicy policy = new CacheItemPolicy
+                {
+                    AbsoluteExpiration = new DateTimeOffset(DateTime.Now.AddDays(1))
+                };
 
-            Cache.Add(cacheItem.Key, cacheItem.Value, policy);
+                Cache.Add(cacheItem.Key, cacheItem.Value, policy);
+            }
+            
         }
 
 

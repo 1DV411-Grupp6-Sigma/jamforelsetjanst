@@ -66,6 +66,7 @@
     <Compile Include="DAL\TownComparisonsContext.cs" />
     <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="Entities\GroupCategory.cs" />
+    <Compile Include="Abstract\ISettings.cs" />
     <Compile Include="Migrations\201602262311013_InitialMigration.cs" />
     <Compile Include="Migrations\201602262311013_InitialMigration.Designer.cs">
       <DependentUpon>201602262311013_InitialMigration.cs</DependentUpon>

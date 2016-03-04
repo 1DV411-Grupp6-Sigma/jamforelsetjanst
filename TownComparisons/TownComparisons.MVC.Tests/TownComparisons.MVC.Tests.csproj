@@ -88,6 +88,7 @@
     <Compile Include="Domain\Helpers\CacheManagerTest.cs" />
     <Compile Include="Domain\Settings\SettingsTest.cs" />
     <Compile Include="Domain\WebServices\KoladaTownWebServiceTest.cs" />
+    <Compile Include="mock-stub-shim-fake\SettingsForTesting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
@@ -95,8 +96,7 @@
     <Content Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\settingsConfig.json" />
-    <None Include="App_Data\settings.json" />
+    <None Include="bin\Debug\App_Data\settingsConfig.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
