@@ -11,14 +11,14 @@
     <!--navbar for simple or detailed list -->
     <div class="row">
         <dl class="breadcrumbs">
-            <dd class="{{ detailedClass }}"><a href="#" data-ng-click="showMe()">Visa detaljerad lista</a></dd>
+            <dd class="{{ detailedClass }}"><a href="#" data-ng-click="showDetailed()">Visa detaljerad lista</a></dd>
             <dd class="{{ mapClass }}"><a href="#" data-ng-click="showMap()">Visa på karta</a></dd>
-            <dd class="{{ simpleClass }}"><a href="#" data-ng-click="hideMe()">Visa enkel lista</a></dd>
+            <dd class="{{ simpleClass }}"><a href="#" data-ng-click="showSimple()">Visa enkel lista</a></dd>
         </dl>
     </div>
 
     <!-- navbar for sorting -->
-    <div class="row">
+    <div ng-if="detailed || simple" class="row">
         <dl class="sub-nav">
             <dt>Sortera:</dt>
             <dd class="{{ activeName }}"><a href="" ng-click="sortOuByName()">Namn</a><img class="{{ visibleName }}" src="/Content/pictures/{{ sortOrder }}.png" ng-click="sortOuByName()" /></dd>
@@ -38,7 +38,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="ou in category.OrganisationalUnits | filter:filter.name | orderBy:sortByOrder + sortBy">
+                <tr ng-repeat="ou in category.OrganisationalUnits | filter:filter.name | orderBy:sortBy">
                     <td>{{ setCompareSettingsForOu(ou)}}</td>
 
                     <td><h5><a href="#" ng-click="showOperator(ou.OrganisationalUnitId)">{{ ou.Name }}</a></h5></td>
@@ -62,8 +62,6 @@
     <div data-ng-show="detailed">
         <div class="operator-loop" ng-repeat="ou in category.OrganisationalUnits | filter:filter.name | orderBy:sortBy">
             {{ setCompareSettingsForOu(ou)}}
-
-
 
             <div class="row">
                 <div class="small-5 columns end">
@@ -92,13 +90,16 @@
     </div>
 
     <div data-ng-show="map">
-        <!--<ui-gmap-google-map center='mapBox.center' zoom='mapBox.zoom'></ui-gmap-google-map>-->
-        <ui-gmap-google-map center="mapBox.center" zoom="mapBox.zoom" draggable="true">
-            <div ng-repeat="mapOu in category.OrganisationalUnits">
-                <ui-gmap-marker coords="{ latitude: mapOu.Latitude, longitude: mapOu.Longitude }" options="marker.options" events="marker.events" idkey="marker.id">
+        <div id="map_canvas">
+            <ui-gmap-google-map center="mapBox.center" zoom="mapBox.zoom" draggable="true">
+                <ui-gmap-marker ng-repeat="m in category.OrganisationalUnits"
+                                coords="{ latitude: m.Latitude, longitude: m.Longitude }"
+                                idkey="m.OrganisationalUnitId">
+                    <ui-gmap-window templateUrl="'/App/Category/Views/Partials/_MapOnClick.html'" templateParameter="m">
+                    </ui-gmap-window>
                 </ui-gmap-marker>
-            </div>
-        </ui-gmap-google-map>
+            </ui-gmap-google-map>
+        </div>
     </div>
 </div>
 
