@@ -32,7 +32,7 @@ namespace TownComparisons.Domain.DAL
             //
             // This is for cascade delete to work when deleting a group category or category
             //
-            modelBuilder.Entity<CategoryPropertyQuery>().HasKey(q => q.Id)
+            modelBuilder.Entity<PropertyQueryInfo>().HasKey(q => q.Id)
                                                 .HasRequired(q => q.Category)
                                                 .WithMany(c => c.Queries)
                                                 .WillCascadeOnDelete(true);

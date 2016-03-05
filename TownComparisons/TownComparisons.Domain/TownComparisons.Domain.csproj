@@ -79,8 +79,13 @@
     <Compile Include="Migrations\201603011247502_SmallFixesToCategory.Designer.cs">
       <DependentUpon>201603011247502_SmallFixesToCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603051321495_PropertyQueryInfoRenamed.cs" />
+    <Compile Include="Migrations\201603051321495_PropertyQueryInfoRenamed.Designer.cs">
+      <DependentUpon>201603051321495_PropertyQueryInfoRenamed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\OrganisationalUnit.cs" />
+    <Compile Include="Entities\PropertyQueryInfo.cs" />
     <Compile Include="Models\PropertyQueryResultForPeriod.cs" />
     <Compile Include="Models\PropertyQueryWithResults.cs" />
     <Compile Include="Models\PropertyQueryResultValue.cs" />
@@ -96,11 +101,8 @@
     <Compile Include="WebServices\Models\KpiQuestion.cs" />
     <Compile Include="Entities\OrganisationalUnitInfo.cs" />
     <Compile Include="WebServices\Models\OUs.cs" />
-    <Compile Include="Entities\CategoryPropertyQuery.cs" />
     <Compile Include="SessionHandler.cs" />
     <Compile Include="Entities\Category.cs" />
-    <Compile Include="Entities\Location.cs" />
-    <Compile Include="Entities\Municipality_Unused.cs" />
     <Compile Include="WebServices\Models\OU.cs" />
     <Compile Include="Helpers\CacheManager.cs" />
     <Compile Include="Helpers\ICache.cs" />
@@ -122,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603011247502_SmallFixesToCategory.resx">
       <DependentUpon>201603011247502_SmallFixesToCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603051321495_PropertyQueryInfoRenamed.resx">
+      <DependentUpon>201603051321495_PropertyQueryInfoRenamed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

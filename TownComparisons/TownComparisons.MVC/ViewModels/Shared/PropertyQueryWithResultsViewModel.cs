@@ -9,7 +9,7 @@ namespace TownComparisons.MVC.ViewModels.Shared
 {
     public class PropertyQueryWithResultsViewModel
     {
-        public PropertyQueryViewModel Query { get; set; }
+        public PropertyQueryInfoViewModel Query { get; set; }
         
         public List<PropertyQueryResult> Results { get; set; }
 
@@ -20,7 +20,7 @@ namespace TownComparisons.MVC.ViewModels.Shared
         }
         public PropertyQueryWithResultsViewModel(PropertyQueryWithResults model)
         {
-            Query = new PropertyQueryViewModel(model.Query);
+            Query = new PropertyQueryInfoViewModel(model.Query);
             Results = model.Results;
         }
     }

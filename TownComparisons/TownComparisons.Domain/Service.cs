@@ -110,7 +110,7 @@ namespace TownComparisons.Domain
                 return (List<PropertyQueryWithResults>)_cache.GetCache(cacheKey);
             }
 
-            var returnValue = _townWebService.GetPropertyResults(category.Queries.Cast<PropertyQuery>().ToList(), organisationalUnits); //queryIds.ToList(), organisationalUnitIds.ToList());
+            var returnValue = _townWebService.GetPropertyResults(category.Queries.ToList(), organisationalUnits); //queryIds.ToList(), organisationalUnitIds.ToList());
             _cache.SetCache(cacheKey, returnValue, _settings.CacheSeconds_PropertyResult);
 
             return returnValue;

@@ -20,7 +20,7 @@ namespace TownComparisons.MVC.ViewModels.Shared
         public string Description { get; set; }
 
         [Required]
-        public List<PropertyQueryViewModel> Queries { get; set; }
+        public List<PropertyQueryInfoViewModel> Queries { get; set; }
 
         [Required]
         public List<OrganisationalUnitInfoViewModel> OrganisationalUnits { get; set; }
@@ -35,7 +35,7 @@ namespace TownComparisons.MVC.ViewModels.Shared
             Id = entity.Id;
             Name = entity.Name;
             Description = entity.Description;
-            Queries = entity.Queries.Select(q => new PropertyQueryViewModel(q)).ToList();
+            Queries = entity.Queries.Select(q => new PropertyQueryInfoViewModel(q)).ToList();
             OrganisationalUnits = entity.OrganisationalUnits.Select(o => new OrganisationalUnitInfoViewModel(o)).ToList();
         }
     }
