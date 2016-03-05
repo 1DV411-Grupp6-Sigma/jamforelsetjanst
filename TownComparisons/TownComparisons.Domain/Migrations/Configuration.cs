@@ -30,37 +30,37 @@ namespace TownComparisons.Domain.Migrations
             }
 
             // Some queries for category
-            CategoryPropertyQuery query1 = new CategoryPropertyQuery()
+            PropertyQueryInfo query1 = new PropertyQueryInfo()
             {
                 WebServiceName = koladaWebServiceName,
                 QueryId = "N15030",
                 Title = "Lärare med pedagogisk högskoleexamen i grundskola, lägeskommun, (%)"
             };
-            CategoryPropertyQuery query2 = new CategoryPropertyQuery()
+            PropertyQueryInfo query2 = new PropertyQueryInfo()
             {
                 WebServiceName = koladaWebServiceName,
                 QueryId = "N15033",
                 Title = "Elever/lärare (årsarbetare) i grundskola, lägeskommun, antal"
             };
-            CategoryPropertyQuery query3 = new CategoryPropertyQuery()
+            PropertyQueryInfo query3 = new PropertyQueryInfo()
             {
                 WebServiceName = koladaWebServiceName,
                 QueryId = "N15406",
                 Title = "Elever i åk. 9 som minst uppnått kunskapskraven för Godkänd i ämnesprovet i matematik, kommunala skolor, andel (%)"
             };
-            CategoryPropertyQuery query4 = new CategoryPropertyQuery()
+            PropertyQueryInfo query4 = new PropertyQueryInfo()
             {
                 WebServiceName = koladaWebServiceName,
                 QueryId = "N15807",
                 Title = "Elever i grundskola belägen i kommunen, antal"
             };
-            CategoryPropertyQuery query5 = new CategoryPropertyQuery()
+            PropertyQueryInfo query5 = new PropertyQueryInfo()
             {
                 WebServiceName = koladaWebServiceName,
                 QueryId = "N15403",
                 Title = "Elever i åk. 9, meritvärde kommunala skolor, genomsnitt (16 ämnen)"
             };
-            CategoryPropertyQuery query6 = new CategoryPropertyQuery()
+            PropertyQueryInfo query6 = new PropertyQueryInfo()
             {
                 WebServiceName = koladaWebServiceName,
                 QueryId = "N15422",

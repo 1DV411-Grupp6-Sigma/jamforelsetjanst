@@ -16,7 +16,7 @@ namespace TownComparisons.Domain.Entities
         
         public virtual GroupCategory GroupCategory { get; set; }
 
-        public virtual ICollection<CategoryPropertyQuery> Queries { get; set; }
+        public virtual ICollection<PropertyQueryInfo> Queries { get; set; }
 
         public virtual ICollection<OrganisationalUnitInfo> OrganisationalUnits { get; set; }
         
@@ -24,7 +24,7 @@ namespace TownComparisons.Domain.Entities
         //Constructors
         public Category()
         {
-            Queries = new HashSet<CategoryPropertyQuery>();
+            Queries = new HashSet<PropertyQueryInfo>();
             OrganisationalUnits = new HashSet<OrganisationalUnitInfo>();
         }
     }

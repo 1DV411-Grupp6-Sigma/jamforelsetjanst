@@ -42,10 +42,10 @@ namespace TownComparisons.MVC.ViewModels.Admin
             {
                 for (int j = 0; j < AllPropertyQueryGroups[i].Queries.Count; j++)
                 {
-                    Shared.PropertyQueryViewModel existing = Category.Queries.Find(q => q.QueryId == AllPropertyQueryGroups[i].Queries[j].QueryId);
+                    Shared.PropertyQueryInfoViewModel existing = Category.Queries.Find(q => q.QueryId == AllPropertyQueryGroups[i].Queries[j].QueryId);
                     if (existing != null)
                     {
-                        AllPropertyQueryGroups[i].Queries[j] = new PropertyQueryViewModel(existing, true);
+                        AllPropertyQueryGroups[i].Queries[j] = new PropertyQueryInfoViewModel(existing, true); //new PropertyQueryInfoViewModel(existing, true);
                         AllPropertyQueryGroups[i].AnyQueriesToUse = true;
                     }
                 }

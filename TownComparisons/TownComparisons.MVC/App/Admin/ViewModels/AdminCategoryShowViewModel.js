@@ -34,7 +34,7 @@
             //refresh page
             $window.location.href = $window.location.href;
             /*
-            console.log(operator);
+            //replace current operator with new (didn't work)
             for (var i = 0; i < $scope.category.Category.OrganisationalUnits.length; i++) {
                 if ($scope.category.Category.OrganisationalUnits[i].OrganisationalUnitId == operator.OrganisationalUnitId) {
                     $scope.category.Category.OrganisationalUnits[i] == operator;

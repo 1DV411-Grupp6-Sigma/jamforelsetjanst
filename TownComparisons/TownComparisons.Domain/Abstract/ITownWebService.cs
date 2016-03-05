@@ -15,7 +15,7 @@ namespace TownComparisons.Domain.Abstract
 
         List<OrganisationalUnit> GetAllOrganisationalUnits(string municipalityId);
         OrganisationalUnit GetOrganisationalUnit(string id);
-        List<PropertyQueryWithResults> GetPropertyResults(List<PropertyQuery> queries, List<OrganisationalUnitInfo> organisationalUnits);
+        List<PropertyQueryWithResults> GetPropertyResults(List<PropertyQueryInfo> queries, List<OrganisationalUnitInfo> organisationalUnits);
         List<PropertyQueryGroup> GetAllPropertyQueries();
     }
 }

@@ -8,11 +8,17 @@ namespace TownComparisons.Domain.Models
 {
     public class PropertyQuery
     {
+        public static readonly string TYPE_YESNO = "yesno";
+        public static readonly string TYPE_PERCENT = "percent";
+
+
         public string WebServiceName { get; set; }
 
         public string QueryId { get; set; } // Kpi id if using Kolada
 
         public string Title { get; set; } // name/title of the query
+
+        public string Type { get; set; }
 
 
         //Constructors
@@ -20,11 +26,12 @@ namespace TownComparisons.Domain.Models
         {
             // Empty
         }
-        public PropertyQuery(string webServiceName, string queryId, string title)
+        public PropertyQuery(string webServiceName, string queryId, string title, string type)
         {
             WebServiceName = webServiceName;
             QueryId = queryId;
             Title = title;
+            Type = type;
         }
     }
 }

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TownComparisons.Domain.Entities;
 
 namespace TownComparisons.Domain.Models
 {
     public class PropertyQueryWithResults
     {
-        public PropertyQuery Query { get; set; }
+        public PropertyQueryInfo Query { get; set; }
 
         public List<PropertyQueryResult> Results { get; set; }
 
@@ -18,7 +19,7 @@ namespace TownComparisons.Domain.Models
         {
             Results = new List<PropertyQueryResult>();
         }
-        public PropertyQueryWithResults(PropertyQuery query, List<PropertyQueryResult> results = null)
+        public PropertyQueryWithResults(PropertyQueryInfo query, List<PropertyQueryResult> results = null)
         {
             Query = query;
             Results = results ?? new List<PropertyQueryResult>();

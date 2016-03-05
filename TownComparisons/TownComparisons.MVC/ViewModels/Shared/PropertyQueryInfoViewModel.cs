@@ -7,7 +7,7 @@ using TownComparisons.Domain.Models;
 
 namespace TownComparisons.MVC.ViewModels.Shared
 {
-    public class PropertyQueryViewModel
+    public class PropertyQueryInfoViewModel
     {
         public string WebServiceName { get; set; }
 
@@ -15,16 +15,26 @@ namespace TownComparisons.MVC.ViewModels.Shared
 
         public string Title { get; set; } // name/title of the query
 
+        public string Type { get; set; }
 
-        public PropertyQueryViewModel()
+
+        public PropertyQueryInfoViewModel()
         {
             //Empty
         }
-        public PropertyQueryViewModel(PropertyQuery model)
+        public PropertyQueryInfoViewModel(PropertyQuery model)
         {
             WebServiceName = model.WebServiceName;
             QueryId = model.QueryId;
             Title = model.Title;
+            Type = model.Type;
+        }
+        public PropertyQueryInfoViewModel(PropertyQueryInfo entity)
+        {
+            WebServiceName = entity.WebServiceName;
+            QueryId = entity.QueryId;
+            Title = entity.Title;
+            Type = entity.Type;
         }
     }
 }

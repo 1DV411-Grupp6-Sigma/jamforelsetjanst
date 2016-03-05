@@ -15,7 +15,7 @@ namespace TownComparisons.MVC.ViewModels.Admin
 
         public string Title { get; set; } // name/title of the query
        
-        public List<PropertyQueryViewModel> Queries { get; set; }
+        public List<PropertyQueryInfoViewModel> Queries { get; set; }
 
         public bool AnyQueriesToUse { get; set; }
 
@@ -29,7 +29,7 @@ namespace TownComparisons.MVC.ViewModels.Admin
             WebServiceName = model.WebServiceName;
             QueryGroupId = model.QueryGroupId;
             Title = model.Title;
-            Queries = model.Queries.Select(q => new PropertyQueryViewModel(q)).ToList();
+            Queries = model.Queries.Select(q => new PropertyQueryInfoViewModel(q)).ToList();
         }
     }
 }
