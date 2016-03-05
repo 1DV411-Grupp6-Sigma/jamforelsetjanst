@@ -1,0 +1,17 @@
+﻿<div class="mapBoxView">
+    <div>
+        <img class="mapBoxImage" src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Lmspic.png" />
+    </div>
+    <div class="mapBoxContent">
+        <h4><a href="" ng-click="$root.windowClicked(parameter.OrganisationalUnitId)">{{parameter.Name}}</a></h4>
+    </div>
+    <div class="mapBoxContent">
+        <strong>Adress: </strong>{{ parameter.Address }}<br />
+        <strong>Telefon: </strong>{{ parameter.Telephone }}
+    </div>
+    <div class="{{ parameter.class }}">
+        <a href="" ng-click="$root.toggleOperators(parameter)">
+            <i class="{{ parameter.icon }}"></i>{{ parameter.text}}
+        </a>
+    </div>
+</div>

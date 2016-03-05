@@ -13,13 +13,15 @@
     
     var initialize = function () {
         categoryService.getCategory($routeParams.categoryId, afterCategoryLoaded);
+        $scope.sortOrder = $scope.sortAsc;
         $scope.sortOuByName();
-        $scope.showMe();
+        $scope.showDetailed();
         $scope.detailedClass = "unavailable";
         $scope.getClientPosition();
     }
 
-    $scope.showMe = function () {
+    // Shows Detailed view.
+    $scope.showDetailed = function () {
         $scope.detailed = true;
         $scope.simple = false;
         $scope.map = false;
@@ -27,7 +29,9 @@
         $scope.simpleClass = "";
         $scope.mapClass = "";
     }
-    $scope.hideMe = function () {
+
+    // Shows Simple view.
+    $scope.showSimple = function () {
         $scope.detailed = false;
         $scope.simple = true;
         $scope.map = false;
@@ -35,6 +39,8 @@
         $scope.detailedClass = "";
         $scope.mapClass = "";
     }
+
+    // Shows Map view.
     $scope.showMap = function () {
         $scope.detailed = false;
         $scope.simple = false;
@@ -42,30 +48,32 @@
         $scope.detailedClass = "";
         $scope.simpleClass = "";
         $scope.mapClass = "unavailable";
-
         $scope.mapOperators();
     }
 
+    // Gives the maps its start position.
     $scope.mapOperators = function () {
-        $scope.mapBox = {
-            center: {
-                latitude: 56.662207,
-                longitude: 16.327105
-            },
-            zoom: 8
-        };
+        if ($scope.posLat != undefined && $scope.posLng != undefined) {
+            $scope.mapBox = {
+                center: {
+                    latitude: $scope.posLat,
+                    longitude: $scope.posLng
+                },
+                zoom: 6,
+                bounds: {}
+            };
+        }
+        else {
+            $scope.mapBox = {
+                center: {
+                    latitude: 56.660693,
+                    longitude: 16.342839
+                },
+                zoom: 6,
+                bounds: {}
+            };
+        }
 
-        $scope.marker = {
-            id: 0,
-            coords: {
-                latitude: 56.673646,
-                longitude: 16.357482
-            },
-            options: { draggable: false },
-            events: {
-                
-            }
-        };
     }
 
     //runned after category has been loaded
@@ -95,6 +103,10 @@
         viewModelHelper.navigateTo('category/' + $routeParams.categoryId + '/operator/' + ouId);
     }
 
+    // Shows OU:s inside a Map box.
+    $scope.$root.windowClicked = function (ouId) {
+        viewModelHelper.navigateTo('category/' + $routeParams.categoryId + '/operator/' + ouId);
+    }
     
     //List with selected OU's
     $rootScope.listItems = collectorFactory.listOfSubjects;
@@ -166,6 +178,25 @@
         }
     }
 
+    // Sorts the Organisational Units by Name (Desc/Asc).
+    $rootScope.sortOuByName = function () {
+
+        $scope.clearSortOuBy();
+
+        $scope.visibleName = '';
+        $scope.sortOrder = $scope.sortAsc;
+        $scope.activeName = $scope.classActive;
+
+        if ($scope.sortBy == $scope.sortByName) {
+            $scope.sortBy = '-' + $scope.sortByName;
+            $scope.sortOrder = $scope.sortDesc;
+        }
+        else {
+            $scope.sortBy = $scope.sortByName;
+            $scope.sortOrder = $scope.sortAsc;
+        }
+    }
+
     // Sorts the Organisational Units by Address (Desc/Asc).
     $rootScope.sortOuByAddress = function () {
         $scope.clearSortOuBy();
@@ -191,7 +222,6 @@
         $scope.sortOrder = $scope.sortAsc;
         $scope.activeDistance = $scope.classActive;
         $scope.sortBy = $scope.getDistanceBetweenPositions;
-        $scope.sortOrder = $scope.sortAsc;
     }
 
     $rootScope.clearSortOuBy = function () {
