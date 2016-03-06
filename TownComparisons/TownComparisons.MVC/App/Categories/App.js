@@ -61,11 +61,15 @@ categoryModule.factory('categoryService', function ($rootScope, $http, $q, $loca
 
 
 //Factory for global functions on categoryModule
-categoryModule.factory('categoriesFactory', function (viewModelHelper) {
+categoryModule.factory('categoriesFactory', function (viewModelHelper, collectorFactory) {
     var factory = {};
 
     //Show all organisational units inside a category
     factory.showCategory = function (category) {
+        //Delete list when changing category
+        if (collectorFactory.selectedCategory() != category.Id) {
+            collectorFactory.deleteAllSubjects();
+        }
         viewModelHelper.navigateTo('category/' + category.Id);
     }
 
