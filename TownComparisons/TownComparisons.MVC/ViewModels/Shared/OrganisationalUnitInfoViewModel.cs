@@ -19,6 +19,11 @@ namespace TownComparisons.MVC.ViewModels.Shared
         [Required]
         public string OrganisationalUnitId { get; set; }
 
+        [Required]
+        public int CategoryID { get; set; }
+        
+        public string CategoryName { get; set; }
+
         [Required(ErrorMessage = "Namnet måste fyllas i.")]
         [MaxLength(100, ErrorMessage = "Namnet kan inte vara längre än {1} tecken.")]
         [MinLength(3, ErrorMessage = "Namnet måste vara minst {1} tecken.")]
@@ -66,11 +71,46 @@ namespace TownComparisons.MVC.ViewModels.Shared
         public OrganisationalUnitInfoViewModel(OrganisationalUnitInfo entity)
         {
             Id = entity.Id;
+
+            if (entity.Category != null)
+            {
+                CategoryID = entity.Category.Id;
+                CategoryName = entity.Category.Name;
+            }
+            
             OrganisationalUnitId = entity.OrganisationalUnitId;
             Name = entity.Name;
             ShortDescription = entity.ShortDescription;
             LongDescription = entity.LongDescription;
-            if(entity.ImagePath != "")
+
+            if (entity.Category != null && (entity.ImagePath == ""))
+            {
+                if (entity.Category.Name == "Grundskola")
+                {
+                    ImagePath = "grund.jpg";
+                }
+                else if (entity.Category.Name == "Förskola")
+                {
+                    ImagePath = "dagis.jpg";
+                }
+                else if (entity.Category.Name == "Gymnasieskola")
+                {
+                    ImagePath = "gymnasieskola.jpg";
+                }
+                else if (entity.Category.Name == "Sjukhus")
+                {
+                    ImagePath = "sjukhus.jpg";
+                }
+                else if (entity.Category.Name == "Äldreboende")
+                {
+                    ImagePath = "elderly.jpg";
+                }
+                else if (entity.Category.Name == "Vårdcentral")
+                {
+                    ImagePath = "vardcentral.jpg";
+                }
+            }
+            else if (entity.ImagePath != "")
             {
                 ImagePath = entity.ImagePath;
             }
