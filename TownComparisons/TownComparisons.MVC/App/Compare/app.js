@@ -7,6 +7,7 @@
 var collector = angular.module('collector', []);
 
 collector.factory('collectorFactory', ['$cookies', '$routeParams', function ($cookies, $routeParams) {
+
     var factory = {};
     //Name of cookie
     var savedList = "savedList";
@@ -15,6 +16,14 @@ collector.factory('collectorFactory', ['$cookies', '$routeParams', function ($co
 
     //List that contains all selected subjects
     factory.listOfSubjects = $cookies.getObject(savedList) || [];
+    
+    factory.selectedCategory = function() {
+        if (factory.listOfSubjects != null && factory.listOfSubjects.length > 0) {
+            return factory.listOfSubjects[0].Category;
+        } else {
+            return null;
+        }
+    };
 
     //Add a subject to list
     factory.addSubject = function (subject) {
@@ -22,6 +31,7 @@ collector.factory('collectorFactory', ['$cookies', '$routeParams', function ($co
             OrganisationalUnitId: subject.OrganisationalUnitId,
             Name: subject.Name,
             Other: subject.Other,
+            Category: $routeParams.categoryId,
             Url: 'category/' + $routeParams.categoryId + "/operator/" + subject.OrganisationalUnitId
         };
         console.log($routeParams.categoryId);
