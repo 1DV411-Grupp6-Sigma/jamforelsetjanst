@@ -73,7 +73,6 @@
                 bounds: {}
             };
         }
-
     }
 
     //runned after category has been loaded
@@ -101,6 +100,11 @@
     //Show OU:s inside a category
     $scope.showOperator = function (ouId) {
         viewModelHelper.navigateTo('category/' + $routeParams.categoryId + '/operator/' + ouId);
+    }
+
+    //Show OU:s inside a category
+    $scope.showOperatorMap = function (ouId) {
+        viewModelHelper.navigateTo('category/' + $routeParams.categoryId + '/operator/' + ouId + '/map');
     }
 
     // Shows OU:s inside a Map box.

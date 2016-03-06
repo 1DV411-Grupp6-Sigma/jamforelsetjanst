@@ -220,6 +220,7 @@
     <Content Include="App\Category\ViewModels\CompareViewModel.js" />
     <Content Include="App\Category\ViewModels\RootViewModel.js" />
     <Content Include="App\Category\Views\CategoryView.html" />
+    <Content Include="App\Category\Views\OperatorMapView.html" />
     <Content Include="App\Category\Views\OperatorView.html" />
     <Content Include="App\Category\Views\CompareView.html" />
     <Content Include="App\Category\ViewModels\CategoryViewModel.js" />

@@ -6436,7 +6436,7 @@ body {
 .angular-google-map-container { height: 400px; }
 
 .percentageBox {
-    width:102px;
+    width:80px;
     height:10px;
     border: 1px solid silver;
     box-shadow: 1px 1px 1px #cfcfcf;
