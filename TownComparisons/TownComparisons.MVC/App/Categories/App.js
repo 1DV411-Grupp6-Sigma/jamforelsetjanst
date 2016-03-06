@@ -9,18 +9,24 @@ var categoryModule = angular.module('category', ['common', 'uiGmapgoogle-maps'])
             })
             //Default is detailed list
             .when('/category/:categoryId', {
-                     templateUrl: '/App/Category/Views/CategoryView.html', controller: 'categoryViewModel'
+                templateUrl: '/App/Category/Views/CategoryView.html',
+                controller: 'categoryViewModel'
                 })
             .when('/category/:categoryId/compare', {
-                     templateUrl: '/App/Category/Views/CompareView.html',
-                     controller: 'compareViewModel'
-                })
+                templateUrl: '/App/Category/Views/CompareView.html',
+                controller: 'compareViewModel'
+            })
             .when('/category/:categoryId/operator/:operatorId', {
-                     templateUrl: '/App/Category/Views/OperatorView.html', controller: 'operatorViewModel'
+                templateUrl: '/App/Category/Views/OperatorView.html',
+                controller: 'operatorViewModel'
             })
             .when('/category/:categoryId/map', {
                 templateUrl: '/App/Category/Views/MapView.html',
                 controller: 'mapViewModel'
+            })
+            .when('/category/:categoryId/operator/:operatorId/map', {
+                templateUrl: '/App/Category/Views/OperatorMapView.html',
+                controller: 'operatorViewModel'
             })
             .otherwise({ redirectTo: '/categories' });
         $locationProvider.html5Mode({
