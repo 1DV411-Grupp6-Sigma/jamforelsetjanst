@@ -15,6 +15,7 @@ namespace TownComparisons.Domain.DAL
         private TownComparisonsContext _context = new TownComparisonsContext();
         
         private IRepository<OrganisationalUnitInfo> _organisationalUnitInfoRepository;
+        private IRepository<PropertyQueryInfo> _propertyQueryInfoRepository;
         private IRepository<GroupCategory> _groupCategoriesRepository;
         private IRepository<Category> _categoriesRepository;
 
@@ -24,6 +25,13 @@ namespace TownComparisons.Domain.DAL
             get
             {
                 return _organisationalUnitInfoRepository ?? (_organisationalUnitInfoRepository = new Repository<OrganisationalUnitInfo>(_context));
+            }
+        }
+        public IRepository<PropertyQueryInfo> PropertyQueryInfoRepository
+        {
+            get
+            {
+                return _propertyQueryInfoRepository ?? (_propertyQueryInfoRepository = new Repository<PropertyQueryInfo>(_context));
             }
         }
         /*public IRepository<Settings> SettingsRepository

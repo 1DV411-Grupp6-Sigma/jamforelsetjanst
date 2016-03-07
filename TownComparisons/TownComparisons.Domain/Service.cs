@@ -195,6 +195,13 @@ namespace TownComparisons.Domain
             return returnValue;
         }
 
+        public PropertyQueryInfo GetPropertyQueryInfo(int categoryId, string queryId)
+        {
+            var returnValue = _unitOfWork.PropertyQueryInfoRepository.Get(o => o.QueryId == queryId && o.Category.Id == categoryId).FirstOrDefault();
+            
+            return returnValue;
+        }
+
         public List<OrganisationalUnitInfo> GetOrganisationalUnitsInfo(string operatorsList)
         {
             List<OrganisationalUnitInfo> oui = new List<OrganisationalUnitInfo>();
@@ -210,9 +217,29 @@ namespace TownComparisons.Domain
 
         public bool UpdateOrganisationalUnitInfo(OrganisationalUnitInfo ou)
         {
-            _unitOfWork.OrganisationalUnitInfoRepository.Update(ou);
-            _unitOfWork.Save();
-            return true;
+            try
+            {
+                _unitOfWork.OrganisationalUnitInfoRepository.Update(ou);
+                _unitOfWork.Save();
+                return true;
+            }
+            catch { }
+
+            return false;
+        }
+
+
+        public bool UpdatePropertyQueryInfo(PropertyQueryInfo propertyQuery)
+        {
+            try
+            {
+                _unitOfWork.PropertyQueryInfoRepository.Update(propertyQuery);
+                _unitOfWork.Save();
+                return true;
+            }
+            catch { }
+
+            return false;
         }
 
         #endregion

@@ -112,12 +112,10 @@
                         <dd class="{{ queriesStateFilter == 'Unchosen' ? 'active' : '' }}"><a href="" ng-click="setQueriesStateFilter('Unchosen')">Ej valda</a></dd>
                     </dl>
 
-                    <!-- <h5>Filtrera</h5> -->
-
                     <div class="row">
                         <div class="large-6 columns">
                             <label>
-                                Grupper (söker i både grupptitel och frågetitlar):
+                                Generell (söker i både grupptitel och frågetitlar):
                                 <input type="text" name="searchQueryAll" ng-model="searchQueryAll" />
                             </label>
                         </div>
@@ -128,25 +126,16 @@
                             </label>
                         </div>
                     </div>
-                    <!--
-                    <div class="row">
-                        <div class="large-6 columns">
-                            <input type="checkbox" name="searchUsed" ng-model="searchUsed"><label for="searchUsed">Visa endast valda</label>
-                        </div>
-                    </div>
-                        -->
 
                     <hr />
 
-                    <div>
+
+                    <div class="group-categories">
                         <accordion close-others="oneAtATime" ng-repeat="qg in category.AllPropertyQueryGroups | filter:searchForGroup">
                             <accordion-group heading="Grupp: {{ qg.Title }}" is-open="{{ qg.AnyQueriesToUse }}">
                                 <div class="row" ng-repeat="q in qg.Queries | filter:searchForQuery">
-                                    <div class="row">
-                                        <div class="large-12 columns">
-                                            <label><input type="checkbox" ng-model="q.Use"> {{ q.Title }}</label>
-                                            <input ng-show="q.Use" type="text" ng-model="q.Title" placeholder="Välj titel för denna information (lämna tom för att använda standard)" title="Välj titel för denna information (lämna tom för att använda standard)" />
-                                        </div>
+                                    <div class="large-12 columns">
+                                        <label><input type="checkbox" ng-model="q.Use"> {{ q.Title }}</label>
                                     </div>
                                 </div>
                             </accordion-group>

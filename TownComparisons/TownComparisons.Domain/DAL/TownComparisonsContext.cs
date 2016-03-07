@@ -13,6 +13,7 @@ namespace TownComparisons.Domain.DAL
     public class TownComparisonsContext : DbContext, ITownComparisonsContext
     {
         public IDbSet<OrganisationalUnitInfo> OrganisationalUnitInfos { get; set; }
+        public IDbSet<PropertyQueryInfo> PropertyQueryInfos { get; set; }
         public IDbSet<GroupCategory> GroupCategories { get; set; }
         public IDbSet<Category> Categories { get; set; }
 

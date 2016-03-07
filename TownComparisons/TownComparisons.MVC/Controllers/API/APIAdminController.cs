@@ -48,6 +48,21 @@ namespace TownComparisons.MVC.Controllers.API
             return new HttpResponseMessage(HttpStatusCode.NotFound);
         }
         
+        [HttpGet]
+        [Route("admin/category/{categoryId}/query/{queryId}")]
+        public HttpResponseMessage GetCategoryQuery(HttpRequestMessage request, int categoryId, string queryId)
+        {
+            PropertyQueryInfo query = _service.GetPropertyQueryInfo(categoryId, queryId);
+            if (query != null)
+            {
+                ViewModels.Admin.PropertyQueryInfoViewModel model = new ViewModels.Admin.PropertyQueryInfoViewModel(new ViewModels.Shared.PropertyQueryInfoViewModel(query));
+                return request.CreateResponse<ViewModels.Admin.PropertyQueryInfoViewModel>(HttpStatusCode.OK, model);
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.NotFound);
+        }
+
+
         [HttpPost]
         [Route("admin/category/{categoryId}")]
         [ValidateModel] //this will handle validation (and return with errors) before method is run
@@ -154,6 +169,25 @@ namespace TownComparisons.MVC.Controllers.API
                 //transfer info from view model to existing entity
                 organisationalUnit.TransferToEntity(ou);
                 _service.UpdateOrganisationalUnitInfo(ou);
+
+                return new HttpResponseMessage(HttpStatusCode.OK);
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.BadRequest);
+        }
+
+
+        [HttpPost]
+        [Route("admin/category/{categoryId}/query/{queryId}")]
+        [ValidateModel] //this will handle validation (and return with any errors) before method is run
+        public HttpResponseMessage SavePropertyQuery(HttpRequestMessage request, int categoryId, string queryId, [FromBody]ViewModels.Shared.PropertyQueryInfoViewModel propertyQuery)
+        {
+            PropertyQueryInfo query = _service.GetPropertyQueryInfo(categoryId, queryId);
+            if (query != null)
+            {
+                //transfer info from view model to existing entity
+                propertyQuery.TransferToEntity(query);
+                _service.UpdatePropertyQueryInfo(query);
 
                 return new HttpResponseMessage(HttpStatusCode.OK);
             }

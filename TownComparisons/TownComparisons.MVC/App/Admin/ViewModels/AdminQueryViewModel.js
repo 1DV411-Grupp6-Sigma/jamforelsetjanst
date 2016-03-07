@@ -1,44 +1,33 @@
-﻿adminModule.controller("adminOperatorViewModel", function ($scope, adminService, $http, $q, $routeParams, $window, $location, viewModelHelper, Upload, $modalInstance) {
+﻿adminModule.controller("adminQueryViewModel", function ($scope, adminService, $http, $q, $routeParams, $window, $location, viewModelHelper, Upload, $modalInstance) {
 
     //$scope.viewModelHelper = viewModelHelper;
     //$scope.adminService = adminService;
 
     $scope.categoryId = $routeParams.categoryId;
-    $scope.operatorId = adminService.selectedOperatorId;
+    $scope.queryId = adminService.selectedQueryId;
     $scope.validationErrors = [];
     $scope.knownValidationErrors = [];
     $scope.closeValidationAlert = false;
 
-    $scope.objectFields = [{ field: 'Name', title: 'Namn', textarea: false },
-                            { field: 'ShortDescription', title: 'Kort beskrivning', textarea: true },
-                            { field: 'LongDescription', title: 'Längre beskrivning', textarea: true },
-                            { field: 'Address', title: 'Adress', textarea: false },
-                            { field: 'Contact', title: 'Kontakt', textarea: false },
-                            { field: 'Telephone', title: 'Telefon', textarea: false },
-                            { field: 'Email', title: 'E-post', textarea: false },
-                            { field: 'Website', title: 'Webbsida', textarea: false },
-                            { field: 'OrganisationalForm', title: 'Organisations-form', textarea: false },
-                            { field: 'Other', title: 'Övrigt', textarea: true }];
-
     var initialize = function () {
-        refreshOperator();
+        refreshQuery();
     }
 
-    var refreshOperator = function () {
-        viewModelHelper.apiGet('api/category/' + $scope.categoryId + '/operator/' + $scope.operatorId, null,
+    var refreshQuery = function () {
+        viewModelHelper.apiGet('api/admin/category/' + $scope.categoryId + '/query/' + $scope.queryId, null,
             function (result) {
-                $scope.operator = result.data;
-                $scope.operatorName = angular.copy($scope.operator.Name); //to use without data binding to the category
-                $scope.pageHeading = $scope.operatorName;
+                $scope.query = result.data;
+                $scope.queryName = angular.copy($scope.query.Title); //to use without data binding to the category
+                $scope.pageHeading = $scope.queryName;
             });
     }
 
-    $scope.saveOperator = function () {
+    $scope.saveQuery = function () {
 
-        viewModelHelper.apiPost('api/admin/category/' + $scope.categoryId + '/operator/' + $scope.operatorId, $scope.operator,
+        viewModelHelper.apiPost('api/admin/category/' + $scope.categoryId + '/query/' + $scope.queryId, $scope.query,
             function (result) {
                 //success, close modal
-                $modalInstance.close($scope.operator);
+                $modalInstance.close($scope.query);
             },
             function (errors) {
                 //failure
@@ -46,22 +35,7 @@
             });
     }
 
-    $scope.saveOperatorImage = function (imageFile) {
-
-        $scope.upload = Upload.upload({
-            url: MyApp.rootPath + 'api/admin/category/' + $scope.categoryId + '/operator/' + $scope.operatorId + '/image', // webapi url
-            method: "POST",
-            file: imageFile
-        }).success(function (data, status, headers, config) {
-            // file is uploaded successfully
-            $scope.operator = data;
-        }).error(function (data, status, headers, config) {
-            // file failed to upload
-            $scope.validationErrors.push({ name: '', message: 'Kunde inte spara bilden.' });
-        });
-    }
-
-    $scope.cancelEditOperator = function () {
+    $scope.cancelEditQuery = function () {
         //close (cancel) modal
         $modalInstance.dismiss('cancel');
     }

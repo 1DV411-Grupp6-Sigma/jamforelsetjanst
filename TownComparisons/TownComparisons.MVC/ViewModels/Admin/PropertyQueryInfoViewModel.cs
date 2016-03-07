@@ -13,6 +13,20 @@ namespace TownComparisons.MVC.ViewModels.Admin
 
         //.. more properties from Shared.PropertyQueryViewModel
         
+        public List<string> AllTypes
+        {
+            get
+            {
+                return new List<string>()
+                {
+                    PropertyQuery.TYPE_PERCENT,
+                    PropertyQuery.TYPE_YESNO,
+
+                    //"Standard"
+                };
+            }
+        }
+
 
         public PropertyQueryInfoViewModel()
         {
