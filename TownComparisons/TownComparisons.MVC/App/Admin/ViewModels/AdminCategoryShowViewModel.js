@@ -16,33 +16,35 @@
 
     $scope.openOperatorEditor = function (operatorId) {
 
-        console.log('opening modal');
         adminService.selectedOperatorId = operatorId;
 
         var modalInstance = $modal.open({
-            templateUrl: '/App/Admin/Views/AdminOperatorView.html', // myModalContent.html',
+            templateUrl: '/App/Admin/Views/AdminOperatorView.html',
             controller: 'adminOperatorViewModel',
             scope: $scope
-            /* resolve: {
-                items: function () {
-                    return $scope.items;
-                }
-            } */
         });
 
         modalInstance.result.then(function (operator) {
             //refresh page
             $window.location.href = $window.location.href;
-            /*
-            //replace current operator with new (didn't work)
-            for (var i = 0; i < $scope.category.Category.OrganisationalUnits.length; i++) {
-                if ($scope.category.Category.OrganisationalUnits[i].OrganisationalUnitId == operator.OrganisationalUnitId) {
-                    $scope.category.Category.OrganisationalUnits[i] == operator;
-                    console.log('found it!');
-                    break;
-                }
-            }
-            */
+        }, function () {
+            //modal cancelled, do something here?
+        });
+    };
+
+    $scope.openQueryEditor = function (queryId) {
+
+        adminService.selectedQueryId = queryId;
+
+        var modalInstance = $modal.open({
+            templateUrl: '/App/Admin/Views/AdminQueryView.html',
+            controller: 'adminQueryViewModel',
+            scope: $scope
+        });
+
+        modalInstance.result.then(function (query) {
+            //refresh page
+            $window.location.href = $window.location.href;
         }, function () {
             //modal cancelled, do something here?
         });

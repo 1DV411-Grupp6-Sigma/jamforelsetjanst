@@ -1,15 +1,6 @@
-﻿<!--
-<ul class="breadcrumbs">
-    <li><a href="/admin">Admin</a></li>
-    <li><a href="/admin/categories">Kategorier</a></li>
-    <li><a href="/admin/category/{{ categoryId }}">{{ category.Name }}</a></li>
-    <li class="current">{{ operatorName }}</li>
-</ul>
-    -->
-
-
-<h2>Ändra aktör</h2>
-<h3>{{ operatorName }}</h3>
+﻿
+<h2>Ändra egenskap</h2>
+<h3>{{ queryName }}</h3>
 
 
 <alert close="closeValidationAlert=true" class="danger" ng-show="!closeValidationAlert && (validationErrors.length > 0 || knownValidationErrors.length > 0)">
@@ -23,36 +14,38 @@
 <form novalidate>
 
     <div>
-        <label>Bild:</label>
-        <img src="/uploads/operator_images/{{ operator.ImagePath }}" ng-show="operator.ImagePath != null && operator.ImagePath != ''"
-             width="200" />
-    </div>
-    <div class="tiny button" ngf-select="saveOperatorImage($file)" ngf-pattern="'image/*'"
-        ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100">
-        <i class="fi-upload"></i>
-        Ladda upp ny bild
-        <small class="error" ng-show="hasValidationError('organisationalUnit.ImagePath')">{{ getValidationErrorMessage('organisationalUnit.ImagePath') }}</small>
-    </div>
-
-
-    <div ng-repeat="objectField in objectFields">
+        <div ng-show="query.Title != query.OriginalTitle">
+            <label>
+                Original-titel:
+                <span title="Den ursprungliga titeln från datakällan">{{ query.OriginalTitle }}</span>
+            </label>
+        </div>
         <label>
-            {{ objectField.title }}:
-            <ng-switch on="objectField.textarea">
-
-                <textarea ng-switch-when="true" ng-model="operator[objectField.field]" class="{{ hasValidationError('organisationalUnit.' + objectField.field) ? 'error' : '' }}"></textarea>
-
-                <input ng-switch-when="false" type="text" ng-model="operator[objectField.field]" class="{{ hasValidationError('organisationalUnit.' + objectField.field) ? 'error' : '' }}" />
-
-            </ng-switch>
+            Titel:
+            <input type="text" ng-model="query.Title" class="{{ hasValidationError('query.Title') ? 'error' : '' }}" required />
         </label>
-        <small class="error" ng-show="hasValidationError('organisationalUnit.' + objectField.field)">{{ getValidationErrorMessage('organisationalUnit.' + objectField.field) }}</small>
-    </div>
+        <small class="error" ng-show="hasValidationError('query.Title')">{{ getValidationErrorMessage('query.Title') }}</small>
         
-
+    </div>
 
     <div>
-        <input type="button" name="save" ng-click="saveOperator()" value="Spara ändringar" class="button success" />
+        <label>
+            Typ:
+            <select ng-options="o as o for o in query.AllTypes" ng-model="query.Type" class="{{ hasValidationError('query.Type') ? 'error' : '' }}" ></select>
+        </label>
+        <small class="error" ng-show="hasValidationError('query.Type')">{{ getValidationErrorMessage('query.Type') }}</small>
+    </div>
+
+    <div>
+        <label>
+            Period:
+            <input type="text" ng-model="query.Period" class="{{ hasValidationError('query.Period') ? 'error' : '' }}" />
+        </label>
+        <small class="error" ng-show="hasValidationError('query.Period')">{{ getValidationErrorMessage('query.Period') }}</small>
+    </div>
+
+    <div>
+        <input type="button" name="save" ng-click="saveQuery()" value="Spara ändringar" class="button success" />
     </div>
 
     <div ng-show="!cancel">
@@ -60,10 +53,7 @@
     </div>
     <div ng-show="cancel">
         <label>Avbryta utan att spara?</label>
-        <button class="tiny button default" ng-click="cancelEditOperator()">Ja</button>
-        <!--
-        <input type="button" name="cancel" ng-click="cancelEditOperator()" value="Ja" class="tiny button default" />
-            -->
+        <button class="tiny button default" ng-click="cancelEditQuery()">Ja</button>
         <input type="button" name="cancel" ng-click="cancel = false" value="X" class="tiny button secondary" />
     </div>
 

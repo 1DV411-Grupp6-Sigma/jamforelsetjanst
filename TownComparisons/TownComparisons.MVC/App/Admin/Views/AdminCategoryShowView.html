@@ -45,8 +45,8 @@
             Egenskaper
         </h3>
         <ul>
-            <li ng-repeat="o in category.Category.Queries">
-                {{ o.Title }}
+            <li ng-repeat="q in category.Category.Queries">
+                <a ng-click="openQueryEditor(q.QueryId)">{{ q.Title }}</a>
             </li>
         </ul>
         <button ng-click="gotoEdit('queries')" class="tiny button">Välj egenskaper <i class="fi-pencil"></i></button>

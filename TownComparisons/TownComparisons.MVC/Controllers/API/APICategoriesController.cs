@@ -84,8 +84,7 @@ namespace TownComparisons.MVC.Controllers.API
 
             return new HttpResponseMessage(HttpStatusCode.NotFound);
         }
-
-
+        
         [HttpGet]
         [Route("category/{categoryId}/operator/{organisationalUnitId}")]
         public HttpResponseMessage GetCategoryOperator(HttpRequestMessage request, int categoryId, string organisationalUnitId)

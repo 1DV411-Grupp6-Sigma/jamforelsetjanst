@@ -30,8 +30,12 @@ namespace TownComparisons.Domain.Abstract
         List<OrganisationalUnitInfo> GetOrganisationalUnitsInfo(string operatorsList);
 
         OrganisationalUnitInfo GetOrganisationalUnitInfo(int categoryId, string organisationalUnitId);
+        
+        PropertyQueryInfo GetPropertyQueryInfo(int categoryId, string queryId);
 
         bool UpdateOrganisationalUnitInfo(OrganisationalUnitInfo ou);
+
+        bool UpdatePropertyQueryInfo(PropertyQueryInfo propertyQuery);
 
     }
 }

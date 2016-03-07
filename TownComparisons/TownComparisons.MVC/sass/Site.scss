@@ -177,3 +177,8 @@ body{
 .reveal-modal-bg {
     position: fixed;
 }
+
+.group-categories > accordion > dl > dd {
+    /* margin-bottom: 20px; */
+    border-bottom: 1px solid #ddd;
+}

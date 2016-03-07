@@ -10,6 +10,7 @@ namespace TownComparisons.Domain.Models
     {
         public static readonly string TYPE_YESNO = "yesno";
         public static readonly string TYPE_PERCENT = "percent";
+        // if/when adding more TYPE's, also add to property AllTypes in TownComparisons.MVC.ViewModels.Admin.PropertyQueryInfoViewModel
 
 
         public string WebServiceName { get; set; }

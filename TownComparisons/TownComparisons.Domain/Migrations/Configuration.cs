@@ -8,7 +8,7 @@ namespace TownComparisons.Domain.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<TownComparisons.Domain.DAL.TownComparisonsContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<TownComparisons.Domain.DAL.TownComparisonsContext> 
     {
         public Configuration()
         {
@@ -24,46 +24,54 @@ namespace TownComparisons.Domain.Migrations
             
             #region CategoryStuff
 
+            //first delete any previous categories (including it's associations to property queries and organisational units)
             foreach(var groupCategory in context.GroupCategories)
             {
                 context.GroupCategories.Remove(groupCategory);
             }
+
 
             // Some queries for category
             PropertyQueryInfo query1 = new PropertyQueryInfo()
             {
                 WebServiceName = koladaWebServiceName,
                 QueryId = "N15030",
+                OriginalTitle = "Lärare med pedagogisk högskoleexamen i grundskola, lägeskommun, (%)",
                 Title = "Lärare med pedagogisk högskoleexamen i grundskola, lägeskommun, (%)"
             };
             PropertyQueryInfo query2 = new PropertyQueryInfo()
             {
                 WebServiceName = koladaWebServiceName,
                 QueryId = "N15033",
+                OriginalTitle = "Elever/lärare (årsarbetare) i grundskola, lägeskommun, antal",
                 Title = "Elever/lärare (årsarbetare) i grundskola, lägeskommun, antal"
             };
             PropertyQueryInfo query3 = new PropertyQueryInfo()
             {
                 WebServiceName = koladaWebServiceName,
                 QueryId = "N15406",
+                OriginalTitle = "Elever i åk. 9 som minst uppnått kunskapskraven för Godkänd i ämnesprovet i matematik, kommunala skolor, andel (%)",
                 Title = "Elever i åk. 9 som minst uppnått kunskapskraven för Godkänd i ämnesprovet i matematik, kommunala skolor, andel (%)"
             };
             PropertyQueryInfo query4 = new PropertyQueryInfo()
             {
                 WebServiceName = koladaWebServiceName,
                 QueryId = "N15807",
+                OriginalTitle = "Elever i grundskola belägen i kommunen, antal",
                 Title = "Elever i grundskola belägen i kommunen, antal"
             };
             PropertyQueryInfo query5 = new PropertyQueryInfo()
             {
                 WebServiceName = koladaWebServiceName,
                 QueryId = "N15403",
+                OriginalTitle = "Elever i åk. 9, meritvärde kommunala skolor, genomsnitt (16 ämnen)",
                 Title = "Elever i åk. 9, meritvärde kommunala skolor, genomsnitt (16 ämnen)"
             };
             PropertyQueryInfo query6 = new PropertyQueryInfo()
             {
                 WebServiceName = koladaWebServiceName,
                 QueryId = "N15422",
+                OriginalTitle = "Elever i åk. 9 som är behöriga till ekonomi-, humanistiska och samhällsvetenskapsprogrammet, lägeskommun, andel (%)",
                 Title = "Elever i åk. 9 som är behöriga till ekonomi-, humanistiska och samhällsvetenskapsprogrammet, lägeskommun, andel (%)"
             };
             //and some Organisational units for category
