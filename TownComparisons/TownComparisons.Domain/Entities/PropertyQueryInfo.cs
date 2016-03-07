@@ -14,9 +14,13 @@ namespace TownComparisons.Domain.Entities
 
         public string QueryId { get; set; } // this is the external ID from the web service (like Kolada)
 
-        public string Title { get; set; } // name/title of the query
+        public string OriginalTitle { get; set; } // (original) name/title of the query
+
+        public string Title { get; set; } // (custom) name/title of the query
         
         public string Type { get; set; }
+
+        public int? Period { get; set; } //which period (year) that should be used, default should be latest
 
 
         public virtual Category Category { get; set; }  // which category this is in

@@ -68,13 +68,6 @@ namespace TownComparisons.Domain.WebServices
             }
 
             return results;
-            /*
-            return kpiAnswers.Select(a => new PropertyResult(a.Kpi,
-                                                             a.Ou,
-                                                             a.Period,
-                                                             a.Values.Select(v => new PropertyResultValue(v.Gender, v.Status, v.Value)).ToList()))
-                            .ToList();
-            */
         }
 
         public override List<PropertyQueryGroup> GetAllPropertyQueries()

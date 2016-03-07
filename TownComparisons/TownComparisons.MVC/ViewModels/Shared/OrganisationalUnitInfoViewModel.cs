@@ -56,9 +56,9 @@ namespace TownComparisons.MVC.ViewModels.Shared
         [MaxLength(100, ErrorMessage = "Webbsida kan inte vara längre än {1} tecken.")]
         public string Website { get; set; }
         
-        public string Latitude { get; set; }
+        public double? Latitude { get; set; }
 
-        public string Longitude { get; set; }
+        public double? Longitude { get; set; }
 
         [MaxLength(50, ErrorMessage = "Övrigt kan inte vara längre än {1} tecken.")]
         public string Other { get; set; }

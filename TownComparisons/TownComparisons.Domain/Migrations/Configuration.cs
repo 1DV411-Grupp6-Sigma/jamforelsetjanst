@@ -80,8 +80,8 @@ namespace TownComparisons.Domain.Migrations
                 Email = "andreas.hjortenkrans@kalmar.se",
                 OrganisationalForm = "Kommunal",
                 Website = "http://www.kalmar.se/vasaskolan/",
-                Latitude = "56.660693 ",
-                Longitude = "16.342839",
+                Latitude = 56.660693,
+                Longitude = 16.342839,
                 Other = "Grundskola",
             };
             OrganisationalUnitInfo ou2 = new OrganisationalUnitInfo()
@@ -97,8 +97,8 @@ namespace TownComparisons.Domain.Migrations
                 Email = "per-ola.jacobson@kalmar.se",
                 OrganisationalForm = "Kommunal",
                 Website = "http://www.kalmar.se/falkenbergsskolan",
-                Latitude = "56.662207",
-                Longitude = "16.327105",
+                Latitude = 56.662207,
+                Longitude = 16.327105,
                 Other = "Grundskola",
             };
             OrganisationalUnitInfo ou3 = new OrganisationalUnitInfo()
@@ -114,8 +114,8 @@ namespace TownComparisons.Domain.Migrations
                 Email = "karin.berggren@kalmar.se",
                 OrganisationalForm = "Kommunal",
                 Website = "http://www.kalmar.se/lindoskolan",
-                Latitude = "56.673646",
-                Longitude = "16.357482",
+                Latitude = 56.673646,
+                Longitude = 16.357482,
                 Other = "Grundskola",
             };
             OrganisationalUnitInfo ou4 = new OrganisationalUnitInfo()
@@ -131,8 +131,8 @@ namespace TownComparisons.Domain.Migrations
                 Email = "maria.radway@stockholm.se",
                 OrganisationalForm = "Kommunal",
                 Website = "http://http://gardesskolan.stockholm.se/",
-                Latitude = "59.34019 ",
-                Longitude = "18.098517",
+                Latitude = 59.34019,
+                Longitude = 18.098517,
                 Other = "Grundskola",
             };
             OrganisationalUnitInfo ou5 = new OrganisationalUnitInfo()
@@ -148,8 +148,8 @@ namespace TownComparisons.Domain.Migrations
                 Email = "caroline.hedenbergh@vaxjo.se",
                 OrganisationalForm = "Kommunal",
                 Website = "http://www.vaxjo.se/fagrabackskolan",
-                Latitude = "56.881238",
-                Longitude = "14.830092",
+                Latitude = 56.881238,
+                Longitude = 14.830092,
                 Other = "Grundskola",
             };
 
