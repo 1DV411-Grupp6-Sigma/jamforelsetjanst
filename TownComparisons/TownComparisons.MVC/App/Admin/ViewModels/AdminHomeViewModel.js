@@ -9,5 +9,9 @@
 
     }
 
+    var removeCategory = function (categoryId) {
+
+    }
+
     initialize();
 });

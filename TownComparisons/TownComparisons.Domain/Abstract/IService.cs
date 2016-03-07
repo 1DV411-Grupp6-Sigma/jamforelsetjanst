@@ -23,8 +23,9 @@ namespace TownComparisons.Domain.Abstract
         List<GroupCategory> GetAllCategories();
         List<Category> GetAllCategoriesBasedOnAlphabet();
 
+        GroupCategory GetGroupCategory(int id);
         Category GetCategory(int id);
-
+        
         List<OrganisationalUnitInfo> GetOrganisationalUnitInfos();
 
         List<OrganisationalUnitInfo> GetOrganisationalUnitsInfo(string operatorsList);
@@ -34,8 +35,10 @@ namespace TownComparisons.Domain.Abstract
         PropertyQueryInfo GetPropertyQueryInfo(int categoryId, string queryId);
 
         bool UpdateOrganisationalUnitInfo(OrganisationalUnitInfo ou);
-
         bool UpdatePropertyQueryInfo(PropertyQueryInfo propertyQuery);
+
+        bool DeleteGroupCategory(GroupCategory groupCategory);
+        bool DeleteCategory(Category category);
 
     }
 }

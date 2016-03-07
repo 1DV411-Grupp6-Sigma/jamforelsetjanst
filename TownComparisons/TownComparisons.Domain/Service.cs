@@ -157,6 +157,12 @@ namespace TownComparisons.Domain
 
         }
 
+        public GroupCategory GetGroupCategory(int id)
+        {
+            GroupCategory groupCategory = _unitOfWork.GroupCategoriesRepository.Get(c => c.Id == id, null, "Categories").FirstOrDefault();
+            return groupCategory;
+        }
+
         public Category GetCategory(int id)
         {
             Category category = _unitOfWork.CategoriesRepository.Get(c => c.Id == id, null, "GroupCategory, Queries, OrganisationalUnits").FirstOrDefault();
@@ -241,6 +247,31 @@ namespace TownComparisons.Domain
             try
             {
                 _unitOfWork.PropertyQueryInfoRepository.Update(propertyQuery);
+                _unitOfWork.Save();
+                return true;
+            }
+            catch { }
+
+            return false;
+        }
+
+        public bool DeleteGroupCategory(GroupCategory groupCategory)
+        {
+            try
+            {
+                _unitOfWork.GroupCategoriesRepository.Delete(groupCategory);
+                _unitOfWork.Save();
+                return true;
+            }
+            catch { }
+
+            return false;
+        }
+        public bool DeleteCategory(Category category)
+        {
+            try
+            {
+                _unitOfWork.CategoriesRepository.Delete(category);
                 _unitOfWork.Save();
                 return true;
             }
