@@ -13,7 +13,7 @@
                     </div>
                     <div class="row">
                         <div class="mapClass">
-                            <!--<a href="#" data-ng-click="#">-->Visa i kartan<!--</a>-->
+                            <a href="" ng-click="showOperatorMap(organisationalUnit.OrganisationalUnitId)">Karta</a>
                         </div>
                     </div>
                 </div>
@@ -30,7 +30,12 @@
                     </p>
                    
                     <div class="table-header small-4 columns">
-                       <img src="/Content/pictures/{{organisationalUnit.ImagePath}}" alt="Skolans bild" />
+                        <div ng-if="organisationalUnit.ImagePath != 'default.jpg' && organisationalUnit.ImagePath != 'dagis.jpg' && organisationalUnit.ImagePath != 'elderly.jpg' && organisationalUnit.ImagePath != 'grund.jpg' && organisationalUnit.ImagePath != 'sjukhus.jpg' && organisationalUnit.ImagePath != 'vardcentral.jpg'">
+                            <img src="{{ organisationalUnit.ImagePath }}" alt="Skolans bild" />
+                        </div>
+                        <div ng-if="organisationalUnit.ImagePath == 'default.jpg' || organisationalUnit.ImagePath == 'dagis.jpg' || organisationalUnit.ImagePath == 'elderly.jpg' || organisationalUnit.ImagePath == 'grund.jpg' || organisationalUnit.ImagePath == 'sjukhus.jpg' || organisationalUnit.ImagePath == 'vardcentral.jpg'">
+                            <img src="/Content/pictures/{{ organisationalUnit.ImagePath }}" />
+                        </div>
                     </div>
                     <p class="input-group">
                         <span class="input-group-addon"></span>

@@ -6,11 +6,17 @@
         <tr>
             <td></td>
             <td ng-repeat="ou in organisationalUnitIdsToCompare">
-                <div class="orbit-bullets-container">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Lmspic.png" />
-                </div>
-                <div ng-repeat="ouInfo in compareOrganisationalUnits.OrganisationalUnits" class="orbit-bullets-container">
-                    <div ng-if="ou == ouInfo.OrganisationalUnitId">{{ ouInfo.Name }}</div>
+                <div ng-repeat="ouInfo in compareOrganisationalUnits.OrganisationalUnits" class="text-center">
+                    
+                    <div ng-if="ou == ouInfo.OrganisationalUnitId">
+                        <div ng-if="ouInfo.ImagePath != 'default.jpg'">
+                            <img src="{{ ouInfo.ImagePath }}" />
+                        </div>
+                        <div ng-if="ouInfo.ImagePath == 'default.jpg'">
+                            <img src="/Content/pictures/grund.jpg" />
+                        </div>
+                        {{ ouInfo.Name }}
+                    </div>
                 </div>
             </td>
         </tr>

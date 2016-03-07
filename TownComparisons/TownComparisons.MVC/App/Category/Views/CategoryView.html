@@ -50,11 +50,9 @@
                     </td>
                     <td>
                         <div class="{{ ou.class }}"><a href="" ng-click="toggleOperators(ou)"><i class="{{ ou.icon }}"></i>{{ ou.text}}</a></div>
-                        <div class="mapClass"><a href="#">Karta</a></div>
+                        <div class="mapClass"><a href="" ng-click="showOperatorMap(ou.OrganisationalUnitId)">Karta</a></div>
                     </td>
-
                 </tr>
-
             </tbody>
         </table>
     </div>
@@ -70,7 +68,12 @@
             </div>
             <div class="row">
                 <div class="small-2 columns">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Lmspic.png" />
+                    <div ng-if="ou.ImagePath != 'default.jpg' && ou.ImagePath != 'dagis.jpg' && ou.ImagePath != 'elderly.jpg' && ou.ImagePath != 'grund.jpg' && ou.ImagePath != 'sjukhus.jpg' && ou.ImagePath != 'vardcentral.jpg'">
+                        <img src="{{ ou.ImagePath }}" />
+                    </div>
+                    <div ng-if="ou.ImagePath == 'default.jpg' || ou.ImagePath == 'dagis.jpg' || ou.ImagePath == 'elderly.jpg' || ou.ImagePath == 'grund.jpg' || ou.ImagePath == 'sjukhus.jpg' || ou.ImagePath == 'vardcentral.jpg'">
+                        <img src="/Content/pictures/{{ ou.ImagePath }}" />
+                    </div>
                 </div>
                 <div class="small-7 columns">
                     <div>{{ ou.ShortDescription }}</div>
@@ -91,7 +94,7 @@
 
     <div data-ng-show="map">
         <div id="map_canvas">
-            <ui-gmap-google-map center="mapBox.center" zoom="mapBox.zoom" draggable="true">
+            <ui-gmap-google-map center="mapBox.center" zoom="mapBox.zoom" fit="true" draggable="true">
                 <ui-gmap-marker ng-repeat="m in category.OrganisationalUnits"
                                 coords="{ latitude: m.Latitude, longitude: m.Longitude }"
                                 idkey="m.OrganisationalUnitId">
