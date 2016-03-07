@@ -1,11 +1,33 @@
-﻿<ul>
+﻿<!--
+<ul>
     <li ng-repeat="g in groupCategories">
         {{ g.Name }}
         <ul>
-            <li ng-repeat="c in g.Categories">
-                <a href="/admin/category/{{ c.Id }}">{{ c.Name }}</a>
-                <a href="/admin/category/{{ c.Id }}/edit" class="tiny button"><i class="fi-pencil"></i></a>
+            <li ng-repeat="c in g.Categories" class="">
+                <div class="row">
+                    <div class="medium-4 columns">
+                        <a href="/admin/category/{{ c.Id }}">{{ c.Name }}</a>
+                    </div>
+                    <div class="medium-2 columns end">
+                        <a href="/admin/category/{{ c.Id }}/edit" class="tiny button"><i class="fi-pencil"></i></a>
+                    </div>
+                </div>
             </li>
         </ul>
     </li>
 </ul>
+-->
+<accordion close-others="oneAtATime" ng-repeat="g in groupCategories">
+    <accordion-group heading="{{ g.Name }}" is-open="true">
+        <div class="row" ng-repeat="c in g.Categories">
+            <div class="medium-8 columns">
+                <a href="/admin/category/{{ c.Id }}">{{ c.Name }}</a>
+            </div>
+            <div class="medium-3 columns">
+                <a href="/admin/category/{{ c.Id }}/edit" class="tiny button" title="Redigera kategori"><i class="fi-pencil"></i></a>
+
+                <a ng-click="removeCategory(c.Id)" class="tiny button alert" title="Ta bort kategori"><i class="fi-trash"></i></a>
+            </div>
+        </div>
+    </accordion-group>
+</accordion>

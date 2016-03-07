@@ -178,7 +178,15 @@ body{
     position: fixed;
 }
 
-.group-categories > accordion > dl > dd {
+accordion > dl > dd {
     /* margin-bottom: 20px; */
     border-bottom: 1px solid #ddd;
 }
+
+accordion > dl > dd > a:after {
+  content: "↡";
+  padding-left: 5px;
+  float: right;
+  font-size: 20px; }
+accordion > dl > dd > a.active:after {
+  content: "↟"; }

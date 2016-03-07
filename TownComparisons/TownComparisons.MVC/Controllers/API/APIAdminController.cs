@@ -100,6 +100,43 @@ namespace TownComparisons.MVC.Controllers.API
         }
 
 
+        [HttpDelete]
+        [Route("admin/groupcategory/{groupCategoryId}")]
+        public HttpResponseMessage DeleteGroupCategory(HttpRequestMessage request, int groupCategoryId)
+        {
+            GroupCategory groupCategory = _service.GetGroupCategory(groupCategoryId);
+            if (groupCategory != null)
+            {
+                if (_service.DeleteGroupCategory(groupCategory))
+                {
+                    return new HttpResponseMessage(HttpStatusCode.OK);
+                }
+
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError);
+            }
+            return new HttpResponseMessage(HttpStatusCode.NotFound);
+        }
+
+        [HttpDelete]
+        [Route("admin/category/{categoryId}")]
+        public HttpResponseMessage DeleteCategory(HttpRequestMessage request, int categoryId)
+        {
+            Category category = _service.GetCategory(categoryId);
+            if (category != null)
+            {
+                if (_service.DeleteCategory(category))
+                {
+                    return new HttpResponseMessage(HttpStatusCode.OK);
+                }
+
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError);
+            }
+            return new HttpResponseMessage(HttpStatusCode.NotFound);
+        }
+
+
+
+
         [HttpPost]
         [Route("admin/category/{categoryId}/operator/{organisationalUnitId}/image")]
         public HttpResponseMessage SaveOrganisationalUnitImage(HttpRequestMessage request, int categoryId, string organisationalUnitId) //, HttpPostedFileBase imageFile)
@@ -194,6 +231,8 @@ namespace TownComparisons.MVC.Controllers.API
 
             return new HttpResponseMessage(HttpStatusCode.BadRequest);
         }
+
+
 
     }
 }
