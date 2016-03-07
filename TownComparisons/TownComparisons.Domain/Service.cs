@@ -130,9 +130,16 @@ namespace TownComparisons.Domain
                 return (List<GroupCategory>)_cache.GetCache(cacheKey);
             }
 
-            var listOfAllCategories = _unitOfWork.GroupCategoriesRepository.Get(null, null, "Categories").ToList();
+            var listOfAllGroupCategories = _unitOfWork.GroupCategoriesRepository.Get(null, null, "Categories").ToList();
 
-            return listOfAllCategories;
+            var listofAllCategories = GetAllCategoriesBasedOnAlphabet();
+
+            foreach (Category cat in listofAllCategories)
+            {
+                listOfAllGroupCategories.Find(gc => gc.Id == cat.GroupCategory.Id).Categories.ToList().Find(ca => ca.Id == cat.Id).OrganisationalUnits = cat.OrganisationalUnits;
+            }
+
+            return listOfAllGroupCategories;
 
         }
 
