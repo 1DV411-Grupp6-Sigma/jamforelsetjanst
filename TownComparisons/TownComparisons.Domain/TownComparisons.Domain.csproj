@@ -83,6 +83,14 @@
     <Compile Include="Migrations\201603051321495_PropertyQueryInfoRenamed.Designer.cs">
       <DependentUpon>201603051321495_PropertyQueryInfoRenamed.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603071053518_ChangesToPropertyQueryInfoAndOrganisationalUnitInfo.cs" />
+    <Compile Include="Migrations\201603071053518_ChangesToPropertyQueryInfoAndOrganisationalUnitInfo.Designer.cs">
+      <DependentUpon>201603071053518_ChangesToPropertyQueryInfoAndOrganisationalUnitInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603071055199_NullablePeriodInPropertyQueryInfo.cs" />
+    <Compile Include="Migrations\201603071055199_NullablePeriodInPropertyQueryInfo.Designer.cs">
+      <DependentUpon>201603071055199_NullablePeriodInPropertyQueryInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\OrganisationalUnit.cs" />
     <Compile Include="Entities\PropertyQueryInfo.cs" />
@@ -127,6 +135,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603051321495_PropertyQueryInfoRenamed.resx">
       <DependentUpon>201603051321495_PropertyQueryInfoRenamed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603071053518_ChangesToPropertyQueryInfoAndOrganisationalUnitInfo.resx">
+      <DependentUpon>201603071053518_ChangesToPropertyQueryInfoAndOrganisationalUnitInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603071055199_NullablePeriodInPropertyQueryInfo.resx">
+      <DependentUpon>201603071055199_NullablePeriodInPropertyQueryInfo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -19,7 +19,7 @@ namespace TownComparisons.Domain.Models
         public string Title { get; set; } // name/title of the query
 
         public string Type { get; set; }
-
+        
 
         //Constructors
         public PropertyQuery()

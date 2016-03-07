@@ -22,6 +22,7 @@ namespace TownComparisons.MVC.ViewModels.Admin
         {
             WebServiceName = baseViewModel.WebServiceName;
             QueryId = baseViewModel.QueryId;
+            OriginalTitle = baseViewModel.OriginalTitle;
             Title = baseViewModel.Title;
             Type = baseViewModel.Type;
 
@@ -31,6 +32,7 @@ namespace TownComparisons.MVC.ViewModels.Admin
         {
             WebServiceName = model.WebServiceName;
             QueryId = model.QueryId;
+            OriginalTitle = model.Title;
             Title = model.Title;
             Type = model.Type;
 
