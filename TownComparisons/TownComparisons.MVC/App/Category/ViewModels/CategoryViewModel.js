@@ -53,26 +53,14 @@
 
     // Gives the maps its start position.
     $scope.mapOperators = function () {
-        if ($scope.posLat != undefined && $scope.posLng != undefined) {
-            $scope.mapBox = {
-                center: {
-                    latitude: $scope.posLat,
-                    longitude: $scope.posLng
-                },
-                zoom: 6,
-                bounds: {}
-            };
-        }
-        else {
-            $scope.mapBox = {
-                center: {
-                    latitude: 56.660693,
-                    longitude: 16.342839
-                },
-                zoom: 6,
-                bounds: {}
-            };
-        }
+        $scope.mapBox = {
+            center: {
+                latitude: 56.029394,
+                longitude: 14.156678
+            },
+            zoom: 10,
+            bounds: {}
+        };
     }
 
     //runned after category has been loaded
