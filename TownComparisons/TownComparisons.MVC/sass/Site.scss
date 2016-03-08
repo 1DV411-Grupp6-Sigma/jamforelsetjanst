@@ -28,11 +28,14 @@
     position: fixed;
     top: 100px;
     right: 75px;
-    border: 1px solid lightgray;
-    background-color:ivory;
-    border-radius: 3px;
-    padding-left: 0;
-    padding-right: 0;
+    //border: 1px solid lightgray;
+    background-color: #fff;
+    //border-radius: 5px;
+    /*padding-left: 0;
+    padding-right: 0;*/
+    padding: 20px;
+    box-shadow: 10px 10px 5px #c2c2a3;
+    margin-bottom: 20px;
     ul{
         margin:0;
         padding: 0;
@@ -41,6 +44,10 @@
         list-style: none;
         padding: 0;
     }
+    
+    
+    
+    
 }
 
 #comparelist-head{ 
@@ -123,14 +130,6 @@ button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[dis
 
 #search input[type="text"] {
     width: 200px;
-}
-
-.mapClass {
-    text-align: center;
-    width: 100px;
-    border: 1px solid #eee;
-    height: 30px;
-    margin-top: 3px;
 }
 
 body{
