@@ -12,29 +12,30 @@
 
 <div data-ng-app="category" id="category" data-ng-controller="rootViewModel">
     <div class="row">
-        <div class="small-8 columns" ng-view>
 
+        <div class="small-8 columns" data-ng-view>
         </div>
+
         <div class="small-3 columns end" id="compare" data-ng-show="listItems.length > 0">
             <div id="comparelist-head"></div>
             <div id="comparelist-body" class="line">
                 <ul data-ng-repeat="subject in listItems">
                     <li class="row">
-                        
-                            <h5 class="small-9 columns">
-                                <a data-ng-href="/{{subject.Url}}">{{subject.Name}}</a>
-                            </h5>
-                        
+
+                        <h5 class="small-9 columns">
+                            <a data-ng-href="/{{subject.Url}}">{{subject.Name}}</a>
+                        </h5>
+
                         <i class="fi-x pointer removeBtn small-2 columns end" data-ng-click="deleteOperator(subject)"></i>
                     </li>
                 </ul>
             </div>
             <div id="comparelist-footer" class="row">
-                
+
                 <button id="clear-listBtn" class="tiny button" data-ng-click="deleteAllOperators()">Rensa alla</button>
                 <button id="compareBtn" class="tiny button" data-ng-click="compare()" data-ng-disabled="listItems.length < 2">Jämför</button>
             </div>
         </div>
     </div>
-    
+
 </div>

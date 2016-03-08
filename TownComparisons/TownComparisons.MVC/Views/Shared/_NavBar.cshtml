@@ -1,5 +1,5 @@
 ﻿<nav class="top-bar" data-topbar role="navigation">
-    <ul class="title-area">
+    <ul class="title-area" >
         <li class="name">
             <h1>
                 <a href="@Url.Action("Index", "Angular")">Kommunal jämförelsetjänst</a>
@@ -10,27 +10,12 @@
     </ul>
 
     <section class="top-bar-section">
-        <!-- Right Nav Section -->
-        <!--
-        <ul class="right">
-            <li class="active"><a href="#">Right Button Active</a></li>
-            <li class="has-dropdown">
-                <a href="#">Right Button Dropdown</a>
-                <ul class="dropdown">
-                    <li><a href="#">First link in dropdown</a></li>
-                    <li class="active"><a href="#">Active link in dropdown</a></li>
-                </ul>
+        <ul class="left" role="navigation" aria-labelledby="leftnavheading">
+            <li id="li1">
+                <a href="@Url.Action("Index", "Admin")" aria-describedby="li1">Admin</a>
             </li>
-        </ul>
-        -->
-
-        <!-- Left Nav Section -->
-        <ul class="left">
-            <li>
-                <a href="@Url.Action("Index", "Admin")">Admin</a>
-            </li>
-            <li>
-                <a href="@Url.RouteUrl("categories")">Categories</a>
+            <li id="li2">
+                <a href="@Url.RouteUrl("categories")" aria-describedby="li2">Categories</a>
             </li>
         </ul>
     </section>
