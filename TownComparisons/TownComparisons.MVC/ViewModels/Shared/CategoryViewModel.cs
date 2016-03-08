@@ -26,6 +26,9 @@ namespace TownComparisons.MVC.ViewModels.Shared
         public List<OrganisationalUnitInfoViewModel> OrganisationalUnits { get; set; }
 
 
+        public GroupCategoryViewModel GroupCategory { get; set; }
+
+
         public CategoryViewModel()
         {
             //Empty
@@ -37,6 +40,20 @@ namespace TownComparisons.MVC.ViewModels.Shared
             Description = entity.Description;
             Queries = entity.Queries.Select(q => new PropertyQueryInfoViewModel(q)).ToList();
             OrganisationalUnits = entity.OrganisationalUnits.Select(o => new OrganisationalUnitInfoViewModel(o)).ToList();
+            GroupCategory = new GroupCategoryViewModel(entity.GroupCategory, false);
+        }
+
+        public Category ToEntity(Category existing = null)
+        {
+            Category entity = (existing != null ? existing : new Category());
+
+            entity.Id = this.Id;
+            entity.Name = this.Name;
+            entity.Description = this.Description;
+            entity.Queries = this.Queries.Select(q => q.ToEntity()).ToList();
+            entity.OrganisationalUnits = this.OrganisationalUnits.Select(o => o.ToEntity()).ToList();
+
+            return entity;
         }
     }
 }

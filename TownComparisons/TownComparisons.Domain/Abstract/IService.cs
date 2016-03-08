@@ -39,6 +39,9 @@ namespace TownComparisons.Domain.Abstract
 
         bool DeleteGroupCategory(GroupCategory groupCategory);
         bool DeleteCategory(Category category);
+        
+        bool UpdateGroupCategory(GroupCategory groupCategory);
+        bool UpdateCategory(Category category);
 
     }
 }

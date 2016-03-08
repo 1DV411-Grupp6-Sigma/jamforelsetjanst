@@ -280,6 +280,32 @@ namespace TownComparisons.Domain
             return false;
         }
 
+        public bool UpdateGroupCategory(GroupCategory groupCategory)
+        {
+            try
+            {
+                _unitOfWork.GroupCategoriesRepository.Update(groupCategory);
+                _unitOfWork.Save();
+                return true;
+            }
+            catch { }
+
+            return false;
+        }
+        public bool UpdateCategory(Category category)
+        {
+            try
+            {
+                _unitOfWork.CategoriesRepository.Update(category);
+                _unitOfWork.Save();
+                return true;
+            }
+            catch { }
+
+            return false;
+        }
+
+
         #endregion
     }
 }

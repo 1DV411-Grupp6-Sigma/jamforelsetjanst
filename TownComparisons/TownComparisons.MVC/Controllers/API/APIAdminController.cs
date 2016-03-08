@@ -47,7 +47,21 @@ namespace TownComparisons.MVC.Controllers.API
 
             return new HttpResponseMessage(HttpStatusCode.NotFound);
         }
-        
+
+        [HttpGet]
+        [Route("admin/groupcategory/{groupCategoryId}")]
+        public HttpResponseMessage GetGroupCategory(HttpRequestMessage request, int groupCategoryId)
+        {
+            GroupCategory groupCategory = _service.GetGroupCategory(groupCategoryId);
+            if (groupCategory != null)
+            {
+                GroupCategoryViewModel model = new GroupCategoryViewModel(groupCategory);
+                return request.CreateResponse<GroupCategoryViewModel>(HttpStatusCode.OK, model);
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.NotFound);
+        }
+
         [HttpGet]
         [Route("admin/category/{categoryId}/query/{queryId}")]
         public HttpResponseMessage GetCategoryQuery(HttpRequestMessage request, int categoryId, string queryId)
@@ -63,45 +77,60 @@ namespace TownComparisons.MVC.Controllers.API
         }
 
 
+
         [HttpPost]
-        [Route("admin/category/{categoryId}")]
+        [Route("admin/groupcategory/{groupCategoryId}")]
         [ValidateModel] //this will handle validation (and return with errors) before method is run
-        public HttpResponseMessage SaveCategory(HttpRequestMessage request, [FromBody]CategoryViewModel category)
+        public HttpResponseMessage UpdateGroupCategory(HttpRequestMessage request, int groupCategoryId, [FromBody]GroupCategoryViewModel groupCategory)
         {
-            if (ModelState.IsValid)
+            GroupCategory existing = _service.GetGroupCategory(groupCategoryId);
+            if (existing != null)
             {
+                //update entity model
+                existing = groupCategory.ToEntity(existing);
 
-                category = category;
-
-
-                return new HttpResponseMessage(HttpStatusCode.OK);
+                //save it
+                if (_service.UpdateGroupCategory(existing))
+                {
+                    return new HttpResponseMessage(HttpStatusCode.OK);
+                }
             }
             else
             {
-                //should not happen
-
-                category = category;
+                return new HttpResponseMessage(HttpStatusCode.NotFound);
             }
-
 
             return new HttpResponseMessage(HttpStatusCode.BadRequest);
+        }
 
-            /*
-            Category category = _service.GetCategory(categoryId);
-            if (category != null)
+        [HttpPost]
+        [Route("admin/category/{categoryId}")]
+        [ValidateModel] //this will handle validation (and return with errors) before method is run
+        public HttpResponseMessage UpdateCategory(HttpRequestMessage request, int categoryId, [FromBody]CategoryViewModel category)
+        {
+            Category existing = _service.GetCategory(categoryId);
+            if (existing != null)
             {
-                List<OrganisationalUnit> allOrganisationalUnits = _service.GetWebServiceOrganisationalUnits();
-                List<PropertyQueryGroup> allPropertyQueryGroups = _service.GetWebServicePropertyQueries();
-                CategoryWithUnusedViewModel model = new CategoryWithUnusedViewModel(category, allOrganisationalUnits, allPropertyQueryGroups);
-                return request.CreateResponse<CategoryWithUnusedViewModel>(HttpStatusCode.OK, model);
+                //update entity model
+                existing = category.ToEntity(existing);
+
+                //save it
+                if (_service.UpdateCategory(existing))
+                {
+                    return new HttpResponseMessage(HttpStatusCode.OK);
+                }
             }
-            return new HttpResponseMessage(HttpStatusCode.NotFound);
-            */
+            else
+            {
+                return new HttpResponseMessage(HttpStatusCode.NotFound);
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.BadRequest);
         }
 
 
-        [HttpDelete]
-        [Route("admin/groupcategory/{groupCategoryId}")]
+        [HttpPost]
+        [Route("admin/groupcategory/{groupCategoryId}/delete")]
         public HttpResponseMessage DeleteGroupCategory(HttpRequestMessage request, int groupCategoryId)
         {
             GroupCategory groupCategory = _service.GetGroupCategory(groupCategoryId);
@@ -117,12 +146,12 @@ namespace TownComparisons.MVC.Controllers.API
             return new HttpResponseMessage(HttpStatusCode.NotFound);
         }
 
-        [HttpDelete]
-        [Route("admin/category/{categoryId}")]
+        [HttpPost]
+        [Route("admin/category/{categoryId}/delete")]
         public HttpResponseMessage DeleteCategory(HttpRequestMessage request, int categoryId)
         {
             Category category = _service.GetCategory(categoryId);
-            if (category != null)
+            if (category != null || true == false)
             {
                 if (_service.DeleteCategory(category))
                 {
@@ -204,7 +233,7 @@ namespace TownComparisons.MVC.Controllers.API
             if (ou != null)
             {
                 //transfer info from view model to existing entity
-                organisationalUnit.TransferToEntity(ou);
+                ou = organisationalUnit.ToEntity(ou);
                 _service.UpdateOrganisationalUnitInfo(ou);
 
                 return new HttpResponseMessage(HttpStatusCode.OK);
@@ -223,7 +252,7 @@ namespace TownComparisons.MVC.Controllers.API
             if (query != null)
             {
                 //transfer info from view model to existing entity
-                propertyQuery.TransferToEntity(query);
+                query = propertyQuery.ToEntity(query);
                 _service.UpdatePropertyQueryInfo(query);
 
                 return new HttpResponseMessage(HttpStatusCode.OK);

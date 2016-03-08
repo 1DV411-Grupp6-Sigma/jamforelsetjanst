@@ -13,6 +13,7 @@ namespace TownComparisons.MVC.ViewModels.Admin
 
         //.. more properties from Shared.PropertyQueryViewModel
         
+
         public List<string> AllTypes
         {
             get

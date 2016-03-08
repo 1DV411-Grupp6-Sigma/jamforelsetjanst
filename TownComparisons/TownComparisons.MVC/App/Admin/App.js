@@ -5,6 +5,7 @@ var adminModule = angular.module('admin', ['common', 'ngFileUpload'])
         $routeProvider.when('/admin/categories', { templateUrl: '/App/Admin/Views/AdminCategoriesView.html', controller: 'adminCategoriesViewModel' });
         $routeProvider.when('/admin/category/:categoryId', { templateUrl: '/App/Admin/Views/AdminCategoryShowView.html', controller: 'adminCategoryShowViewModel' });
         $routeProvider.when('/admin/category/:categoryId/edit', { templateUrl: '/App/Admin/Views/AdminCategoryEditView.html', controller: 'adminCategoryEditViewModel' });
+        $routeProvider.when('/admin/groupcategory/:groupCategoryId', { templateUrl: '/App/Admin/Views/AdminGroupCategoryView.html', controller: 'adminGroupCategoryViewModel' });
         //$routeProvider.when('/admin/category/:categoryId/operator/:operatorId', { templateUrl: '/App/Admin/Views/AdminOperatorView.html', controller: 'adminOperatorViewModel' });
         //$routeProvider.when('/admin/category/:categoryId/query/:queryId', { templateUrl: '/App/Admin/Views/AdminQueryView.html', controller: 'adminQueryViewModel' });
         $routeProvider.otherwise({ redirectTo: '/admin' });

@@ -4,6 +4,12 @@
 
 <h2>Administration</h2>
 
+<alert close="closeValidationAlert=true" class="alert" ng-show="!closeValidationAlert && (errorMessage.length > 0)">
+    <p>{{ errorMessage }}</p>
+    <a class="close" ng-click="close()">x</a>
+</alert>
+
+
 <h3>Kategorier</h3>
 
 <ng-include src="'/App/Admin/Views/_Categories.html'"></ng-include>

@@ -48,11 +48,18 @@ namespace TownComparisons.MVC.ViewModels.Shared
         }
 
 
-        public void TransferToEntity(PropertyQueryInfo entity)
+        public PropertyQueryInfo ToEntity(PropertyQueryInfo existing = null)
         {
-            entity.Title = Title;
-            entity.Type = Type;
-            entity.Period = Period;
+            PropertyQueryInfo entity = (existing != null ? existing : new PropertyQueryInfo());
+
+            entity.WebServiceName = this.WebServiceName;
+            entity.QueryId = this.QueryId;
+            entity.OriginalTitle = this.OriginalTitle;
+            entity.Title = this.Title;
+            entity.Type = this.Type;
+            entity.Period = this.Period;
+
+            return entity;
         }
     }
 }
