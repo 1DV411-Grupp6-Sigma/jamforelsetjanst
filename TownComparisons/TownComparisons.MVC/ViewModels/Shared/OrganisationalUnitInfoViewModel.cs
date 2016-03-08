@@ -129,21 +129,26 @@ namespace TownComparisons.MVC.ViewModels.Shared
             Other = entity.Other;
         }
 
-        public void TransferToEntity(OrganisationalUnitInfo entity)
+        public OrganisationalUnitInfo ToEntity(OrganisationalUnitInfo existing = null)
         {
-            entity.Name = Name;
-            entity.ShortDescription = ShortDescription;
-            entity.LongDescription = LongDescription;
-            entity.ImagePath = ImagePath;
-            entity.Address = Address;
-            entity.Telephone = Telephone;
-            entity.Contact = Contact;
-            entity.Email = Email;
-            entity.OrganisationalForm = OrganisationalForm;
-            entity.Website = Website;
-            entity.Latitude = Latitude;
-            entity.Longitude = Longitude;
-            entity.Other = Other;
+            OrganisationalUnitInfo entity = (existing != null ? existing : new OrganisationalUnitInfo());
+
+            entity.Id = this.Id;
+            entity.Name = this.Name;
+            entity.ShortDescription = this.ShortDescription;
+            entity.LongDescription = this.LongDescription;
+            entity.ImagePath = this.ImagePath;
+            entity.Address = this.Address;
+            entity.Telephone = this.Telephone;
+            entity.Contact = this.Contact;
+            entity.Email = this.Email;
+            entity.OrganisationalForm = this.OrganisationalForm;
+            entity.Website = this.Website;
+            entity.Latitude = this.Latitude;
+            entity.Longitude = this.Longitude;
+            entity.Other = this.Other;
+
+            return entity;
         }
     }
 }

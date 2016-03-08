@@ -25,5 +25,29 @@ namespace TownComparisons.MVC.ViewModels.Admin
 
             Use = use;
         }
+        public OrganisationalUnitInfoViewModel(Shared.OrganisationalUnitInfoViewModel baseViewModel, bool use = false)
+        {
+            Id = baseViewModel.Id;
+            OrganisationalUnitId = baseViewModel.OrganisationalUnitId;
+            CategoryID = baseViewModel.CategoryID;
+            CategoryName = baseViewModel.CategoryName;
+            Name = baseViewModel.Name;
+            OrganisationalUnitId = baseViewModel.OrganisationalUnitId;
+            Name = baseViewModel.Name;
+            ShortDescription = baseViewModel.ShortDescription;
+            LongDescription = baseViewModel.LongDescription;
+            ImagePath = baseViewModel.ImagePath;
+            Address = baseViewModel.Address;
+            Telephone = baseViewModel.Telephone;
+            Contact = baseViewModel.Contact;
+            Email = baseViewModel.Email;
+            OrganisationalForm = baseViewModel.OrganisationalForm;
+            Website = baseViewModel.Website;
+            Latitude = baseViewModel.Latitude;
+            Longitude = baseViewModel.Longitude;
+            Other = baseViewModel.Other;
+
+            Use = use;
+        }
     }
 }

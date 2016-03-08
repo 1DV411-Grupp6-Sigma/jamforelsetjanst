@@ -32,7 +32,7 @@ namespace TownComparisons.MVC.ViewModels.Admin
                 Shared.OrganisationalUnitInfoViewModel existing = Category.OrganisationalUnits.Find(cou => cou.OrganisationalUnitId == AllOrganisationalUnits[i].OrganisationalUnitId);
                 if (existing != null)
                 {
-                    AllOrganisationalUnits[i] = (OrganisationalUnitInfoViewModel)existing;
+                    AllOrganisationalUnits[i] = new OrganisationalUnitInfoViewModel(existing);
                     AllOrganisationalUnits[i].Use = true;
                 }
                 //ou.Use = (Category.OrganisationalUnits.Find(cou => cou.OrganisationalUnitId == ou.OrganisationalUnitId) != null);
@@ -45,7 +45,7 @@ namespace TownComparisons.MVC.ViewModels.Admin
                     Shared.PropertyQueryInfoViewModel existing = Category.Queries.Find(q => q.QueryId == AllPropertyQueryGroups[i].Queries[j].QueryId);
                     if (existing != null)
                     {
-                        AllPropertyQueryGroups[i].Queries[j] = new PropertyQueryInfoViewModel(existing, true); //new PropertyQueryInfoViewModel(existing, true);
+                        AllPropertyQueryGroups[i].Queries[j] = new PropertyQueryInfoViewModel(existing, true);
                         AllPropertyQueryGroups[i].AnyQueriesToUse = true;
                     }
                 }
