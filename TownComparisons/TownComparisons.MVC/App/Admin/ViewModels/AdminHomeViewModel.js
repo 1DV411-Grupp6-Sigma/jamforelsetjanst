@@ -37,7 +37,7 @@
         modalInstance.result.then(function () {
 
             //call the api to delete the category
-            viewModelHelper.apiPost('api/admin/' +  (isGroupCategory ? 'groupcategory ' : 'category') + '/' + id + '/delete', null,
+            viewModelHelper.apiPost('api/admin/' +  (isGroupCategory ? 'groupcategory' : 'category') + '/' + id + '/delete', null,
                 function (result) {
                     //success
                     //refresh page
@@ -51,6 +51,10 @@
         }, function () {
             //modal cancelled, do something here?
         });
+    }
+
+    $scope.gotoGroupCategory = function (groupCategoryId) {
+        viewModelHelper.navigateTo('admin/groupcategory/' + groupCategoryId);
     }
 
 

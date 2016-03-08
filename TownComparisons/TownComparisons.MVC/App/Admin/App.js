@@ -5,7 +5,9 @@ var adminModule = angular.module('admin', ['common', 'ngFileUpload'])
         $routeProvider.when('/admin/categories', { templateUrl: '/App/Admin/Views/AdminCategoriesView.html', controller: 'adminCategoriesViewModel' });
         $routeProvider.when('/admin/category/:categoryId', { templateUrl: '/App/Admin/Views/AdminCategoryShowView.html', controller: 'adminCategoryShowViewModel' });
         $routeProvider.when('/admin/category/:categoryId/edit', { templateUrl: '/App/Admin/Views/AdminCategoryEditView.html', controller: 'adminCategoryEditViewModel' });
+        $routeProvider.when('/admin/groupcategory/new', { templateUrl: '/App/Admin/Views/AdminGroupCategoryView.html', controller: 'adminGroupCategoryViewModel' });
         $routeProvider.when('/admin/groupcategory/:groupCategoryId', { templateUrl: '/App/Admin/Views/AdminGroupCategoryView.html', controller: 'adminGroupCategoryViewModel' });
+        $routeProvider.when('/admin/groupcategory/:groupCategoryId/newcategory', { templateUrl: '/App/Admin/Views/AdminCategoryEditView.html', controller: 'adminCategoryEditViewModel' });
         //$routeProvider.when('/admin/category/:categoryId/operator/:operatorId', { templateUrl: '/App/Admin/Views/AdminOperatorView.html', controller: 'adminOperatorViewModel' });
         //$routeProvider.when('/admin/category/:categoryId/query/:queryId', { templateUrl: '/App/Admin/Views/AdminQueryView.html', controller: 'adminQueryViewModel' });
         $routeProvider.otherwise({ redirectTo: '/admin' });
@@ -35,16 +37,23 @@ adminModule.factory('adminService', function ($rootScope, $http, $q, $location, 
         }
 
         self.getCategory = function (categoryId, success, failure) {
-            doGetCategory(categoryId, true, success, failure);
+            doGetCategory(true, categoryId, true, success, failure);
         }
         self.getNormalCategory = function (categoryId, success, failure) {
-            doGetCategory(categoryId, false, success, failure);
+            doGetCategory(true, categoryId, false, success, failure);
         }
-        var doGetCategory = function(categoryId, adminModel, success, failure) {
-            viewModelHelper.apiGet('api' + (adminModel ? '/admin' : '') + '/category/' + categoryId, null,
+        self.getNewCategory = function (groupCategoryId, success, failure) {
+            doGetCategory(false, groupCategoryId, true, success, failure);
+        }
+        var doGetCategory = function (getExisting, id, adminModel, success, failure) {
+            var url = (getExisting ? 'api' + (adminModel ? '/admin' : '') + '/category/' + id :
+                                     'api/admin/groupcategory/' + id + '/newcategory');
+            viewModelHelper.apiGet(url, null,
                 function (result) {
-                    self.categoryId = categoryId;
+                    self.categoryId = (getExisting ? id : 0);
+                    self.groupCategoryId = (getExisting ? null : id);
                     $rootScope.category = result.data;
+                    console.log($rootScope.category);
                     if (success != null) {
                         success();
                     }

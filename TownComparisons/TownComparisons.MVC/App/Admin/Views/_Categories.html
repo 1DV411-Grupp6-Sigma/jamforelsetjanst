@@ -17,27 +17,34 @@
     </li>
 </ul>
 -->
-<accordion close-others="oneAtATime" ng-repeat="g in groupCategories">
-    <accordion-group is-open="true">
-        <accordion-heading>
-            {{ g.Name }}
-            <a ng-click="removeGroupCategory(g.Id, g.Name); $event.stopPropagation();" class="tiny button alert right" title="Ta bort grupp-kategori"><i class="fi-trash"></i></a>
-            <a href="/admin/groupcategory/{{ g.Id }}" class="" title="Redigera grupp-kategori"> <i class="fi-pencil"></i> </a>
-        </accordion-heading>
-        <div class="row" ng-repeat="c in g.Categories">
-            <div class="medium-4 columns">
-                <a href="/admin/category/{{ c.Id }}">{{ c.Name }}</a>
+<div>
+    <accordion close-others="oneAtATime" ng-repeat="g in groupCategories">
+        <accordion-group is-open="true">
+            <accordion-heading>
+                <a ng-click="gotoGroupCategory(g.Id); $event.stopPropagation();" class="" title="Redigera grupp-kategori">{{ g.Name }} <i class="fi-pencil"></i> </a>
+                <a ng-click="removeGroupCategory(g.Id, g.Name); $event.stopPropagation();" class="tiny button alert right" title="Ta bort grupp-kategori"><i class="fi-trash"></i></a>
+            </accordion-heading>
+            <div class="row" ng-repeat="c in g.Categories">
+                <div class="medium-4 columns">
+                    <a href="/admin/category/{{ c.Id }}">{{ c.Name }}</a>
+                </div>
+                <div class="medium-4 columns">
+                    <small>
+                        {{ (c.OrganisationalUnits.length > 0 ? c.OrganisationalUnits.length : 'Inga') }} aktörer, {{ (c.Queries.length > 0 ? c.Queries.length : 'inga') }} egenskaper
+                    </small>
+                </div>
+                <div class="medium-3 columns">
+                    <a href="/admin/category/{{ c.Id }}/edit" class="tiny button primary" title="Redigera kategori"><i class="fi-pencil"></i></a>
+                    <a ng-click="removeCategory(c.Id, c.Name)" class="tiny button alert" title="Ta bort kategori"><i class="fi-trash"></i></a>
+                </div>
             </div>
-            <div class="medium-4 columns">
-                <small>
-                    {{ (c.OrganisationalUnits.length > 0 ? c.OrganisationalUnits.length : 'Inga') }} aktörer, {{ (c.Queries.length > 0 ? c.Queries.length : 'inga') }} egenskaper
-                </small>
+            <div>
+                <a href="/admin/groupcategory/{{ g.Id }}/newcategory" class="tiny button success">Lägg till kategori</a>
             </div>
-            <div class="medium-3 columns">
-                <a href="/admin/category/{{ c.Id }}" class="tiny button success" title="Visa kategori">Visa</a>
-                <a href="/admin/category/{{ c.Id }}/edit" class="tiny button primary" title="Redigera kategori"><i class="fi-pencil"></i></a>
-                <a ng-click="removeCategory(c.Id, c.Name)" class="tiny button alert" title="Ta bort kategori"><i class="fi-trash"></i></a>
-            </div>
-        </div>
-    </accordion-group>
-</accordion>
+        </accordion-group>
+    </accordion>
+</div>
+
+<div>
+    <a href="/admin/groupcategory/new" class="tiny button success">Lägg till grupp-kategori</a>
+</div>

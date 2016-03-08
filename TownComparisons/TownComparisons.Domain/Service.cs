@@ -305,6 +305,32 @@ namespace TownComparisons.Domain
             return false;
         }
 
+        public bool InsertGroupCategory(GroupCategory groupCategory)
+        {
+            try
+            {
+                _unitOfWork.GroupCategoriesRepository.Insert(groupCategory);
+                _unitOfWork.Save();
+                return true;
+            }
+            catch { }
+
+            return false;
+        }
+        public bool InsertCategory(Category category)
+        {
+            try
+            {
+                _unitOfWork.CategoriesRepository.Insert(category);
+                _unitOfWork.Save();
+                return true;
+            }
+            catch { }
+
+            return false;
+        }
+
+
 
         #endregion
     }
