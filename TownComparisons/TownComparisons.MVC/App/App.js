@@ -1,4 +1,4 @@
-﻿var commonModule = angular.module('common', ['ngRoute', 'ngCookies', 'collector', 'mm.foundation']);
+﻿var commonModule = angular.module('common', ['ngRoute', 'ngCookies', 'ngAria', 'collector', 'mm.foundation']);
 
 //making main global
 var mainModule = angular.module('main', ['common']);

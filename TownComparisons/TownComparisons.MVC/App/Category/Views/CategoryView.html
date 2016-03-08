@@ -1,7 +1,7 @@
 ﻿<h2>Aktörer</h2>
 
 <div class="right searchbar">
-    <div id="search">
+    <div id="search" class="row" role="search">
         <div class="small-4 columns end">
             <input id="search-box" placeholder="Sök" type="text" data-ng-model="filter.name" />
         </div>
@@ -9,21 +9,21 @@
 </div>
 <div class="container">
     <!--navbar for simple or detailed list -->
-    <div class="row">
+    <nav role="navigation" class="row">
         <dl class="breadcrumbs">
-            <dd class="{{ detailedClass }}"><a href="#" data-ng-click="showDetailed()">Visa detaljerad lista</a></dd>
-            <dd class="{{ mapClass }}"><a href="#" data-ng-click="showMap()">Visa på karta</a></dd>
-            <dd class="{{ simpleClass }}"><a href="#" data-ng-click="showSimple()">Visa enkel lista</a></dd>
+            <dd role="menuitem" class="{{ detailedClass }}"><a href="#" data-ng-click="showDetailed()">Visa detaljerad lista</a></dd>
+            <dd role="menuitem" class="{{ mapClass }}"><a href="#" data-ng-click="showMap()">Visa på karta</a></dd>
+            <dd role="menuitem" class="{{ simpleClass }}"><a href="#" data-ng-click="showSimple()">Visa enkel lista</a></dd>
         </dl>
-    </div>
+    </nav>
 
     <!-- navbar for sorting -->
-    <div ng-if="detailed || simple" class="row">
+    <div data-ng-if="detailed || simple" class="row">
         <dl class="sub-nav">
             <dt>Sortera:</dt>
-            <dd class="{{ activeName }}"><a href="" ng-click="sortOuByName()">Namn</a><img class="{{ visibleName }}" src="/Content/pictures/{{ sortOrder }}.png" ng-click="sortOuByName()" /></dd>
-            <dd class="{{ activeAddress }}"><a href="" ng-click="sortOuByAddress()">Adress</a><img class="{{ visibleAddress }}" src="/Content/pictures/{{ sortOrder }}.png" ng-click="sortOuByAddress()" /></dd>
-            <dd ng-if="posLat != undefined && posLng != undefined" class="{{ activeDistance }}"><a href="" ng-click="sortOuByDistance()">Distans</a></dd>
+            <dd class="{{ activeName }}"><a href="" data-ng-click="sortOuByName()">Namn</a><img alt="Sortering" class="{{ visibleName }}" data-ng-src="/Content/pictures/{{ sortOrder }}.png" data-ng-click="sortOuByName()" /></dd>
+            <dd class="{{ activeAddress }}"><a href="" data-ng-click="sortOuByAddress()">Adress</a><img alt="Sortering" class="{{ visibleAddress }}" data-ng-src="/Content/pictures/{{ sortOrder }}.png" data-ng-click="sortOuByAddress()" /></dd>
+            <dd data-ng-if="posLat != undefined && posLng != undefined" class="{{ activeDistance }}"><a href="" data-ng-click="sortOuByDistance()">Distans</a></dd>
         </dl>
     </div>
 
@@ -38,10 +38,10 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="ou in category.OrganisationalUnits | filter:filter.name | orderBy:sortBy">
+                <tr data-ng-repeat="ou in category.OrganisationalUnits | filter:filter.name | orderBy:sortBy">
                     <td>{{ setCompareSettingsForOu(ou)}}</td>
 
-                    <td><h5><a href="#" ng-click="showOperator(ou.OrganisationalUnitId)">{{ ou.Name }}</a></h5></td>
+                    <td><h5><a href="#" data-ng-click="showOperator(ou.OrganisationalUnitId)">{{ ou.Name }}</a></h5></td>
                     <td>
                         <p>
                             {{ ou.Address }}<br />
@@ -49,8 +49,8 @@
                         </p>
                     </td>
                     <td>
-                        <div class="{{ ou.class }}"><a href="" ng-click="toggleOperators(ou)"><i class="{{ ou.icon }}"></i>{{ ou.text}}</a></div>
-                        <div class="mapClass"><a href="" ng-click="showOperatorMap(ou.OrganisationalUnitId)">Karta</a></div>
+                        <div class="{{ ou.class }}"><a href="" data-ng-click="toggleOperators(ou)"><i class="{{ ou.icon }}"></i>{{ ou.text}}</a></div>
+                        <div class="mapClass"><a href="" data-ng-click="showOperatorMap(ou.OrganisationalUnitId)">Karta</a></div>
                     </td>
                 </tr>
             </tbody>
@@ -69,10 +69,10 @@
             <div class="row">
                 <div class="small-2 columns">
                     <div ng-if="ou.ImagePath != 'default.jpg' && ou.ImagePath != 'dagis.jpg' && ou.ImagePath != 'elderly.jpg' && ou.ImagePath != 'grund.jpg' && ou.ImagePath != 'sjukhus.jpg' && ou.ImagePath != 'vardcentral.jpg'">
-                        <img src="{{ ou.ImagePath }}" />
+                        <img alt="Bild på aktör" ng-src="{{ ou.ImagePath }}" />
                     </div>
                     <div ng-if="ou.ImagePath == 'default.jpg' || ou.ImagePath == 'dagis.jpg' || ou.ImagePath == 'elderly.jpg' || ou.ImagePath == 'grund.jpg' || ou.ImagePath == 'sjukhus.jpg' || ou.ImagePath == 'vardcentral.jpg'">
-                        <img src="/Content/pictures/{{ ou.ImagePath }}" />
+                        <img alt="Bild på aktör" ng-src="/Content/pictures/{{ ou.ImagePath }}" />
                     </div>
                 </div>
                 <div class="small-7 columns">
