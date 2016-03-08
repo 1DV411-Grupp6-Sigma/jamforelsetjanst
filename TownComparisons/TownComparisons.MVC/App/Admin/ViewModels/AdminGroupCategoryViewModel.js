@@ -37,6 +37,7 @@
     }
 
     $scope.saveGroupCategory = function () {
+        adminService.resetErrors();
 
         var url = ($scope.updateNotInsert ? 'api/admin/groupcategory/' + $scope.groupCategoryId :
                                             'api/admin/insertgroupcategory');

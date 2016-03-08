@@ -2,7 +2,6 @@
 var adminModule = angular.module('admin', ['common', 'ngFileUpload'])
     .config(function ($routeProvider, $locationProvider) {
         $routeProvider.when('/admin', { templateUrl: '/App/Admin/Views/AdminHomeView.html', controller: 'adminHomeViewModel' });
-        $routeProvider.when('/admin/categories', { templateUrl: '/App/Admin/Views/AdminCategoriesView.html', controller: 'adminCategoriesViewModel' });
         $routeProvider.when('/admin/category/:categoryId', { templateUrl: '/App/Admin/Views/AdminCategoryShowView.html', controller: 'adminCategoryShowViewModel' });
         $routeProvider.when('/admin/category/:categoryId/edit', { templateUrl: '/App/Admin/Views/AdminCategoryEditView.html', controller: 'adminCategoryEditViewModel' });
         $routeProvider.when('/admin/groupcategory/new', { templateUrl: '/App/Admin/Views/AdminGroupCategoryView.html', controller: 'adminGroupCategoryViewModel' });
@@ -32,10 +31,6 @@ adminModule.factory('adminService', function ($rootScope, $http, $q, $location, 
                 });
         }
 
-        $rootScope.showCategory = function (categoryId) {
-            viewModelHelper.navigateTo('admin/category/' + categoryId);
-        }
-
         self.getCategory = function (categoryId, success, failure) {
             doGetCategory(true, categoryId, true, success, failure);
         }
@@ -62,11 +57,13 @@ adminModule.factory('adminService', function ($rootScope, $http, $q, $location, 
             );
         }
 
-
-        self.parseErrors = function (errors) {
+        self.resetErrors = function () {
             $rootScope.validationErrors = [];
             $rootScope.knownValidationErrors = [];
             $rootScope.closeValidationAlert = false;
+        }
+        self.parseErrors = function (errors) {
+            self.resetErrors();
 
             if (errors.data && errors.data.ModelState && angular.isObject(errors.data.ModelState)) {
                 for (var key in errors.data.ModelState) {
