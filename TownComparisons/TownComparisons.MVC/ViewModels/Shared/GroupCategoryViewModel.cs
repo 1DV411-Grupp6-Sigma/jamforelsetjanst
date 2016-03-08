@@ -27,7 +27,7 @@ namespace TownComparisons.MVC.ViewModels.Shared
             }
         }
 
-        public GroupCategory ToEntity(GroupCategory existing)
+        public GroupCategory ToEntity(GroupCategory existing = null)
         {
             GroupCategory entity = (existing != null ? existing : new GroupCategory());
 

@@ -7,6 +7,7 @@
     $scope.validationErrors = [];
     $scope.knownValidationErrors = [];
     $scope.closeValidationAlert = false;
+    $scope.updateNotInsert = ($routeParams.categoryId);
 
     var initialize = function () {
         $scope.categoryHasBeenLoaded = false;
@@ -14,12 +15,23 @@
         $scope.queriesStateFilter = 'All';
         $scope.operatorsStateFilter = 'All';
 
-        adminService.getCategory($routeParams.categoryId, afterCategoryHasBeenLoaded);
+        if ($scope.updateNotInsert) {
+            adminService.getCategory($routeParams.categoryId, afterCategoryHasBeenLoaded);
+        }
+        else {
+            adminService.getNewCategory($routeParams.groupCategoryId, afterCategoryHasBeenLoaded);
+        }
     }
 
     var afterCategoryHasBeenLoaded = function () {
-        $scope.categoryName = angular.copy($scope.category.Category.Name); //to use without data binding to the category
-        $scope.pageHeading = 'Kategori: ' + $scope.categoryName;
+        if ($scope.updateNotInsert) {
+            $scope.categoryName = angular.copy($scope.category.Category.Name); //to use without data binding to the category
+            $scope.pageHeading = 'Kategori: ' + $scope.categoryName;
+        }
+        else {
+            $scope.categoryName = '';
+            $scope.pageHeading = 'Ny kategori';
+        }
         $scope.categoryHasBeenLoaded = true;
     }
 
@@ -27,10 +39,15 @@
         setCategoryOrganisationalUnitsToUse();
         setCategoryQueriesToUse();
 
-        viewModelHelper.apiPost('api/admin/category/' + adminService.categoryId, $scope.category.Category,
+        var url = ($scope.updateNotInsert ? 'api/admin/category/' + adminService.categoryId :
+                                            'api/admin/groupcategory/' + adminService.groupCategoryId + '/insertcategory');
+
+        viewModelHelper.apiPost(url, $scope.category.Category,
             function (result) {
                 //success
                 console.log(result.data);
+                var url = ($scope.updateNotInsert ? 'admin/category/' + adminService.categoryId : 'admin/groupcategory/' + adminService.groupCategoryId)
+                viewModelHelper.navigateTo(url);
             },
             function (errors) {
                 //failure
@@ -39,7 +56,12 @@
     }
 
     $scope.cancelEditCategory = function () {
-        viewModelHelper.navigateTo('admin/category/' + adminService.categoryId);
+        if ($scope.updateNotInsert) {
+            viewModelHelper.navigateTo('admin/category/' + adminService.categoryId);
+        }
+        else {
+            viewModelHelper.navigateTo('admin/groupcategory/' + adminService.groupCategoryId);
+        }
     }
 
     var setCategoryOrganisationalUnitsToUse = function () {

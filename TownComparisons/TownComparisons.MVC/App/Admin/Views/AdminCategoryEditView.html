@@ -1,8 +1,8 @@
 ﻿<ul class="breadcrumbs" ng-show="categoryHasBeenLoaded">
     <li><a href="/admin">Admin</a></li>
-    <li><a href="/admin/categories">Kategorier</a></li>
-    <li><a href="./">{{ categoryName }}</a></li>
-    <li class="current">Ändra</li>
+    <li><a href="/admin/groupcategory/{{ category.Category.GroupCategory.Id }}">{{ category.Category.GroupCategory.Name }}</a></li>
+    <li ng-show="updateNotInsert"><a href="./">{{ categoryName }}</a></li>
+    <li class="current">{{ updateNotInsert ? 'Ändra' : 'Ny' }}</li>
 </ul>
 
 
@@ -15,7 +15,7 @@
     <div class="medium-2 columns end" id="saveChangesPanel" ng-show="categoryHasBeenLoaded">
         <div>
             <div>
-                <input type="button" name="save" ng-click="saveCategory()" value="Spara ändringar" class="button success" />
+                <input type="button" name="save" ng-click="saveCategory()" value="Spara {{ updateNotInsert ? 'ändringar' : 'kategori' }}" class="button success" />
             </div>
 
             <div ng-show="!cancel">

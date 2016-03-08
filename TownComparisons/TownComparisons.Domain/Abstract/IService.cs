@@ -43,5 +43,7 @@ namespace TownComparisons.Domain.Abstract
         bool UpdateGroupCategory(GroupCategory groupCategory);
         bool UpdateCategory(Category category);
 
+        bool InsertGroupCategory(GroupCategory groupCategory);
+        bool InsertCategory(Category category);
     }
 }

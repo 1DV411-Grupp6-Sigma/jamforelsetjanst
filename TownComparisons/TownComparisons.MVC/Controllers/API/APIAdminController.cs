@@ -163,7 +163,77 @@ namespace TownComparisons.MVC.Controllers.API
             return new HttpResponseMessage(HttpStatusCode.NotFound);
         }
 
+        [HttpGet]
+        [Route("admin/newgroupcategory")]
+        public HttpResponseMessage NewGroupCategory(HttpRequestMessage request)
+        {
+            GroupCategory groupCategory = new GroupCategory();
+            GroupCategoryViewModel model = new GroupCategoryViewModel(groupCategory);
+            return request.CreateResponse<GroupCategoryViewModel>(HttpStatusCode.OK, model);
+        }
 
+        [HttpGet]
+        [Route("admin/groupcategory/{groupCategoryId}/newcategory")]
+        public HttpResponseMessage NewCategory(HttpRequestMessage request, int groupCategoryId)
+        {
+            GroupCategory groupCategory = _service.GetGroupCategory(groupCategoryId);
+            if (groupCategory != null)
+            {
+                Category category = new Category()
+                {
+                    GroupCategory = groupCategory
+                };
+                List<OrganisationalUnit> allOrganisationalUnits = _service.GetWebServiceOrganisationalUnits();
+                List<PropertyQueryGroup> allPropertyQueryGroups = _service.GetWebServicePropertyQueries();
+                CategoryWithUnusedViewModel model = new CategoryWithUnusedViewModel(category, allOrganisationalUnits, allPropertyQueryGroups);
+                return request.CreateResponse<CategoryWithUnusedViewModel>(HttpStatusCode.OK, model);
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.NotFound);
+        }
+
+        [HttpPost]
+        [Route("admin/insertgroupcategory")]
+        [ValidateModel] //this will handle validation (and return with errors) before method is run
+        public HttpResponseMessage InsertGroupCategory(HttpRequestMessage request, [FromBody]GroupCategoryViewModel groupCategory)
+        {
+            GroupCategory entity = groupCategory.ToEntity();
+
+            //save it
+            if (_service.InsertGroupCategory(entity))
+            {
+                GroupCategoryViewModel model = new GroupCategoryViewModel(entity);
+                return request.CreateResponse<GroupCategoryViewModel>(HttpStatusCode.OK, model);
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.BadRequest);
+        }
+
+        [HttpPost]
+        [Route("admin/groupcategory/{groupCategoryId}/insertcategory")]
+        [ValidateModel] //this will handle validation (and return with errors) before method is run
+        public HttpResponseMessage InsertCategory(HttpRequestMessage request, int groupCategoryId, [FromBody]CategoryViewModel category)
+        {
+            if (groupCategoryId == category.GroupCategory.Id)
+            {
+                GroupCategory groupCategory = _service.GetGroupCategory(groupCategoryId);
+                if (groupCategory != null)
+                {
+                    Category entity = category.ToEntity();
+
+                    //add the new category to the group category
+                    groupCategory.Categories.Add(entity);
+
+                    //save it
+                    if (_service.UpdateGroupCategory(groupCategory))
+                    {
+                        return new HttpResponseMessage(HttpStatusCode.OK);
+                    }
+                }
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.BadRequest);
+        }
 
 
         [HttpPost]
