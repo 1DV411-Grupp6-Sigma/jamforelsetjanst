@@ -6311,6 +6311,41 @@ th.hide-for-touch {
     top: 100px;
     left: auto; } }
 
+@media screen and (min-width: 1600px) {
+  #compare {
+    max-width: 450px; } }
+
+@media screen and (max-width: 1200px) {
+  #compare {
+    padding: 0;
+    margin: 0; }
+  #comparelist-body h5, #comparelist-body i {
+    font-size: 0.85rem;
+    margin: 0 !important; } }
+
+@media screen and (max-width: 1050px) {
+  #compare {
+    right: 20px !important; }
+  #main {
+    margin-left: 30px; } }
+
+@media screen and (max-width: 900px) {
+  body {
+    overflow-x: hidden; }
+  #main {
+    display: block !important;
+    width: 93%;
+    float: none; }
+  #compare {
+    display: block !important;
+    position: relative !important;
+    float: none;
+    width: 88%;
+    left: 50px;
+    top: 10px !important; }
+  #comparelist-body h5, #comparelist-body i {
+    font-size: 1.1rem; } }
+
 #compare {
   position: fixed;
   top: 100px;
