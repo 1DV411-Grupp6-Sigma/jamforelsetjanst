@@ -200,16 +200,13 @@
     <Content Include="App\Admin\ViewModels\AdminQueryViewModel.js" />
     <Content Include="App\Admin\ViewModels\AdminOperatorViewModel.js" />
     <Content Include="App\Admin\ViewModels\AdminHomeViewModel.js" />
-    <Content Include="App\Admin\ViewModels\AdminCategoriesViewModel.js" />
     <Content Include="App\Admin\ViewModels\AdminCategoryEditViewModel.js" />
     <Content Include="App\Admin\ViewModels\RootViewModel.js" />
     <Content Include="App\Admin\Views\AdminGroupCategoryView.html" />
     <Content Include="App\Admin\Views\AdminCategoryShowView.html" />
     <Content Include="App\Admin\Views\AdminQueryView.html" />
-    <Content Include="App\Admin\Views\_Categories.html" />
     <Content Include="App\Admin\Views\AdminOperatorView.html" />
     <Content Include="App\Admin\Views\AdminHomeView.html" />
-    <Content Include="App\Admin\Views\AdminCategoriesView.html" />
     <Content Include="App\Admin\Views\AdminCategoryEditView.html" />
     <Content Include="App\App.js" />
     <Content Include="App\Categories\App.js" />
