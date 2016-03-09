@@ -50,8 +50,8 @@ namespace TownComparisons.MVC.ViewModels.Shared
             entity.Id = this.Id;
             entity.Name = this.Name;
             entity.Description = this.Description;
-            entity.Queries = this.Queries.Select(q => q.ToEntity(existing != null ? existing.Queries.First(exQ => exQ.Id == q.Id) : null)).ToList();
-            entity.OrganisationalUnits = this.OrganisationalUnits.Select(o => o.ToEntity(existing != null ? existing.OrganisationalUnits.First(exO => exO.Id == o.Id) : null)).ToList();
+            entity.Queries = this.Queries.Select(q => q.ToEntity(existing != null ? existing.Queries.FirstOrDefault(exQ => exQ.Id == q.Id) : null)).ToList();
+            entity.OrganisationalUnits = this.OrganisationalUnits.Select(o => o.ToEntity(existing != null ? existing.OrganisationalUnits.FirstOrDefault(exO => exO.Id == o.Id) : null)).ToList();
 
             return entity;
         }
