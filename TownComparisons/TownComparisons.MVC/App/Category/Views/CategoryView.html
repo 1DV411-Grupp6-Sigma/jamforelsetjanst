@@ -37,36 +37,40 @@
     </div>
 
     <div data-ng-show="simple">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th width="10"></th>
-                    <th width="150">Namn</th>
-                    <th width="100">Kontaktuppgifter</th>
-                    <th width="100"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr data-ng-repeat="ou in category.OrganisationalUnits | filter:filter.name | orderBy:sortBy">
-                    <td>{{ setCompareSettingsForOu(ou)}}</td>
+        <div ng-show="!category.OrganisationalUnits.length"><p>Det finns tyvärr inga aktörer tillgängliga i den här kategorin.</p></div>
+        <div ng-show="category.OrganisationalUnits.length">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th width="10"></th>
+                        <th width="150">Namn</th>
+                        <th width="100">Kontaktuppgifter</th>
+                        <th width="100"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="ou in category.OrganisationalUnits | filter:filter.name | orderBy:sortBy">
+                        <td>{{ setCompareSettingsForOu(ou)}}</td>
 
-                    <td><h5><a href="#" data-ng-click="showOperator(ou.OrganisationalUnitId)">{{ ou.Name }}</a></h5></td>
-                    <td>
-                        <p>
-                            {{ ou.Address }}<br />
-                            Telefon: {{ ou.Telephone }}
-                        </p>
-                    </td>
-                    <td>
-                        <div class="{{ ou.class }}"><a href="" data-ng-click="toggleOperators(ou)"><i class="{{ ou.icon }}"></i>{{ ou.text}}</a></div>
-                        <div class="mapClass"><a href="" data-ng-click="showOperatorMap(ou.OrganisationalUnitId)">Karta</a></div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                        <td><h5><a href="#" data-ng-click="showOperator(ou.OrganisationalUnitId)">{{ ou.Name }}</a></h5></td>
+                        <td>
+                            <p>
+                                {{ ou.Address }}<br />
+                                Telefon: {{ ou.Telephone }}
+                            </p>
+                        </td>
+                        <td>
+                            <div class="{{ ou.class }}"><a href="" data-ng-click="toggleOperators(ou)"><i class="{{ ou.icon }}"></i>{{ ou.text}}</a></div>
+                            <div class="mapClass"><a href="" data-ng-click="showOperatorMap(ou.OrganisationalUnitId)">Karta</a></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <div data-ng-show="detailed">
+        <div ng-show="!category.OrganisationalUnits.length"><p>Det finns tyvärr inga aktörer tillgängliga i den här kategorin.</p></div>
         <div class="operator-loop" ng-repeat="ou in category.OrganisationalUnits | filter:filter.name | orderBy:sortBy">
             {{ setCompareSettingsForOu(ou)}}
 
@@ -102,15 +106,18 @@
     </div>
 
     <div data-ng-show="map">
-        <div id="map_canvas">
-            <ui-gmap-google-map center="mapBox.center" zoom="mapBox.zoom" fit="true" draggable="true">
-                <ui-gmap-marker ng-repeat="m in category.OrganisationalUnits"
-                                coords="{ latitude: m.Latitude, longitude: m.Longitude }"
-                                idkey="m.OrganisationalUnitId">
-                    <ui-gmap-window templateUrl="'/App/Category/Views/Partials/_MapOnClick.html'" templateParameter="m">
-                    </ui-gmap-window>
-                </ui-gmap-marker>
-            </ui-gmap-google-map>
+        <div ng-show="!category.OrganisationalUnits.length"><p>Det finns tyvärr inga aktörer tillgängliga i den här kategorin.</p></div>
+        <div ng-show="category.OrganisationalUnits.length">
+            <div id="map_canvas">
+                <ui-gmap-google-map center="mapBox.center" zoom="mapBox.zoom" fit="true" draggable="true">
+                    <ui-gmap-marker ng-repeat="m in category.OrganisationalUnits"
+                                    coords="{ latitude: m.Latitude, longitude: m.Longitude }"
+                                    idkey="m.OrganisationalUnitId">
+                        <ui-gmap-window templateUrl="'/App/Category/Views/Partials/_MapOnClick.html'" templateParameter="m">
+                        </ui-gmap-window>
+                    </ui-gmap-marker>
+                </ui-gmap-google-map>
+            </div>
         </div>
     </div>
 </div>
