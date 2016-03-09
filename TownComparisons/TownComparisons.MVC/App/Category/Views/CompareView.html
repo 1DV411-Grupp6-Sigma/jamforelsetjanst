@@ -6,126 +6,128 @@
 
 <h2>Jämförelse</h2>
 
-<!--Tabel with chosen operators-->
-<table class="dataTable row-border hover" datatable="ng">
-    <thead>
-        <tr>
-            <td></td>
-            <td ng-repeat="ou in organisationalUnitIdsToCompare">
-                <div ng-repeat="ouInfo in compareOrganisationalUnits.OrganisationalUnits" class="text-center">
-                    
-                    <div ng-if="ou == ouInfo.OrganisationalUnitId">
-                        <div ng-if="ouInfo.ImagePath != 'default.jpg'">
-                            <img src="{{ ouInfo.ImagePath }}" />
+
+<div class="container">
+    <!--Tabel with chosen operators-->
+    <table class="dataTable row-border hover" datatable="ng">
+        <thead>
+            <tr>
+                <td></td>
+                <td ng-repeat="ou in organisationalUnitIdsToCompare">
+                    <div ng-repeat="ouInfo in compareOrganisationalUnits.OrganisationalUnits" class="text-center">
+
+                        <div ng-if="ou == ouInfo.OrganisationalUnitId">
+                            <div ng-if="ouInfo.ImagePath != 'default.jpg'">
+                                <img src="{{ ouInfo.ImagePath }}" />
+                            </div>
+                            <div ng-if="ouInfo.ImagePath == 'default.jpg'">
+                                <img src="/Content/pictures/grund.jpg" />
+                            </div>
+                            {{ ouInfo.Name }}
                         </div>
-                        <div ng-if="ouInfo.ImagePath == 'default.jpg'">
-                            <img src="/Content/pictures/grund.jpg" />
-                        </div>
-                        {{ ouInfo.Name }}
                     </div>
-                </div>
-            </td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><span class="text80">Adress</span></td>
-            <td ng-repeat="ou in organisationalUnitIdsToCompare">
-                <div ng-repeat="ouInfo in compareOrganisationalUnits.OrganisationalUnits">
-                    <div ng-if="ou == ouInfo.OrganisationalUnitId"><span class="text80">{{ ouInfo.Address }}</span></div>
-                </div>
-            </td>
-        </tr>
-        <tr ng-if="posLat != undefined && posLng != undefined">
-            <td><span class="text80">Distans</span></td>
-            <td ng-repeat="ou in organisationalUnitIdsToCompare">
-                <div ng-repeat="ouInfo in compareOrganisationalUnits.OrganisationalUnits">
-                    <div ng-if="ou == ouInfo.OrganisationalUnitId"><span class="text80">{{ getDistanceBetweenPositions(ouInfo) }} km</span></div>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td><span class="text80">Kontakt</span></td>
-            <td ng-repeat="ou in organisationalUnitIdsToCompare">
-                <div ng-repeat="ouInfo in compareOrganisationalUnits.OrganisationalUnits">
-                    <div ng-if="ou == ouInfo.OrganisationalUnitId"><span class="text80">{{ ouInfo.Contact }}</span></div>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td><span class="text80">Telefon</span></td>
-            <td ng-repeat="ou in organisationalUnitIdsToCompare">
-                <div ng-repeat="ouInfo in compareOrganisationalUnits.OrganisationalUnits">
-                    <div ng-if="ou == ouInfo.OrganisationalUnitId"><span class="text80">{{ ouInfo.Telephone }}</span></div>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td><span class="text80">E-mail</span></td>
-            <td ng-repeat="ou in organisationalUnitIdsToCompare">
-                <div ng-repeat="ouInfo in compareOrganisationalUnits.OrganisationalUnits">
-                    <div ng-if="ou == ouInfo.OrganisationalUnitId"><span class="text80">{{ ouInfo.Email }}</span></div>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td><br /><strong>2014</strong></td>
-            <td ng-repeat="ou in organisationalUnitIdsToCompare">
-            </td>
-        </tr>
-        <tr ng-repeat="cr in compareResults">
-            <td><span class="text80">{{ cr.Query.Title }}</span></td>
-            <td ng-repeat="ou in organisationalUnitIdsToCompare">
-                <div ng-repeat="res in cr.Results">
-                    <div ng-repeat="pv in res.PeriodValues">
-                        
-                        <div ng-if="res.OrganisationalUnitId == ou && pv.Period == 2014 && pv.Values[0].Value != null">
-                            <div ng-if="containsPercent(cr.Query.Title)">
-                                <div>
-                                    <div class="answer-percent-bar">
-                                        <div class="percentageBox">
-                                            <div class="percentage" style="width: {{pv.Values[0].Value}}%"></div>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="text80">Adress</span></td>
+                <td ng-repeat="ou in organisationalUnitIdsToCompare">
+                    <div ng-repeat="ouInfo in compareOrganisationalUnits.OrganisationalUnits">
+                        <div ng-if="ou == ouInfo.OrganisationalUnitId"><span class="text80">{{ ouInfo.Address }}</span></div>
+                    </div>
+                </td>
+            </tr>
+            <tr ng-if="posLat != undefined && posLng != undefined">
+                <td><span class="text80">Distans</span></td>
+                <td ng-repeat="ou in organisationalUnitIdsToCompare">
+                    <div ng-repeat="ouInfo in compareOrganisationalUnits.OrganisationalUnits">
+                        <div ng-if="ou == ouInfo.OrganisationalUnitId"><span class="text80">{{ getDistanceBetweenPositions(ouInfo) }} km</span></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><span class="text80">Kontakt</span></td>
+                <td ng-repeat="ou in organisationalUnitIdsToCompare">
+                    <div ng-repeat="ouInfo in compareOrganisationalUnits.OrganisationalUnits">
+                        <div ng-if="ou == ouInfo.OrganisationalUnitId"><span class="text80">{{ ouInfo.Contact }}</span></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><span class="text80">Telefon</span></td>
+                <td ng-repeat="ou in organisationalUnitIdsToCompare">
+                    <div ng-repeat="ouInfo in compareOrganisationalUnits.OrganisationalUnits">
+                        <div ng-if="ou == ouInfo.OrganisationalUnitId"><span class="text80">{{ ouInfo.Telephone }}</span></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><span class="text80">E-mail</span></td>
+                <td ng-repeat="ou in organisationalUnitIdsToCompare">
+                    <div ng-repeat="ouInfo in compareOrganisationalUnits.OrganisationalUnits">
+                        <div ng-if="ou == ouInfo.OrganisationalUnitId"><span class="text80">{{ ouInfo.Email }}</span></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><br /><strong>2014</strong></td>
+                <td ng-repeat="ou in organisationalUnitIdsToCompare"></td>
+            </tr>
+            <tr ng-repeat="cr in compareResults">
+                <td><span class="text80">{{ cr.Query.Title }}</span></td>
+                <td ng-repeat="ou in organisationalUnitIdsToCompare">
+                    <div ng-repeat="res in cr.Results">
+                        <div ng-repeat="pv in res.PeriodValues">
+
+                            <div ng-if="res.OrganisationalUnitId == ou && pv.Period == 2014 && pv.Values[0].Value != null">
+                                <div ng-if="containsPercent(cr.Query.Title)">
+                                    <div>
+                                        <div class="answer-percent-bar">
+                                            <div class="percentageBox">
+                                                <div class="percentage" style="width: {{pv.Values[0].Value}}%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="answer-value-box">
+                                            <p class="text80">{{ roundOneDecimal(pv.Values[0].Value) }} %</p>
                                         </div>
                                     </div>
-                                    <div class="answer-value-box">
-                                        <p class="text80">{{ roundOneDecimal(pv.Values[0].Value) }} %</p>
+                                </div>
+
+                                <!--Contains "procentenheter"-->
+                                <div ng-if="containsPercentage(cr.Query.Title) && !containsPercent(cr.Query.Title)">
+                                    <div class="colorGreen" ng-if="pv.Values[0].Value > 0.000">
+                                        <p class="text80">+{{roundOneDecimal(pv.Values[0].Value)}} %</p>
+                                    </div>
+                                    <div class="colorBlue" ng-if="pv.Values[0].Value == 0.000">
+                                        <p class="text80">{{roundOneDecimal(pv.Values[0].Value)}} %</p>
+                                    </div>
+                                    <div class="colorRed" ng-if="pv.Values[0].Value < 0.000">
+                                        <p class="text80">{{roundOneDecimal(pv.Values[0].Value)}} %</p>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!--Contains "procentenheter"-->
-                            <div ng-if="containsPercentage(cr.Query.Title) && !containsPercent(cr.Query.Title)">
-                                <div class="colorGreen" ng-if="pv.Values[0].Value > 0.000">
-                                    <p class="text80">+{{roundOneDecimal(pv.Values[0].Value)}} %</p>
+                                <!--Contains Ja/Nej-->
+                                <div ng-if="containsYesNo(cr.Query.Title) && !containsPercentage(cr.Query.Title) && !containsPercent(cr.Query.Title)">
+                                    <div ng-if="pv.Values[0].Value == 0.0">
+                                        <p class="text80">Nej</p>
+                                    </div>
+                                    <div ng-if="pv.Values[0].Value == 1.0">
+                                        <p class="text80">Ja</p>
+                                    </div>
                                 </div>
-                                <div class="colorBlue" ng-if="pv.Values[0].Value == 0.000">
-                                    <p class="text80">{{roundOneDecimal(pv.Values[0].Value)}} %</p>
-                                </div>
-                                <div class="colorRed" ng-if="pv.Values[0].Value < 0.000">
-                                    <p class="text80">{{roundOneDecimal(pv.Values[0].Value)}} %</p>
-                                </div>
-                            </div>
 
-                            <!--Contains Ja/Nej-->
-                            <div ng-if="containsYesNo(cr.Query.Title) && !containsPercentage(cr.Query.Title) && !containsPercent(cr.Query.Title)">
-                                <div ng-if="pv.Values[0].Value == 0.0">
-                                    <p class="text80">Nej</p>
-                                </div>
-                                <div ng-if="pv.Values[0].Value == 1.0">
-                                    <p class="text80">Ja</p>
-                                </div>
-                            </div>
-
-                            <!--Contains none of the above-->
-                            <div ng-if="!containsYesNo(cr.Query.Title) && !containsPercentage(cr.Query.Title) && !containsPercent(cr.Query.Title)">
-                                <div>
-                                    <p class="text80">{{ pv.Values[0].Value }}</p>
+                                <!--Contains none of the above-->
+                                <div ng-if="!containsYesNo(cr.Query.Title) && !containsPercentage(cr.Query.Title) && !containsPercent(cr.Query.Title)">
+                                    <div>
+                                        <p class="text80">{{ pv.Values[0].Value }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </td>
-        </tr>
-    </tbody>
-</table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

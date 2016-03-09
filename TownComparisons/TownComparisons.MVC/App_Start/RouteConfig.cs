@@ -21,22 +21,17 @@ namespace TownComparisons.MVC
             routes.MapRoute(
                 name: "categories",
                 url: "categories/{*catchall}",
-                defaults: new { controller = "Angular", action = "Index" });
+                defaults: new { controller = "Angular", action = "Category" });
 
             routes.MapRoute(
                 name: "category",
                 url: "category/{*catchall}",
-                defaults: new { controller = "Angular", action = "Index" });
-
-            routes.MapRoute(
-               name: "compare",
-               url: "compare",
-               defaults: new { controller = "Angular", action = "Compare" });
-
+                defaults: new { controller = "Angular", action = "Category" });
+            
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Angular", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Angular", action = "Category", id = UrlParameter.Optional }
             );
         }
     }

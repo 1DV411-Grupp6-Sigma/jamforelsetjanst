@@ -212,7 +212,6 @@
     <Content Include="App\Categories\App.js" />
     <Content Include="App\Categories\ViewModels\CategoriesViewModel.js" />
     <Content Include="App\Categories\ViewModels\RootViewModel.js" />
-    <Content Include="App\Categories\Views\AlphabetView.html" />
     <Content Include="App\Categories\Views\CategoriesView.html" />
     <Content Include="App\Category\App.js" />
     <Content Include="App\Category\ViewModels\OperatorViewModel.js" />
@@ -1449,11 +1448,7 @@
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Angular\Admin.cshtml" />
-    <Content Include="Views\Angular\Index.cshtml" />
-    <Content Include="Views\Angular\Compare.cshtml" />
     <Content Include="Views\Angular\Category.cshtml" />
-    <Content Include="Views\Angular\Operator.cshtml" />
-    <Content Include="Views\Angular\Operators.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\PublishProfiles\" />
