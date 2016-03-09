@@ -36,7 +36,7 @@
         var queryString = $httpParamSerializer(params);
 
         //NavigateTo
-        $location.path('category/' + $routeParams.categoryId + '/compare').search(queryString);
+        $location.path('category/' + $rootScope.listItems[0].Category + '/compare').search(queryString);
     }
 
 
