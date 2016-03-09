@@ -10,6 +10,8 @@ namespace TownComparisons.MVC.ViewModels.Shared
 {
     public class PropertyQueryInfoViewModel
     {
+        public int Id { get; set; }
+
         public string WebServiceName { get; set; }
 
         public string QueryId { get; set; } // Kpi id if using Kolada
@@ -40,6 +42,7 @@ namespace TownComparisons.MVC.ViewModels.Shared
         }
         public PropertyQueryInfoViewModel(PropertyQueryInfo entity)
         {
+            Id = entity.Id;
             WebServiceName = entity.WebServiceName;
             QueryId = entity.QueryId;
             OriginalTitle = entity.OriginalTitle;
@@ -52,6 +55,7 @@ namespace TownComparisons.MVC.ViewModels.Shared
         {
             PropertyQueryInfo entity = (existing != null ? existing : new PropertyQueryInfo());
 
+            entity.Id = this.Id;
             entity.WebServiceName = this.WebServiceName;
             entity.QueryId = this.QueryId;
             entity.OriginalTitle = this.OriginalTitle;

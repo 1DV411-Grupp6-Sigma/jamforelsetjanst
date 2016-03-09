@@ -49,7 +49,7 @@
 
                     <label>
                         Beskrivning:
-                        <textarea ng-model="category.Category.Description" class="{{ hasValidationError('category.Description') ? 'error' : '' }}"></textarea>
+                        <textarea ng-model="category.Category.Description" class="{{ hasValidationError('category.Description') ? 'error' : '' }}" rows="4"></textarea>
                     </label>
                     <small class="error" ng-show="hasValidationError('category.Description')">{{ getValidationErrorMessage('category.Description') }}</small>
 
@@ -145,6 +145,10 @@
                 </div>
                     <input type="button" name="cancel" ng-click="cancelEditCategory()" value="Ja" class="tiny button default" />
                     <input type="button" name="cancel" ng-click="cancel = false" value="X" class="tiny button secondary" />
+            </div>
+
+            <div ng-show="scrollPos > 100">
+                <a class="button secondary" ng-click="scrollToTop()"><i class="fi-arrow-up"></i></a>
             </div>
         </div>
     </div>

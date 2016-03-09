@@ -21,6 +21,15 @@
         else {
             adminService.getNewCategory($routeParams.groupCategoryId, afterCategoryHasBeenLoaded);
         }
+
+        $window.onscroll = function () {
+            $scope.scrollPos = document.body.scrollTop || document.documentElement.scrollTop || 0;
+            $scope.$apply();
+        };
+    }
+
+    $scope.scrollToTop = function () {
+        $window.scrollTo(0, 0);
     }
 
     var afterCategoryHasBeenLoaded = function () {

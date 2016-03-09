@@ -35,6 +35,7 @@ namespace TownComparisons.MVC.ViewModels.Admin
         }
         public PropertyQueryInfoViewModel(Shared.PropertyQueryInfoViewModel baseViewModel, bool use = false)
         {
+            Id = baseViewModel.Id;
             WebServiceName = baseViewModel.WebServiceName;
             QueryId = baseViewModel.QueryId;
             OriginalTitle = baseViewModel.OriginalTitle;

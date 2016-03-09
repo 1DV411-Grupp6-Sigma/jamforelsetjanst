@@ -3,18 +3,14 @@
     <li class="current">{{ category.Name }}</li>
 </ul>
 
-<h2>{{ category.Name }}</h2>
-
-<p>{{ category.Description }}</p>
-
-<div class="right searchbar">
-    <div id="search" class="row" role="search">
-        <div class="small-4 columns end">
-            <input id="search-box" placeholder="Sök" type="text" data-ng-model="filter.name" />
-        </div>
-    </div>
-</div>
 <div class="container">
+
+    <div>
+        <h2>{{ category.Name }}</h2>
+
+        <p>{{ category.Description }}</p>
+    </div>
+
     <!--navbar for simple or detailed list -->
     <nav role="navigation" class="row">
         <div class="menu-bar">
@@ -25,6 +21,14 @@
             </ul>
         </div>
     </nav>
+
+    <div class="right"> <!-- searchbar (needs some modification/fix) -->
+        <div id="search" class="row" role="search">
+            <div class="small-4 columns end">
+                <input id="search-box" placeholder="Sök" type="text" data-ng-model="filter.name" />
+            </div>
+        </div>
+    </div>
 
     <!-- navbar for sorting -->
     <div data-ng-if="detailed || simple" class="row">
