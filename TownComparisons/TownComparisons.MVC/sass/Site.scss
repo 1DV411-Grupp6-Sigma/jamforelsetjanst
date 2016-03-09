@@ -70,8 +70,14 @@ background: #fff;
 .accordion-navigation.active > a:after {
   content: "↟"; }
 
-@media #{$medium-up} {
+@media #{$small-up} {
     #saveChangesPanel > div {
+        padding-left: 32px;
+    }
+}
+@media #{$large-up} {
+    #saveChangesPanel > div {
+        padding-left: 0;
         position: fixed;
         top: 100px;
         left: auto;

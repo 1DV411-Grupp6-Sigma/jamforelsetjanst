@@ -6348,8 +6348,13 @@ th.hide-for-touch {
 .accordion-navigation.active > a:after {
   content: "↟"; }
 
-@media only screen and (min-width: 40.063em) {
+@media only screen {
   #saveChangesPanel > div {
+    padding-left: 32px; } }
+
+@media only screen and (min-width: 64.063em) {
+  #saveChangesPanel > div {
+    padding-left: 0;
     position: fixed;
     top: 100px;
     left: auto; } }
