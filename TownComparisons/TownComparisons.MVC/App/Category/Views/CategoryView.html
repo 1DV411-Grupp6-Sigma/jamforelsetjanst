@@ -10,11 +10,13 @@
 <div class="container">
     <!--navbar for simple or detailed list -->
     <nav role="navigation" class="row">
-        <dl class="breadcrumbs">
-            <dd role="menuitem" class="{{ detailedClass }}"><a href="#" data-ng-click="showDetailed()">Visa detaljerad lista</a></dd>
-            <dd role="menuitem" class="{{ mapClass }}"><a href="#" data-ng-click="showMap()">Visa på karta</a></dd>
-            <dd role="menuitem" class="{{ simpleClass }}"><a href="#" data-ng-click="showSimple()">Visa enkel lista</a></dd>
-        </dl>
+        <div class="menu-bar">
+            <ul class="category-nav">
+                <li role="menuitem"><a href="#" class="{{ detailedClass }}" data-ng-click="showDetailed()">Visa detaljerad lista</a></li>
+                <li role="menuitem"><a href="#" class="{{ mapClass }}" data-ng-click="showMap()">Visa på karta</a></li>
+                <li role="menuitem"><a href="#" class="{{ simpleClass }}" data-ng-click="showSimple()">Visa enkel lista</a></li>
+            </ul>
+        </div>
     </nav>
 
     <!-- navbar for sorting -->

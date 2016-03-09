@@ -16,7 +16,7 @@
         $scope.sortOrder = $scope.sortAsc;
         $scope.sortOuByName();
         $scope.showDetailed();
-        $scope.detailedClass = "unavailable";
+        $scope.detailedClass = "active";
         $scope.getClientPosition();
     }
 
@@ -25,7 +25,7 @@
         $scope.detailed = true;
         $scope.simple = false;
         $scope.map = false;
-        $scope.detailedClass = "unavailable";
+        $scope.detailedClass = "active";
         $scope.simpleClass = "";
         $scope.mapClass = "";
     }
@@ -35,7 +35,7 @@
         $scope.detailed = false;
         $scope.simple = true;
         $scope.map = false;
-        $scope.simpleClass = "unavailable";
+        $scope.simpleClass = "active";
         $scope.detailedClass = "";
         $scope.mapClass = "";
     }
@@ -47,7 +47,7 @@
         $scope.map = true;
         $scope.detailedClass = "";
         $scope.simpleClass = "";
-        $scope.mapClass = "unavailable";
+        $scope.mapClass = "active";
         $scope.mapOperators();
     }
 

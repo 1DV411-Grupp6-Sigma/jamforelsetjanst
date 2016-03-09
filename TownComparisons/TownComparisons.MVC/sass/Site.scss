@@ -4,6 +4,56 @@
 @import "foundation";
 @import "foundation.mvc";
 
+
+.category-nav{
+    padding: 0;
+    margin: 0 auto;
+    width: 90%;
+    margin-bottom: 20px;
+}
+
+.categories-nav{
+    padding: 0;
+    margin: 0 auto;
+    width: 40%;
+    margin-bottom: 20px;
+}
+
+.menu-bar{
+    margin-top: -15px;
+    width: 100%;
+    margin-bottom: 20px;
+    height: 50px;
+    border-bottom: 3px solid #008CBA;
+}
+
+.categories-nav li, .category-nav li{
+display: inline;
+list-style: none;
+
+}
+
+.categories-nav li a, .category-nav li a{
+padding: 5px 20px 8px 20px;
+text-align: center;
+line-height: 50px;
+font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
+font-size: 18px;
+color: #333333;
+background: #fff;
+
+}
+
+.categories-nav li a:hover, .category-nav li a:hover{
+    cursor: pointer;
+    color: rgba(0,0,0,1);
+}
+
+.categories-nav a.active, .category-nav a.active{
+    background-color: #008CBA;
+    color: #fff;
+}
+
 .categoriesList, .categoriesList ul {
     list-style-type: none;
 }
