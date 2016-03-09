@@ -1,4 +1,11 @@
-﻿<h4>Operator</h4>
+﻿<ul class="breadcrumbs">
+    <li><a href="/categories">Kategorier</a></li>
+    <li><a href="/category/{{ category.Id }}">{{ category.Name }}</a></li>
+    <li><a href="/category/{{ category.Id }}/operator/{{ organisationalUnit.OrganisationalUnitId }}">{{ organisationalUnit.Name }}</a></li>
+    <li class="current">Karta</li>
+</ul>
+
+<h2>{{ organisationalUnit.Name }}</h2>
 {{ setCompareSettingsForOu(organisationalUnit)}}
 <div class="container">
     <div id="map_canvas">
