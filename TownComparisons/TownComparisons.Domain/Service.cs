@@ -300,7 +300,10 @@ namespace TownComparisons.Domain
                 _unitOfWork.Save();
                 return true;
             }
-            catch { }
+            catch (Exception e)
+            {
+                e = e;
+            }
 
             return false;
         }

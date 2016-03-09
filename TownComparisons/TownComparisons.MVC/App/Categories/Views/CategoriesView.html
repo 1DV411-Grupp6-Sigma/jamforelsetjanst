@@ -5,18 +5,10 @@
     </ul>
 
 
-    <h2>Kategorier</h2>
-
-    <!-- seachbar -->
-    <div class="right searchbar">
-        <div id="search">
-            <div class="small-4 columns end">
-                <input id="search-box" placeholder="Sök" type="text" data-ng-model="filter.name" />
-            </div>
-        </div>
-    </div>
-
     <div class="container">
+
+        <h2>Kategorier</h2>
+
         <!-- navbar for different views -->
         <div class="row">
             <div class="menu-bar">
@@ -24,6 +16,15 @@
                     <li><a href="#" class="{{ groupClass }}" data-ng-click="showMe()">Kategori</a></li>
                     <li><a href="#" class="{{ alphabetClass }}" data-ng-click="hideMe()">Alla A-Ö</a></li>
                 </ul>
+            </div>
+        </div>
+
+        <!-- seachbar -->
+        <div class="right"><!-- searchbar (needs some modification/fix) -->
+            <div id="search">
+                <div class="small-4 columns end">
+                    <input id="search-box" placeholder="Sök" type="text" data-ng-model="filter.name" />
+                </div>
             </div>
         </div>
 
