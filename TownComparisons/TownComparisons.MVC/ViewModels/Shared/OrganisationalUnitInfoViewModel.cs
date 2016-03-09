@@ -9,7 +9,6 @@ namespace TownComparisons.MVC.ViewModels.Shared
 {
     public class OrganisationalUnitInfoViewModel
     {
-
         //private static string PhysicalUploadedImagesPath= System.Web.HttpContext.Current.Server.MapPath(".") + @"\Content\pictures\";
 
         private static string path = System.AppDomain.CurrentDomain.BaseDirectory + @"\Content\pictures\";
@@ -29,7 +28,7 @@ namespace TownComparisons.MVC.ViewModels.Shared
         [MinLength(3, ErrorMessage = "Namnet måste vara minst {1} tecken.")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Korta beskrivningen måste fyllas i.")]
+        //[Required(ErrorMessage = "Korta beskrivningen måste fyllas i.")] //doesn't work when adding new ou to a category
         [MaxLength(500, ErrorMessage = "Korta beskrivningen kan inte vara längre än {1} tecken.")]
         public string ShortDescription { get; set; }
 
