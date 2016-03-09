@@ -13,10 +13,12 @@
     <div class="container">
         <!-- navbar for different views -->
         <div class="row">
-            <dl class="breadcrumbs">
-                <dd class="{{ groupClass }}"><a href="#" data-ng-click="showMe()">Kategori</a></dd>
-                <dd class="{{ alphabetClass }}"><a href="#" data-ng-click="hideMe()">Alla A-Ö</a></dd>
-            </dl>
+            <div class="menu-bar">
+                <ul class="categories-nav">
+                    <li><a href="#" class="{{ groupClass }}" data-ng-click="showMe()">Kategori</a></li>
+                    <li><a href="#" class="{{ alphabetClass }}" data-ng-click="hideMe()">Alla A-Ö</a></li>
+                </ul>
+            </div>
         </div>
 
         <!-- navbar for desc or asc sorting-->

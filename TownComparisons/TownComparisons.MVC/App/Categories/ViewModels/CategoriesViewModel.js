@@ -11,14 +11,14 @@
     var initialize = function () {
         $scope.sortCategoryByName();
         $scope.showMe();
-        $scope.groupClass = "unavailable";
+        $scope.groupClass = "active";
     }
 
     $scope.showMe = function () {
         $scope.viewAllCategories();
         $scope.group = true;
         $scope.alphabet = false;
-        $scope.groupClass = "unavailable";
+        $scope.groupClass = "active";
         $scope.alphabetClass = "";
     }
     
@@ -26,7 +26,7 @@
         $scope.viewCategoriesBasedOnAlphabet();
         $scope.group = false;
         $scope.alphabet = true;
-        $scope.alphabetClass = "unavailable";
+        $scope.alphabetClass = "active";
         $scope.groupClass = "";
     }
 
