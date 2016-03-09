@@ -121,6 +121,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="CodeMap\CodeMap160223.dgml" />
+    <None Include="CodeMap\CodeMapDependenciesDomainAndMvc.dgml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
