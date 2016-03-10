@@ -1,8 +1,8 @@
 ﻿<ul class="breadcrumbs">
-    <li><a href="/categories">Kategorier</a></li>
-    <li><a href="/category/{{ category.Id }}">{{ category.Name }}</a></li>
-    <li><a href="/category/{{ category.Id }}/operator/{{ organisationalUnit.OrganisationalUnitId }}">{{ organisationalUnit.Name }}</a></li>
-    <li class="current">Karta</li>
+    <li><a href="/categories" rel="prev">Kategorier</a></li>
+    <li><a href="/category/{{ category.Id }}" rel="prev">{{ category.Name }}</a></li>
+    <li><a href="/category/{{ category.Id }}/operator/{{ organisationalUnit.OrganisationalUnitId }}" rel="prev">{{ organisationalUnit.Name }}</a></li>
+    <li class="current" aria-label="Du är här">Karta</li>
 </ul>
 
 <h2>{{ organisationalUnit.Name }}</h2>
