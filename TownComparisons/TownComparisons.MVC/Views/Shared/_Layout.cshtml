@@ -13,7 +13,10 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    @Html.Partial("_NavBar")
+    <header>
+        @Html.Partial("_NavBar")
+    </header>
+
     <div class="row">
         <div class="row">
             @RenderBody()
@@ -26,7 +29,7 @@
     @Scripts.Render("~/bundles/mm-foundation")
     @Scripts.Render("~/bundles/ng-file-upload")
     @Scripts.Render("~/bundles/angular-google-maps")
-    
+
     <script type="text/javascript">
         window.MyApp = {};
     </script>

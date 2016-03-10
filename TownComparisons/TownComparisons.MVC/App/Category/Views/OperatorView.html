@@ -1,11 +1,11 @@
-﻿<div class="content">
-
-    <ul class="breadcrumbs">
-        <li><a href="/categories">Kategorier</a></li>
-        <li><a href="/category/{{ category.Id }}">{{ category.Name }}</a></li>
-        <li class="current">{{ organisationalUnit.Name }}</li>
-    </ul>
-
+﻿<section class="content">
+    <nav role="navigation">
+        <ul class="breadcrumbs" role="menu">
+            <li role="menuitem"><a href="/categories" rel="prev">Kategorier</a></li>
+            <li role="menuitem"><a href="/category/{{ category.Id }}" rel="prev">{{ category.Name }}</a></li>
+            <li class="current" aria-label="Du är här">{{ organisationalUnit.Name }}</li>
+        </ul>
+    </nav>
     <!-- Show Operator -->
     <div data-ng-app="operator" data-ng-controller="rootViewModel" ng-model="organisationalUnit">
 
@@ -84,4 +84,4 @@
         </div>
     </div>
 
-</div>
+</section>

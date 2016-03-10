@@ -1,9 +1,11 @@
-﻿<ul class="breadcrumbs">
-    <li><a href="/categories">Kategorier</a></li>
-    <li class="current">{{ category.Name }}</li>
-</ul>
+﻿<nav role="navigation">
+    <ul class="breadcrumbs">
+        <li><a href="/categories" rel="prev">Kategorier</a></li>
+        <li class="current" aria-label="Du är här">{{ category.Name }}</li>
+    </ul>
+</nav>
 
-<div class="container">
+<section class="container">
 
     <div>
         <h2>{{ category.Name }}</h2>
@@ -25,7 +27,7 @@
     <div class="right"> <!-- searchbar (needs some modification/fix) -->
         <div id="search" class="row" role="search">
             <div class="small-4 columns end">
-                <input id="search-box" placeholder="Sök" type="text" data-ng-model="filter.name" />
+                <input role="search" id="search-box" placeholder="Sök" type="text" data-ng-model="filter.name" />
             </div>
         </div>
     </div>
@@ -74,47 +76,47 @@
     </div>
 
     <div data-ng-show="detailed">
-        <div ng-show="!category.OrganisationalUnits.length"><p>Det finns tyvärr inga aktörer tillgängliga i den här kategorin.</p></div>
-        <div class="operator-loop" ng-repeat="ou in category.OrganisationalUnits | filter:filter.name | orderBy:sortBy">
+        <div data-ng-show="!category.OrganisationalUnits.length"><p>Det finns tyvärr inga aktörer tillgängliga i den här kategorin.</p></div>
+        <div class="operator-loop" data-ng-repeat="ou in category.OrganisationalUnits | filter:filter.name | orderBy:sortBy">
             {{ setCompareSettingsForOu(ou)}}
 
             <div class="row">
                 <div class="small-5 columns end">
-                    <h5><a href="#" ng-click="showOperator(ou.OrganisationalUnitId)">{{ ou.Name }}</a></h5>
+                    <h5><a href="#" data-ng-click="showOperator(ou.OrganisationalUnitId)">{{ ou.Name }}</a></h5>
                 </div>
             </div>
             <div class="row">
                 <div class="small-2 columns">
-                    <div ng-if="ou.ImagePath != 'default.jpg' && ou.ImagePath != 'dagis.jpg' && ou.ImagePath != 'elderly.jpg' && ou.ImagePath != 'grund.jpg' && ou.ImagePath != 'sjukhus.jpg' && ou.ImagePath != 'vardcentral.jpg'">
-                        <img alt="Bild på aktör" ng-src="{{ ou.ImagePath }}" />
+                    <div data-ng-if="ou.ImagePath != 'default.jpg' && ou.ImagePath != 'dagis.jpg' && ou.ImagePath != 'elderly.jpg' && ou.ImagePath != 'grund.jpg' && ou.ImagePath != 'sjukhus.jpg' && ou.ImagePath != 'vardcentral.jpg'">
+                        <img alt="Bild på aktör" data-ng-src="{{ ou.ImagePath }}" />
                     </div>
-                    <div ng-if="ou.ImagePath == 'default.jpg' || ou.ImagePath == 'dagis.jpg' || ou.ImagePath == 'elderly.jpg' || ou.ImagePath == 'grund.jpg' || ou.ImagePath == 'sjukhus.jpg' || ou.ImagePath == 'vardcentral.jpg'">
-                        <img alt="Bild på aktör" ng-src="/Content/pictures/{{ ou.ImagePath }}" />
+                    <div data-ng-if="ou.ImagePath == 'default.jpg' || ou.ImagePath == 'dagis.jpg' || ou.ImagePath == 'elderly.jpg' || ou.ImagePath == 'grund.jpg' || ou.ImagePath == 'sjukhus.jpg' || ou.ImagePath == 'vardcentral.jpg'">
+                        <img alt="Bild på aktör" data-ng-src="/Content/pictures/{{ ou.ImagePath }}" />
                     </div>
                 </div>
                 <div class="small-7 columns">
                     <div>{{ ou.ShortDescription }}</div>
                     <div><strong>Adress:</strong> {{ ou.Address }}</div>
-                    <div ng-if="getDistanceBetweenPositions(ou) >= 0.0"><strong>Distans:</strong> {{ getDistanceBetweenPositions(ou) }} km</div>
+                    <div data-ng-if="getDistanceBetweenPositions(ou) >= 0.0"><strong>Distans:</strong> {{ getDistanceBetweenPositions(ou) }} km</div>
                 </div>
                 <div class="small-3 columns">
                     <div class="row">
-                        <div class="{{ ou.class }}"><a href="" ng-click="toggleOperators(ou)"><i class="{{ ou.icon }}"></i>{{ ou.text}}</a></div>
+                        <div class="{{ ou.class }}"><a href="" data-ng-click="toggleOperators(ou)"><i class="{{ ou.icon }}"></i>{{ ou.text}}</a></div>
                     </div>
                     <div class="row">
-                        <div class="mapClass"><a href="" ng-click="showOperatorMap(ou.OrganisationalUnitId)">Karta</a></div>
+                        <div class="mapClass"><a href="" data-ng-click="showOperatorMap(ou.OrganisationalUnitId)">Karta</a></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div data-ng-show="map">
-        <div ng-show="!category.OrganisationalUnits.length"><p>Det finns tyvärr inga aktörer tillgängliga i den här kategorin.</p></div>
-        <div ng-show="category.OrganisationalUnits.length">
+    <div data-ng-show="map" role="wiget">
+        <div data-ng-show="!category.OrganisationalUnits.length"><p>Det finns tyvärr inga aktörer tillgängliga i den här kategorin.</p></div>
+        <div data-ng-show="category.OrganisationalUnits.length">
             <div id="map_canvas">
                 <ui-gmap-google-map center="mapBox.center" zoom="mapBox.zoom" fit="true" draggable="true">
-                    <ui-gmap-marker ng-repeat="m in category.OrganisationalUnits"
+                    <ui-gmap-marker data-ng-repeat="m in category.OrganisationalUnits"
                                     coords="{ latitude: m.Latitude, longitude: m.Longitude }"
                                     idkey="m.OrganisationalUnitId">
                         <ui-gmap-window templateUrl="'/App/Category/Views/Partials/_MapOnClick.html'" templateParameter="m">
@@ -124,6 +126,6 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 
 <script src='//maps.googleapis.com/maps/api/js'></script>
