@@ -6293,20 +6293,42 @@ th.hide-for-touch {
   -webkit-border-bottom-right-radius: 2px;
   border-bottom-right-radius: 2px; }
 
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-  display: none !important; }
-
-.category-nav {
-  padding: 0;
-  margin: 0 auto;
-  width: 90%;
-  margin-bottom: 20px; }
-
-.categories-nav {
-  padding: 0;
-  margin: 0 auto;
-  width: 40%;
-  margin-bottom: 20px; }
+@media (min-width: 960px) {
+  #search input[type="text"] {
+    width: 200px; }
+  [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important; }
+  .breadcrumbs > * {
+    font-size: 15px; }
+  .category-nav {
+    padding: 0;
+    margin: 0 auto;
+    width: 90%;
+    margin-bottom: 20px; }
+  .categories-nav {
+    padding: 0;
+    margin: 0 auto;
+    width: 40%;
+    margin-bottom: 20px; }
+  .categories-nav li, .category-nav li {
+    display: inline;
+    list-style: none; }
+  .categories-nav li a, .category-nav li a {
+    padding: 5px 20px 8px 20px;
+    text-align: center;
+    line-height: 50px;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    color: #333333;
+    background: #fff; }
+  .categories-nav li a:hover, .category-nav li a:hover {
+    cursor: pointer;
+    color: black; }
+  .categories-nav a.active, .category-nav a.active {
+    background-color: #008CBA;
+    color: #fff; }
+  .categoriesList, .categoriesList ul {
+    list-style-type: none; } }
 
 .menu-bar {
   margin-top: -15px;
@@ -6314,30 +6336,6 @@ th.hide-for-touch {
   margin-bottom: 20px;
   height: 50px;
   border-bottom: 3px solid #008CBA; }
-
-.categories-nav li, .category-nav li {
-  display: inline;
-  list-style: none; }
-
-.categories-nav li a, .category-nav li a {
-  padding: 5px 20px 8px 20px;
-  text-align: center;
-  line-height: 50px;
-  font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
-  font-size: 18px;
-  color: #333333;
-  background: #fff; }
-
-.categories-nav li a:hover, .category-nav li a:hover {
-  cursor: pointer;
-  color: black; }
-
-.categories-nav a.active, .category-nav a.active {
-  background-color: #008CBA;
-  color: #fff; }
-
-.categoriesList, .categoriesList ul {
-  list-style-type: none; }
 
 .accordion-navigation > a:after {
   content: "↡";
@@ -6377,7 +6375,63 @@ th.hide-for-touch {
   #main {
     margin-left: 30px; } }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 960px) {
+  .before-compare {
+    text-align: center;
+    width: 65px;
+    font-size: 13px;
+    border: 1px solid #eee;
+    height: 30px; }
+  .after-compare {
+    text-align: center;
+    background-color: #eee;
+    width: 65px;
+    font-size: 13px;
+    height: 30px;
+    vertical-align: middle; }
+  .mapClass {
+    text-align: center;
+    width: 65px;
+    font-size: 13px;
+    border: 1px solid #eee;
+    height: 30px;
+    margin-top: 3px; }
+  #search-box {
+    margin-top: -110px; }
+  #search input[type="text"] {
+    width: 130px; }
+  .breadcrumbs > * {
+    line-height: 2;
+    font-size: 11px; }
+  .category-nav {
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+    margin-bottom: 20px; }
+  .categories-nav {
+    padding: 0;
+    margin: 0 auto;
+    width: 80%;
+    margin-bottom: 20px; }
+  .categories-nav li, .category-nav li {
+    display: inline;
+    list-style: none; }
+  .categories-nav li a, .category-nav li a {
+    padding: 5px 10px 8px 10px;
+    text-align: center;
+    line-height: 50px;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    color: #333333;
+    background: #fff; }
+  .categories-nav li a:hover, .category-nav li a:hover {
+    cursor: pointer;
+    color: black; }
+  .categories-nav a.active, .category-nav a.active {
+    background-color: #008CBA;
+    color: #fff; }
+  .categoriesList, .categoriesList ul {
+    list-style-type: none; }
   body {
     overflow-x: hidden; }
   #main {
@@ -6471,9 +6525,6 @@ button.disabled, button[disabled], .button.disabled, .button[disabled] {
 button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
   background-color: lightgray; }
 
-#search input[type="text"] {
-  width: 200px; }
-
 body {
   background-color: #ebebe0; }
 
@@ -6494,9 +6545,6 @@ body {
   padding: 20px;
   box-shadow: 10px 10px 5px #c2c2a3;
   margin-bottom: 20px; }
-
-.breadcrumbs > * {
-  font-size: 15px; }
 
 .table {
   border: solid 1px #fff; }
