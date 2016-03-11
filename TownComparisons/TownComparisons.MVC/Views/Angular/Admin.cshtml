@@ -4,6 +4,7 @@
 }
 @section scripts {
     <script src="~/App/Admin/App.js"></script>
+    <script src="~/App/Admin/GetGeoCo.js"></script>
     <script src="~/App/Admin/ViewModels/RootViewModel.js"></script>
     <script src="~/App/Admin/ViewModels/AdminHomeViewModel.js"></script>
     <script src="~/App/Admin/ViewModels/AdminCategoryShowViewModel.js"></script>
@@ -12,6 +13,9 @@
     <script src="~/App/Admin/ViewModels/AdminQueryViewModel.js"></script>
     <script src="~/App/Admin/ViewModels/AdminGroupCategoryViewModel.js"></script>
     <script src="~/App/Shared/ViewModels/ModalConfirm.js"></script>
+
+    <!-- Required dependencies -->
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
 }
 @section jsCode {
     <!-- angular.bootstrap(document.getElementById("admin"), ['admin']); -->    
