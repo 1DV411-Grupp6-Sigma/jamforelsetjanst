@@ -80,6 +80,7 @@
                     <td data-ng-repeat="ou in organisationalUnitIdsToCompare">
                         <div data-ng-repeat="res in cr.Results">
                             <div data-ng-repeat="pv in res.PeriodValues">
+
                                 <div data-ng-if="res.OrganisationalUnitId == ou && pv.Period == 2014 && pv.Values[0].Value != null">
                                     <div data-ng-if="containsPercent(cr.Query.Title)">
                                         <div>

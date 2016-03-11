@@ -79,3 +79,4 @@ applicationhost.config
 *.mdf
 *.ldf
 PublishProfiles/
+Site.min.css
