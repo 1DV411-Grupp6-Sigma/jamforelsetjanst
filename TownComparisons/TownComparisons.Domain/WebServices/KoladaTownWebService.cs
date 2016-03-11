@@ -82,7 +82,7 @@ namespace TownComparisons.Domain.WebServices
         private string GuesstPropertyQueryType(string title)
         {
             //guess type:
-            if (title.ToLower().Contains("andel (%)"))
+            if (title.ToLower().Contains("(%)"))
             {
                 return PropertyQuery.TYPE_PERCENT;
             }
