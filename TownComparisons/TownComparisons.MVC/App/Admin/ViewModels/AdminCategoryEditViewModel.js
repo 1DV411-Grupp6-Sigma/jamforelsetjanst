@@ -48,6 +48,8 @@
         setCategoryOrganisationalUnitsToUse();
         setCategoryQueriesToUse();
 
+        adminService.resetErrors();
+
         var url = ($scope.updateNotInsert ? 'api/admin/category/' + adminService.categoryId :
                                             'api/admin/groupcategory/' + adminService.groupCategoryId + '/insertcategory');
 
