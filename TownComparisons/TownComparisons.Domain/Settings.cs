@@ -92,7 +92,8 @@ namespace TownComparisons.Domain
             }
             catch (Exception ex)
             {
-                throw new ApplicationException("Could not write to settings file. " + ex);
+                ex = ex;
+                //throw new ApplicationException("Could not write to settings file. " + ex);
             }
         }
     }

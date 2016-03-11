@@ -77,21 +77,24 @@ namespace TownComparisons.Domain.WebServices
             rawJson = RawJson(apiRequest);
             var kpi = JsonConvert.DeserializeObject<KpiGroups>(rawJson).Values;
 
-            return kpi.Select(k => new PropertyQueryGroup(this.GetName(), k.Id, k.Title, k.Members.Select(m => new PropertyQuery(this.GetName(), m.Member_id, m.Member_title, GuesstPropertyQueryType(m.Member_title))).ToList())).ToList();
+            return kpi.Select(k => new PropertyQueryGroup(this.GetName(), k.Id, k.Title, k.Members.Select(m => new PropertyQuery(this.GetName(), m.Member_id, m.Member_title, GuessPropertyQueryType(m.Member_title))).ToList())).ToList();
         }
-        private string GuesstPropertyQueryType(string title)
+        private string GuessPropertyQueryType(string title)
         {
-            //guess type:
             if (title.ToLower().Contains("(%)"))
             {
                 return PropertyQuery.TYPE_PERCENT;
+            }
+            else if (title.ToLower().Contains("procentenheter"))
+            {
+                return PropertyQuery.TYPE_PERCENTAGE;
             }
             else if (title.ToLower().Contains("ja=1") && title.ToLower().Contains("nej=0")) 
             {
                 return PropertyQuery.TYPE_YESNO;
             }
 
-            return String.Empty;
+            return PropertyQuery.TYPE_STANDARD;
         }
 
         public override List<OrganisationalUnit> GetAllOrganisationalUnits(string municipalityId)
