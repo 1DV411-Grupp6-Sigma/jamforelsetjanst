@@ -6299,6 +6299,9 @@ th.hide-for-touch {
   _overflow: auto;
   margin: 0 0 1em; }
 
+#search-box {
+  margin-top: -110px; }
+
 @media (min-width: 960px) {
   #search input[type="text"] {
     width: 200px; }
@@ -6438,8 +6441,6 @@ th.hide-for-touch {
     border: 1px solid #eee;
     height: 30px;
     margin-top: 3px; }
-  #search-box {
-    margin-top: -110px; }
   #search input[type="text"] {
     width: 130px; }
   .breadcrumbs > * {
