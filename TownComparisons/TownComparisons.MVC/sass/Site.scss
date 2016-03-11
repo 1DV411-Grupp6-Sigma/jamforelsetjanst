@@ -12,6 +12,10 @@
 	margin: 0 0 1em;
 }
 
+#search-box {
+    margin-top: -110px;
+}
+
 //Screens larger than 960px
 @media (min-width:960px) {
 
@@ -176,9 +180,6 @@
         border: 1px solid #eee;
         height: 30px;
         margin-top: 3px;
-    }
-    #search-box {
-        margin-top: -110px;
     }
 
     #search input[type="text"] {
