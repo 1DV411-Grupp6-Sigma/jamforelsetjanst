@@ -7,8 +7,6 @@
         $scope.pageHeading = "Hitta och jämför service";
     }
 
-    
-
     //List with selected OU's
     $rootScope.listItems = collectorFactory.listOfSubjects;
 
@@ -38,18 +36,6 @@
         //NavigateTo
         $location.path('category/' + $rootScope.listItems[0].Category + '/compare').search(queryString);
     }
-
-
-    /*$scope.categoriesList = function () {
-        viewModelHelper.navigateTo('categories');
-    }*/
-
-    /*$scope.showCategory = function () {
-        if (categoryService.categoryId != 0) {
-            $scope.flags.shownFromList = false;
-            viewModelHelper.navigateTo('category/' + categoryService.categoryId + '/operators');
-        }
-    }*/
 
     initialize();
 });
