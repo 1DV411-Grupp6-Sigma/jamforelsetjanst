@@ -1,5 +1,4 @@
-﻿
-var categoryModule = angular.module('category', ['common', 'uiGmapgoogle-maps'])
+﻿var categoryModule = angular.module('category', ['common', 'uiGmapgoogle-maps'])
     .config(function ($routeProvider, $locationProvider) {
         //$routeProvider.when('/', { templateUrl: '/App/Categories/Views/CategoriesView.html', controller: 'categoriesViewModel' });
         $routeProvider
