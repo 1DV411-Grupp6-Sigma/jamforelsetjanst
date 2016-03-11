@@ -1,5 +1,4 @@
-﻿
-<h2>Ändra aktör</h2>
+﻿<h2>Ändra aktör</h2>
 <h3>{{ operatorName }}</h3>
 
 
@@ -9,7 +8,7 @@
         <li ng-repeat="error in validationErrors">{{(error.name != '' ? error.name + ': ' : '') + error.message}}</li>
     </ul>
     <a class="close" ng-click="close()">x</a>
-</alert> 
+</alert>
 
 <form novalidate>
 
@@ -19,7 +18,7 @@
              width="200" />
     </div>
     <div class="tiny button" ngf-select="saveOperatorImage($file)" ngf-pattern="'image/*'"
-        ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100">
+         ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100">
         <i class="fi-upload"></i>
         Ladda upp ny bild
         <small class="error" ng-show="hasValidationError('organisationalUnit.ImagePath')">{{ getValidationErrorMessage('organisationalUnit.ImagePath') }}</small>
@@ -29,17 +28,23 @@
     <div ng-repeat="objectField in objectFields">
         <label>
             {{ objectField.title }}:
-            <ng-switch on="objectField.textarea">
-
+            <div ng-switch on="objectField.textarea">
                 <textarea ng-switch-when="true" ng-model="operator[objectField.field]" class="{{ hasValidationError('organisationalUnit.' + objectField.field) ? 'error' : '' }}"></textarea>
+                <div ng-switch-when="false">
 
-                <input ng-switch-when="false" type="text" ng-model="operator[objectField.field]" class="{{ hasValidationError('organisationalUnit.' + objectField.field) ? 'error' : '' }}" />
-
-            </ng-switch>
+                    <div ng-if="objectField.id=='txtautocomplete'">
+                        <input id="txtautocomplete" type="Text" ng-model="operator[objectField.field]" class="{{ hasValidationError('organisationalUnit.' + objectField.field) ? 'error' : '' }}" placeholder="Skriv adress..." />
+                        <button id='btn' onclick="getGeo()">Hitta koordinater</button>
+                    </div>
+                    <div ng-if="objectField.id!='txtautocomplete'">
+                        <input type="Text" id="{{objectField.id}}" ng-model="operator[objectField.field]" class="{{ hasValidationError('organisationalUnit.' + objectField.field) ? 'error' : '' }}" />
+                    </div>
+                </div>
+            </div>
         </label>
         <small class="error" ng-show="hasValidationError('organisationalUnit.' + objectField.field)">{{ getValidationErrorMessage('organisationalUnit.' + objectField.field) }}</small>
     </div>
-        
+
 
 
     <div>

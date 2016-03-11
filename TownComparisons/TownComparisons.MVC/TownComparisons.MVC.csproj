@@ -195,6 +195,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\Admin\App.js" />
+    <Content Include="App\Admin\GetGeoCo.js" />
     <Content Include="App\Admin\ViewModels\AdminGroupCategoryViewModel.js" />
     <Content Include="App\Admin\ViewModels\AdminCategoryShowViewModel.js" />
     <Content Include="App\Admin\ViewModels\AdminQueryViewModel.js" />
