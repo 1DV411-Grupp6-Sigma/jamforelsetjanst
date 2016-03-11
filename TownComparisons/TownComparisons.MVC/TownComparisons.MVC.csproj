@@ -230,6 +230,7 @@
     <Content Include="App\Compare\Collector.js" />
     <Content Include="App\Shared\ViewModels\ModalConfirm.js" />
     <Content Include="App\Shared\Views\ModalConfirm.html" />
+    <Content Include="App\TextSize.js" />
     <Content Include="App\Validator.js" />
     <Content Include="Content\Foundations-icon.css" />
     <Content Include="Content\Foundations-icon.min.css">

@@ -9,10 +9,10 @@
     <script src="~/App/Category/ViewModels/CategoryViewModel.js"></script>
     <script src="~/App/Category/ViewModels/CompareViewModel.js"></script>
 }
-
 <div data-ng-app="category" ng-cloak id="category" data-ng-controller="rootViewModel">
-    <div class="row">
+    <text-size-slider min="12" max="24" unit="px" value="16" role="slider" aria-describedby="Textstorlek"></text-size-slider>
 
+    <div class="row">
         <div class="small-8 columns" id="main" data-ng-view>
 
         </div>
@@ -52,5 +52,4 @@
             </div>
         </div>
     </div>
-
 </div>
