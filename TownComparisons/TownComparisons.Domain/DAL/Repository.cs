@@ -82,7 +82,10 @@ namespace TownComparisons.Domain.DAL
         /// <param name="entityToUpdate"></param>
         public virtual void Update(TEntity entityToUpdate)
         {
-            _set.Attach(entityToUpdate);
+            if (_context.Entry(entityToUpdate).State == EntityState.Detached)
+            {
+                _set.Attach(entityToUpdate);
+            }
             _context.Entry(entityToUpdate).State = EntityState.Modified;
         }
 

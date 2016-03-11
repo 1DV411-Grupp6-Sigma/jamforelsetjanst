@@ -111,11 +111,15 @@ namespace TownComparisons.MVC.Controllers.API
             Category existing = _service.GetCategory(categoryId);
             if (existing != null)
             {
+                //save list of earlier ous and pqs
+                List<OrganisationalUnitInfo> earlierOUs = new List<OrganisationalUnitInfo>(existing.OrganisationalUnits);
+                List<PropertyQueryInfo> earlierPQs = new List<PropertyQueryInfo>(existing.Queries);
+
                 //update entity model
                 existing = category.ToEntity(existing);
 
                 //save it
-                if (_service.UpdateCategory(existing))
+                if (_service.UpdateCategory(existing, earlierOUs, earlierPQs))
                 {
                     return new HttpResponseMessage(HttpStatusCode.OK);
                 }

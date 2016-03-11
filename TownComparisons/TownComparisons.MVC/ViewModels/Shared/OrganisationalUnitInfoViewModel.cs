@@ -133,6 +133,7 @@ namespace TownComparisons.MVC.ViewModels.Shared
             OrganisationalUnitInfo entity = (existing != null ? existing : new OrganisationalUnitInfo());
 
             entity.Id = this.Id;
+            entity.OrganisationalUnitId = this.OrganisationalUnitId;
             entity.Name = this.Name;
             entity.ShortDescription = this.ShortDescription;
             entity.LongDescription = this.LongDescription;
