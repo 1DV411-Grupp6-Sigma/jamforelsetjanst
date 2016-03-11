@@ -15,7 +15,7 @@ namespace TownComparisons.Domain
 {
     public class Service : IService
     {
-        private readonly Settings _settings;
+        private readonly ISettings _settings;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ITownWebService _townWebService;
         private readonly ICache _cache;
