@@ -62,7 +62,8 @@
                         <td>
                             <p>
                                 {{ ou.Address }}<br />
-                                Telefon: {{ ou.Telephone }}
+                                Telefon: {{ ou.Telephone }}<br/>
+                                <div data-ng-if="getDistanceBetweenPositions(ou) >= 0.0"><strong>Distans:</strong> {{ getDistanceBetweenPositions(ou) }} km</div>
                             </p>
                         </td>
                         <td>
