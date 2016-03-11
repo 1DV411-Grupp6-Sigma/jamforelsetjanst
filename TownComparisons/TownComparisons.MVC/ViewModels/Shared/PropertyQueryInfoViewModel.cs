@@ -25,7 +25,7 @@ namespace TownComparisons.MVC.ViewModels.Shared
         
         public string Type { get; set; }
 
-        public int Period { get; set; }
+        public int? Period { get; set; }
         
 
         public PropertyQueryInfoViewModel()
@@ -48,6 +48,7 @@ namespace TownComparisons.MVC.ViewModels.Shared
             OriginalTitle = entity.OriginalTitle;
             Title = entity.Title;
             Type = entity.Type;
+            Period = entity.Period;
         }
 
 

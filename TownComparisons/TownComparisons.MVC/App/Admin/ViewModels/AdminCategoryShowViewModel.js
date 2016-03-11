@@ -1,4 +1,4 @@
-﻿adminModule.controller("adminCategoryShowViewModel", function ($scope, adminService, $http, $q, $routeParams, $window, $location, viewModelHelper, $modal) {
+﻿adminModule.controller("adminCategoryShowViewModel", function (flash, $scope, adminService, $http, $q, $routeParams, $window, $location, viewModelHelper, $modal) {
 
     $scope.viewModelHelper = viewModelHelper;
     $scope.adminService = adminService;
@@ -26,7 +26,8 @@
 
         modalInstance.result.then(function (operator) {
             //refresh page
-            $window.location.href = $window.location.href;
+            flash('alert-box success radius', 'Aktören har sparats.');
+            $route.reload(); //$window.location.href = $window.location.href;
         }, function () {
             //modal cancelled, do something here?
         });
@@ -44,7 +45,9 @@
 
         modalInstance.result.then(function (query) {
             //refresh page
-            $window.location.href = $window.location.href;
+            console.log('saved query');
+            flash('alert-box success radius', 'Egenskapen har sparats.');
+            $route.reload(); //$window.location.href = $window.location.href;
         }, function () {
             //modal cancelled, do something here?
         });

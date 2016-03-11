@@ -20,10 +20,10 @@ namespace TownComparisons.MVC.ViewModels.Admin
             {
                 return new List<string>()
                 {
+                    PropertyQuery.TYPE_STANDARD,
                     PropertyQuery.TYPE_PERCENT,
                     PropertyQuery.TYPE_YESNO,
-
-                    //"Standard"
+                    PropertyQuery.TYPE_PERCENTAGE
                 };
             }
         }
@@ -41,6 +41,7 @@ namespace TownComparisons.MVC.ViewModels.Admin
             OriginalTitle = baseViewModel.OriginalTitle;
             Title = baseViewModel.Title;
             Type = baseViewModel.Type;
+            Period = baseViewModel.Period;
 
             Use = use;
         }

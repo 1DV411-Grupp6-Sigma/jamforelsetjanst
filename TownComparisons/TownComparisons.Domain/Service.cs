@@ -33,6 +33,8 @@ namespace TownComparisons.Domain
             _unitOfWork = unitOfWork;
             _townWebService = townWebService;
             _cache = cacheManager;
+
+            _settings.Save();
         }
 
 

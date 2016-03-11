@@ -82,6 +82,9 @@
                             <div data-ng-repeat="pv in res.PeriodValues">
 
                                 <div data-ng-if="res.OrganisationalUnitId == ou && pv.Period == 2014 && pv.Values[0].Value != null">
+
+
+                                    <!--
                                     <div data-ng-if="containsPercent(cr.Query.Title)">
                                         <div>
                                             <div class="answer-percent-bar">
@@ -94,7 +97,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!--Contains "procentenheter"-->
+
                                     <div data-ng-if="containsPercentage(cr.Query.Title) && !containsPercent(cr.Query.Title)">
                                         <div class="colorGreen" data-ng-if="pv.Values[0].Value > 0.000">
                                             <p class="text80">+{{roundOneDecimal(pv.Values[0].Value)}} %</p>
@@ -106,7 +109,7 @@
                                             <p class="text80">{{roundOneDecimal(pv.Values[0].Value)}} %</p>
                                         </div>
                                     </div>
-                                    <!--Contains Ja/Nej-->
+
                                     <div data-ng-if="containsYesNo(cr.Query.Title) && !containsPercentage(cr.Query.Title) && !containsPercent(cr.Query.Title)">
                                         <div data-ng-if="pv.Values[0].Value == 0.0">
                                             <p class="text80">Nej</p>
@@ -115,12 +118,13 @@
                                             <p class="text80">Ja</p>
                                         </div>
                                     </div>
-                                    <!--Contains none of the above-->
+
                                     <div data-ng-if="!containsYesNo(cr.Query.Title) && !containsPercentage(cr.Query.Title) && !containsPercent(cr.Query.Title)">
                                         <div>
                                             <p class="text80">{{ pv.Values[0].Value }}</p>
                                         </div>
                                     </div>
+                                        -->
                                 </div>
                             </div>
                         </div>

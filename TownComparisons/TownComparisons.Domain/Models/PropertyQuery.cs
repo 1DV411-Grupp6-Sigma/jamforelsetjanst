@@ -8,8 +8,10 @@ namespace TownComparisons.Domain.Models
 {
     public class PropertyQuery
     {
+        public static readonly string TYPE_STANDARD = "standard";
         public static readonly string TYPE_YESNO = "yesno";
         public static readonly string TYPE_PERCENT = "percent";
+        public static readonly string TYPE_PERCENTAGE = "percentage";
         // if/when adding more TYPE's, also add to property AllTypes in TownComparisons.MVC.ViewModels.Admin.PropertyQueryInfoViewModel
 
 
