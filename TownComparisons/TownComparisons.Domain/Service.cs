@@ -292,10 +292,28 @@ namespace TownComparisons.Domain
 
             return false;
         }
-        public bool UpdateCategory(Category category)
+        public bool UpdateCategory(Category category, List<OrganisationalUnitInfo> earlierOrganisationalUnits = null, List<PropertyQueryInfo> earlierPropertyQueries = null)
         {
             try
             {
+                if (earlierOrganisationalUnits != null)
+                {
+                    //do some checks that related associations are not removed in category (otherwise delete them)
+                    List<OrganisationalUnitInfo> ouToRemove = earlierOrganisationalUnits.Where(eou => !category.OrganisationalUnits.Any(ou => ou.Id == eou.Id)).ToList();
+                    foreach (OrganisationalUnitInfo ou in ouToRemove)
+                    {
+                        _unitOfWork.OrganisationalUnitInfoRepository.Delete(ou);
+                    }
+                }
+                if (earlierPropertyQueries != null)
+                { 
+                    List<PropertyQueryInfo> pqToRemove = earlierPropertyQueries.Where(eq => !category.Queries.Any(q => q.Id == eq.Id)).ToList();
+                    foreach (PropertyQueryInfo pq in pqToRemove)
+                    {
+                        _unitOfWork.PropertyQueryInfoRepository.Delete(pq);
+                    }
+                }
+
                 _unitOfWork.CategoriesRepository.Update(category);
                 _unitOfWork.Save();
                 return true;

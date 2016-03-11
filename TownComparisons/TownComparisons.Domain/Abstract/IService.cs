@@ -41,7 +41,7 @@ namespace TownComparisons.Domain.Abstract
         bool DeleteCategory(Category category);
         
         bool UpdateGroupCategory(GroupCategory groupCategory);
-        bool UpdateCategory(Category category);
+        bool UpdateCategory(Category category, List<OrganisationalUnitInfo> earlierOrganisationalUnits = null, List<PropertyQueryInfo> earlierPropertyQueries = null);
 
         bool InsertGroupCategory(GroupCategory groupCategory);
         bool InsertCategory(Category category);
