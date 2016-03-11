@@ -6305,6 +6305,9 @@ th.hide-for-touch {
 #search-box {
   margin-top: -110px; }
 
+.alert-box {
+  width: 80%; }
+
 @media (min-width: 960px) {
   #search input[type="text"] {
     width: 200px; }
