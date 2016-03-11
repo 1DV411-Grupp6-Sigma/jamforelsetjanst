@@ -10,7 +10,7 @@
     <div>
         <h2>{{ category.Name }}</h2>
 
-        <p>{{ category.Description }}</p>
+        <p data-ng-hide="!category.Description" class="description">{{ category.Description }}</p>
     </div>
 
     <!--navbar for simple or detailed list -->
