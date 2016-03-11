@@ -1,4 +1,4 @@
-﻿adminModule.controller("adminCategoryShowViewModel", function (flash, $scope, adminService, $http, $q, $routeParams, $window, $location, viewModelHelper, $modal) {
+﻿adminModule.controller("adminCategoryShowViewModel", function (flash, $route, $scope, adminService, $http, $q, $routeParams, $window, $location, viewModelHelper, $modal) {
 
     $scope.viewModelHelper = viewModelHelper;
     $scope.adminService = adminService;
