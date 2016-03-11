@@ -1,4 +1,4 @@
-﻿adminModule.controller("adminCategoryEditViewModel", function ($scope, adminService, $http, $q, $routeParams, $window, $location, viewModelHelper) {
+﻿adminModule.controller("adminCategoryEditViewModel", function (flash, $scope, adminService, $http, $q, $routeParams, $window, $location, viewModelHelper) {
 
     $scope.viewModelHelper = viewModelHelper;
     $scope.adminService = adminService;
@@ -57,8 +57,10 @@
             function (result) {
                 //success
                 console.log(result.data);
+                flash('alert-box success radius', 'Kategorin har sparats.');
                 var url = ($scope.updateNotInsert ? 'admin/category/' + adminService.categoryId : 'admin/groupcategory/' + adminService.groupCategoryId)
                 viewModelHelper.navigateTo(url);
+
             },
             function (errors) {
                 //failure

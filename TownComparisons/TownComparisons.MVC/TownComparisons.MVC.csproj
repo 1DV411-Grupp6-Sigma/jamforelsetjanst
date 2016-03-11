@@ -542,8 +542,6 @@
     <Content Include="sass\foundation-icons\svgs\fi-yen.svg" />
     <Content Include="sass\foundation-icons\svgs\fi-zoom-in.svg" />
     <Content Include="sass\foundation-icons\svgs\fi-zoom-out.svg" />
-    <Content Include="sass\foundation\responsive-tables.css" />
-    <Content Include="sass\foundation\responsive-tables.js" />
     <Content Include="sass\Site.css">
       <DependentUpon>Site.scss</DependentUpon>
     </Content>
@@ -562,6 +560,7 @@
     <Content Include="Scripts\angular-cookies.js" />
     <Content Include="Scripts\angular-cookies.min.js" />
     <Content Include="Scripts\angular-csp.css" />
+    <Content Include="Scripts\angular-flash.js" />
     <Content Include="Scripts\angular-google-maps.js" />
     <Content Include="Scripts\angular-loader.js" />
     <Content Include="Scripts\angular-loader.min.js" />

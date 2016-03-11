@@ -1,4 +1,4 @@
-﻿adminModule.controller("adminHomeViewModel", function ($scope, adminService, $http, $q, $routeParams, $window, $location, viewModelHelper, $modal) {
+﻿adminModule.controller("adminHomeViewModel", function (flash, $route, $scope, adminService, $http, $q, $routeParams, $window, $location, viewModelHelper, $modal) {
 
     $scope.viewModelHelper = viewModelHelper;
     $scope.adminService = adminService;
@@ -41,7 +41,14 @@
                 function (result) {
                     //success
                     //refresh page
-                    $window.location.href = $window.location.href;
+                    //$window.location.href = $window.location.href;
+                    $route.reload();
+                    if(isGroupCategory){
+                        flash('alert-box success radius', 'Kategorigruppen har raderats.');
+                    }
+                    else {
+                        flash('alert-box success radius', 'Kategorin har raderats.');
+                    }
                 },
                 function (errors) {
                     //failure

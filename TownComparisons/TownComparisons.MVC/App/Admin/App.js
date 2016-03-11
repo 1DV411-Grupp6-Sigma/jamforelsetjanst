@@ -1,5 +1,5 @@
 ﻿
-var adminModule = angular.module('admin', ['common', 'ngFileUpload'])
+var adminModule = angular.module('admin', ['common', 'ngFileUpload', 'flash'])
     .config(function ($routeProvider, $locationProvider) {
         $routeProvider.when('/admin', { templateUrl: '/App/Admin/Views/AdminHomeView.html', controller: 'adminHomeViewModel' });
         $routeProvider.when('/admin/category/:categoryId', { templateUrl: '/App/Admin/Views/AdminCategoryShowView.html', controller: 'adminCategoryShowViewModel' });
