@@ -29,16 +29,12 @@
         <label>
             {{ objectField.title }}:
             <div ng-switch on="objectField.textarea">
-                <textarea ng-switch-when="true" ng-model="operator[objectField.field]" class="{{ hasValidationError('organisationalUnit.' + objectField.field) ? 'error' : '' }}"></textarea>
+                <div ng-switch-when="true">
+                    <textarea ng-switch-when="true" ng-model="operator[objectField.field]" class="{{ hasValidationError('organisationalUnit.' + objectField.field) ? 'error' : '' }}"></textarea>
+                </div>
                 <div ng-switch-when="false">
-
-                    <div ng-if="objectField.id=='txtautocomplete'">
-                        <input id="txtautocomplete" type="Text" ng-model="operator[objectField.field]" class="{{ hasValidationError('organisationalUnit.' + objectField.field) ? 'error' : '' }}" placeholder="Skriv adress..." />
-                        <button id='btn' onclick="getGeo()">Hitta koordinater</button>
-                    </div>
-                    <div ng-if="objectField.id!='txtautocomplete'">
-                        <input type="Text" id="{{objectField.id}}" ng-model="operator[objectField.field]" class="{{ hasValidationError('organisationalUnit.' + objectField.field) ? 'error' : '' }}" />
-                    </div>
+                    <input type="Text" id="{{ objectField.field }}" ng-model="operator[objectField.field]" class="{{ hasValidationError('organisationalUnit.' + objectField.field) ? 'error' : '' }}" placeholder="{{ objectField.field == 'Address' ? 'Skriv adress...' : '' }}" />
+                    <button ng-show="objectField.field == 'Address'" ng-click="getGeo()">Hitta koordinater</button>
                 </div>
             </div>
         </label>

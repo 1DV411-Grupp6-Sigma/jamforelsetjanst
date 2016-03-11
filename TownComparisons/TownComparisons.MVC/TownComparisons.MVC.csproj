@@ -195,7 +195,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\Admin\App.js" />
-    <Content Include="App\Admin\GetGeoCo.js" />
     <Content Include="App\Admin\ViewModels\AdminGroupCategoryViewModel.js" />
     <Content Include="App\Admin\ViewModels\AdminCategoryShowViewModel.js" />
     <Content Include="App\Admin\ViewModels\AdminQueryViewModel.js" />
@@ -223,10 +222,6 @@
     <Content Include="App\Category\Views\CompareView.html" />
     <Content Include="App\Category\ViewModels\CategoryViewModel.js" />
     <Content Include="App\Category\Views\Partials\_CompareTypesView.html" />
-    <Content Include="App\Category\Views\Partials\_CompareTypePercentageView.html" />
-    <Content Include="App\Category\Views\Partials\_CompareTypePercentView.html" />
-    <Content Include="App\Category\Views\Partials\_CompareTypeStandardView.html" />
-    <Content Include="App\Category\Views\Partials\_CompareTypeYesNoView.html" />
     <Content Include="App\Category\Views\Partials\_MapOnClick.html" />
     <Content Include="App\Compare\Collector.js" />
     <Content Include="App\Shared\ViewModels\ModalConfirm.js" />

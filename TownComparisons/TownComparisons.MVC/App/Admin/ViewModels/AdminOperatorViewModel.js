@@ -10,61 +10,44 @@
     $scope.closeValidationAlert = false;
 
     $scope.objectFields = [{ field: 'Name', title: 'Namn', textarea: false },
-                            { field: 'ShortDescription', title: 'Kort beskrivning', textarea: true, id: 'ShortDescription' },
-                            { field: 'LongDescription', title: 'Längre beskrivning', textarea: true, id: 'LongDescription' },
-                            { field: 'Address', title: 'Adress', textarea: false, id: 'txtautocomplete' },
-                            { field: 'Latitude', title: 'Latitude', textarea: false, id: 'Latitude' },
-                            { field: 'Longitude', title: 'Longitude', textarea: false, id: 'Longitude' },
-                            { field: 'Contact', title: 'Kontakt', textarea: false, id: 'Contact' },
-                            { field: 'Telephone', title: 'Telefon', textarea: false, id: 'Telephone' },
-                            { field: 'Email', title: 'E-post', textarea: false, id: 'Email' },
-                            { field: 'Website', title: 'Webbsida', textarea: false, id: 'Website' },
-                            { field: 'OrganisationalForm', title: 'Organisations-form', textarea: false, id: 'OForm' },
-                            { field: 'Other', title: 'Övrigt', textarea: true, id: 'Other' }];
+                            { field: 'ShortDescription', title: 'Kort beskrivning', textarea: true },
+                            { field: 'LongDescription', title: 'Längre beskrivning', textarea: true },
+                            { field: 'Address', title: 'Adress', textarea: false },
+                            { field: 'Latitude', title: 'Latitude', textarea: false },
+                            { field: 'Longitude', title: 'Longitude', textarea: false },
+                            { field: 'Contact', title: 'Kontakt', textarea: false },
+                            { field: 'Telephone', title: 'Telefon', textarea: false },
+                            { field: 'Email', title: 'E-post', textarea: false },
+                            { field: 'Website', title: 'Webbsida', textarea: false },
+                            { field: 'OrganisationalForm', title: 'Organisations-form', textarea: false },
+                            { field: 'Other', title: 'Övrigt', textarea: true }];
+    
 
-    //$scope.getGeoCoordinates = {
-    //    autocomplete : new google.maps.places.Autocomplete(angular.element(document).find('txtautocomplete'));
-    //    var Latitude = angular.element(document).find('latitude');
-    //    var Latitude = angular.element(document).find('longitude');
-    //    google.maps.event.addListener(autocomplete, 'place_changed', function () {
-    //        var place = autocomplete.getPlace();
-    //        $scope.operator.lat = place.geometry.location.lat();
-    //        $scope.operator.lng = place.geometry.location.lng();
-    //        //$scope.operator.ad = place.formatted_address;
-    //        $scope.$apply();
-    //    });
-    //};
+    $scope.getGeo = function() {
+        var address = document.getElementById('Address').value;
+        var Latitude = document.getElementById('Latitude').value;
+        var Longitude = document.getElementById('Longitude').value;
+        getLatitudeLongitude(address);
+        var autocomplete = new google.maps.places.Autocomplete(document.getElementById("Address"));
+    }
 
-    function showResult(result) {
-        document.getElementById('Latitude').value = result.geometry.location.lat();
-        document.getElementById('Longitude').value = result.geometry.location.lng();
-    }
-    function getGeo() {
-        var adress = document.getElementById('txtautocomplete').value;
-    }
-    function getLatitudeLongitude(callback, address) {
+    var getLatitudeLongitude = function(address) {
         // If adress is not supplied, use default value 'Kristianstad'
         address = address || 'Kristianstad';
         // Initialize the Geocoder
         geocoder = new google.maps.Geocoder();
-        if (geocoder) {
-            geocoder.geocode({
-                'address': address
-            }, function (results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    callback(results[0]);
-                }
-            });
-        }
-    }
-    var button = document.getElementById('btn');
 
-    if (button !== null) {
-        button.addEventListener("click", function () {
-            var address = document.getElementById('txtautocomplete').value;
-            getLatitudeLongitude(showResult, address)
+        geocoder.geocode({ 'address': address }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                console.log($scope.operator.Latitude);
+                $scope.operator.Latitude = document.getElementById('Latitude').value = results[0].geometry.location.lat();
+                $scope.operator.Longitude = document.getElementById('Longitude').value = results[0].geometry.location.lng();
+            } else {
+                alert("Omöjligt att hämta geografiska koordinater: " + status);
+            }
         });
     }
+
 
     var initialize = function () {
         var button = document.getElementById('btn');
