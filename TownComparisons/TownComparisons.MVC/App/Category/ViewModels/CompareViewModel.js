@@ -77,36 +77,12 @@
         return coord * Math.PI / 180;
     }
 
-    // Checks if string contains "(%)".
-    $scope.containsPercent = function (str) {
-        if (str.indexOf('(%)') >= 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    // Checks if string contains "(Ja=1/Nej=0)" or "(Ja=1, Nej=0)".
-    $scope.containsYesNo = function (str) {
-        if (str.indexOf('(Ja=1/Nej=0)') >= 0 || str.indexOf('(Ja=1, Nej=0)') >= 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    // Checks if string contains "procentenheter".
-    $scope.containsPercentage = function (str) {
-        if (str.indexOf('procentenheter') >= 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     // Rounds a float number to two decimals.
     $scope.roundOneDecimal = function (num) {
-        return num.toFixed(1);
+        if (num != null) {
+            return num.toFixed(1);
+        }
+        return null;
     }
     
     initialize();

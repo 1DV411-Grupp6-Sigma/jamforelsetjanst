@@ -11,6 +11,8 @@ namespace TownComparisons.Domain.Models
         public int Period { get; set; }
 
         public List<PropertyQueryResultValue> Values { get; set; }
+        
+        public PropertyQueryResultValue ValueToUse { get; set; }
 
 
         //Constructors
@@ -22,6 +24,7 @@ namespace TownComparisons.Domain.Models
         {
             Period = period;
             Values = values;
+            ValueToUse = Values.Where(v => v.Gender.ToLower() == "t").FirstOrDefault() ?? Values.FirstOrDefault();
         }
     }
 }

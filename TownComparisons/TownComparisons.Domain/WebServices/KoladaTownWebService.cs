@@ -62,7 +62,7 @@ namespace TownComparisons.Domain.WebServices
                     queryWithResults.Results.Add(new PropertyQueryResult(ou.OrganisationalUnitId, kpiAnswers.Where(a => a.Kpi == query.QueryId && a.Ou == ou.OrganisationalUnitId)
                                                                                                                 .Select(a => new PropertyQueryResultForPeriod(a.Period, 
                                                                                                                                                                         a.Values.Select(v => new PropertyQueryResultValue(v.Gender, v.Status, v.Value)).ToList()))
-                                                                                                                .ToList()));
+                                                                                                                .ToList(), query.Period));
                 }
                 results.Add(queryWithResults);
             }

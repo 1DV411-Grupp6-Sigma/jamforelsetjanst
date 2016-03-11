@@ -12,16 +12,20 @@ namespace TownComparisons.Domain.Models
         
         public List<PropertyQueryResultForPeriod> PeriodValues { get; set; }
 
+        public PropertyQueryResultForPeriod PeriodToUse { get; set; }
+
 
         //Constructors
         public PropertyQueryResult()
         {
             // Empty
         }
-        public PropertyQueryResult(string organisationalUnitId, List<PropertyQueryResultForPeriod> periodValues)
+        public PropertyQueryResult(string organisationalUnitId, List<PropertyQueryResultForPeriod> periodValues, int? periodToUse = null)
         {
             OrganisationalUnitId = organisationalUnitId;
             PeriodValues = periodValues;
+            PeriodToUse = PeriodValues.Where(p => p.Period == periodToUse && p.Values.Any(v => v.Value != null)).FirstOrDefault() ?? 
+                          PeriodValues.OrderByDescending(p => p.Period).Where(p => p.Values.Any(v => v.Value != null)).FirstOrDefault();
         }
     }
 }

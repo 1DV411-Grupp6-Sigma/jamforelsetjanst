@@ -60,18 +60,26 @@ namespace TownComparisons.Domain
         {
             if (System.IO.File.Exists(_filePath))
             {
-                using (StreamReader file = File.OpenText(_filePath))
+                try
                 {
-                    string json = file.ReadToEnd();
-                    Settings settings = JsonConvert.DeserializeObject<Settings>(json);
+                    using (StreamReader file = File.OpenText(_filePath))
+                    {
+                        string json = file.ReadToEnd();
+                        Settings settings = JsonConvert.DeserializeObject<Settings>(json);
 
-                    //set all properties
-                    this.MunicipalityName = settings.MunicipalityName;
-                    this.MunicipalityId = settings.MunicipalityId;
-                    this.CountyName = settings.CountyName;
-                    this.CountyId = settings.CountyId;
-                    this.CacheSeconds_PropertyQueries = settings.CacheSeconds_PropertyQueries;
-                    this.CacheSeconds_OrganisationalUnits = settings.CacheSeconds_OrganisationalUnits;
+                        //set all properties
+                        this.MunicipalityName = settings.MunicipalityName;
+                        this.MunicipalityId = settings.MunicipalityId;
+                        this.CountyName = settings.CountyName;
+                        this.CountyId = settings.CountyId;
+                        this.CacheSeconds_PropertyQueries = settings.CacheSeconds_PropertyQueries;
+                        this.CacheSeconds_OrganisationalUnits = settings.CacheSeconds_OrganisationalUnits;
+                    }
+                }
+                catch (Exception e)
+                {
+                    e = e;
+                    //do what?
                 }
             }
             else
@@ -88,6 +96,8 @@ namespace TownComparisons.Domain
                 {
                     string json = JsonConvert.SerializeObject(this);
                     writer.WriteRaw(json);
+                    writer.Close();
+                    file.Close();
                 }
             }
             catch (Exception ex)

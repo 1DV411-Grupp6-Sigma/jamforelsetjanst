@@ -72,62 +72,15 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><br /><strong>2014</strong></td>
+                    <td><br /><strong>Resultat</strong></td>
                     <td data-ng-repeat="ou in organisationalUnitIdsToCompare"></td>
                 </tr>
                 <tr data-ng-repeat="cr in compareResults">
                     <td><span class="text80">{{ cr.Query.Title }}</span></td>
-                    <td data-ng-repeat="ou in organisationalUnitIdsToCompare">
-                        <div data-ng-repeat="res in cr.Results">
-                            <div data-ng-repeat="pv in res.PeriodValues">
-
-                                <div data-ng-if="res.OrganisationalUnitId == ou && pv.Period == 2014 && pv.Values[0].Value != null">
-
-
-                                    <!--
-                                    <div data-ng-if="containsPercent(cr.Query.Title)">
-                                        <div>
-                                            <div class="answer-percent-bar">
-                                                <div class="percentageBox">
-                                                    <div class="percentage" style="width: {{pv.Values[0].Value}}%"></div>
-                                                </div>
-                                            </div>
-                                            <div class="answer-value-box">
-                                                <p class="text80">{{ roundOneDecimal(pv.Values[0].Value) }} %</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div data-ng-if="containsPercentage(cr.Query.Title) && !containsPercent(cr.Query.Title)">
-                                        <div class="colorGreen" data-ng-if="pv.Values[0].Value > 0.000">
-                                            <p class="text80">+{{roundOneDecimal(pv.Values[0].Value)}} %</p>
-                                        </div>
-                                        <div class="colorBlue" data-ng-if="pv.Values[0].Value == 0.000">
-                                            <p class="text80">{{roundOneDecimal(pv.Values[0].Value)}} %</p>
-                                        </div>
-                                        <div class="colorRed" data-ng-if="pv.Values[0].Value < 0.000">
-                                            <p class="text80">{{roundOneDecimal(pv.Values[0].Value)}} %</p>
-                                        </div>
-                                    </div>
-
-                                    <div data-ng-if="containsYesNo(cr.Query.Title) && !containsPercentage(cr.Query.Title) && !containsPercent(cr.Query.Title)">
-                                        <div data-ng-if="pv.Values[0].Value == 0.0">
-                                            <p class="text80">Nej</p>
-                                        </div>
-                                        <div data-ng-if="pv.Values[0].Value == 1.0">
-                                            <p class="text80">Ja</p>
-                                        </div>
-                                    </div>
-
-                                    <div data-ng-if="!containsYesNo(cr.Query.Title) && !containsPercentage(cr.Query.Title) && !containsPercent(cr.Query.Title)">
-                                        <div>
-                                            <p class="text80">{{ pv.Values[0].Value }}</p>
-                                        </div>
-                                    </div>
-                                        -->
-                                </div>
-                            </div>
-                        </div>
+                    <td data-ng-repeat="res in cr.Results">
+                                            
+                        <div ng-init="pv = res.PeriodToUse" ng-include src="'/App/Category/Views/Partials/_CompareTypesView.html'"></div>
+                    
                     </td>
                 </tr>
             </tbody>
