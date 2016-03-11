@@ -214,7 +214,6 @@
     <Content Include="App\Categories\ViewModels\CategoriesViewModel.js" />
     <Content Include="App\Categories\ViewModels\RootViewModel.js" />
     <Content Include="App\Categories\Views\CategoriesView.html" />
-    <Content Include="App\Category\App.js" />
     <Content Include="App\Category\ViewModels\OperatorViewModel.js" />
     <Content Include="App\Category\ViewModels\CompareViewModel.js" />
     <Content Include="App\Category\ViewModels\RootViewModel.js" />
@@ -543,6 +542,8 @@
     <Content Include="sass\foundation-icons\svgs\fi-yen.svg" />
     <Content Include="sass\foundation-icons\svgs\fi-zoom-in.svg" />
     <Content Include="sass\foundation-icons\svgs\fi-zoom-out.svg" />
+    <Content Include="sass\foundation\responsive-tables.css" />
+    <Content Include="sass\foundation\responsive-tables.js" />
     <Content Include="sass\Site.css">
       <DependentUpon>Site.scss</DependentUpon>
     </Content>
