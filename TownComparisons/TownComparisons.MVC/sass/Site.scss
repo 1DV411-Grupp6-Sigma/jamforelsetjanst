@@ -138,6 +138,9 @@
     #compare{
         right: 20px !important;
     }
+    .text-size-slider{
+        right: 20px !important;
+    }
 
     #main{
         margin-left: 30px;
@@ -495,6 +498,50 @@ small {
     font-size: 80%;
 }
 
+
 ol#flash-messages {
     margin-left: 0;
 }
+
+//Text Slider
+.text-size-slider {
+  line-height: 100%;
+  font-size: 14px;
+  position: absolute;
+  right: 80px;
+  margin-top: 10px;
+}
+
+.text-size-slider .small-letter,
+.text-size-slider .big-letter {
+  font-weight: bold;
+}
+
+.text-size-slider .slider {
+  -webkit-appearance: none;
+  margin: 0 8px;
+}
+
+.text-size-slider .slider:focus {
+  outline: none;
+}
+
+.text-size-slider .slider::-webkit-slider-thumb {
+  border: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  background-color: white;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin-top: -6px;
+}
+
+.text-size-slider .slider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 2px;
+  cursor: pointer;
+  background: white;
+  border: 0;
+}
+
