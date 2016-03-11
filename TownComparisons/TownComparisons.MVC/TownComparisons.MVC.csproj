@@ -227,7 +227,7 @@
     <Content Include="App\Category\Views\Partials\_PercentView.html" />
     <Content Include="App\Category\Views\Partials\_StandardView.html" />
     <Content Include="App\Category\Views\Partials\_YesOrNoView.html" />
-    <Content Include="App\Compare\app.js" />
+    <Content Include="App\Compare\Collector.js" />
     <Content Include="App\Shared\ViewModels\ModalConfirm.js" />
     <Content Include="App\Shared\Views\ModalConfirm.html" />
     <Content Include="App\Validator.js" />
