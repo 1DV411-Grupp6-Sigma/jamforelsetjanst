@@ -117,7 +117,7 @@
         <div data-ng-show="category.OrganisationalUnits.length">
             <div id="map_canvas">
                 <ui-gmap-google-map center="mapBox.center" zoom="mapBox.zoom" fit="true" draggable="true">
-                    <ui-gmap-marker data-ng-repeat="m in category.OrganisationalUnits"
+                    <ui-gmap-marker data-ng-repeat="m in category.OrganisationalUnits | filter:filter.name"
                                     coords="{ latitude: m.Latitude, longitude: m.Longitude }"
                                     idkey="m.OrganisationalUnitId">
                         <ui-gmap-window templateUrl="'/App/Category/Views/Partials/_MapOnClick.html'" templateParameter="m">

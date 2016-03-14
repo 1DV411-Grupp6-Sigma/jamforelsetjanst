@@ -3,16 +3,17 @@ using TownComparisons.Domain.WebServices;
 
 namespace TownComparisons.Domain.Migrations
 {
+    using Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<TownComparisons.Domain.DAL.TownComparisonsContext> 
+    internal sealed class Configuration : DbMigrationsConfiguration<TownComparisons.Domain.DAL.TownComparisonsContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false; 
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(TownComparisons.Domain.DAL.TownComparisonsContext context)
@@ -20,12 +21,12 @@ namespace TownComparisons.Domain.Migrations
 
             string koladaWebServiceName = new KoladaTownWebService().GetName();
 
-            
-            
+
+
             #region CategoryStuff
 
             //first delete any previous categories (including it's associations to property queries and organisational units)
-            foreach(var groupCategory in context.GroupCategories)
+            foreach (var groupCategory in context.GroupCategories)
             {
                 context.GroupCategories.Remove(groupCategory);
             }
@@ -36,42 +37,48 @@ namespace TownComparisons.Domain.Migrations
                 WebServiceName = koladaWebServiceName,
                 QueryId = "N15030",
                 OriginalTitle = "Lärare med pedagogisk högskoleexamen i grundskola, lägeskommun, (%)",
-                Title = "Lärare med pedagogisk högskoleexamen i grundskola, lägeskommun, (%)"
+                Title = "Lärare med pedagogisk högskoleexamen i grundskola, lägeskommun, (%)",
+                Type = PropertyQuery.TYPE_PERCENT
             };
             PropertyQueryInfo query2 = new PropertyQueryInfo()
             {
                 WebServiceName = koladaWebServiceName,
                 QueryId = "N15033",
                 OriginalTitle = "Elever/lärare (årsarbetare) i grundskola, lägeskommun, antal",
-                Title = "Elever/lärare (årsarbetare) i grundskola, lägeskommun, antal"
+                Title = "Elever/lärare (årsarbetare) i grundskola, lägeskommun, antal",
+                Type = PropertyQuery.TYPE_STANDARD
             };
             PropertyQueryInfo query3 = new PropertyQueryInfo()
             {
                 WebServiceName = koladaWebServiceName,
                 QueryId = "N15406",
                 OriginalTitle = "Elever i åk. 9 som minst uppnått kunskapskraven för Godkänd i ämnesprovet i matematik, kommunala skolor, andel (%)",
-                Title = "Elever i åk. 9 som minst uppnått kunskapskraven för Godkänd i ämnesprovet i matematik, kommunala skolor, andel (%)"
+                Title = "Elever i åk. 9 som minst uppnått kunskapskraven för Godkänd i ämnesprovet i matematik, kommunala skolor, andel (%)",
+                Type = PropertyQuery.TYPE_PERCENT
             };
             PropertyQueryInfo query4 = new PropertyQueryInfo()
             {
                 WebServiceName = koladaWebServiceName,
                 QueryId = "N15807",
                 OriginalTitle = "Elever i grundskola belägen i kommunen, antal",
-                Title = "Elever i grundskola belägen i kommunen, antal"
+                Title = "Elever i grundskola belägen i kommunen, antal",
+                Type = PropertyQuery.TYPE_STANDARD
             };
             PropertyQueryInfo query5 = new PropertyQueryInfo()
             {
                 WebServiceName = koladaWebServiceName,
                 QueryId = "N15403",
                 OriginalTitle = "Elever i åk. 9, meritvärde kommunala skolor, genomsnitt (16 ämnen)",
-                Title = "Elever i åk. 9, meritvärde kommunala skolor, genomsnitt (16 ämnen)"
+                Title = "Elever i åk. 9, meritvärde kommunala skolor, genomsnitt (16 ämnen)",
+                Type = PropertyQuery.TYPE_STANDARD
             };
             PropertyQueryInfo query6 = new PropertyQueryInfo()
             {
                 WebServiceName = koladaWebServiceName,
                 QueryId = "N15422",
                 OriginalTitle = "Elever i åk. 9 som är behöriga till ekonomi-, humanistiska och samhällsvetenskapsprogrammet, lägeskommun, andel (%)",
-                Title = "Elever i åk. 9 som är behöriga till ekonomi-, humanistiska och samhällsvetenskapsprogrammet, lägeskommun, andel (%)"
+                Title = "Elever i åk. 9 som är behöriga till ekonomi-, humanistiska och samhällsvetenskapsprogrammet, lägeskommun, andel (%)",
+                Type = PropertyQuery.TYPE_PERCENT
             };
 
             OrganisationalUnitInfo ou1 = new OrganisationalUnitInfo()
@@ -184,35 +191,40 @@ namespace TownComparisons.Domain.Migrations
                 WebServiceName = koladaWebServiceName,
                 QueryId = "N17430",
                 OriginalTitle = "Ungdomar som är etablerade på arbetsmarknaden 2 år efter fullföljd gymnasieutbildning, andel (%)",
-                Title = "Ungdomar som är etablerade på arbetsmarknaden 2 år efter fullföljd gymnasieutbildning, andel (%)"
+                Title = "Ungdomar som är etablerade på arbetsmarknaden 2 år efter fullföljd gymnasieutbildning, andel (%)",
+                Type = PropertyQuery.TYPE_PERCENT
             };
             PropertyQueryInfo query8 = new PropertyQueryInfo()
             {
                 WebServiceName = koladaWebServiceName,
                 QueryId = "N17500",
                 OriginalTitle = "Betygspoäng efter avslutad gymnasieutbildning hemkommun, genomsnitt",
-                Title = "Betygspoäng efter avslutad gymnasieutbildning hemkommun, genomsnitt"
+                Title = "Betygspoäng efter avslutad gymnasieutbildning hemkommun, genomsnitt",
+                Type = PropertyQuery.TYPE_STANDARD
             };
             PropertyQueryInfo query9 = new PropertyQueryInfo()
             {
                 WebServiceName = koladaWebServiceName,
                 QueryId = "N17444",
                 OriginalTitle = "Gymnasieelever med examen eller studiebevis inom 3 år, kommunala skolor, andel (%)",
-                Title = "Gymnasieelever med examen eller studiebevis inom 3 år, kommunala skolor, andel (%)"
+                Title = "Gymnasieelever med examen eller studiebevis inom 3 år, kommunala skolor, andel (%)",
+                Type = PropertyQuery.TYPE_PERCENT
             };
             PropertyQueryInfo query10 = new PropertyQueryInfo()
             {
                 WebServiceName = koladaWebServiceName,
                 QueryId = "N17479",
                 OriginalTitle = "Gymnasieelever som uppnått grundläggande behörighet till universitet och högskola inom 3 år, kommunala skolor, andel (%)",
-                Title = "Gymnasieelever som uppnått grundläggande behörighet till universitet och högskola inom 3 år, kommunala skolor, andel (%)"
+                Title = "Gymnasieelever som uppnått grundläggande behörighet till universitet och högskola inom 3 år, kommunala skolor, andel (%)",
+                Type = PropertyQuery.TYPE_PERCENT
             };
             PropertyQueryInfo query11 = new PropertyQueryInfo()
             {
                 WebServiceName = koladaWebServiceName,
                 QueryId = "U17025",
                 OriginalTitle = "Dagliga resor & inackordering gymnasieskola, kr/elev",
-                Title = "Dagliga resor & inackordering gymnasieskola, kr/elev"
+                Title = "Dagliga resor & inackordering gymnasieskola, kr/elev",
+                Type = PropertyQuery.TYPE_STANDARD
             };
 
             OrganisationalUnitInfo ou6 = new OrganisationalUnitInfo()
@@ -363,28 +375,32 @@ namespace TownComparisons.Domain.Migrations
                 WebServiceName = koladaWebServiceName,
                 QueryId = "U23468",
                 OriginalTitle = "Brukarbedömning särskilt boende äldreomsorg - måltidsmiljö, andel (%)",
-                Title = "Brukarbedömning särskilt boende äldreomsorg - måltidsmiljö, andel (%)"
+                Title = "Brukarbedömning särskilt boende äldreomsorg - måltidsmiljö, andel (%)",
+                Type = PropertyQuery.TYPE_PERCENT
             };
             PropertyQueryInfo query13 = new PropertyQueryInfo()
             {
                 WebServiceName = koladaWebServiceName,
                 QueryId = "U23448",
                 OriginalTitle = "Brukarbedömning särskilt boende äldreomsorg - hälsotillstånd, andel (%)",
-                Title = "Brukarbedömning särskilt boende äldreomsorg - hälsotillstånd, andel (%)"
+                Title = "Brukarbedömning särskilt boende äldreomsorg - hälsotillstånd, andel (%)",
+                Type = PropertyQuery.TYPE_PERCENT
             };
             PropertyQueryInfo query14 = new PropertyQueryInfo()
             {
                 WebServiceName = koladaWebServiceName,
                 QueryId = "U23496",
                 OriginalTitle = "Omsorgspersonalen på helgdagar i boende med särskild service för äldre med adekvat utbildning, andel (%)",
-                Title = "Omsorgspersonalen på helgdagar i boende med särskild service för äldre med adekvat utbildning, andel (%)"
+                Title = "Omsorgspersonalen på helgdagar i boende med särskild service för äldre med adekvat utbildning, andel (%)",
+                Type = PropertyQuery.TYPE_PERCENT
             };
             PropertyQueryInfo query15 = new PropertyQueryInfo()
             {
                 WebServiceName = koladaWebServiceName,
                 QueryId = "U23493",
                 OriginalTitle = "Omsorgspersonal/plats i boende för särskild service för äldre, helgdagar, antal",
-                Title = "Omsorgspersonal/plats i boende för särskild service för äldre, helgdagar, antal"
+                Title = "Omsorgspersonal/plats i boende för särskild service för äldre, helgdagar, antal",
+                Type = PropertyQuery.TYPE_STANDARD
             };
 
             OrganisationalUnitInfo ou11 = new OrganisationalUnitInfo()
