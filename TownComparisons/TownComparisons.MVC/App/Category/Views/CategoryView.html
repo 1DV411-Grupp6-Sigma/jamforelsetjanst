@@ -13,7 +13,7 @@
         <p data-ng-hide="!category.Description" class="description">{{ category.Description }}</p>
     </div>
 
-    <!--navbar for simple or detailed list -->
+    <!--Navbar for map, simple or detailed list -->
     <nav role="navigation" class="row">
         <div class="menu-bar">
             <ul class="category-nav">
@@ -24,7 +24,8 @@
         </div>
     </nav>
 
-    <div class="right"> <!-- searchbar (needs some modification/fix) -->
+    <!-- Searchbar -->
+    <div class="right">
         <div id="search" class="row" role="search">
             <div class="small-4 columns end">
                 <input role="search" id="search-box" placeholder="Sök" type="text" data-ng-model="filter.name" />
@@ -42,6 +43,7 @@
         </dl>
     </div>
 
+    <!-- Show simple table -->
     <div data-ng-show="simple">
         <div ng-show="!category.OrganisationalUnits.length"><p>Det finns tyvärr inga aktörer tillgängliga i den här kategorin.</p></div>
         <div ng-show="category.OrganisationalUnits.length">
@@ -76,6 +78,7 @@
         </div>
     </div>
 
+    <!-- Show detailed table -->
     <div data-ng-show="detailed">
         <div data-ng-show="!category.OrganisationalUnits.length"><p>Det finns tyvärr inga aktörer tillgängliga i den här kategorin.</p></div>
         <div class="operator-loop" data-ng-repeat="ou in category.OrganisationalUnits | filter:filter.name | orderBy:sortBy">
@@ -112,6 +115,7 @@
         </div>
     </div>
 
+    <!-- Show map -->
     <div data-ng-show="map" role="wiget">
         <div data-ng-show="!category.OrganisationalUnits.length"><p>Det finns tyvärr inga aktörer tillgängliga i den här kategorin.</p></div>
         <div data-ng-show="category.OrganisationalUnits.length">

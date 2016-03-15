@@ -20,7 +20,7 @@
         $scope.getClientPosition();
     }
 
-    // Shows Detailed view.
+    //Shows Detailed view.
     $scope.showDetailed = function () {
         $scope.detailed = true;
         $scope.simple = false;
@@ -30,7 +30,7 @@
         $scope.mapClass = "";
     }
 
-    // Shows Simple view.
+    //Shows Simple view.
     $scope.showSimple = function () {
         $scope.detailed = false;
         $scope.simple = true;
@@ -40,7 +40,7 @@
         $scope.mapClass = "";
     }
 
-    // Shows Map view.
+    //Shows Map view.
     $scope.showMap = function () {
         $scope.detailed = false;
         $scope.simple = false;
@@ -51,7 +51,7 @@
         $scope.mapOperators();
     }
 
-    // Gives the maps its start position.
+    //Gives the maps its start position.
     $scope.mapOperators = function () {
         $scope.mapBox = {
             center: {
@@ -63,7 +63,7 @@
         };
     }
 
-    //runned after category has been loaded
+    //Runs after category has been loaded
     var afterCategoryLoaded = function () {
         $scope.pageHeading = 'Hitta och jämför ' + $rootScope.category.Name;
     }
@@ -76,7 +76,7 @@
 
     $scope.setCompareSettingsForOu = function (ou) {
         if (ou != null) {
-            //check if is in compare list
+            //Check if ou is in compare list
             var ouIsInCompare = collectorFactory.checkIfInList(ou);
             ou.class = (ouIsInCompare ? "after-compare" : "before-compare");
             ou.icon = (ouIsInCompare ? "fi-check" : "fi-plus");
@@ -117,7 +117,7 @@
         collectorFactory.deleteAllSubjects();
     }
 
-    // Gets clients position.
+    //Gets clients position.
     $scope.getClientPosition = function () {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (position) {
@@ -129,7 +129,7 @@
         }
     }
 
-    // Gets distance between client and operators positions.
+    //Gets distance between client and operators positions.
     $scope.getDistanceBetweenPositions = function (ou) {
         var lat1 = ou.Latitude;
         var lon1 = ou.Longitude;
@@ -152,7 +152,7 @@
         return coord * Math.PI / 180;
     }
 
-    // Sorts the Organisational Units by Name (Desc/Asc).
+    //Sorts the Organisational Units by Name (Desc/Asc).
     $rootScope.sortOuByName = function () {
         $scope.clearSortOuBy();
 
@@ -170,7 +170,7 @@
         }
     }
 
-    // Sorts the Organisational Units by Name (Desc/Asc).
+    //Sorts the Organisational Units by Name (Desc/Asc).
     $rootScope.sortOuByName = function () {
 
         $scope.clearSortOuBy();
@@ -189,7 +189,7 @@
         }
     }
 
-    // Sorts the Organisational Units by Address (Desc/Asc).
+    //Sorts the Organisational Units by Address (Desc/Asc).
     $rootScope.sortOuByAddress = function () {
         $scope.clearSortOuBy();
 
