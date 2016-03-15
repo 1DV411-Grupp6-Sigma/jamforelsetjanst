@@ -172,6 +172,7 @@
     <Compile Include="Controllers\AngularController.cs" />
     <Compile Include="Controllers\API\APICategoriesController.cs" />
     <Compile Include="Controllers\API\APIAdminController.cs" />
+    <Compile Include="Controllers\ErrorPageController.cs" />
     <Compile Include="Filters\ValidateModelAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1447,6 +1448,9 @@
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Angular\Admin.cshtml" />
     <Content Include="Views\Angular\Category.cshtml" />
+    <Content Include="Views\ErrorPage\Error.cshtml" />
+    <Content Include="Views\ErrorPage\Forbidden.cshtml" />
+    <Content Include="Views\ErrorPage\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\PublishProfiles\" />
