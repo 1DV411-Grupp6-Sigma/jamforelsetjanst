@@ -1,6 +1,5 @@
 ﻿var categoryModule = angular.module('category', ['common', 'uiGmapgoogle-maps', 'textSizeSlider'])
     .config(function ($routeProvider, $locationProvider) {
-        //$routeProvider.when('/', { templateUrl: '/App/Categories/Views/CategoriesView.html', controller: 'categoriesViewModel' });
         $routeProvider
             //Default is group list
             .when('/categories', {
@@ -44,7 +43,7 @@ categoryModule.factory('categoryService', function ($rootScope, $http, $q, $loca
 
         self.categoryId = 0;
 
-        //load a category
+        //Load a category
         self.getCategory = function (categoryId, success, failure) {
             viewModelHelper.apiGet('api/category/' + categoryId, null,
                 function (result) {

@@ -10,7 +10,7 @@
         $scope.mapOperators();
     }
     
-    //runned after category has been loaded
+    //Runs when a category has been loaded
     var setOperator = function () {
         for (var i = 0; i < $scope.category.OrganisationalUnits.length; i++) {
             if ($scope.category.OrganisationalUnits[i].OrganisationalUnitId == $scope.organisationalUnitId) {
@@ -32,13 +32,6 @@
     $scope.$root.windowClicked = function (ouId) {
         viewModelHelper.navigateTo('category/' + $routeParams.categoryId + '/operator/' + ouId);
     }
-
-    //$scope.setCompareSettingsForOu = function (organisationalUnit) {
-    //    var ouIsInCompare = $scope.checkIfOuIsInCompareList(organisationalUnit);
-    //    organisationalUnit.class = (ouIsInCompare ? "before-compare" : "after-compare");
-    //    organisationalUnit.icon = (ouIsInCompare ? "fi-check" : "fi-plus");
-    //    organisationalUnit.text = (ouIsInCompare ? "" : "Jämför");
-    //}
 
     $scope.checkIfOuIsInCompareList = function (ou) {
         for (var i = 0; i < collectorFactory.listOfSubjects.length; i++) {
