@@ -1,15 +1,15 @@
-﻿# Jämforelsetjänst
-Kommunal jämförelsetjänst framtagen av webbprogrammerare på LNU för IT-företaget Sigma och Kristianstads kommun.
+﻿# Comparison service
+Municipally comparison service developed by web programming students at Linnaeus University.
 
-## Krav för att köra projektet
+## Requirements
 - Visual Studio 2015
 - .Net Framework 4.5.2
 
-## Externa API:er som används
+## External API:s
 ###Kolada (www.kolada.se)
 Ett API med kommun- och landstingsdata för hela Sverige.
 
-##Tekniker och ramverk som använts
+##Techniques and frameworks used
 - ASP.NET MVC5 Net Framework 4.5.2
 - AngularJS version 1.5
 - Zurb Foundation version 5
