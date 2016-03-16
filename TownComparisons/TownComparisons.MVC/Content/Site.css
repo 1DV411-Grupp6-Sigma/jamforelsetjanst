@@ -6725,3 +6725,6 @@ ol#flash-messages {
   background: white;
   border: 0; }
 
+.fixed-font-size {
+  font-size: 16px !important; }
+

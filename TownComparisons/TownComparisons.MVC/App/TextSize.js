@@ -15,6 +15,7 @@
               console.log($document[0]);
               scope.$watch('textSize', function (size) {
                   $document[0].body.style.fontSize = size + scope.unit;
+                  console.log($document);
               });
           }
       }
