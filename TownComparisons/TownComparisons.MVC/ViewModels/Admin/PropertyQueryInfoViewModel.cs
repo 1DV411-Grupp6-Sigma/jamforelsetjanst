@@ -14,16 +14,16 @@ namespace TownComparisons.MVC.ViewModels.Admin
         //.. more properties from Shared.PropertyQueryViewModel
         
 
-        public List<string> AllTypes
+        public List<PropertyQueryInfoTypeViewModel> AllTypes
         {
             get
             {
-                return new List<string>()
+                return new List<PropertyQueryInfoTypeViewModel>
                 {
-                    PropertyQuery.TYPE_STANDARD,
-                    PropertyQuery.TYPE_PERCENT,
-                    PropertyQuery.TYPE_YESNO,
-                    PropertyQuery.TYPE_PERCENTAGE
+                    new PropertyQueryInfoTypeViewModel() { Id = PropertyQuery.TYPE_STANDARD, Name = "standard" },
+                    new PropertyQueryInfoTypeViewModel() { Id = PropertyQuery.TYPE_PERCENT, Name = "procent" },
+                    new PropertyQueryInfoTypeViewModel() { Id = PropertyQuery.TYPE_YESNO, Name = "ja/nej" },
+                    new PropertyQueryInfoTypeViewModel() { Id = PropertyQuery.TYPE_PERCENTAGE, Name = "procentenheter" }
                 };
             }
         }
@@ -55,5 +55,11 @@ namespace TownComparisons.MVC.ViewModels.Admin
 
             Use = use;
         }
+    }
+
+    public class PropertyQueryInfoTypeViewModel
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
     }
 }
