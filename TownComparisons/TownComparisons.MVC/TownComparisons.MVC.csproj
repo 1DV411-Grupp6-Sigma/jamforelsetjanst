@@ -237,6 +237,7 @@
     <Content Include="Content\pictures\default.jpg" />
     <Content Include="Content\pictures\elderly.jpg" />
     <Content Include="Content\pictures\grund.jpg" />
+    <Content Include="Content\pictures\Kristianstad_logo_cmyk.png" />
     <Content Include="Content\pictures\logo_kristianstad.gif" />
     <Content Include="Content\pictures\sjukhus.jpg" />
     <Content Include="Content\pictures\sortAsc.png" />
