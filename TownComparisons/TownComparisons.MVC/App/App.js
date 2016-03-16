@@ -1,6 +1,6 @@
 ﻿var commonModule = angular.module('common', ['ngRoute', 'ngCookies', 'ngAria', 'collector', 'mm.foundation', 'textSizeSlider']);
 
-//making main global
+//Making main global
 var mainModule = angular.module('main', ['common']);
 
 commonModule.factory('viewModelHelper', function ($http, $q, $window, $location) { return MyApp.viewModelHelper($http, $q, $window, $location); });

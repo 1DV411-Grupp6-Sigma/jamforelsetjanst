@@ -1,4 +1,5 @@
-﻿<div ng-switch on="cr.Query.Type" title="Data för period: {{ pv.Period }}. Värde: {{ pv.ValueToUse.Value }}">
+﻿<!-- This view is showing the results from the comparison -->
+<div ng-switch on="cr.Query.Type" title="Data för period: {{ pv.Period }}. Värde: {{ pv.ValueToUse.Value }}">
 
     <div ng-switch-when="percent">
         <div ng-if="pv.ValueToUse.Value != null">

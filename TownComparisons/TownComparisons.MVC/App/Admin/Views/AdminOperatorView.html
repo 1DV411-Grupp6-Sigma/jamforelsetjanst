@@ -30,7 +30,7 @@
             {{ objectField.title }}:
             <div ng-switch on="objectField.textarea">
                 <div ng-switch-when="true">
-                    <textarea ng-switch-when="true" ng-model="operator[objectField.field]" class="{{ hasValidationError('organisationalUnit.' + objectField.field) ? 'error' : '' }}"></textarea>
+                    <textarea rows="5" ng-model="operator[objectField.field]" class="{{ hasValidationError('organisationalUnit.' + objectField.field) ? 'error' : '' }}"></textarea>
                 </div>
                 <div ng-switch-when="false">
                     <input type="Text" id="{{ objectField.field }}" ng-model="operator[objectField.field]" class="{{ hasValidationError('organisationalUnit.' + objectField.field) ? 'error' : '' }}" placeholder="{{ objectField.field == 'Address' ? 'Skriv adress...' : '' }}" />

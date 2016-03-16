@@ -10,11 +10,11 @@
 
     var initialize = function () {
         $scope.sortCategoryByName();
-        $scope.showMe();
+        $scope.showGroupCateogires();
         $scope.groupClass = "active";
     }
 
-    $scope.showMe = function () {
+    $scope.showGroupCateogires = function () {
         $scope.viewAllCategories();
         $scope.group = true;
         $scope.alphabet = false;
@@ -22,7 +22,7 @@
         $scope.alphabetClass = "";
     }
     
-    $scope.hideMe = function () {
+    $scope.showAlphabetCategories = function () {
         $scope.viewCategoriesBasedOnAlphabet();
         $scope.group = false;
         $scope.alphabet = true;
@@ -30,7 +30,7 @@
         $scope.groupClass = "";
     }
 
-    // Sorts the categories by Name (Desc).
+    //Sorts the categories by Name (Desc).
     $scope.sortCategoryByName = function () {
         $scope.visibleName = '';
         $scope.fileName = $scope.sortAsc;

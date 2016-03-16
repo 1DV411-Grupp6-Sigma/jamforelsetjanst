@@ -7,22 +7,22 @@
 
 
     var initialize = function () {
-        //save operator ids to compare in an array
+        //Save operator ids to compare in an array
         for (var i = 0; i < $routeParams.id.length; i++) {
             $scope.organisationalUnitIdsToCompare.push($routeParams.id[i] + '');
         }
 
-        //start loading category (and then compare results)
+        //Start loading category (and then compare results)
         categoryService.getCategory($scope.categoryID, getCompareResults);
 
         getCompareOrganisationalUnits();
         $scope.getClientPosition();
     }
 
-    //runned after category has been loaded
+    //Runs when a category has been loaded
     var getCompareResults = function () {
 
-        //load compare result data from API
+        //Load compare result data from API
         var organisationalUnitIdsString = $scope.organisationalUnitIdsToCompare.join(",");
         viewModelHelper.apiGet('api/category/' + $scope.categoryID + '/properties?operators=' + organisationalUnitIdsString, null, 
             function (result) {
@@ -42,7 +42,7 @@
         );
     }
 
-    // Gets clients position.
+    //Gets clients position.
     $scope.getClientPosition = function () {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (position) {
@@ -54,7 +54,7 @@
         }
     }
 
-    // Gets distance between client and operators positions.
+    //Gets distance between client and operators positions.
     $scope.getDistanceBetweenPositions = function (ou) {
         var lat1 = ou.Latitude;
         var lon1 = ou.Longitude;
@@ -77,7 +77,7 @@
         return coord * Math.PI / 180;
     }
 
-    // Rounds a float number to two decimals.
+    //Rounds a float number to two decimals.
     $scope.roundOneDecimal = function (num) {
         if (num != null) {
             return num.toFixed(1);
