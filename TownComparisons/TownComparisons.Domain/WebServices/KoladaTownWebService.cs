@@ -20,6 +20,8 @@ namespace TownComparisons.Domain.WebServices
     /// </summary>
     public class KoladaTownWebService : TownWebServiceBase
     {
+        private static readonly string BaseUrl = "http://api.kolada.se/v2/";
+
         public override string GetName()
         {
             return "Kolada"; 
@@ -30,7 +32,7 @@ namespace TownComparisons.Domain.WebServices
             var rawJson = string.Empty;
 
             var apiRequest = "ou/" + id;
-            rawJson = RawJson(apiRequest);
+            rawJson = RawJson(BaseUrl + apiRequest);
             var ou = JsonConvert.DeserializeObject<OUs>(rawJson).Values;
             OU theOu = ou.First();
 
@@ -47,7 +49,7 @@ namespace TownComparisons.Domain.WebServices
             apiRequest += "/ou/" + string.Join(",", organisationalUnits.Select(o => o.OrganisationalUnitId).ToList());
             
             //Load the data from Kolada
-            rawJson = RawJson(apiRequest);
+            rawJson = RawJson(BaseUrl + apiRequest);
 
             //serialize the json data
             var kpiAnswers = JsonConvert.DeserializeObject<KpiAnswers>(rawJson).Values;
@@ -74,7 +76,7 @@ namespace TownComparisons.Domain.WebServices
         {
             var rawJson = string.Empty;
             var apiRequest= "kpi_groups";
-            rawJson = RawJson(apiRequest);
+            rawJson = RawJson(BaseUrl + apiRequest);
             var kpi = JsonConvert.DeserializeObject<KpiGroups>(rawJson).Values;
 
             return kpi.Select(k => new PropertyQueryGroup(this.GetName(), k.Id, k.Title, k.Members.Select(m => new PropertyQuery(this.GetName(), m.Member_id, m.Member_title, GuessPropertyQueryType(m.Member_title))).ToList())).ToList();
@@ -102,61 +104,33 @@ namespace TownComparisons.Domain.WebServices
             var rawJson = string.Empty;
             var apiRequest = "ou?municipality=" + municipalityId;
 
-            rawJson = RawJson(apiRequest);
+            rawJson = RawJson(BaseUrl + apiRequest);
 
             var OUs = JsonConvert.DeserializeObject<OUs>(rawJson).Values;
             return OUs.Select(o => new OrganisationalUnit(this.GetName(), o.Id, o.Title)).ToList();
         }
-        
-        /*
+
         /// <summary>
-        /// looks up municipality Name from settingsConfig.json and fetches its Id from Kolada.se 
+        /// Function:
+        /// 1. Takes apiRequest as argument, and builds valid URI
+        /// 2. Makes HttpWebRequest
+        /// 3. Reads data from request and sends it back in raw format...
+        /// 
         /// </summary>
-        private void FetchMunicipalityId()
+        /// <param name="apiRequest"></param>
+        /// <returns>rawJson, JSON in string format</returns>
+        private string RawJson(string apiRequest)
         {
-            //url example:
-            //http://api.kolada.se/v2/municipality?title=lund
+            var rawJson = string.Empty;
+            var request = (HttpWebRequest)WebRequest.Create(apiRequest);
 
-            var nameOfMunicipality = _settings.Municipality;
-            var apiRequest = "municipality?title=" + nameOfMunicipality;
-
-            string rawJson = RawJson(apiRequest);
-            JObject json = JObject.Parse(rawJson);
-
-            //This implementation includes only "Kommuner" and excludes "Landsting"
-            _municipalityId = (from m in json["values"]
-                               where m["type"].ToString() == "K"
-                               select new Municipality(m)).ToString();
+            using (var response = request.GetResponse())
+            using (var reader = new StreamReader(response.GetResponseStream()))
+            {
+                rawJson = reader.ReadToEnd();
+            }
+            return rawJson;
         }
-        */
-
-            //Replaced by FetchMunicipalityId() //andreas
-            // Reads MunicipalityId from Settings
-            //public override string GetMunicipalityId()
-            //{
-            //    //var _settings = new Settings();
-            //    var municipalityId = _settings.MunicipalityId;
-            //    return municipalityId;
-            //}
-
-            /// <summary>
-            /// Function returns OrganisationalUnits for one municipality.
-            /// Id, Municipality and Title are given.
-            /// </summary>
-            /// <param></param>
-            /// <returns>List of OUs in one municipality</returns>
-
-
-            //public override List<KpiGroups> GetKpiGroups()
-            //{
-            //    var rawJson = string.Empty;
-            //    var apiRequest = "KpiGroups";
-
-            //    rawJson = RawJson(apiRequest);
-
-            //    // Additional help http://stackoverflow.com/questions/11220776/deserialize-list-of-objects-using-json-net
-            //    var kpiGroups = JsonConvert.DeserializeObject<List<KpiGroups>>(rawJson);
-            //    return kpiGroups;
-            //}
-        }
+        
     }
+}

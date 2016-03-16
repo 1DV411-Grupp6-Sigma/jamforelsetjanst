@@ -48,16 +48,7 @@ namespace TownComparisons.Domain.DAL
                                                 .HasRequired(c => c.GroupCategory)
                                                 .WithMany(g => g.Categories)
                                                 .WillCascadeOnDelete(true); 
-
-            //if we want to use (automatically created) stored procedures (might enhance performance a little)
-            //modelBuilder.Entity<OrganisationalUnitInfo>().MapToStoredProcedures();
-
-            //### an example of how to make cascade delete work if needed:
-            /* modelBuilder.Entity<WeatherDataPoint>().HasKey(d => d.Id)
-                                                .HasRequired(d => d.WeatherForecast)
-                                                .WithMany(f => f.DataPoints)
-                                                .WillCascadeOnDelete(true); */
-
+            
             //not sure if this needs to be run?
             //base.OnModelCreating(modelBuilder);
         }

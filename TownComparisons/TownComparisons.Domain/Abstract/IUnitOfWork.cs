@@ -11,7 +11,6 @@ namespace TownComparisons.Domain.Abstract
     {
         IRepository<OrganisationalUnitInfo> OrganisationalUnitInfoRepository { get; }
         IRepository<PropertyQueryInfo> PropertyQueryInfoRepository { get; }
-        //IRepository<Settings> SettingsRepository { get; }
         IRepository<GroupCategory> GroupCategoriesRepository { get; }
         IRepository<Category> CategoriesRepository { get; }
 
