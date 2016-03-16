@@ -31,7 +31,7 @@
     <div>
         <label>
             Typ:
-            <select ng-options="o as o for o in query.AllTypes" ng-model="query.Type" class="{{ hasValidationError('query.Type') ? 'error' : '' }}" ></select>
+            <select ng-options="type.Id as type.Name for type in query.AllTypes" ng-model="query.Type" class="{{ hasValidationError('query.Type') ? 'error' : '' }}" ></select> <!-- o as o for o in query.AllTypes -->
         </label>
         <small class="error" ng-show="hasValidationError('query.Type')">{{ getValidationErrorMessage('query.Type') }}</small>
     </div>
