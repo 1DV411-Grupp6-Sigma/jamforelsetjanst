@@ -17,7 +17,6 @@
         viewModelHelper.apiGet('api/admin/category/' + $scope.categoryId + '/query/' + $scope.queryId, null,
             function (result) {
                 $scope.query = result.data;
-                console.log($scope.query);
                 $scope.queryName = angular.copy($scope.query.Title); //to use without data binding to the category
                 $scope.pageHeading = $scope.queryName;
             });
