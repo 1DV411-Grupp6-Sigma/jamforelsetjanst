@@ -9,6 +9,11 @@ Kommunal jämförelsetjänst framtagen av webbprogrammerare på LNU för IT-för
 ###Kolada (www.kolada.se)
 Ett API med kommun- och landstingsdata för hela Sverige.
 
-##Tekniker som använts
-- ASP.Net MVC
-- AngularJS
+##Tekniker och ramverk som använts
+- ASP.NET MVC5 Net Framework 4.5.2
+- AngularJS version 1.5
+- Zurb Foundation version 5
+- SASS
+- Datakälla: 
+--http://www.kolada.se/
+--En databas som kommer att bytas ut mot API-data
