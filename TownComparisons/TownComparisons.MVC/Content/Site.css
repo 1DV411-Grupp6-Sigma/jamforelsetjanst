@@ -6429,6 +6429,13 @@ th.hide-for-touch {
     overflow: hidden; } }
 
 @media screen and (max-width: 960px) {
+  .sub-nav dt, .sub-nav dd, .sub-nav li {
+    margin-top: 20px;
+    margin-left: 2px; }
+  .sub-nav dt a, .sub-nav dd a, .sub-nav li a {
+    padding: 1px; }
+  .sub-nav dt a, .sub-nav dd a, .sub-nav li a {
+    padding: 1px; }
   .before-compare {
     text-align: center;
     width: 65px;
