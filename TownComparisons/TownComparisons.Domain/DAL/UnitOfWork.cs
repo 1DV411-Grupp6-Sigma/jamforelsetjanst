@@ -34,13 +34,6 @@ namespace TownComparisons.Domain.DAL
                 return _propertyQueryInfoRepository ?? (_propertyQueryInfoRepository = new Repository<PropertyQueryInfo>(_context));
             }
         }
-        /*public IRepository<Settings> SettingsRepository
-        {
-            get
-            {
-                return _settingsRepository ?? (_settingsRepository = new Repository<Settings>(_context));
-            }
-        }*/
         public IRepository<GroupCategory> GroupCategoriesRepository
         {
             get
